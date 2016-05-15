@@ -1,0 +1,1 @@
+I denne mappen skal all dokumentasjon havne. Dette er designskisser, informasjonsarkitektur, ER-diagrammer og annet som dokumenterer arbeidet vi har gjort.
