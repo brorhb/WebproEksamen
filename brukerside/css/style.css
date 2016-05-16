@@ -18,17 +18,18 @@
 /* HEADER BILDE */
 /* HEADER BILDE */
 .headerBilde {
+    margin-top: 50px;
     color: white;
     position: relative;
     height: 264px;
     width: 100%;
-    background-image: url(https://images.unsplash.com/photo-1447775443973-0855e528e58e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=98bab7e5af15c8bc7ccb129078241948);
+    background-image: url(/img/forest.png);
     background-size: 100% auto;
     background-position: top center;
     background-attachment: fixed;
     overflow: hidden;
     z-index: -1;
-    margin-top: -20px;
+    margin-top: 50px;
 }
 /* HEADER BILDE */
 /* HEADER BILDE */
@@ -47,7 +48,8 @@
 .bestillReiseBoks {
     background-color: #A593E0;
     padding:8px;
-    height: 208px;
+    padding-bottom: 46px;
+    min-height: 208px;
     margin-bottom: 16px;
     z-index: 1;
     box-shadow: 0px 8px 8px 2px rgba(0,0,0,0.2);
@@ -65,6 +67,12 @@
     color: #333;
     background-color: #ddcc05;
     border-color: #ddcc05;
+}
+.radio {
+    color: white;
+}
+.bestillReiseBoks h4 {
+    color: white;
 }
 /* Bestill reise boks */
 
