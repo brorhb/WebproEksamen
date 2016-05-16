@@ -6,11 +6,52 @@
 /* HEADER */
 /* HEADER */
 
+/* HEADER BILDE */
+/* HEADER BILDE */
+.headerBilde {
+    color: white;
+    position: relative;
+    height: 216px;
+    width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1447775443973-0855e528e58e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=98bab7e5af15c8bc7ccb129078241948);
+    background-size: 100% auto;
+    background-position: top center;
+    background-attachment: fixed;
+    overflow: hidden;
+    z-index: -1;
+    margin-top: -20px;
+}
+/* HEADER BILDE */
+/* HEADER BILDE */
+
+/* INNHOLD */
+/* INNHOLD */
+
+/* container */
+.container {
+    z-index: 1;
+    margin-top: -80px;
+}
+/* container */
+
+/* Bestill reise boks */
+.bestillReiseBoks {
+    background-color: #A593E0;
+    padding:8px;
+    height: 208px;
+    margin-bottom: 16px;
+    z-index: 1;
+}
+/* Bestill reise boks */
+
+/* INNHOLD */
+/* INNHOLD */
+
 /* FOOTER */
 /* FOOTER */
 footer {
     height: 150px;
-    background-color: #A593E0;
+    background-color: #566270;
     padding: 50px;
     color: white;
 }
