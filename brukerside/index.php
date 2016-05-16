@@ -12,7 +12,7 @@
     <!-- Bestille reise -->
     <div class="row">
         <div class="col-md-6 col-md-offset-3 bestillReiseBoks">
-            
+            <button type="button" class="btn btn-default">Bekreft</button>
         </div>
     </div>
     <!-- Bestille reise -->
@@ -27,34 +27,35 @@
                     <tr>
                         <th><h4>Land</h4></th>
                         <th><h4>Flyplass</h4></th>
+                        <th><h4>Pris</h4></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Polen</strong></td>
                         <td>Krakow</td>
+                        <td>fra 499,-</td>
                     </tr>
                     <tr>
                         <td><strong>Polen</strong></td>
                         <td>Krakow</td>
+                        <td>fra 499,-</td>
                     </tr><tr>
                         <td><strong>Polen</strong></td>
                         <td>Krakow</td>
+                        <td>fra 499,-</td>
                     </tr><tr>
                         <td><strong>Polen</strong></td>
                         <td>Krakow</td>
+                        <td>fra 499,-</td>
                     </tr><tr>
                         <td><strong>Polen</strong></td>
                         <td>Krakow</td>
+                        <td>fra 499,-</td>
                     </tr><tr>
                         <td><strong>Polen</strong></td>
                         <td>Krakow</td>
-                    </tr><tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                    </tr><tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
+                        <td>fra 499,-</td>
                     </tr>
                 </tbody>
             </table>

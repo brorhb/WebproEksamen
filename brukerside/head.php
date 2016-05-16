@@ -35,5 +35,16 @@
                         <h4>Bjarvin Airlines</h2>
                     </a>
                 </div>
+                
+                <!-- søkefelt -->
+                <div class="col-md-3 pull-right sokfelt">
+                    <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Referansenummer...">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+                <!-- søkefelt -->
+                
             </div>
         </nav>
