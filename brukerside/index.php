@@ -10,7 +10,7 @@
 <div class="container">
     
     <!-- Bestille reise -->
-    <form>
+    <form method="GET">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 bestillReiseBoks">
                 
@@ -48,7 +48,7 @@
                     
                     <div class="col-md-3">
                         <div class="form-group">
-                            <select class="form-control" name="antallVoksene" id="antallVoksene">
+                            <select class="form-control" name="antallUnge" id="antallUnge">
                                 <option selected value="0">0 Unge(0-25)</option>
                                 <option value="1">1 Unge</option>
                                 <option value="2">2 Unge</option>

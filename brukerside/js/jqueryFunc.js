@@ -39,7 +39,7 @@ $(document).ready(function(){
             $('#fraDato, #tilDato').hide();
         }
         else {
-            $('#fraDato, #tilDato').show();
+            $('#fraDato, #tilDato').fadeIn('fast');
         }
     }
     
