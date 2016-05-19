@@ -31,15 +31,32 @@ $(document).ready(function () {
     $('#tilLand').change(function () {
         toggleFields();
     });
+    
+    
     function toggleFields() {
         if ($('#tilLand option:selected').val() == 0) {
             $('#fraDato, #tilDato').hide();
-        } else {
+        }
+        else {
             $('#fraDato, #tilDato').fadeIn('fast');
+            $("input[name='reisevalg']:radio")
+            .change(function() {
+                $('#tilDato').toggle($(this).val() == "1");
+            });
         }
     }
     
     /*
+    function toggleFields() {
+        $("input[name='reisevalg']:radio")
+            .change(function() {
+                $('#tilDato').toggle($(this).val() == "1");
+            });
+    }
+    */
+    
+    
+    /* SweetAlert eksempel
     swal({
         title: "Obs!",
         text: "Alle feltene må være utfylt!",
@@ -54,7 +71,7 @@ $(document).ready(function () {
         if (!reiseType) {
             feilmeldinger += "Reisetype er ikke valgt</br>";
             resultat = false;
-        } else if (antallVoksene && antallUnge === 0) {
+        } else if (antallVoksene && antallUnge == 0) {
             feilmeldinger += "Velg antall reisende</br>";
             resultat = false;
         } else if (!fraLand) {

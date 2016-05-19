@@ -10,19 +10,45 @@
 <div class="container">
     
     <!-- Bestille reise -->
-    <form method="GET" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
+    <form method="GET" action="velgfly.php" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 bestillReiseBoks">
                 
+                
+                <!-- Fra/til land -->
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Fra"><h4>Fra</h4></label>
+                            <select class="form-control" name="fraLand" id="fraLand">
+                                <option selected disabled value="0">---</option>
+                                <option value="Norge">Norge</option>
+                                <option value="Sverige">Sverige</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6" id="retur">
+                        <div class="form-group">
+                            <label for="Til"><h4>Til</h4></label>
+                            <select class="form-control" name="tilLand" id="tilLand">
+                                <option selected disabled value="0">---</option>
+                                <option value="Norge">Norge</option>
+                                <option value="Sverige">Sverige</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><!-- /row -->
+                <!-- Fra/til lanf -->
+                                <div class="row">
                     <!-- Radio knapper -->
                     <div class="col-md-6">
                         <div class="radio" name="reiseType" id="reiseType">
                             <div class="col-md-6">
-                                <label><input type="radio" name="reisevalg" id="turRetur" checked>Tur/Retur</label>
+                                <label><input type="radio" name="reisevalg" id="turRetur" value="1" checked>Tur/Retur</label>
                             </div>
                             <div class="col-md-6">
-                                <label><input type="radio" name="reisevalg" id="enVei">En vei</label>
+                                <label><input type="radio" name="reisevalg" id="enVei" value="2">En vei</label>
                             </div>
                         </div>
                     </div>
@@ -64,32 +90,6 @@
                     </div>
                     <!-- Antall reisende -->
                 </div> <!-- /row -->
-                
-                <!-- Fra/til land -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Fra"><h4>Fra</h4></label>
-                            <select class="form-control" name="fraLand" id="fraLand">
-                                <option selected disabled value="0">---</option>
-                                <option value="Norge">Norge</option>
-                                <option value="Sverige">Sverige</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6" id="retur">
-                        <div class="form-group">
-                            <label for="Til"><h4>Til</h4></label>
-                            <select class="form-control" name="tilLand" id="tilLand">
-                                <option selected disabled value="0">---</option>
-                                <option value="Norge">Norge</option>
-                                <option value="Sverige">Sverige</option>
-                            </select>
-                        </div>
-                    </div>
-                </div><!-- /row -->
-                <!-- Fra/til lanf -->
                 
                 <!-- Dato -->
                 <div class="row">
