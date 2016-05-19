@@ -10,7 +10,7 @@
 <div class="container">
     
     <!-- Bestille reise -->
-    <form method="GET">
+    <form method="GET" role="form" id="bestillReiseSkjema" onsubmit="return validerBestilling()">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 bestillReiseBoks">
                 
