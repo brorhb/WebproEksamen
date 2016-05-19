@@ -58,8 +58,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <select class="form-control" name="antallVoksene" id="antallVoksene">
-                                <option value="0">0 Voksene</option>
-                                <option selected value="1">1 Voksen</option>
+                                <option selected value="0">0 Voksene</option>
+                                <option value="1">1 Voksen</option>
                                 <option value="2">2 Voksene</option>
                                 <option value="3">3 Voksene</option>
                                 <option value="4">4 Voksene</option>

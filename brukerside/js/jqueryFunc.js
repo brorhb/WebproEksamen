@@ -35,13 +35,12 @@ $(document).ready(function () {
     function toggleFields() {
         if ($('#tilLand option:selected').val() == 0) {
             $('#fraDato, #tilDato').hide();
-        }
-        else {
+        } else {
             $('#fraDato, #tilDato').fadeIn('fast');
             $("input[name='reisevalg']:radio")
-            .change(function() {
-                $('#tilDato').toggle($(this).val() == "1");
-            });
+                .change(function () {
+                    $('#tilDato').toggle($(this).val() == "1");
+                });
         }
     }
     
@@ -49,21 +48,12 @@ $(document).ready(function () {
     toggleEndreReise();
     $('#reiseEndring').hide();
     function toggleEndreReise() {
-        $("#endreReise").click(function(){
-        $("#reiseEndring").toggle();
-    });
+        $("#endreReise").click(function () {
+            $("#reiseEndring").toggle();
+        });
     }
-    
-    
-    
-    /* SweetAlert eksempel
-    swal({
-        title: "Obs!",
-        text: "Alle feltene må være utfylt!",
-        type: "warning",
-    });
-    */
 });
+
 /* Bestilling validering */
 function validerBestilling() {
     var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, /* antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, */ fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
@@ -71,7 +61,7 @@ function validerBestilling() {
     if (!turRetur && !enVei) {
         feilmeldinger += "Reisetype er ikke valgt</br>";
         resultat = false;
-    } else if (document.getElementsByName('antallVoksene')[0].value == '0' || document.getElementsByName('antallUnge')[0].value == '0') {
+    } else if (document.getElementsByName('antallVoksene')[0].value == '0' && document.getElementsByName('antallUnge')[0].value == '0') {
         feilmeldinger += "Velg antall reisende</br>";
         resultat = false;
     } else if (!fraLand) {
@@ -88,7 +78,7 @@ function validerBestilling() {
     swal({
         title: "Obs!",
         text: feilmeldinger,
-        type: "warning",
+        type: "warning"
     });
 
     return resultat;

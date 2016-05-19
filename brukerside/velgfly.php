@@ -16,7 +16,7 @@
         </div>
     </div>
     
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" onsubmit="return validerBestilling()">
     <div class="row" id="reiseEndring">
         <div class="col-md-6">
             
