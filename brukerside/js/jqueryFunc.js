@@ -32,7 +32,6 @@ $(document).ready(function () {
         toggleFields();
     });
     
-    
     function toggleFields() {
         if ($('#tilLand option:selected').val() == 0) {
             $('#fraDato, #tilDato').hide();
@@ -46,14 +45,14 @@ $(document).ready(function () {
         }
     }
     
-    /*
+    //Hide endre reise
+    $('#reiseEndring').hide();
     function toggleFields() {
-        $("input[name='reisevalg']:radio")
-            .change(function() {
-                $('#tilDato').toggle($(this).val() == "1");
-            });
+        $("#endreReise").click(function(){
+        $("#reiseEndring").toggle();
+    });
     }
-    */
+    
     
     
     /* SweetAlert eksempel

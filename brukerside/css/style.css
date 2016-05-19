@@ -95,13 +95,28 @@ footer {
 
 /* reise info */
 .reiseInfo {
-    height: 56px;
+    min-height: 64px;
     background-color: #A593E0;
     padding: 8px;
     color: white;
-    margin-top: 50px;
+    margin-top: 130px;
+}
+
+.reiseInfo .btn-default {
+    bottom:8px;
+    right:8px;
 }
 /* reise info */
+
+.btn.btn-default.pull-right {
+    background-color:#EFDC05;
+    border-color: #EFDC05;
+    margin-bottom: 16px;
+}
+.btn.btn-default.pull-right:hover {
+    background-color:#ddcc05;
+    border-color: #ddcc05;
+}
 
 /* VELG FLY */
 /* VELG FLY */
