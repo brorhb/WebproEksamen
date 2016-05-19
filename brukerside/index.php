@@ -108,7 +108,7 @@
                 </div>
                 <!-- Dato -->
                 
-                <input type="submit" class="btn btn-default" value="Bekreft"/>
+                <input type="submit" class="btn btn-default" value="Bekreft" onclick="validerBestilling();"/>
             </div>
         </div>
     </form>

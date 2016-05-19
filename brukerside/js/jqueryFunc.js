@@ -32,7 +32,7 @@ $(document).ready(function () {
         toggleFields();
     });
     function toggleFields() {
-        if ($('#tilLand option:selected').val() === 0) {
+        if ($('#tilLand option:selected').val() == 0) {
             $('#fraDato, #tilDato').hide();
         } else {
             $('#fraDato, #tilDato').fadeIn('fast');
@@ -46,8 +46,8 @@ $(document).ready(function () {
         type: "warning",
     });
     */
-        
-/* Bestilling validering */
+    
+    /* Bestilling validering */
     function validerBestilling() {
         var reiseType = document.forms["bestillReiseSkjema"]["reiseType"].value, antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["fraDato"].value, tilDato = document.forms["bestillReiseSkjema"]["tilDato"].value, resultat = true, feilmeldinger = "";
         
@@ -67,6 +67,13 @@ $(document).ready(function () {
             feilmeldinger += "Velg reise dato</br>";
             resultat = false;
         }
+        swal({
+            title: "Obs!",
+            text: feilmeldinger,
+            type: "warning",
+        });
+         return resultat;
     }
-/* Bestilling validering slutt */
+    /* Bestilling validering slutt */
+        
 });
