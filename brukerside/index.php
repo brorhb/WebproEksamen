@@ -10,20 +10,20 @@
 <div class="container">
     
     <!-- Bestille reise -->
-    <form method="GET" role="form" id="bestillReiseSkjema" onsubmit="return validerBestilling()">
+    <form method="GET" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 bestillReiseBoks">
                 
                 <div class="row">
                     <!-- Radio knapper -->
-                    <div class="col-md-3">
-                        <div class="radio">
-                            <label><input type="radio" name="reisevalg" id="turRetur" checked>Tur/Retur</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="radio">
-                            <label><input type="radio" name="reisevalg" id="enVei">En vei</label>
+                    <div class="col-md-6">
+                        <div class="radio" name="reiseType" id="reiseType">
+                            <div class="col-md-6">
+                                <label><input type="radio" name="reisevalg" id="turRetur" checked>Tur/Retur</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label><input type="radio" name="reisevalg" id="enVei">En vei</label>
+                            </div>
                         </div>
                     </div>
                     <!-- Radio knapper -->
@@ -94,13 +94,13 @@
                 <!-- Dato -->
                 <div class="row">
                     <div class="col-md-6" id="fraDato">
-                        <div class="form-group">
+                        <div class="form-group" name="fraDato" id="fraDato">
                             <label for="Fra"><h4>Fra dato </h4></label>
                             <input class="form-control" type="text" class="span2" value="" id="dpd1">
                         </div>
                     </div>
                     <div class="col-md-6" id="tilDato">
-                        <div class="form-group">
+                        <div class="form-group" name="tilDato" id="tilDato">
                             <label for="Til"><h4>Til dato </h4></label>
                             <input class="form-control" type="text" class="span2" value="" id="dpd2">
                         </div>
