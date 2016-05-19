@@ -15,9 +15,40 @@
             ?>
         </div>
     </div>
+    
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
     <div class="row" id="reiseEndring">
         <div class="col-md-6">
+            
+        <!-- Fra/til land -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Fra"><h4>Fra</h4></label>
+                            <select class="form-control" name="fraLand" id="fraLand">
+                                <option selected value="<?php echo $fraLand ?>"><?php echo $fraLand ?></option>
+                                <option value="Norge">Norge</option>
+                                <option value="Sverige">Sverige</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6" id="retur">
+                        <div class="form-group">
+                            <label for="Til"><h4>Til</h4></label>
+                            <select class="form-control" name="tilLand" id="tilLand">
+                                <option selected value="<?php echo $tilLand ?>"><?php echo $tilLand ?></option>
+                                <option value="Norge">Norge</option>
+                                <option value="Sverige">Sverige</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><!-- /row -->
+        <!-- Fra/til land -->    
+            
+        
         <!-- antall voksene -->
+        <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
                     <h4>Antall Voksene</h4>
@@ -58,9 +89,43 @@
             </div>
         </div>
         <!-- antall unge -->
+        
+        <!-- Radio knapper -->
+                    <div class="col-md-6" style="margin-top:30px;">
+                        <div class="radio" name="reiseType" id="reiseType">
+                            <div class="col-md-6">
+                                <label><input type="radio" name="reisevalg" id="turRetur" value="1" checked>Tur/Retur</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label><input type="radio" name="reisevalg" id="enVei" value="2">En vei</label>
+                            </div>
+                        </div>
+                    </div>
+        </div>            
+        <!-- Radio knapper -->
+        
+        <div class="row">
+        <!-- Dato -->
+                <div class="col-md-6" id="fraDato">
+                    <div class="form-group" name="fraDato" id="fraDato">
+                        <label for="Fra"><h4>Fra dato </h4></label>
+                        <input class="form-control" type="text" class="span2" value="" id="dpd1" required>
+                    </div>
+                </div>
+                <div class="col-md-6" id="tilDato">
+                    <div class="form-group" name="tilDato" id="tilDato">
+                        <label for="Til"><h4>Til dato </h4></label>
+                        <input class="form-control" type="text" class="span2" value="" id="dpd2" required>
+                    </div>
+                </div>
+        
+        <!-- Dato -->
+        </div>
+        
         </div>
     </div>
-    <input type="submit" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>
+    <input type="button" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>
+    </form>
 </div>
 <!-- Reise info -->
 
