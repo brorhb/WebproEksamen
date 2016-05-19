@@ -46,35 +46,34 @@ $(document).ready(function () {
         type: "warning",
     });
     */
-    
-    /* Bestilling validering */
-    function validerBestilling() {
-        var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
-        
-        if (!turRetur && !enVei) {
-            feilmeldinger += "Reisetype er ikke valgt</br>";
-            resultat = false;
-        } else if (antallVoksene && antallUnge === 0) {
-            feilmeldinger += "Velg antall reisende</br>";
-            resultat = false;
-        } else if (!fraLand) {
-            feilmeldinger += "Velg utreise destinasjon</br>";
-            resultat = false;
-        } else if (!tilLand) {
-            feilmeldinger += "Velg reise destinasjon</br>";
-            resultat = false;
-        } else if (!fraDato) {
-            feilmeldinger += "Velg reise dato</br>";
-            resultat = false;
-        }
-        
-        swal({
-            title: "Obs!",
-            text: feilmeldinger,
-            type: "warning",
-        });
-         return resultat;
-    }
-    /* Bestilling validering slutt */
-        
 });
+/* Bestilling validering */
+function validerBestilling() {
+    var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
+        
+    if (!turRetur && !enVei) {
+        feilmeldinger += "Reisetype er ikke valgt</br>";
+        resultat = false;
+    } else if (antallVoksene && antallUnge == 0) {
+        feilmeldinger += "Velg antall reisende</br>";
+        resultat = false;
+    } else if (!fraLand) {
+        feilmeldinger += "Velg utreise destinasjon</br>";
+        resultat = false;
+    } else if (!tilLand) {
+        feilmeldinger += "Velg reise destinasjon</br>";
+        resultat = false;
+    } else if (!fraDato) {
+        feilmeldinger += "Velg reise dato</br>";
+        resultat = false;
+    }
+
+    swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning",
+    });
+
+    return resultat;
+}
+/* Bestilling validering slutt */
