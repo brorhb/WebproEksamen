@@ -46,8 +46,9 @@ $(document).ready(function () {
     }
     
     //Hide endre reise
+    toggleEndreReise();
     $('#reiseEndring').hide();
-    function toggleFields() {
+    function toggleEndreReise() {
         $("#endreReise").click(function(){
         $("#reiseEndring").toggle();
     });
