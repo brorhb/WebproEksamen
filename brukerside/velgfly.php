@@ -132,46 +132,48 @@
 <!-- innhold -->
 <div class="container">
     <!-- Avgang -->
-    <div class="col-md-10 col-md-offset-1">
-        <h2><span class="glyphicon glyphicon-plane"></span> Avganger</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><h4>Flight</h4></th>
-                    <th><h4>Fra</h4></th>
-                    <th><h4>Avgang</h4></th>
-                    <th><h4>Til</h4></th>
-                    <th><h4>Landing</h4></th>
-                    <th><h4>Valgt</h4></th>
-                </tr>
-            </thead>
-        </table>
-        <h3 class="pull-right">Pris</h3>
-    </div>
-    <!-- Avgang -->
+    <form action="bekreftelsereise.php">
+        <div class="col-md-10 col-md-offset-1">
+            <h2><span class="glyphicon glyphicon-plane"></span> Avganger</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>Flight</h4></th>
+                        <th><h4>Fra</h4></th>
+                        <th><h4>Avgang</h4></th>
+                        <th><h4>Til</h4></th>
+                        <th><h4>Landing</h4></th>
+                        <th><h4>Valgt</h4></th>
+                    </tr>
+                </thead>
+            </table>
+            <h3 class="pull-right">Pris</h3>
+        </div>
+        <!-- Avgang -->
 
-    <!-- Retur -->
-    <div class="col-md-10 col-md-offset-1">
-        <h2><span class="glyphicon glyphicon-plane"></span> Retur</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><h4>Flight</h4></th>
-                    <th><h4>Fra</h4></th>
-                    <th><h4>Avgang</h4></th>
-                    <th><h4>Til</h4></th>
-                    <th><h4>Landing</h4></th>
-                    <th><h4>Valgt</h4></th>
-                </tr>
-            </thead>
-        </table>
-        <h3 class="pull-right">Pris</h3>
+        <!-- Retur -->
+        <div class="col-md-10 col-md-offset-1">
+            <h2><span class="glyphicon glyphicon-plane"></span> Retur</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>Flight</h4></th>
+                        <th><h4>Fra</h4></th>
+                        <th><h4>Avgang</h4></th>
+                        <th><h4>Til</h4></th>
+                        <th><h4>Landing</h4></th>
+                        <th><h4>Valgt</h4></th>
+                    </tr>
+                </thead>
+            </table>
+            <h3 class="pull-right">Pris</h3>
+        </div>
+        <!-- Retur -->
+        <div class="col-md-10 col-md-offset-1">
+            <input type="submit" class="btn btn-default pull-right" value="Bekreft"/>
+        </div>
+    </form>
     </div>
-    <!-- Retur -->
-    <div class="col-md-10 col-md-offset-1">
-        <input type="submit" class="btn btn-default pull-right" value="Bekreft"/>
-    </div>
-</div>
 <!-- innhold -->
 
 <?php
