@@ -1,5 +1,5 @@
 <?php
-    include_once "head.php"
+    include_once ("head.php");
 ?>
 
 <!-- Header bilde -->
@@ -164,5 +164,5 @@
 
 
 <?php
-    include_once "end.php"
+    include_once ("end.php");
 ?>

@@ -49,9 +49,9 @@ $(document).ready(function () {
     
     /* Bestilling validering */
     function validerBestilling() {
-        var reiseType = document.forms["bestillReiseSkjema"]["reiseType"].value, antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["fraDato"].value, tilDato = document.forms["bestillReiseSkjema"]["tilDato"].value, resultat = true, feilmeldinger = "";
+        var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
         
-        if (!reiseType) {
+        if (!turRetur && !enVei) {
             feilmeldinger += "Reisetype er ikke valgt</br>";
             resultat = false;
         } else if (antallVoksene && antallUnge === 0) {
@@ -67,6 +67,7 @@ $(document).ready(function () {
             feilmeldinger += "Velg reise dato</br>";
             resultat = false;
         }
+        
         swal({
             title: "Obs!",
             text: feilmeldinger,
