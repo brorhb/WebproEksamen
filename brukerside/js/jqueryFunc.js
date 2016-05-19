@@ -66,12 +66,12 @@ $(document).ready(function () {
 });
 /* Bestilling validering */
 function validerBestilling() {
-    var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
+    var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, /* antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, */ fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
         
     if (!turRetur && !enVei) {
         feilmeldinger += "Reisetype er ikke valgt</br>";
         resultat = false;
-    } else if (antallVoksene && antallUnge == 0) {
+    } else if (document.getElementsByName('antallVoksene')[0].value == '0' || document.getElementsByName('antallUnge')[0].value == '0') {
         feilmeldinger += "Velg antall reisende</br>";
         resultat = false;
     } else if (!fraLand) {
