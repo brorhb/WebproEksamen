@@ -27,6 +27,9 @@
     <script src="dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
     
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    
     <!-- datepicker -->
     <script src="datepicker/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" href="datepicker/css/datepicker.css">

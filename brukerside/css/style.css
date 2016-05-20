@@ -120,3 +120,29 @@ footer {
 
 /* VELG FLY */
 /* VELG FLY */
+
+/* PRISSIDE */
+/* PRISSIDE */
+.prisboks {
+    margin-top: 15%;
+    margin-bottom: 200px;
+}
+.prisboks .btn-default {
+    bottom:8px;
+    right:8px;
+}
+.prisboks.btn.btn-default.pull-right {
+    bottom: 8px;
+    right: 8px;
+}
+/* PRISSIDE */
+/* PRISSIDE */
+
+/* BEKREFTREISE */
+/* BEKREFTREISE */
+.fa-5 {
+  font-size: 5em !important;
+  color: #75D701;
+  }
+/* BEKREFTREISE */
+/* BEKREFTREISE */

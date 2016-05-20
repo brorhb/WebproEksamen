@@ -135,7 +135,7 @@
 <!-- innhold -->
 <div class="container">
     <!-- Avgang -->
-    <form action="bekreftelsereise.php">
+    <form action="prisside.php">
         <div class="col-md-10 col-md-offset-1">
             <h2><span class="glyphicon glyphicon-plane"></span> Avganger</h2>
             <table class="table">
