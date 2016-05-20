@@ -9,8 +9,11 @@
             <?php
                 $fraLand = $_GET["fraLand"];
                 $tilLand = $_GET["tilLand"];
+                $fradato = $_GET["fradato"];
+                $tildato = $_GET["tildato"];
                 $antallVoksene = $_GET["antallVoksene"];
                 $antallUnge = $_GET["antallUnge"];
+                $reisevalg = $_GET["reisevalg"];
                 echo '<h2>' . $fraLand . ' til ' . $tilLand . '</h2>';
             ?>
         </div>
@@ -94,7 +97,7 @@
                     <div class="col-md-6" style="margin-top:30px;">
                         <div class="radio" name="reiseType" id="reiseType">
                             <div class="col-md-6">
-                                <label><input type="radio" name="reisevalg" id="turRetur" value="1" checked>Tur/Retur</label>
+                                <label><input type="radio" name="reisevalg" id="turRetur" value="1" >Tur/Retur</label>
                             </div>
                             <div class="col-md-6">
                                 <label><input type="radio" name="reisevalg" id="enVei" value="2">En vei</label>
@@ -107,15 +110,15 @@
         <div class="row">
         <!-- Dato -->
                 <div class="col-md-6" id="fraDato">
-                    <div class="form-group" name="fraDato" id="fraDato">
+                    <div class="form-group" id="fraDato">
                         <label for="Fra"><h4>Fra dato </h4></label>
-                        <input class="form-control" type="text" class="span2" value="" id="dpd1" required>
+                        <input class="form-control" type="text" class="span2" value="<?php echo $fradato; ?>" id="dpd1" name="fradato" required>
                     </div>
                 </div>
                 <div class="col-md-6" id="tilDato">
-                    <div class="form-group" name="tilDato" id="tilDato">
+                    <div class="form-group" id="tilDato">
                         <label for="Til"><h4>Til dato </h4></label>
-                        <input class="form-control" type="text" class="span2" value="" id="dpd2" required>
+                        <input class="form-control" type="text" class="span2" value="<?php echo $tildato; ?>" id="dpd2" name="tildato" required>
                     </div>
                 </div>
         

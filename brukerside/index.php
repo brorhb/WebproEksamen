@@ -96,13 +96,13 @@
                     <div class="col-md-6" id="fraDato">
                         <div class="form-group" name="fraDato" id="fraDato">
                             <label for="Fra"><h4>Fra dato </h4></label>
-                            <input class="form-control" type="text" class="span2" value="" id="dpd1" required>
+                            <input class="form-control" type="text" class="span2" value="" id="dpd1" name="fradato" required>
                         </div>
                     </div>
                     <div class="col-md-6" id="tilDato">
                         <div class="form-group" name="tilDato" id="tilDato">
                             <label for="Til"><h4>Til dato </h4></label>
-                            <input class="form-control" type="text" class="span2" value="" id="dpd2" required>
+                            <input class="form-control" type="text" class="span2" value="" id="dpd2" name="tildato" required>
                         </div>
                     </div>
                 </div>
