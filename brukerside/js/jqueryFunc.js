@@ -71,7 +71,7 @@ $(document).ready(function () {
     });
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).closest('.reisende').remove(); x--;
-    })
+    });
     
 }); //Slutt på Jquery
 
