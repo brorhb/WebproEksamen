@@ -6,8 +6,8 @@
         <div class="col-md-8 col-md-offset-1">
             <h2>Registrer reisende</h2>
         </div>
-        <div class="col-md-2">
-            <h3 class="totaltReisende"><button class="glyphicon glyphicon-plus legg_til_reisende"></button></h3>
+        <div class="col-md-2 inline">
+            <h3><div class="totaltReisende">0</div><button class="glyphicon glyphicon-plus legg_til_reisende" style="background:none; border:none;"></button></h3>
         </div>
         <div class="col-md-10 col-md-offset-1">
             <form method="" action="prisside.php">

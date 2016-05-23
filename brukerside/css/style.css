@@ -152,5 +152,13 @@ footer {
 .reisende {
     margin-bottom: 36px;
 }
+.totaltReisende {
+    width: 30px;
+    position: relative;
+    display: inline-block;
+}
+.inline {
+    display: inline-block;
+}
 /* Registrer Reisende */
 /* Registrer Reisende */
