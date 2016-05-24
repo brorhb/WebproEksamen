@@ -46,7 +46,8 @@
 </head>
     <body>
             <div class="col-md-12 topheader">
-                <h4>Bjarum Airlines adminpanel</h4>
+                <h4 class="brandname">Bjarum Airlines adminpanel</h4>
+                <a href="login.php" class="logout"><h5 class="pull-right">Logg ut</h5></a>
             </div>
             <div id="wrapper">
                 <div class="overlay"></div>
@@ -109,6 +110,3 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2">                      
-
-               
-        

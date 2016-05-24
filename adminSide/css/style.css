@@ -1,7 +1,46 @@
+/* LOGIN */
+/* LOGIN */
+.login {
+    background-color: #77AAAD;
+    margin-top: 30%;
+    color: white;
+    border-radius: 8px;
+    padding: 36px;
+}
+.margin36top {
+    margin-top: 36px;
+}
+.margin8top {
+    margin-top: 8px;
+}
+.margin16top {
+    margin-top: 16px;
+}
+.margin36bottom {
+    margin-top: 36px;
+}
+/* LOGIN */
+/* LOGIN */
+
+/* HEADER */
+/* HEADER */
 .topheader {
     color: white;
     background-color: #77AAAD;
+    display: inline-block;
 }
+
+.brandname {
+    text-align: left;
+    float: left;
+    clear: both;
+}
+.logout {
+    text-align: right;
+    color: white;
+}
+/* HEADER */
+/* HEADER */
 
 /* SIDEPANEL */
 /* SIDEPANEL */
