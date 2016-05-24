@@ -81,19 +81,19 @@ function validerBestilling() {
     var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, /* antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, */ fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
         
     if (!turRetur && !enVei) {
-        feilmeldinger += "Reisetype er ikke valgt</br>";
+        feilmeldinger += "Reisetype er ikke valgt";
         resultat = false;
     } else if (document.getElementsByName('antallVoksene')[0].value == '0' && document.getElementsByName('antallUnge')[0].value == '0') {
-        feilmeldinger += "Velg antall reisende</br>";
+        feilmeldinger += "Velg antall reisende";
         resultat = false;
     } else if (!fraLand) {
-        feilmeldinger += "Velg utreise destinasjon</br>";
+        feilmeldinger += "Velg utreise destinasjon";
         resultat = false;
     } else if (!tilLand) {
-        feilmeldinger += "Velg reise destinasjon</br>";
+        feilmeldinger += "Velg reise destinasjon";
         resultat = false;
     } else if (!fraDato) {
-        feilmeldinger += "Velg reise dato</br>";
+        feilmeldinger += "Velg reise dato";
         resultat = false;
     }
 
