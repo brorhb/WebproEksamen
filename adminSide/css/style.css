@@ -39,7 +39,7 @@ html { height: 100%;}
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #ddd;
+    background: #1a1a1a;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -100,8 +100,8 @@ html { height: 100%;}
 
 }
 .sidebar-nav li:first-child a {
-    color: #1a1a1a;
-    background-color: #ddd;
+    color: #ddd;
+    background-color: #1a1a1a;
 }
 .sidebar-nav li:nth-child(2):before {
     background-color: #ec1b5a;   
@@ -139,7 +139,7 @@ html { height: 100%;}
 
 .sidebar-nav li a {
     display: block;
-    color: #1a1a1a;
+    color: #ddd;
     text-decoration: none;
     padding: 10px 15px 10px 30px;    
 }
@@ -167,7 +167,7 @@ html { height: 100%;}
     margin: 0;
     border-radius: 0;
     border: none;
-    background-color: #222;
+    background-color: #2e2e2e;
     box-shadow: none;
 }
 

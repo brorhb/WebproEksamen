@@ -56,40 +56,44 @@
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
                             <a href="#">
-                            Brand
+                            Bjarum Airlines
                             </a>
                         </li>
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Events</a>
-                        </li>
-                        <li>
-                            <a href="#">Team</a>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Flytype <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">Flytype</li>
+                            <li><a href="allefly.php">Alle fly</a></li>
+                            <li><a href="allemodeller.php">Alle fly modeller</a></li>
+                        </ul>
                         </li>
                         <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Flyvninger <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-header">Dropdown heading</li>
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li class="dropdown-header">Flyvninger</li>
+                            <li><a href="alleruter.php">Alle ruter</a></li>
+                            <li><a href="alleavganger.php">Alle avganger</a></li>
                         </ul>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <a href="allebestillinger.php">Alle bestillinger</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="allebrukere.php">Alle brukere</a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/maridlcrmn">Follow me</a>
+                            <a href="alleflyplasser.php">Flyplass</a>
+                        </li>
+                        <li>
+                            <a href="valutta.php">Valutta</a>
+                        </li>
+                        <li>
+                            <a href="land.php">Land</a>
+                        </li>
+                        <li>
+                            <footer>
+                                <div class="col-md-12 text-center"><h4>Eksamen av Thomas Iversen Ramm, Bror Brurberg, Marius Wetterlin, Emilie Borch og Iselin Gjestland</h4></div>
+                            </footer>
                         </li>
                     </ul>
                 </nav>
@@ -104,7 +108,7 @@
                     </button>
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-8 col-lg-offset-2">                        
+                            <div class="col-lg-8 col-lg-offset-2">                      
 
                
         
