@@ -28,7 +28,7 @@
         <a href="leggtilavgang.php" class="btn btn-success">Legg til</a>
     </div>
     <div class="col-md-1 col-md-offset-4 pull-right">
-        <a href="slettavgang.php" class="btn btn-danger">Slett</a>
+        <a href="#" class="btn btn-danger">Slett</a>
     </div>
 </div>
 <!-- Innhold -->
