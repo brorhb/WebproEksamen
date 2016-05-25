@@ -6,7 +6,7 @@
 
 <!-- Innhold -->
 <div class="col-md-12">
-    <h2>Endre flyplass</h2>
+    <h2>Legg til flyplass</h2>
         <form action="alleflyplasser.php">
             <div class="col-md-6">
                 <div class="form-group">
