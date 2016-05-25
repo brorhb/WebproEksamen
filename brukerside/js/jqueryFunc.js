@@ -64,7 +64,7 @@ $(document).ready(function () {
         if( x < max_fields ) {
             x++
             $(wrapper).append( 
-                "<div class='reisende'><div class='col-md-12'><h3>Reisende</h3><a href='#' class='remove_field'>Fjern</a></div> <div class='col-md-6'>                    <label for='fornavn'>Fornavn</label>                    <input type='text' class='form-control' name='fornavn' id='fornavn' placeholder='Fornavn' required />                </div>                <div class='col-md-6'>                    <label for='etternavn'>Etternavn</label>                    <input type='text' class='form-control' name='etternavn' id='etternavn' placeholder='Etternavn' required />                </div>                <div class='col-md-6'>                    <label for='epost'>Epost</label>                    <input type='email' class='form-control' name='email' id='email' placeholder='eksempel@bjarvin.no' required />                </div>                <div class='col-md-6'>                    <label for='kjonn'>Kjønn</label>                    <select class='form-control' name='kjonn' id='kjonn'>                        <option disabled selected value=''>Kjønn</option>                        <option value='1'>Mann</option>                       <option value='2'>Kvinne</option>                    </select>                </div>                <div class='col-md-6'>                    <label for='mobilnr'>Mobilnummer</label>                    <input type='text' class='form-control' name='mobilnummer' id='mobilnummer' placeholder='99999999' required />                </div>                 <div class='col-md-6'>                    <label for='dob'>Fødselsdato</label>                    <input type='text' class='form-control' name='dob' id='dob' placeholder='dd.mm.yyyy' required />                </div></div>"
+                "<div class='reisende'><div class='col-md-12'><h3>Reisende</h3><a href='#' class='remove_field'>Fjern</a></div> <div class='col-md-6'>                    <label for='fornavn'>Fornavn</label>                    <input type='text' class='form-control' name='fornavn' id='fornavn' placeholder='Fornavn' required />                </div>                <div class='col-md-6'>                    <label for='etternavn'>Etternavn</label>                    <input type='text' class='form-control' name='etternavn' id='etternavn' placeholder='Etternavn' required />                </div>                <div class='col-md-6'>                    <label for='epost'>Epost</label>                    <input type='email' class='form-control' name='email' id='email' placeholder='eksempel@bjarvin.no' required />                </div>                <div class='col-md-6'>                    <label for='kjonn'>Kjønn</label>                    <select class='form-control' name='kjonn' id='kjonn'>                        <option disabled selected value=''>Kjønn</option>                        <option value='1'>Mann</option>                       <option value='2'>Kvinne</option>                    </select>                </div>                <div class='col-md-6'>                    <label for='mobilnummer'>Mobilnummer</label>                    <input type='text' class='form-control' name='mobilnummer' id='mobilnummer' placeholder='99999999' required />                </div>                 <div class='col-md-6'>                    <label for='dob'>Fødselsdato</label>                    <input type='text' class='form-control' name='dob' id='dob' placeholder='dd.mm.yyyy' required />                </div></div>"
             );
             $('.totaltReisende').html(x);
         }
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
 /* Bestilling validering */
 function validerBestilling() {
-    var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value, /* antallVoksene = document.forms["bestillReiseSkjema"]["antallVoksene"].value, antallUnge = document.forms["bestillReiseSkjema"]["antallUnge"].value, */ fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
+    var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value,  fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
         
     if (!turRetur && !enVei) {
         feilmeldinger += "Reisetype er ikke valgt";
@@ -106,3 +106,35 @@ function validerBestilling() {
     return resultat;
 }
 /* Bestilling validering slutt */
+
+
+/* Reisende validering */
+function validerReisende() {
+    var fornavn = document.forms["registrerReisende"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value,  email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, resultat = true, feilmeldinger = "";
+        
+    if (!fornavn) {
+        feilmeldinger += "Fyll ut (alle) fornavn";
+        resultat = false;
+    } else if (!etternavn) {
+        feilmeldinger += "Fyll ut (alle) etternavn";
+        resultat = false;
+    } else if (document.getElementsByName('kjonn')[0].value == '0') {
+        feilmeldinger += "Velg alle kjønn";
+        resultat = false;
+    } else if (!email) {
+        feilmeldinger += "fyll ut (alle) E-mail";
+        resultat = false;
+    } else if (!mobilnummer) {
+        feilmeldinger += "fyll ut (alle) mobilnummer";
+        resultat = false;
+    } 
+    
+    swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
+
+    return resultat;
+}
+/* Reisende validering slutt */

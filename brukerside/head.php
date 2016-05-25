@@ -49,7 +49,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.php">
-                        <h4>Bjarvin Airlines</h2>
+                        <h4>Bjarnum Airlines</h2>
                     </a>
                 </div>
                 

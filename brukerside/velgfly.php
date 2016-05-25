@@ -19,7 +19,7 @@
         </div>
     </div>
     
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" onsubmit="return validerBestilling()">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
     <div class="row" id="reiseEndring">
         <div class="col-md-6">
             
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="Fra"><h4>Fra</h4></label>
                             <select class="form-control" name="fraLand" id="fraLand">
-                                <option selected value="<?php echo $fraLand ?>"><?php echo $fraLand ?></option>
+                                <option selected value="<?php echo $fraLand; ?>"><?php echo $fraLand; ?></option>
                                 <option value="Norge">Norge</option>
                                 <option value="Sverige">Sverige</option>
                             </select>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label for="Til"><h4>Til</h4></label>
                             <select class="form-control" name="tilLand" id="tilLand">
-                                <option selected value="<?php echo $tilLand ?>"><?php echo $tilLand ?></option>
+                                <option selected value="<?php echo $tilLand; ?>"><?php echo $tilLand; ?></option>
                                 <option value="Norge">Norge</option>
                                 <option value="Sverige">Sverige</option>
                             </select>

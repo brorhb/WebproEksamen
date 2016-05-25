@@ -10,7 +10,7 @@
             <h3><div class="totaltReisende">0</div><button class="glyphicon glyphicon-plus legg_til_reisende" style="background:none; border:none;"></button></h3>
         </div>
         <div class="col-md-10 col-md-offset-1">
-            <form method="" action="prisside.php">
+            <form method="" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return validerReisende()">
                 <div class="form-group">
                     <div class="formWrapper">
                         
