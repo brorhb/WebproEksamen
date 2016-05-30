@@ -1,11 +1,6 @@
 <?php
-    include_once("lib/funksjoner.php");
-    //krevInnlogging('0');
-    include_once("head.php");
 
-    connectDB();
-    $sql = "SELECT * FROM type_luftfartoy;";
-    $result = connectDB()->query($sql);
+    include_once("head.php");
 
 ?>
 
