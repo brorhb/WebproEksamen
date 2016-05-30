@@ -6,7 +6,7 @@
 
 <!-- Innhold -->
 <div class="col-md-12">
-    <h2>Legg til rute</h2>
+    <h2>Legg til rute.</h2>
         <form action="alleruter.php">
             <div class="col-md-6">
                 <div class="form-group">
