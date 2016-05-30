@@ -1,22 +1,6 @@
 <?php
     include_once ("head.php");
-    function connectDB() {
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "web-is-gr02w";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-        //echo "Connected successfully";
-
-        return $conn;
-    }
+    connectDB();
 
         $sqlSetning = "SELECT * FROM klasse ;";
         $sqlResultat = mysqli_query ($db, $sqlSetning) or die ("Kunne ikke hente data fra databasen ");
