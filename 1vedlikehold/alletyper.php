@@ -20,13 +20,13 @@
         </tbody>
     </table>
     <div class="col-md-1">
-        <a href="endrerute.php" class="btn btn-info">Endre</a>
+        <a href="endretype.php" class="btn btn-info">Endre</a>
     </div>
     <div class="col-md-1 col-md-offset-4 text-center">
-        <a href="leggtilrute.php" class="btn btn-success">Legg til</a>
+        <a href="leggtiltype.php" class="btn btn-success">Legg til</a>
     </div>
     <div class="col-md-1 col-md-offset-4 pull-right">
-        <a href="slettrute.php" class="btn btn-danger">Slett</a>
+        <a href="#" class="btn btn-danger">Slett</a>
     </div>
 </div>
 <!-- Innhold -->
