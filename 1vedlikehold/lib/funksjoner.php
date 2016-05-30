@@ -132,4 +132,50 @@
 
 		return $result;
 	}
+
+    function HentRute_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
+        connectDB();
+
+		$sql = "SELECT rute_id FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["rute_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentFra_Flyplass_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
+        connectDB();
+
+		$sql = "SELECT flyplass_id_fra FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["flyplass_id_fra"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentTil_Flyplass_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
+        connectDB();
+
+		$sql = "SELECT flyplass_id_til FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["flyplass_id_til"]);
+			}
+		}
+		connectDB()->close();
+    }
+
 ?>
