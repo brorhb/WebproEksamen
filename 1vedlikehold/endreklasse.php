@@ -1,6 +1,12 @@
 <?php
-    include_once ("head.php");
+    include_once("lib/funksjoner.php");
+    //krevInnlogging('0');
+    include_once("head.php");
+
     connectDB();
+    $sql = "SELECT * FROM klasse;";
+    $result = connectDB()->query($sql);
+
 ?>
 
 

@@ -24,14 +24,18 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-                for ($r = 1; $r <= $antallRader; $r++) {
-                $rad = mysqli_fetch_array($sqlResultat);
-                $klasse = $rad["klasse"];
+            <form>
+                <?php
+                    if($result->num_rows > 0 ) {
+                        while ($row = $result->fetch_assoc()) {
 
-                    print ("<tr><td>$klasse</td></tr>");
-                }
-            ?>
+                            $id = utf8_encode($row["id"]);
+                            $type = utf8_encode($row["type"]);
+                            echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $type . '</td></tr>';
+                        }
+                    }
+                ?>
+            </form>
         </tbody>
     </table>
     <div class="col-md-1">
