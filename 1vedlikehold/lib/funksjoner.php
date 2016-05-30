@@ -34,11 +34,10 @@
 		$BrukerID = $_SESSION['brukerID'];
 	}*/
 
-
 	function connectDB() {
 		$servername = "localhost";
-		$username = "root";
-		$password = "root";
+		$username = "web-is-gr02w";
+		$password = "13876";
 		$dbname = "web-is-gr02w";
 
 		// Create connection
@@ -53,19 +52,19 @@
 		return $conn;
 	}
 
-	function HentKategorinavnFraKategoriID($kategoriID) {
-		/*connectDB();
+	function HentValutaIDFraLandID($LandID) {
+		connectDB();
 
-		$sql = "SELECT navn FROM qz_kategori WHERE id = '$kategoriID';";
+		$sql = "SELECT valuta_id FROM land WHERE id = '$LandID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				return utf8_encode($row["navn"]);
+				return utf8_encode($row["valuta_id"]);
 			}
 		}
-		connectDB()->close();*/
+		connectDB()->close();
 	}
 
 	function HentAntallSvaralternativerFraSporsmaalID($sporsmaalID) {
