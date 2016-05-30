@@ -13,6 +13,12 @@
                     <lable for="modell">Modell</lable>
                     <input class="form-control" type="text" placeholder="Fly modell" name="modell" id="modell" required>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <lable for="tailnr">Tailnummer</lable>
+                        <input class="form-control" type="text" placeholder="Tailnummer" name="tailnummer" id="tailnummer" required>
+                    </div>
+                </div>
             </div>
         <div class="col-md-12">
             <input type="submit" class="btn btn-info" value="Endre">

@@ -1,23 +1,39 @@
 <?php
     include_once ("head.php");
-    function connectDB() {
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-        $dbname = "web-is-gr02w";
+    connectDB();
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-        //echo "Connected successfully";
-
-        return $conn;
-    }
+        $sqlSetning = "SELECT * FROM klasse ;";
+        $sqlResultat = mysqli_query ($db, $sqlSetning) or die ("Kunne ikke hente data fra databasen ");
+        $antallRader = mysqli_num_rows($sqlResultat);
 ?>
+<p>Registrerte klasser</p>
+        <table border="1">
+           <tr>
+               <th align="left">førsteklasse</th>
+               <th aligin="left">buissnessklasse</th>
+                <th aligin="left">økonimiklasse</th>
+            </tr>
+        
+<?php
+        include("db-tilkobling.php");
+        for ($r = 1; $r <= $antallRader; $r++) {
+            $rad = mysqli_fetch_array($sqlResultat);
+            $førsteklasse = $rad["førsteklasse"];
+            $buissnessklasse = $rad["buissnessklasse"];
+            $økonomiklasse = $rad["økonomiklasse"];
+            $filnavn = $rad["filnavn"];
+
+            print ("
+            <tr>
+                <td>$førsteklasse</td>
+                <td>$buissnessklasse</td>
+            </tr>");
+        }
+?>
+
+        </table>
+
+
 
 
 

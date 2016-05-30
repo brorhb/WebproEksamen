@@ -54,7 +54,7 @@
                 @session_start();
                 $_SESSION['brukerID'] = $id;
 
-                echo "Referer: " . $referer;
+                //echo "Referer: " . $referer;
                 header("Location: " . $referer);
             }
         }
