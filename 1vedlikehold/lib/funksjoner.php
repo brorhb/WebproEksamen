@@ -133,6 +133,67 @@
 		return $result;
 	}
 
+
+    function HentLand_IDFraFlyplass_ID($flyplass_id) {
+        connectDB();
+
+		$sql = "SELECT land_id FROM flyplass WHERE id = '$flyplass_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["land_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentGruppe_IDFraFlyplass_Gruppe_ID($flyplass_gruppe_id) {
+        connectDB();
+
+		$sql = "SELECT gruppe_id FROM flyplass_gruppe WHERE id = '$flyplass_gruppe_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["gruppe_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentFlyplass_IDFraFlyplass_Gruppe_ID($flyplass_gruppe_id) {
+        connectDB();
+
+		$sql = "SELECT flyplass_id FROM flyplass_gruppe WHERE id = '$flyplass_gruppe_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["flyplass_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentValuta_IDFraRute_ID($rute_id) {
+        connectDB();
+
+		$sql = "SELECT valuta_id FROM rute WHERE id = '$rute_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["valuta_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
     function HentRute_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
         connectDB();
 
@@ -173,6 +234,111 @@
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				return utf8_encode($row["flyplass_id_til"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentLuftfartoy_IDFraFlyvning_ID($flyvning_id) {
+        connectDB();
+
+		$sql = "SELECT luftfartoy_id FROM flyvning WHERE id = '$flyvning_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["luftfartoy_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function Hentrute_kombinasjon_IDFraFlyvning_ID($flyvning_id) {
+        connectDB();
+
+		$sql = "SELECT rute_kombinasjon_id FROM flyvning WHERE id = '$flyvning_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["rute_kombinasjon_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentFlyvning_IDFraPris_ID($pris_id) {
+        connectDB();
+
+		$sql = "SELECT flyvning_id FROM pris WHERE id = '$pris_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["flyvning_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentKlasse_IDFraPris_ID($pris_id) {
+        connectDB();
+
+		$sql = "SELECT klasse_id FROM pris WHERE id = '$pris_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["klasse_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentPassasjertype_IDFraPris_ID($pris_id) {
+        connectDB();
+
+		$sql = "SELECT passasjertype_id FROM pris WHERE id = '$pris_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["passasjertype_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentBruker_IDFraBruker_Tilgang_ID($bruker_tilgang_id) {
+        connectDB();
+
+		$sql = "SELECT bruker_id FROM bruker_tilgang WHERE id = '$bruker_tilgang_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["bruker_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentTilgang_IDFraBruker_Tilgang_ID($bruker_tilgang_id) {
+        connectDB();
+
+		$sql = "SELECT tilgang_id FROM bruker_tilgang WHERE id = '$bruker_tilgang_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["tilgang_id"]);
 			}
 		}
 		connectDB()->close();
