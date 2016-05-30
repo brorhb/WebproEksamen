@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2016 at 10:23 AM
+-- Generation Time: May 30, 2016 at 01:39 PM
 -- Server version: 5.5.36
 -- PHP Version: 5.5.8
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `bruker` (
   PRIMARY KEY (`id`),
   KEY `fk_bruker_land1_idx` (`land_id`),
   KEY `fk_bruker_person1_idx` (`person_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `bruker`
@@ -73,7 +73,8 @@ CREATE TABLE IF NOT EXISTS `bruker` (
 
 INSERT INTO `bruker` (`id`, `brukernavn`, `epost`, `passord`, `land_id`, `mobilnr`, `person_id`) VALUES
 (1, 'admin', NULL, '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, NULL),
-(2, 'admin1', NULL, '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, NULL);
+(2, 'admin1', NULL, '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, NULL),
+(3, 'test2', NULL, 'ad0234829205b9033196ba818f7a872b', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -179,11 +180,9 @@ CREATE TABLE IF NOT EXISTS `klasse` (
 --
 
 INSERT INTO `klasse` (`id`, `type`, `beskrivelse`) VALUES
-(1, 'Voksen', '26+ år'),
-(2, 'Ungdom', '20 - 25 år'),
-(3, 'Tenåring', '13 - 19 år'),
-(4, 'Barn', '2 - 12 år'),
-(5, 'Spedbarn', 'Under 2 år');
+(1, 'Økonomiklasse', ''),
+(2, 'Businessklasse', ''),
+(3, 'Førsteklasse', '');
 
 -- --------------------------------------------------------
 
@@ -208,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `land` (
 
 INSERT INTO `land` (`id`, `navn`, `landskode`, `valuta_id`, `iso`, `iso3`) VALUES
 (1, 'Afghanistan', 93, 1, 'AF', 'AFG'),
-(2, 'Albania', 355, 1, 'AL', 'ALB'),
+(2, 'Albania', 355, 2, 'AL', 'ALB'),
 (3, 'Algeria', 213, 1, 'DZ', 'DZA'),
 (4, 'American Samoa', 1684, 1, 'AS', 'ASM'),
 (5, 'Andorra', 376, 1, 'AD', 'AND'),
@@ -508,7 +507,18 @@ CREATE TABLE IF NOT EXISTS `passasjertype` (
   `type` varchar(45) NOT NULL,
   `beskrivelse` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `passasjertype`
+--
+
+INSERT INTO `passasjertype` (`id`, `type`, `beskrivelse`) VALUES
+(1, 'Voksen', '26+ år'),
+(2, 'Ungdom', '20 - 25 år'),
+(3, 'Tenåring', '13 - 19 år'),
+(4, 'Barn', '2 - 12 år'),
+(5, 'Spedbarn', 'Under 2 år');
 
 -- --------------------------------------------------------
 
@@ -640,14 +650,15 @@ CREATE TABLE IF NOT EXISTS `valuta` (
   `valuta_navn` varchar(45) NOT NULL,
   `forkortelse` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `valuta`
 --
 
 INSERT INTO `valuta` (`id`, `valuta_navn`, `forkortelse`) VALUES
-(1, 'Norsk korne', 'NOK');
+(1, 'Norsk korne', 'NOK'),
+(2, 'Amerikansk dollar', 'USD');
 
 --
 -- Constraints for dumped tables
