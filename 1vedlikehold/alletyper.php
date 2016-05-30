@@ -28,7 +28,7 @@
                 <?php
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = uff8_encode($row["id"]);
+                            $id = utf8_encode($row["id"]);
                             $type = utf8_encode($row["type"]);
                             echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $type . '</td></tr>';
                         }
