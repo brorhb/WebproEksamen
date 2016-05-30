@@ -6,7 +6,7 @@
 
 <!-- Innhold -->
 <div class="col-md-12">
-    <h2>Alle ruter</h2>
+    <h2>Alle typer</h2>
     <table class="table table-striped">
         <thead>
             <tr>
