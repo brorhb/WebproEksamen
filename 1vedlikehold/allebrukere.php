@@ -10,7 +10,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Valgt</th>
+                <th>Valgte</th>
                 <th>BrukerID</th>
                 <th>Fornavn</th>
                 <th>Etternavn</th>
