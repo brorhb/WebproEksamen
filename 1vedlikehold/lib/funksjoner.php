@@ -34,10 +34,11 @@
 		$BrukerID = $_SESSION['brukerID'];
 	}*/
 
+
 	function connectDB() {
 		$servername = "localhost";
-		$username = "web-is-gr02w";
-		$password = "13876";
+		$username = "root";
+		$password = "root";
 		$dbname = "web-is-gr02w";
 
 		// Create connection

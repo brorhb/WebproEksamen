@@ -2,7 +2,23 @@
 	session_start();
 
 	include_once("funksjoner.php");
-	krevInnlogging();
+	//krevInnlogging();
+	
+	connectDB();
+
+		$spørsmål = test;
+		$kategoriID = test;
+
+		$sql = "INSERT INTO qz_sporsmaal (sporsmaal, kategoriID)
+		VALUES ('$spørsmål', '$kategoriID');";
+
+		if (connectDB()->query($sql) === TRUE) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql . "<br>" . connectDB()->error;
+		}
+
+		connectDB()->close();
 
 	if (!erLoggetInn()) {
 		echo '<a href="logg-inn.php"<h2>Logg inn</h2></a>';
