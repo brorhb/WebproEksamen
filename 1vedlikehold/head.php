@@ -66,6 +66,7 @@
                             <li class="dropdown-header">Flytype</li>
                             <li><a href="allefly.php">Alle fly</a></li>
                             <li><a href="allemodeller.php">Alle fly modeller</a></li>
+                            <li><a href="alletyper.php">Alle typer</a></li>
                         </ul>
                         </li>
                         <li class="dropdown">
@@ -91,6 +92,7 @@
                         <li>
                             <a href="land.php">Land</a>
                         </li>
+                        <li><a href="alleklasser.php">Alle klasser</a></li>
                         <li>
                             <footer>
                                 <div class="col-md-12 text-center"><h4>Eksamen av Thomas Iversen Ramm, Bror Brurberg, Marius Wetterlin, Emilie Borch og Iselin Gjestland</h4></div>
