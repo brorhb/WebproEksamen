@@ -328,7 +328,7 @@
 		connectDB()->close();
     }
 
-    function HentTil_Flyplass_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
+    function HentTil_Flyplass_IDFraRute_Kombinasjon_ID($rute_kombinasjon_id) {
         connectDB();
 
 		$sql = "SELECT flyplass_id_til FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
