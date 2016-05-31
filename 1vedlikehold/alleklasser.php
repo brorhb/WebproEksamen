@@ -25,7 +25,6 @@
             </div>
             </form>
             <!-- Innhold -->
-        ';
 <?php
         @$endreklasseknapp = $_POST["endreklasse"];
         if ($endreklasseknapp) {
