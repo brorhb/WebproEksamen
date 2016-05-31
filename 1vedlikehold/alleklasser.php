@@ -41,13 +41,14 @@
     }
 
     elseif ($_POST['slett']) {
+
         # code...
     }
 
     elseif ($_POST['ny']) {
-        echo'
+?>       
             <div class="col-md-12">
-            <form method="post" action=" ' . $_SERVER['PHP_SELF'] . ' "?id="klasse">
+            <form method="post" action=" <?php $_SERVER['PHP_SELF']; ?> "?id="klasse">
              <h2>Legg til klasse</h2>
             <div class="col-md-6">
                 <div class="form-group">
@@ -60,14 +61,15 @@
             </div>
             </form>
             </div>
-        ';
-        
+
+<?php        
     }
     
     else {
-        echo '
+?>
+
         <div class="col-md-12">
-            <form method="post" action=" ' . $_SERVER['PHP_SELF'] . ' ">
+            <form method="post" action=" <?php $_SERVER['PHP_SELF']; ?> ">
             <h2>Alle Klasser</h2>
             <table class="table table-striped">
                 <thead>
@@ -76,9 +78,9 @@
                         <th>Klassenavn</th>
                     </tr>
                 </thead>
-                    <tbody>';
+                    <tbody>
 
-                        
+                        <?php
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
@@ -87,7 +89,7 @@
                                     echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $type . '</td></tr>';
                                 }
                             }
-                  echo '
+                        ?>
                     
                      </tbody>
                     </table>
@@ -102,12 +104,10 @@
                     </div>
                 </form>
         </div>
-        <!-- Innhold -->';   
+        <!-- Innhold -->
+    <?php  
     }
-
-
-?>
-
+    ?>
 
 
 <?php
