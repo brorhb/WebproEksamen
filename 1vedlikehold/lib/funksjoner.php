@@ -289,7 +289,7 @@
 		connectDB()->close();
     }
 
-    function Hentrute_kombinasjon_IDFraFlyvning_ID($flyvning_id) {
+    function HentRute_Kombinasjon_IDFraFlyvning_ID($flyvning_id) {
         connectDB();
 
 		$sql = "SELECT rute_kombinasjon_id FROM flyvning WHERE id = '$flyvning_id';";
@@ -439,7 +439,7 @@
 		connectDB()->close();
     }
 
-    function Hentperson_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+    function HentPerson_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
         connectDB();
 
 		$sql = "SELECT person_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
@@ -449,6 +449,51 @@
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				return utf8_encode($row["person_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentPris_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+        connectDB();
+
+		$sql = "SELECT pris_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["pris_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentSeteoppsett_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+        connectDB();
+
+		$sql = "SELECT seteoppsett_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["seteoppsett_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentModell_IDFraLuftfartoy_ID($luftfartoy_id) {
+        connectDB();
+
+		$sql = "SELECT modell_id FROM luftfartoy WHERE id = '$luftfartoy_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["modell_id"]);
 			}
 		}
 		connectDB()->close();
