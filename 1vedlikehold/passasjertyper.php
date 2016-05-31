@@ -12,11 +12,23 @@
             <!-- Innhold -->
             <form action="<?php $_SERVER['PHP_SELF']; ?>" id="passasjertype" method="GET">
             <div class="col-md-12">
-                <h2>Endre Klasser</h2>
+                <h2>Endre passasjertype</h2>
                     <div class="col-md-6">
                         <div class="form-group">
                             <lable for="passasjertype">passasjertype</lable>
                             <input class="form-control" type="text" placeholder="passasjertype" name="passasjertype" id="passasjertype" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <lable for="fraAlder">Fra alder</lable>
+                            <input class="form-control" type="text" placeholder="10" name="fraAlder" id="fraAlder" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <lable for="tilAlder">Tra alder</lable>
+                            <input class="form-control" type="text" placeholder="20" name="tilAlder" id="tilAlder" required>
                         </div>
                     </div>
                <div class="col-md-12">
@@ -49,7 +61,7 @@
 ?>       
             <div class="col-md-12">
             <form method="post" action=" <?php $_SERVER['PHP_SELF']; ?> "?id="klasse">
-             <h2>Legg til klasse</h2>
+             <h2>Legg til passasjertype</h2>
             <div class="col-md-6">
                 <div class="form-group">
                     <lable for="Klassenavn">Klassenavn</lable>
@@ -70,7 +82,7 @@
 
         <div class="col-md-12">
             <form method="post" action=" <?php $_SERVER['PHP_SELF']; ?> ">
-            <h2>Alle Klasser</h2>
+            <h2>Alle passasjertyper</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -86,7 +98,8 @@
 
                                     $id = utf8_encode($row["id"]);
                                     $type = utf8_encode($row["type"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $type . '</td></tr>';
+                                    $beskrivelse = utf8_encode($row["beskrivelse"]);
+                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $type . '</td><td>' . $beskrivelse . '</td></tr>';
                                 }
                             }
                         ?>
