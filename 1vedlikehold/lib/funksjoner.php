@@ -67,6 +67,41 @@
 		connectDB()->close();
 	}
 
+	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
+		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
+		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
+			VALUES ('$id', '$valuta_navn', '$forkortelse');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE valuta SET valuta_navn='$valuta_navn', forkortelse='$forkortelse' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+			
+		connectDB()->close();
+	}
+
 	function HentAntallSvaralternativerFraSporsmaalID($sporsmaalID) {
 		/*connectDB();
 
