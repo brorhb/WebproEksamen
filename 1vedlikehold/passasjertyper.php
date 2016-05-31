@@ -4,33 +4,33 @@
     include_once("head.php");
 
     connectDB();
-    $sql = "SELECT * FROM klasse;";
+    $sql = "SELECT * FROM passasjertype;";
     $result = connectDB()->query($sql);
 
     if ($_POST['endre']) {
 ?>
             <!-- Innhold -->
-            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="klasse" method="GET">
+            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="passasjertype" method="GET">
             <div class="col-md-12">
                 <h2>Endre Klasser</h2>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <lable for="Klassenavn">klassenavn</lable>
-                            <input class="form-control" type="text" placeholder="Klassetype" name="klassenavn" id="klassenavn" required>
+                            <lable for="passasjertype">passasjertype</lable>
+                            <input class="form-control" type="text" placeholder="passasjertype" name="passasjertype" id="passasjertype" required>
                         </div>
                     </div>
                <div class="col-md-12">
-                    <input type="submit" name="endreklasse" class="btn btn-info" value="Endre">
+                    <input type="submit" name="endrepassasjertype" class="btn btn-info" value="Endre">
                 </div>
             </div>
             </form>
             <!-- Innhold -->
 <?php
-        @$endreklasseknapp = $_POST["endreklasse"];
+        @$endrepassasjertypeknapp = $_POST["endrepassasjertype"];
         if ($endreklasseknapp) {
-            $klassenavn = $_POST["klassenavn"];
+            $passasjertype = $_POST["passasjertype"];
 
-            if (!$klassenavn) {
+            if (!$passasjertype) {
                 echo "Alle feltene må fylles ut";
             }
             else {
@@ -75,7 +75,7 @@
                 <thead>
                     <tr>
                         <th>Valgt</th>
-                        <th>Klassenavn</th>
+                        <th>Passasjertype</th>
                     </tr>
                 </thead>
                     <tbody>
