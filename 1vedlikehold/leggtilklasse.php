@@ -14,8 +14,7 @@
 <!-- Innhold -->
 <form action="alleklasser.php">
 <div class="col-md-12">
-    <h2>Endre Klasse</h2>
-        <form action="allebestillinger.php">
+    <h2>Legg til klasse</h2>
             <div class="col-md-6">
                 <div class="form-group">
                     <lable for="Klassenavn">Klassenavn</lable>
@@ -23,7 +22,7 @@
                 </div>
             </div>
         <div class="col-md-12">
-            <input type="submit" class="btn btn-info" value="Endre">
+            <input type="submit" class="btn btn-info" value="Legg til">
         </div>
     </form>
 </div>
