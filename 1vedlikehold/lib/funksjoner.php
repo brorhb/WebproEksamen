@@ -568,4 +568,49 @@
 		connectDB()->close();
     }
 
+    function HentType_Luftfartoy_IDFraModell_ID($modell_id) {
+        connectDB();
+
+		$sql = "SELECT type_luftfartoy_id FROM modell WHERE id = '$modell_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["type_luftfartoy_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentModell_IDFraSeteoppsett_ID($seteoppsett_id) {
+        connectDB();
+
+		$sql = "SELECT modell_id FROM seteoppsett WHERE id = '$seteoppsett_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["modell_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentKlasse_IDFraSeteoppsett_ID($seteoppsett_id) {
+        connectDB();
+
+		$sql = "SELECT klasse_id FROM seteoppsett WHERE id = '$seteoppsett_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["klasse_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
 ?>
