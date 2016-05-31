@@ -439,16 +439,16 @@
 		connectDB()->close();
     }
 
-    function HentBestilling_Flyvning_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+    function Hentperson_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
         connectDB();
 
-		$sql = "SELECT bestilling_flyvning_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
+		$sql = "SELECT person_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				return utf8_encode($row["bestilling_flyvning_id"]);
+				return utf8_encode($row["person_id"]);
 			}
 		}
 		connectDB()->close();

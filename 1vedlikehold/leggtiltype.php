@@ -8,12 +8,12 @@
     if ($connectDB()->query($sql) === TRUE) {
         echo "Flytype er registrert";
     } else {
-        echo "Feil: " . $sql . "<br>" . $connectDB()->error;
+        echo "Feil: " . $sql . "<br>" . $conn->error;
     }
 
     $type = $_POST["type"];
 
-    $connectDB()->close();
+    $conn->close();
 ?>
 
     <!-- Innhold -->
