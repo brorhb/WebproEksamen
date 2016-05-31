@@ -16,4 +16,25 @@
 	echo "<br>BrukerID: " . @$_SESSION['brukerID'] . " slutt<br>";
 
 	echo 'Info: ' . HentValutaIDFraLandID('2');
+
+	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
+		// Først sjekker man om det eksisterer, hvis det ikke eksisterer med den IDen så lager man en ny. Eksisterer det, oppdaterer man infoen.
+
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($id));
+		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
+		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
+
+		$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
+		VALUES ('$id', '$valuta_navn', '$forkortelse');";
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+
+		connectDB()->close();
+	}
 ?>
