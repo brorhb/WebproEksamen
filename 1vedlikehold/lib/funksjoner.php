@@ -52,6 +52,40 @@
 		return $conn;
 	}
 
+	function oppdaterKlasse($KlasseID, $type) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($KlasseID));
+		$type = connectDB()->real_escape_string(utf8_decode($type));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO klasse (id, type)
+			VALUES ('$id', '$type');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE klasse SET type='$type' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+			
+		connectDB()->close();
+	}
+
 	function oppdaterType_luftfartoy($TypeID, $type) {
 		
 		connectDB();
@@ -86,18 +120,18 @@
 		connectDB()->close();
 	}
 
-	function oppdaterKlasse($KlasseID, $type, $beskrivelse) {
+	function oppdaterPassasjertype($PassasjertypeID, $valuta_navn, $forkortelse) {
 		
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($KlasseID));
-		$type = connectDB()->real_escape_string(utf8_decode($type));
-		$beskrivelse = connectDB()->real_escape_string(utf8_decode($beskrivelse));
+		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
+		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
+		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO klasse (id, type, beskrivelse)
-			VALUES ('$id', '$type', '$beskrivelse');";
+			$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
+			VALUES ('$id', '$valuta_navn', '$forkortelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -108,7 +142,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE klasse SET type='$type', beskrivelse='$beskrivelse' WHERE id='$id';";
+			$sql = "UPDATE valuta SET valuta_navn='$valuta_navn', forkortelse='$forkortelse' WHERE id='$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -118,21 +152,6 @@
 			}
 		}
 			
-		connectDB()->close();
-	}
-
-	function HentValutaIDFraLandID($LandID) {
-		connectDB();
-
-		$sql = "SELECT valuta_id FROM land WHERE id = '$LandID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				return utf8_encode($row["valuta_id"]);
-			}
-		}
 		connectDB()->close();
 	}
 
@@ -168,6 +187,56 @@
 			}
 		}
 			
+		connectDB()->close();
+	}
+
+	function oppdaterLand($LandID, $valuta_navn, $forkortelse) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
+		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
+		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
+			VALUES ('$id', '$valuta_navn', '$forkortelse');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE valuta SET valuta_navn='$valuta_navn', forkortelse='$forkortelse' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+			
+		connectDB()->close();
+	}
+
+	function HentValutaIDFraLandID($LandID) {
+		connectDB();
+
+		$sql = "SELECT valuta_id FROM land WHERE id = '$LandID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["valuta_id"]);
+			}
+		}
 		connectDB()->close();
 	}
 
