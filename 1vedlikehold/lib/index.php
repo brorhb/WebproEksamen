@@ -19,11 +19,11 @@
 
 	
 
-	/*$ValutaID = '4';
-	$valuta_navn = 'Noe testgreier';
-	$forkortelse = 'ERA';
+	/*$KlasseID = '6';
+	$type = 'En kategori';
+	$beskrivelse = '26+ år';
 
-	if(oppdaterValuta($ValutaID, $valuta_navn, $forkortelse)) {
+	if(oppdaterKlasse($KlasseID, $type, $beskrivelse)) {
 		echo "Noe ble satt inn!";
 	}
 	else {

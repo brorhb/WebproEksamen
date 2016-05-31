@@ -52,6 +52,75 @@
 		return $conn;
 	}
 
+	function oppdaterType_luftfartoy($TypeID, $type) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($TypeID));
+		$type = connectDB()->real_escape_string(utf8_decode($type));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO type_luftfartoy (id, type)
+			VALUES ('$id', '$type');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE type_luftfartoy SET type='$type' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+			
+		connectDB()->close();
+	}
+
+	function oppdaterKlasse($KlasseID, $type, $beskrivelse) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($KlasseID));
+		$type = connectDB()->real_escape_string(utf8_decode($type));
+		$beskrivelse = connectDB()->real_escape_string(utf8_decode($beskrivelse));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO klasse (id, type, beskrivelse)
+			VALUES ('$id', '$type', '$beskrivelse');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE klasse SET type='$type', beskrivelse='$beskrivelse' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+			
+		connectDB()->close();
+	}
+
 	function HentValutaIDFraLandID($LandID) {
 		connectDB();
 
