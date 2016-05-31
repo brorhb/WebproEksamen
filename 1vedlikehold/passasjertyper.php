@@ -64,8 +64,8 @@
              <h2>Legg til passasjertype</h2>
             <div class="col-md-6">
                 <div class="form-group">
-                    <lable for="Klassenavn">Klassenavn</lable>
-                    <input type="text" class="form-control" name="klassenavn" id="klassenavn">
+                    <lable for="Passasjertype">Passasjertype</lable>
+                    <input type="text" class="form-control" name="passasjertype" id="passasjertype">
                 </div>
             </div>
             <div class="col-md-12">
