@@ -93,7 +93,7 @@
                             <a href="land.php">Land</a>
                         </li>
                         <li><a href="alleklasser.php">Alle klasser</a></li>
-                        <li><a href="passasjertyper.php"></a></li>
+                        <li><a href="passasjertyper.php">Passasjertype</a></li>
                         <li>
                             <footer>
                                 <div class="col-md-12 text-center"><h4>Eksamen av Thomas Iversen Ramm, Bror Brurberg, Marius Wetterlin, Emilie Borch og Iselin Gjestland</h4></div>
