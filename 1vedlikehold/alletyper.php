@@ -30,7 +30,7 @@
                         while ($row = $result->fetch_assoc()) {
                             $id = utf8_encode($row["id"]);
                             $type = utf8_encode($row["type"]);
-                            echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $type . '</td></tr>';
+                            echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $id . '</td><td>' . $type . '</td></tr>';
                         }
                     }
                 ?>

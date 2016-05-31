@@ -1,5 +1,19 @@
 <?php
-    include_once ("head.php");
+    include_once("lib/funksjoner.php");
+    //krevInnlogging('0');
+    include_once("head.php");
+
+    connectDB();
+    $sql = "INSERT INTO type_luftfartoy (type)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if ($connectDB()->query($sql) === TRUE) {
+    echo "Flytype er registrert";
+} else {
+    echo "Feil: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>
 
 
