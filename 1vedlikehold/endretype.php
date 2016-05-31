@@ -1,5 +1,17 @@
 <?php
-    include_once ("head.php");
+    include_once("head.php");
+    include_once("lib/funksjoner.php");
+    //krevInnlogging('0');
+
+    if (@$_POST=["endre"]) {
+    if(oppdaterType_luftfartoy($TypeID, $type))
+    {
+        echo "Flytype er endret";
+    }
+    else {
+        echo "Noe galt skjedde";
+    }
+    }
 ?>
 
 
@@ -15,7 +27,7 @@
                 </div>
             </div>
         <div class="col-md-12">
-            <input type="submit" class="btn btn-info" value="Endre">
+            <input type="submit" class="btn btn-info" value="endre">
         </div>
     </form>
 </div>
