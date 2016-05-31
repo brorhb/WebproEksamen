@@ -4,16 +4,17 @@
     include_once("head.php");
 
     connectDB();
-    $sql = "INSERT INTO type_luftfartoy (type)
-VALUES ('John', 'Doe', 'john@example.com')";
+    $sql = "INSERT INTO type_luftfartoy ('id', 'type') VALUES ('', '$type');";
 
-if ($connectDB()->query($sql) === TRUE) {
-    echo "Flytype er registrert";
-} else {
-    echo "Feil: " . $sql . "<br>" . $conn->error;
-}
+    if ($connectDB()->query($sql) === TRUE) {
+        echo "Flytype er registrert";
+    } else {
+        echo "Feil: " . $sql . "<br>" . $conn->error;
+    }
 
-$conn->close();
+    $type = $_POST["type"];
+
+    $conn->close();
 ?>
 
 
@@ -21,7 +22,7 @@ $conn->close();
 <!-- Innhold -->
 <div class="col-md-12">
     <h2>Nytt Fly</h2>
-        <form action="allefly.php">
+        <form action="allefly.php" method="POST">
             <div class="col-md-6">
                 <div class="form-group">
                     <lable for="type">Flytype</lable>
