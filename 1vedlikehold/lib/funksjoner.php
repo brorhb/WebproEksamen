@@ -344,4 +344,49 @@
 		connectDB()->close();
     }
 
+    function HentBruker_IDFraBestilling_ID($bestilling_id) {
+        connectDB();
+
+		$sql = "SELECT bruker_id FROM bestilling WHERE id = '$bestilling_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["bruker_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function HentBestilling_IDFraBestilling_Flyvning_ID($bestilling_flyvning_id) {
+        connectDB();
+
+		$sql = "SELECT bestilling_id FROM bestilling_flyvning WHERE id = '$bestilling_flyvning_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["bestilling_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
+    function Hentflyvning_IDFraBestilling_Flyvning_ID($bestilling_flyvning_id) {
+        connectDB();
+
+		$sql = "SELECT flyvning_id FROM bestilling_flyvning WHERE id = '$bestilling_flyvning_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["flyvning_id"]);
+			}
+		}
+		connectDB()->close();
+    }
+
 ?>
