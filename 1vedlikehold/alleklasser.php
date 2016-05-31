@@ -8,7 +8,37 @@
     $result = connectDB()->query($sql);
 
     if ($_POST['endre']) {
-        # code...
+?>
+            <!-- Innhold -->
+            <form action="<?php $_SERVER['PHP_SELF']; ?>" id="klasse" method="GET">
+            <div class="col-md-12">
+                <h2>Endre Klasser</h2>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <lable for="Klassenavn">klassenavn</lable>
+                            <input class="form-control" type="text" placeholder="Klassetype" name="klassenavn" id="klassenavn" required>
+                        </div>
+                    </div>
+               <div class="col-md-12">
+                    <input type="submit" name="endreklasse" class="btn btn-info" value="Endre">
+                </div>
+            </div>
+            </form>
+            <!-- Innhold -->
+        ';
+<?php
+        @$endreklasseknapp = $_POST["endreklasse"];
+        if ($endreklasseknapp) {
+            $klassenavn = $_POST["klassenavn"];
+
+            if (!$klassenavn) {
+                echo "Alle feltene må fylles ut";
+            }
+            else {
+
+            }
+        }
+
     }
 
     elseif ($_POST['slett']) {
@@ -16,12 +46,27 @@
     }
 
     elseif ($_POST['ny']) {
-        # code...
+        echo'
+            <div class="col-md-12">
+            <form method="post" action=" ' . $_SERVER['PHP_SELF'] . ' "?id="klasse">
+             <h2>Legg til klasse</h2>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <lable for="Klassenavn">Klassenavn</lable>
+                    <input type="text" class="form-control" name="klassenavn" id="klassenavn">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-info" value="Legg til">
+            </div>
+            </form>
+            </div>
+        ';
+        
     }
     
     else {
         echo '
-        <!-- Innhold -->
         <div class="col-md-12">
             <form method="post" action=" ' . $_SERVER['PHP_SELF'] . ' ">
             <h2>Alle Klasser</h2>
