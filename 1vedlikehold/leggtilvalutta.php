@@ -1,5 +1,17 @@
 <?php
-    include_once ("head.php");
+    include_once("head.php");
+    include_once("lib/funksjoner.php");
+    //krevInnlogging('0');
+
+    if (@$_POST=["endre"]) {
+    if(oppdaterValuta($ValutaID, $valuta_navn, $forkortelse))
+    {
+        echo "Flytype er lagt til";
+    }
+    else {
+        echo "Noe galt skjedde";
+    }
+    }
 ?>
 
 
