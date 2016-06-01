@@ -239,7 +239,7 @@
 	function slettValuta($ValutaID) {
 		connectDB();
 
-		$sql = "DELETE FROM valuta_navn WHERE id = '$ValutaID';";
+		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
 		$result = connectDB()->query($sql);
 
 		if (connectDB()->query($sql) === TRUE) {

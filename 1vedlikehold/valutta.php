@@ -6,7 +6,7 @@
     
     if ($_POST['slett']) {
         $ValutaID = @$_POST['id'];
-        if(slettValuta($ValutaID)) {
+        if (slettValuta($ValutaID)) {
             echo "Informasjonen ble slettet.";
         }
         else {
@@ -88,7 +88,7 @@
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
-            <h2>Alle Klasser</h2>
+            <h2>Valuta</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -106,11 +106,11 @@
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
-                                    $valutaID = utf8_encode($row["id"]);
+                                    $ValutaID = utf8_encode($row["id"]);
                                     $valuta_navn = utf8_encode($row["valuta_navn"]);
                                     $forkortelse = utf8_encode($row["forkortelse"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $valutaID . '"></td>
+                                                <td><input type="radio" name="id" value="' . $ValutaID . '"></td>
                                                 <td>' . $valuta_navn . '</td>
                                                 <td>' . $forkortelse . '</td>
                                           </tr>';
