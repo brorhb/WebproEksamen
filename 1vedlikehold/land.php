@@ -1,38 +1,182 @@
 <?php
-    include_once ("head.php");
-?>
+    include_once("lib/funksjoner.php");
+    //krevInnlogging('0');
+    include_once("head.php");
+
+    
+    if ($_POST['slett']) {
+        $id = @$_POST['id'];
+        if(slettLand($id)) {
+            echo "Informasjonen ble slettet.";
+        }
+        else {
+            echo "Noe galt skjedde...";
+        }
+    }
+    elseif ($_POST['lagre']) {
+        $id = @$_POST['id'];
+        $navn = $_POST['navn'];
+        $landskode = $_POST['landskode'];
+        $valuta_id = $_POST['valuta_id'];
+        $iso = $_POST["iso"];
+        $iso3 = $_POST["iso3"];
+
+        if(oppdaterLand($id, $navn, $landskode, $valuta_id, $iso, $iso3)) {
+            echo "Informasjonen ble oppdatert.";
+        }
+        else {
+            echo "Noe galt skjedde...";
+        }
+    }
+    elseif ($_POST['ny'] || $_POST['endre']) {
+        // Hvis endre eller ny er trykket ned
+        $id = @$_POST['id'];
+
+        echo'    <!-- Innhold -->
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
+            <div class="col-md-12">';
+                if ($_POST['ny']) {
+                    echo '<h2>Ny klasse</h2>';
+                }
+                elseif ($_POST['endre']) {
+                    echo '<h2>Endre klasse</h2>';
+                }
+        echo '
+            <div class="col-md-12">';
+                
+                    connectDB();
+                    $sql = "SELECT * FROM klasse WHERE id='$id';";
+                    $result = connectDB()->query($sql);
+
+                    if($result->num_rows > 0 ) {
+                        while ($row = $result->fetch_assoc()) {
+                            $id = utf8_encode($row["id"]);
+                            $navn = utf8_encode($row["navn"]);
+                            $landskode = utf8_encode($row["landskode"]);
+                            $valuta_id = utf8_encode($row["valuta_id"]);
+                            $iso = utf8_encode($row["iso"]);
+                            $iso3 = utf8_encode($row["iso3"]);
+                            echo '
+                            <div class="form-group col-md-6">
+                                <lable for="navn">Navn</lable>
+                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="landskode">landskode</lable>
+                                <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="valutaid">Valuta id</lable>
+                                <input class="form-control" type="text" placeholder="valuta id" name="valuta_id" id="valuta_id" value="' . @$valuta_id . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="iso">iso</lable>
+                                <input class="form-control" type="text" placeholder="iso" name="iso" id="beskrivelse" value="' . @$iso . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="iso3">iso3</lable>
+                                <input class="form-control" type="text" placeholder="iso3" name="iso3" id="beskrivelse" value="' . @$iso3 . '" required>
+                            </div>';
+                        }
+                    }
+                    else {
+                        echo '
+                            <div class="form-group col-md-6">
+                                <lable for="navn">Navn</lable>
+                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="landskode">landskode</lable>
+                                <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="valutaid">Valuta id</lable>
+                                <input class="form-control" type="text" placeholder="valuta id" name="valuta_id" id="valuta_id" value="' . @$valuta_id . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="iso">iso</lable>
+                                <input class="form-control" type="text" placeholder="iso" name="iso" id="beskrivelse" value="' . @$iso . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="iso3">iso3</lable>
+                                <input class="form-control" type="text" placeholder="iso3" name="iso3" id="beskrivelse" value="' . @$iso3 . '" required>
+                            </div>';
+                    }
+                    connectDB()->close();
+            echo'
+            </div>
+               <div class="col-md-12">
+                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre">
+                </div>
+            </div>
+            </form>
+            <!-- Innhold -->';
+    }
+    
+
+        echo'<div class="col-md-12">
+            <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
+            <h2>Alle Klasser</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Valgt</th>
+                        <th>Navn</th>
+                        <th>Landskode</th>
+                        <th>Valutta id</th>
+                        <th>iso</th>
+                        <th>iso3</th>
+                    </tr>
+                </thead>
+                    <tbody>
+        ';
+                            connectDB();
+                            $sql = "SELECT * FROM land;";
+                            $result = connectDB()->query($sql);
+
+                            if($result->num_rows > 0 ) {
+                                while ($row = $result->fetch_assoc()) {
+
+                                    $id = utf8_encode($row["id"]);
+                                    $navn = utf8_encode($row["navn"]);
+                                    $landskode = utf8_encode($row["landskode"]);
+                                    $valuta_id = utf8_encode($row["valuta_id"]);
+                                    $iso = utf8_encode($row["iso"]);
+                                    $iso3 = utf8_encode($row["iso3"]);
+                                    echo '<tr>
+                                                <td><input type="radio" name="id" value="' . $id . '"></td>
+                                                <td>' . $navn . '</td>
+                                                <td>' . $landskode . '</td>
+                                                <td>' . $valuta_id . '</td>
+                                                <td>' . $iso . '</td>
+                                                <td>' . $iso3 . '</td>
+                                          </tr>';
+                                }
+                            }
+                        
+        echo '
+                     </tbody>
+                    </table>
+                    <div class="col-md-1">
+                        <input type="submit" name="endre" class="btn btn-info" value="Endre" />
+                    </div>
+                    <div class="col-md-1 col-md-offset-4 text-center">
+                        <input type="submit" name="ny" class="btn btn-success" value="Legg til" />
+                    </div>
+                    <div class="col-md-1 col-md-offset-4 pull-right">
+                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett"/>
+                    </div>
+                </form>
+        </div>
+        <!-- Innhold -->
+        ';
+
+    
 
 
 
-<!-- Innhold -->
-<div class="col-md-12">
-    <h2>Alle Bestillinger</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Valgt</th>
-                <th>LandID</th>
-                <th>Navn</th>
-                <th>Landskode</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
-    <div class="col-md-1">
-        <a href="endreland.php" class="btn btn-info">Endre</a>
-    </div>
-    <div class="col-md-1 col-md-offset-4 text-center">
-        <a href="leggtilland.php" class="btn btn-success">Legg til</a>
-    </div>
-    <div class="col-md-1 col-md-offset-4 pull-right">
-        <a href="slettland.php" class="btn btn-danger">Slett</a>
-    </div>
-</div>
-<!-- Innhold -->
 
-
-<?php
     include_once ("end.php");
 ?>
