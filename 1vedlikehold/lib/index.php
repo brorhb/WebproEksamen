@@ -17,6 +17,8 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
+	echo landListe();
+
 	
 
 	/*$FlyplassID = '';
@@ -40,7 +42,7 @@
 		echo "Noe galt skjedde";
 	}*/
 
-	$PersonID = '';
+	/*$PersonID = '';
 	$fornavn = 'Fornavn åøæ';
 	$etternavn = 'Etternavn då';
 	$fodselsdato = '478276237235';
@@ -50,7 +52,7 @@
 	}
 	else {
 		echo "Noe galt skjedde";
-	}
+	}*/
 
 	//connectDB();
 

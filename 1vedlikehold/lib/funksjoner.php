@@ -399,7 +399,7 @@
 
 		if (connectDB()->query($sql) === TRUE) {
 			return TRUE;
-			}
+		}
 		else {
 			return FALSE;
 		}
@@ -891,6 +891,23 @@
 			}
 		}
 		connectDB()->close();
+    }
+
+    function landListe() {
+    	$sql = "SELECT id, navn FROM land ORDER BY navn;";
+		$result = connectDB()->query($sql);
+
+		echo '<select name="land_id">';
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				echo '<option value="' . $row["id"]. '">' . $row["navn"] . '</option>';
+			}
+		}
+
+		echo "</select>";
+
     }
 
 ?>
