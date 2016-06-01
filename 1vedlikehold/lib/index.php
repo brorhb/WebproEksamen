@@ -15,18 +15,32 @@
 
 	echo "<br>BrukerID: " . @$_SESSION['brukerID'] . " slutt<br>";
 
-	echo 'Info: ' . HentValutaIDFraLandID('2');
+	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
 	
 
-	/*$KlasseID = '6';
-	$type = 'En kategori';
-	$beskrivelse = '26+ år';
+	/*$FlyplassID = '';
+	$navn = 'Bjkjkjkdfjkdjkfror og';
+	$flyplasskode = 'OSL';
+	$latitude = '123';
+	$lontitude = '123';
+	$tidssone_gmt = '1';
+	$land_id = '1';
 
-	if(oppdaterKlasse($KlasseID, $type, $beskrivelse)) {
+	echo oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id);*/
+
+	/*if(oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id)) {
 		echo "Noe ble satt inn!";
 	}
 	else {
 		echo "Noe galt skjedde";
 	}*/
+
+	connectDB();
+
+	/*$sql = "INSERT INTO flyplass (id, navn, flyplasskode, latitude, longitude, tidssone_gmt, land_id)
+			VALUES ('', 'Testnavn', 'ABC', '123', '123', '1', '1');";*/
+	$sql = "UPDATE flyplass SET navn='Navnet', flyplasskode='KOD', latitude='123', longitude='123', tidssone_gmt='1', land_id='1' WHERE id='1';";
+	connectDB()->query($sql);
+	echo 'Rader berørt: ' . connectDB()->affected_rows;
 ?>

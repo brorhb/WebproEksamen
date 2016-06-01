@@ -190,18 +190,21 @@
 		connectDB()->close();
 	}
 
-	function oppdaterLand($LandID, $valuta_navn, $forkortelse) {
+	function oppdaterLand($LandID, $navn, $landskode, $valuta_id, $iso, $iso3) {
 		
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
-		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
-		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
+		$id = connectDB()->real_escape_string(utf8_decode($LandID));
+		$navn = connectDB()->real_escape_string(utf8_decode($navn));
+		$landskode = connectDB()->real_escape_string(utf8_decode($landskode));
+		$valuta_id = connectDB()->real_escape_string(utf8_decode($valuta_id));
+		$iso = connectDB()->real_escape_string(utf8_decode($iso));
+		$iso3 = connectDB()->real_escape_string(utf8_decode($iso3));
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
-			VALUES ('$id', '$valuta_navn', '$forkortelse');";
+			$sql = "INSERT INTO land (id, navn, landskode, valuta_id, iso, iso3)
+			VALUES ('$id', '$navn', '$landskode', '$valuta_id', '$iso', '$iso3');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -212,7 +215,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE valuta SET valuta_navn='$valuta_navn', forkortelse='$forkortelse' WHERE id='$id';";
+			$sql = "UPDATE land SET navn='$navn', landskode='$landskode', valuta_id='$valuta_id', iso='$iso', iso3='$iso3' WHERE id='$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -223,6 +226,40 @@
 		}
 			
 		connectDB()->close();
+	}
+
+	function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($FlyplassID));
+		$navn = connectDB()->real_escape_string(utf8_decode($navn));
+		$flyplasskode = connectDB()->real_escape_string(utf8_decode($flyplasskode));
+		$latitude = connectDB()->real_escape_string(utf8_decode($latitude));
+		$longitude = connectDB()->real_escape_string(utf8_decode($longitude));
+		$tidssone_gmt = connectDB()->real_escape_string(utf8_decode($tidssone_gmt));
+		$land_id = connectDB()->real_escape_string(utf8_decode($land_id));
+
+		if ($id == '') {
+			$sql = "INSERT INTO flyplass (id, navn, flyplasskode, latitude, longitude, tidssone_gmt, land_id)
+			VALUES ('$id', '$navn', '$flyplasskode', '$latitude', '$longitude', '$tidssone_gmt', '$land_id');";
+			$tilbalemelding = 'Satt inn:;';
+		}
+		else {
+			$sql = "UPDATE flyplass SET navn='$navn', flyplasskode='$flyplasskode', latitude='$latitude', longitude='$longitude', tidssone_gmt='$tidssone_gmt', land_id='$land_id' WHERE id='$id';";
+			$tilbalemelding = 'Oppdatert:;';
+		}
+
+		if (connectDB()->query($sql) === TRUE AND connectDB()->affected_rows != 0) {
+			$tilbalemelding .= " Kult! Rader berørt: " . connectDB()->affected_rows;
+		}
+		else {
+			$tilbalemelding .= " Falsk... Rader berørt: " . connectDB()->affected_rows;
+		}
+
+		connectDB()->close();
+
+		return $tilbalemelding;
 	}
 
 	function HentValutaIDFraLandID($LandID) {
