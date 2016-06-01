@@ -29,13 +29,13 @@
 	$mobilnr = '12228234';
 	$person_id = '2';*/
 
-	$BrukerID = IGNORE;
-	$brukernavn = IGNORE;
-	$epost = IGNORE;
-	$ukryptert_passord = IGNORE;
-	$land_id = IGNORE;
-	$mobilnr = IGNORE;
-	$person_id = IGNORE;
+	$BrukerID = '43';
+	$brukernavn = 'jh';
+	$epost = 'klfd.df@fd.fd.dd.dd';
+	$ukryptert_passord = 'jjssj';
+	$land_id = '3';
+	$mobilnr = '393939333';
+	$person_id = '3';
 
 	$tilbakemelding = validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id);
 
