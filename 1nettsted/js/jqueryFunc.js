@@ -111,7 +111,7 @@ function validerBestilling() {
 /* Reisende validering */
 function validerReisende() {
     var fornavn = document.forms["registrerReisende"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value, email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, fodsel = document.forms["registrerReisende"]["dob"].value, resultat = true, feilmeldinger = "";
-        
+
     if (!fornavn) {
         feilmeldinger += "Fyll ut (alle) fornavn";
         resultat = false;

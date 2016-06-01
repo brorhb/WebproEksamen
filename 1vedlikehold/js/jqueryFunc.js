@@ -59,21 +59,4 @@ $(document).ready(function () {
    
 });
 
-/* Endre/ny klasse */
-function validerEndreNyKlasse() {
-    var turRetur = document.forms["klasse"]["klassenavn"].value, resultat = true, feilmeldinger = "";
-        
-    if (!klassenavn) {
-        feilmeldinger += "Feltet er ikke fylt ut";
-        resultat = false;
-    } 
 
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
-
-    return resultat;
-}
-/* Endre/ny klasse */
