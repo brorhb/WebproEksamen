@@ -923,4 +923,40 @@
 		echo '</select>';
     }
 
+    function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
+		$id = utf8_decode($BrukerID);
+		$brukernavn = utf8_decode($brukernavn);
+		$epost = utf8_decode($epost);
+		$ukryptert_passord = utf8_decode($ukryptert_passord);
+		$land_id = utf8_decode($land_id);
+		$mobilnr = utf8_decode($mobilnr);
+		$person_id = utf8_decode($person_id);
+
+		$tilbakemelding = array();
+
+		if (!is_numeric($id) AND $id !== 'IGNORE') {
+			$tilbakemelding[] = 'BrukerIDen må kun bestå av tall.';
+		}
+		if (strlen($brukernavn) < 2 AND $brukernavn !== 'IGNORE') {
+			$tilbakemelding[] = 'Brukernavnet må være minimum to tegn.';
+		}
+		if (filter_var($epost, FILTER_VALIDATE_EMAIL) === false AND $epost !== 'IGNORE') {
+			$tilbakemelding[] = 'Epostadressen er ugyldig.';
+		}
+		if (strlen($ukryptert_passord) < 5 AND $ukryptert_passord !== 'IGNORE') {
+			$tilbakemelding[] = 'Passordet må inneholde minst 5 tegn.';
+		}
+		if (!is_numeric($land_id) AND $land_id !== 'IGNORE') {
+			$tilbakemelding[] = 'LandIDen må kun bestå av tall.';
+		}
+		if ((!is_numeric($mobilnr) OR strlen($mobilnr) < 8) AND $mobilnr !== 'IGNORE') {
+			$tilbakemelding[] = 'Mobilnummeret må bestå av minimum 8 tegn og kun være siffer.';
+		}
+		if (!is_numeric($person_id) AND $person_id !== 'IGNORE') {
+			$tilbakemelding[] = 'PersonIDen må kun bestå av tall.';
+		}
+
+		return $tilbakemelding;
+    }
+
 ?>

@@ -17,8 +17,33 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	echo landListe('160');
+	echo landListe('160') . '<br>';
 
+	/* Eksempel på valider bruker */
+
+	/*$BrukerID = '9';
+	$brukernavn = '5j';
+	$epost = 't.ramm@hotm.comd';
+	$ukryptert_passord = '8988h';
+	$land_id = '8';
+	$mobilnr = '12228234';
+	$person_id = '2';*/
+
+	$BrukerID = IGNORE;
+	$brukernavn = 'IGNORE';
+	$epost = IGNORE;
+	$ukryptert_passord = IGNORE;
+	$land_id = IGNORE;
+	$mobilnr = IGNORE;
+	$person_id = IGNORE;
+
+	$tilbakemelding = validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id);
+
+	for ($i=0; $i < count($tilbakemelding); $i++) { 
+		echo '<span style="color:red;">' . $tilbakemelding[$i] . '</span><br>';
+	}
+
+	/* Slutt eksempel på valider bruker */
 	
 
 	/*$FlyplassID = '';
