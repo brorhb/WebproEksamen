@@ -6,7 +6,7 @@
     if (@$_POST=["endre"]) {
     if(oppdaterValuta($ValutaID, $valuta_navn, $forkortelse))
     {
-        echo "Flytype er lagt til";
+        echo "Valuta er lagt til";
     }
     else {
         echo "Noe galt skjedde";
