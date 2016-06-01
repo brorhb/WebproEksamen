@@ -52,8 +52,8 @@
                             $beskrivelse = utf8_encode($row["beskrivelse"]);
                             echo '
                             <div class="form-group">
-                                <lable for="Alleflyplasseravn">alleflyplassernavn</lable>
-                                <input class="form-control" type="text" placeholder="alleflyplassernavn" name="alleflyplassernavn" id="alleflyplassernavn" value="' . @$type . '" required>
+                                <lable for="Alle flyplasser">Alle flyplasser</lable>
+                                <input class="form-control" type="text" placeholder="flyplass" name="alleflyplassernavn" id="alleflyplassernavn" value="' . @$type . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
@@ -65,8 +65,8 @@
                     else {
                         echo '
                             <div class="form-group">
-                                <lable for="Alleflyplassernavn">Alleflyplasser</lable>
-                                <input class="form-control" type="text" placeholder="Alleflyplassernavn" name="Alleflyplassernavn" id="Alleflyplassernavn" value="' . @$type . '" required>
+                                <lable for="Alle flyplassene">Alle flyplasser</lable>
+                                <input class="form-control" type="text" placeholder="Flyplass" name="Alle flyplassernavn" id="Alleflyplasser" value="' . @$type . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
@@ -93,7 +93,7 @@
                 <thead>
                     <tr>
                         <th>Valgt</th>
-                        <th>Alleflyplassernavn</th>
+                        <th>Alle flyplassene</th>
                         <th>Beskrivelse</th>
                     </tr>
                 </thead>
