@@ -1,16 +1,10 @@
 /* Legg til/endre klasse */
-<<<<<<< HEAD
 
 function validerOppdaterKlasse() {
     var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmeldinger = "", resultat = true;
     if (!klassenavn) {
         feilmeldinger = "Klassenavn må fylles ut";
-=======
-function ValiderOppdaterKlasse() {
-    var type = document.forms["oppdater"]["type"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmelding = "", resultat = true;
-    if (type == null || type == "") {
-        feilmelding = "Type må fylles ut<br/>";
->>>>>>> origin/master
+
         resultat = false;
     }
     else if (!beskrivelse) {
