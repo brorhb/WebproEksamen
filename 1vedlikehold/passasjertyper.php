@@ -42,7 +42,7 @@
             <div class="col-md-6">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM klasse WHERE id='$id';";
+                    $sql = "SELECT * FROM passasjertype WHERE id='$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {

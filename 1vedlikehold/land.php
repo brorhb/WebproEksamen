@@ -45,7 +45,7 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM klasse WHERE id='$id';";
+                    $sql = "SELECT land.id AS land_id, land.navn, land.landskode, land.iso, land.iso3, valuta.valuta_navn FROM land LEFT JOIN valuta ON land.valuta_id = valuta.id WHERE land.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
@@ -53,7 +53,7 @@
                             $id = utf8_encode($row["id"]);
                             $navn = utf8_encode($row["navn"]);
                             $landskode = utf8_encode($row["landskode"]);
-                            $valuta_id = utf8_encode($row["valuta_id"]);
+                            $valuta_navn = utf8_encode($row["valuta_navn"]);
                             $iso = utf8_encode($row["iso"]);
                             $iso3 = utf8_encode($row["iso3"]);
                             echo '
@@ -67,8 +67,13 @@
                                 <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="valutaid">Valuta id</lable>
-                                <input class="form-control" type="text" placeholder="valuta id" name="valuta_id" id="valuta_id" value="' . @$valuta_id . '" required>
+                                <lable for="valutanavn">Valuta navn</lable>
+                                <select class="form-control" id="valuta_id" name="valuta_id">
+                                    <option disabled selected>' . $valuta_navn . '</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="iso">iso</lable>
@@ -133,23 +138,23 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT * FROM land;";
+                            $sql = "SELECT land.id AS land_id, land.navn, land.landskode, land.iso, land.iso3, valuta.valuta_navn FROM land LEFT JOIN valuta ON land.valuta_id = valuta.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
-                                    $id = utf8_encode($row["id"]);
+                                    $id = utf8_encode($row["land_id"]);
                                     $navn = utf8_encode($row["navn"]);
                                     $landskode = utf8_encode($row["landskode"]);
-                                    $valuta_id = utf8_encode($row["valuta_id"]);
+                                    $valuta_navn = utf8_encode($row["valuta_navn"]);
                                     $iso = utf8_encode($row["iso"]);
                                     $iso3 = utf8_encode($row["iso3"]);
                                     echo '<tr>
                                                 <td><input type="radio" name="id" value="' . $id . '"></td>
                                                 <td>' . $navn . '</td>
                                                 <td>' . $landskode . '</td>
-                                                <td>' . $valuta_id . '</td>
+                                                <td>' . $valuta_navn . '</td>
                                                 <td>' . $iso . '</td>
                                                 <td>' . $iso3 . '</td>
                                           </tr>';
