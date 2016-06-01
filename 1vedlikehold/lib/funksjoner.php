@@ -893,7 +893,7 @@
 		connectDB()->close();
     }
 
-    function landListe() {
+    function landListe($LandID) {
     	$sql = "SELECT id, navn FROM land ORDER BY navn;";
 		$result = connectDB()->query($sql);
 
@@ -905,9 +905,7 @@
 				echo '<option value="' . $row["id"]. '">' . $row["navn"] . '</option>';
 			}
 		}
-
 		echo "</select>";
-
     }
 
 ?>
