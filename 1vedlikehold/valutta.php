@@ -1,5 +1,11 @@
 <?php
-    include_once ("head.php");
+    include_once("lib/funksjoner.php");
+    //krevInnlogging('0');
+    include_once("head.php");
+
+    connectDB();
+    $sql = "SELECT * FROM valuta;";
+    $result = connectDB()->query($sql);
 ?>
 
 
@@ -11,13 +17,24 @@
         <thead>
             <tr>
                 <th>Valgt</th>
-                <th>ValuttaID</th>
                 <th>Navn</th>
-                <th>Land</th>
+                <th>Forkortelse</th>
             </tr>
         </thead>
         <tbody>
-            
+            <form>
+                <?php
+                    if($result->num_rows > 0 ) {
+                        while ($row = $result->fetch_assoc()) {
+                            $id = utf8_encode($row["id"]);
+                            $valuta_navn = utf8_encode($row["valuta_navn"]);
+                            $forkortelse = utf8_encode($row["forkortelse"]);
+                            echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>'. $valuta_navn . '</td><td>' . $forkortelse . '</td></tr>';
+                    }
+                }
+                ?>
+            </form>
+        
         </tbody>
     </table>
     <div class="col-md-1">
