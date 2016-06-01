@@ -136,7 +136,22 @@
 		connectDB()->close();
 	}
 
-	function oppdaterPassasjertype($PassasjertypeID, $valuta_navn, $forkortelse) {
+	function slettType_luftfartoy($TypeID) {
+		connectDB();
+
+		$sql = "DELETE FROM type_luftfartoy WHERE id = '$TypeID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	/*function oppdaterPassasjertype($PassasjertypeID, $valuta_navn, $forkortelse) {
 		
 		connectDB();
 
@@ -171,6 +186,21 @@
 		connectDB()->close();
 	}
 
+	function slettPassasjertype($PassasjertypeID) {
+		connectDB();
+
+		$sql = "DELETE FROM klasse WHERE id = '$PassasjertypeID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}*/
+
 	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
 		
 		connectDB();
@@ -203,6 +233,21 @@
 			}
 		}
 			
+		connectDB()->close();
+	}
+
+	function slettValuta($ValutaID) {
+		connectDB();
+
+		$sql = "DELETE FROM valuta_navn WHERE id = '$ValutaID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
 		connectDB()->close();
 	}
 
@@ -244,7 +289,22 @@
 		connectDB()->close();
 	}
 
-	function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
+	function slettLand($LandID) {
+		connectDB();
+
+		$sql = "DELETE FROM land WHERE id = '$LandID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	/*function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
 		
 		connectDB();
 
@@ -276,6 +336,21 @@
 		connectDB()->close();
 
 		return $tilbalemelding;
+	}*/
+
+	function slettFlyplass($FlyplassID) {
+		connectDB();
+
+		$sql = "DELETE FROM flyplass WHERE id = '$FlyplassID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
 	}
 
 	function HentValutaIDFraLandID($LandID) {
