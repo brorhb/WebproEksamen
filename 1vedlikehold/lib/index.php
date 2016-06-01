@@ -29,12 +29,16 @@
 
 	echo oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id);*/
 
-	/*if(oppdaterKlasse($KlasseID, $type, $beskrivelse)) {
+	$PassasjertypeID = '1';
+	$type = 'Ungdommer';
+	$beskrivelse = 'Testbeskrivelse da';
+
+	if(oppdaterPassasjertype($PassasjertypeID, $type, $beskrivelse)) {
 		echo "Noe ble satt inn!";
 	}
 	else {
 		echo "Noe galt skjedde";
-	}*/
+	}
 
 	//connectDB();
 

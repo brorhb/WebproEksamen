@@ -151,18 +151,18 @@
 		connectDB()->close();
 	}
 
-	/*function oppdaterPassasjertype($PassasjertypeID, $valuta_navn, $forkortelse) {
+	function oppdaterPassasjertype($PassasjertypeID, $type, $beskrivelse) {
 		
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
-		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
-		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
+		$id = connectDB()->real_escape_string(utf8_decode($PassasjertypeID));
+		$type = connectDB()->real_escape_string(utf8_decode($type));
+		$beskrivelse = connectDB()->real_escape_string(utf8_decode($beskrivelse));
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
-			VALUES ('$id', '$valuta_navn', '$forkortelse');";
+			$sql = "INSERT INTO passasjertype (id, type, beskrivelse)
+			VALUES ('$id', '$type', '$beskrivelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -173,7 +173,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE valuta SET valuta_navn='$valuta_navn', forkortelse='$forkortelse' WHERE id='$id';";
+			$sql = "UPDATE passasjertype SET type='$type', beskrivelse='$beskrivelse' WHERE id='$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -189,7 +189,7 @@
 	function slettPassasjertype($PassasjertypeID) {
 		connectDB();
 
-		$sql = "DELETE FROM klasse WHERE id = '$PassasjertypeID';";
+		$sql = "DELETE FROM passasjertype WHERE id = '$PassasjertypeID';";
 		$result = connectDB()->query($sql);
 
 		if (connectDB()->query($sql) === TRUE) {
@@ -199,7 +199,7 @@
 			return FALSE;
 		}
 		connectDB()->close();
-	}*/
+	}
 
 	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
 		
