@@ -6,7 +6,7 @@
     
     if ($_POST['slett']) {
         $id = @$_POST['id'];
-        if(alleflyplasser($id)) {
+        if(slettFlyplass($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
@@ -15,10 +15,10 @@
     }
     elseif ($_POST['lagre']) {
         $id = @$_POST['id'];
-        $alleflyplasser = $_POST['alleflyplasser'];
+        $flyplassnavn = $_POST['flyplassnavn'];
         $beskrivelse = $_POST['beskrivelse'];
 
-        if(oppdateralleflyplasser($id, $alleflyplasser, $beskrivelse)) {
+        if(oppdaterflyplass($id, $flyplassnavn, $beskrivelse)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {
@@ -42,7 +42,7 @@
             <div class="col-md-6">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM alleflyplasser WHERE id='$id';";
+                    $sql = "SELECT * FROM flyplass WHERE id='$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
@@ -52,8 +52,8 @@
                             $beskrivelse = utf8_encode($row["beskrivelse"]);
                             echo '
                             <div class="form-group">
-                                <lable for="Alle flyplasser">Alle flyplasser</lable>
-                                <input class="form-control" type="text" placeholder="flyplass" name="alleflyplassernavn" id="alleflyplassernavn" value="' . @$type . '" required>
+                                <lable for="Flyplassnavn">Flyplassnavn</lable>
+                                <input class="form-control" type="text" placeholder="flyplass" name="flyplassnavn" id="flyplassnavn" value="' . @$type . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
@@ -65,8 +65,8 @@
                     else {
                         echo '
                             <div class="form-group">
-                                <lable for="Alle flyplassene">Alle flyplasser</lable>
-                                <input class="form-control" type="text" placeholder="Flyplass" name="Alle flyplassernavn" id="Alleflyplasser" value="' . @$type . '" required>
+                                <lable for="Flyplassnavn">Flyplassnavn</lable>
+                                <input class="form-control" type="text" placeholder="Flyplassnavn" name="flyplassnavn" id="flyplassnavn" value="' . @$type . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
@@ -93,23 +93,39 @@
                 <thead>
                     <tr>
                         <th>Valgt</th>
-                        <th>Alle flyplassene</th>
-                        <th>Beskrivelse</th>
+                        <th>Navn</th>
+                        <th>Flyplasskode</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Tidssone</th>
+                        <th>Landid</th>
                     </tr>
                 </thead>
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT * FROM alleflyplasser;";
+                            $sql = "SELECT * FROM flyplass;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
-                                    $klasseID = utf8_encode($row["id"]);
-                                    $type = utf8_encode($row["type"]);
-                                    $beskrivelse = utf8_encode($row["beskrivelse"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $klasseID . '"></td><td>' . $type . '</td><td>' . $beskrivelse . '</td></tr>';
+                                    $FlyplassID = utf8_encode($row["id"]);
+                                    $navn = utf8_encode($row["navn"]);
+                                    $flyplasskode = utf8_encode($row["flyplasskode"]);
+                                    $latitude = utf8_encode($row["latitude"]);
+                                    $longitude = utf8_encode($row["longitude"]);
+                                    $tidssone_gmt = utf8_encode($row["tidssone_gmt"]);
+                                    $land_id = utf8_encode($row["land_id"]);
+                                    echo '<tr>
+                                                <td><input type="radio" name="id" value="' . $FlyplassID . '"></td>
+                                                <td>' . $navn . '</td>
+                                                <td>' . $flyplasskode . '</td>
+                                                <td>' . $latitude . '</td>
+                                                <td>' . $longitude . '</td>
+                                                <td>' . $tidssone_gmt . '</td>
+                                                <td>' . $land_id . '</td>
+                                          </tr>';
                                 }
                             }
                         
