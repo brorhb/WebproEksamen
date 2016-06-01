@@ -3,7 +3,6 @@
     //krevInnlogging('0');
     include_once("head.php");
 
-    
     if ($_POST['slett']) {
         $id = @$_POST['id'];
         if(slettBruker($id)) {
@@ -15,15 +14,17 @@
     }
     elseif ($_POST['lagre']) {
         $id = @$_POST['id'];
-        $passord = $_POST['passord'];
+        $brukernavn = $_POST["brukernavn"];
+        $ukryptertPassord = $_POST['passord'];
         $fornavn = $_POST['fornavn'];
         $etternavn = $_POST['etternavn'];
-        $dob = $_POST['fodselsdato'];
-        $land = $_POST['land_id'];
+        $fodselsdato = $_POST['fodselsdato'];
+        $land = $_POST['navn'];
+        $landID = $_POST["land_id"];
         $epost = $_POST["epost"];
-        $mobil = $_POST["mobilnr"];
+        $mobilnr = $_POST["mobilnr"];
 
-        if(oppdaterBruker($id, $passord, $fornavn, $etternavn, $dob, $land, $epost, $mobil)) {
+        if (oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {
@@ -47,23 +48,26 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT bruker.id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id WHERE bruker.id = '$id';";
+                    $sql = "SELECT b.id AS brukerID, b.brukernavn, b.passord, p.id AS personID, p.fornavn, p.etternavn, p.fodselsdato, b.land_id, l.navn, b.epost, b.mobilnr FROM bruker b LEFT JOIN person p ON b.person_id = p.id LEFT JOIN land l ON b.land_id = l.id WHERE b.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = utf8_encode($row["id"]);
+                            $brukerID = utf8_encode($row["brukerID"]);
+                            $personID = utf8_encode($row["personID"]);
+                            $brukernavn = utf8_encode($row["brukernavn"]);
                             $passord = utf8_encode($row["passord"]);
                             $fornavn = utf8_encode($row["fornavn"]);
                             $etternavn = utf8_encode($row["etternavn"]);
-                            $dob = utf8_encode($row["fodselsdato"]);
-                            $land = utf8_encode($row["land_id"]);
+                            $fodselsdato = utf8_encode($row["fodselsdato"]);
+                            $land = utf8_encode($row["navn"]);
+                            $landID = utf8_encode($row["land_id"]);
                             $epost = utf8_encode($row["epost"]);
-                            $mobil = utf8_encode($row["mobilnr"]);
+                            $mobilnr = utf8_encode($row["mobilnr"]);
                             echo '
                             <div class="form-group col-md-6">
-                                <lable for="brukerID">Bruker ID</lable>
-                                <input class="form-control" type="text" placeholder="Bruker ID" name="id" id="id" value="' . @$id . '" disabled required>
+                                <lable for="brukernavn">Brukernavn</lable>
+                                <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
                                 <lable for="passord">Passord</lable>
                                 <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
@@ -75,25 +79,25 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
+                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
                                 <lable for="land">Land</lable>
                                 '; 
-                            echo landListe();
+                            echo landListe($landID);
                             echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
                                 <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
-                                <lable for="mobil">Mobilnummer</lable>
-                                <input class="form-control" type="text" placeholder="Mobilnummer" name="mobil" id="mobil" value="' . @$mobil . '" required>
+                                <lable for="mobilnr">Mobilnummer</lable>
+                                <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
                             </div>';
                         }
                     }
                     else {
                         echo '
                             <div class="form-group col-md-6">
-                                <lable for="brukerID">Bruker ID</lable>
-                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$id . '" disabled required>
+                                <lable for="brukernavn">Brukernavn</lable>
+                                <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
                                 <lable for="passord">Passord</lable>
                                 <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
@@ -105,7 +109,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
+                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
                                 <lable for="land">Land</lable>';
                         echo landListe();
                         echo '
@@ -113,8 +117,8 @@
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
                                 <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
-                                <lable for="mobil">Mobilnummer</lable>
-                                <input class="form-control" type="text" placeholder="Mobilnummer" name="mobil" id="mobil" value="' . @$mobil . '" required>
+                                <lable for="mobilnr">Mobilnummer</lable>
+                                <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
                             </div>';
                     }
                     connectDB()->close();
@@ -136,41 +140,43 @@
                 <thead>
                     <tr>
                         <th>Valgt</th>
-                        <th>Bruker ID</th>
+                        <th>Brukernavn</th>
                         <th>Fornavn</th>
                         <th>Etternavn</th>
                         <th>Født</th>
                         <th>Land</th>
                         <th>Epost</th>
-                        <th>Mobil</th>
+                        <th>Mobilnr</th>
                     </tr>
                 </thead>
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT bruker.id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id;";
+                            $sql = "SELECT b.id AS brukerID, b.brukernavn, b.passord, p.id AS personID, p.fornavn, p.etternavn, p.fodselsdato, b.land_id, l.navn, b.epost, b.mobilnr FROM bruker b LEFT JOIN person p ON b.person_id = p.id LEFT JOIN land l ON b.land_id = l.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
-                                    $id = utf8_encode($row["id"]);
+                                    $brukerID = utf8_encode($row["brukerID"]);
+                                    $personID = utf8_encode($row["personID"]);
+                                    $brukernavn = utf8_encode($row["brukernavn"]);
                                     $passord = utf8_encode($row["passord"]);
                                     $fornavn = utf8_encode($row["fornavn"]);
                                     $etternavn = utf8_encode($row["etternavn"]);
-                                    $dob = utf8_encode($row["fodselsdato"]);
-                                    $land = utf8_encode($row["land_id"]);
+                                    $fodselsdato = utf8_encode($row["fodselsdato"]);
+                                    $land = utf8_encode($row["navn"]);
                                     $epost = utf8_encode($row["epost"]);
-                                    $mobil = utf8_encode($row["mobilnr"]);
+                                    $mobilnr = utf8_encode($row["mobilnr"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $id . '"></td>
-                                                <td>' . $id . '</td>
+                                                <td><input type="radio" name="id" value="' . $brukerID . '"></td>
+                                                <td>' . $brukernavn . '</td>
                                                 <td>' . $fornavn . '</td>
                                                 <td>' . $etternavn . '</td>
-                                                <td>' . $dob . '</td>
+                                                <td>' . $fodselsdato . '</td>
                                                 <td>' . $land . '</td>
                                                 <td>' . $epost . '</td>
-                                                <td>' . $mobil . '</td>
+                                                <td>' . $mobilnr . '</td>
                                           </tr>';
                                 }
                             }
