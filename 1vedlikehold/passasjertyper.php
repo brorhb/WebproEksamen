@@ -109,7 +109,11 @@
                                     $id = utf8_encode($row["id"]);
                                     $Passasjertype = utf8_encode($row["type"]);
                                     $beskrivelse = utf8_encode($row["beskrivelse"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $Passasjertype . '</td><td>' . $beskrivelse . '</td></tr>';
+                                    echo '<tr>
+                                                <td><input type="radio" name="id" value="' . $id . '"></td>
+                                                <td>' . $Passasjertype . '</td>
+                                                <td>' . $beskrivelse . '</td>
+                                          </tr>';
                                 }
                             }
                         
