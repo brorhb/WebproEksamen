@@ -1,9 +1,16 @@
 /* Legg til/endre klasse */
+<<<<<<< HEAD
 
 function validerOppdaterKlasse() {
     var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmeldinger = "", resultat = true;
     if (!klassenavn) {
         feilmeldinger = "Klassenavn må fylles ut";
+=======
+function ValiderOppdaterKlasse() {
+    var type = document.forms["oppdater"]["type"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmelding = "", resultat = true;
+    if (type == null || type == "") {
+        feilmelding = "Type må fylles ut<br/>";
+>>>>>>> origin/master
         resultat = false;
     }
     else if (!beskrivelse) {
@@ -17,10 +24,10 @@ function validerOppdaterKlasse() {
     });
     return resultat;
 }
+/* Legg til/endre klasse */
+
 
 /* Legg til/endre type (type_luftfartoy)*/
-
-
 function validerTypeLuftfartoy() {
     var type = document.forms["oppdater"]["type"].value, resultat = true, feilmeldinger = "";
 
@@ -37,3 +44,19 @@ function validerTypeLuftfartoy() {
 
     return resultat;
 }
+/* Legg til/endre type (type_luftfartoy)*/
+
+/* Legg til/endre land  */
+function validerLand() {
+    var navn = document.forms["oppdater"]["navn"].value, resultat = true, feilmeldinger = "";
+    if (!navn) {
+        feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
+        resultat = false;
+    }
+    swal({
+       title: "Obs!",
+       text: feilmeldinger,
+       type: "warning"
+    });
+}
+/* Legg til/endre land  */
