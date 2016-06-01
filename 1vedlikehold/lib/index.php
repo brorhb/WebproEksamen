@@ -40,11 +40,16 @@
 		echo "Noe galt skjedde";
 	}*/
 
-	if (slettLuftfartoy('3')) {
-		echo "Test";
+	$PersonID = '';
+	$fornavn = 'Fornavn åøæ';
+	$etternavn = 'Etternavn då';
+	$fodselsdato = '478276237235';
+
+	if (oppdaterPerson($PersonID, $fornavn, $etternavn, $fodselsdato)) {
+		echo "Noe ble satt inn!";
 	}
 	else {
-		echo "Test2";
+		echo "Noe galt skjedde";
 	}
 
 	//connectDB();

@@ -355,6 +355,57 @@
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
+	function oppdaterPerson($PersonID, $fornavn, $etternavn, $fodselsdato) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($PersonID));
+		$fornavn = connectDB()->real_escape_string(utf8_decode($fornavn));
+		$etternavn = connectDB()->real_escape_string(utf8_decode($etternavn));
+		$fodselsdato = connectDB()->real_escape_string(utf8_decode($fodselsdato));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO person (id, fornavn, etternavn, fodselsdato)
+			VALUES ('$id', '$fornavn', '$etternavn', '$fodselsdato');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE person SET fornavn='$fornavn', etternavn='$etternavn', fodselsdato='$fodselsdato' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		
+		connectDB()->close();
+	}
+
+	function slettPerson($PersonID) {
+		connectDB();
+
+		$sql = "DELETE FROM person WHERE id = '$PersonID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function oppdaterLuftfartoy($LuftfartoyID, $modell_id, $tailnr) {
 		
 		connectDB();
