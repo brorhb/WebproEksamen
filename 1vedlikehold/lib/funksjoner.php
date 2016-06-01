@@ -386,7 +386,22 @@
 				return FALSE;
 			}
 		}
-			
+		
+		connectDB()->close();
+	}
+
+	function slettLuftfartoy($LuftfartoyID) {
+		connectDB();
+
+		$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
 		connectDB()->close();
 	}
 

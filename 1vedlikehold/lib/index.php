@@ -29,7 +29,7 @@
 
 	echo oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id);*/
 
-	$LuftfartoyID = '4';
+	/*$LuftfartoyID = '4';
 	$modell_id = '1';
 	$tailnr = 'LN3846';
 
@@ -38,6 +38,13 @@
 	}
 	else {
 		echo "Noe galt skjedde";
+	}*/
+
+	if (slettLuftfartoy('3')) {
+		echo "Test";
+	}
+	else {
+		echo "Test2";
 	}
 
 	//connectDB();
