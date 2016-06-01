@@ -893,32 +893,67 @@
 		connectDB()->close();
     }
 
-    function landListe($LandID) {
-    	$sql = "SELECT id, navn FROM land ORDER BY navn;";
+    function valutaListe($objektID) {
+    	$objektnavn = 'valuta';
+    	$sql = "SELECT id, valuta_navn, forkortelse FROM valuta ORDER BY valuta_navn;";
 		$result = connectDB()->query($sql);
-
-		echo '<select name="land_id">';
-
-		if ($LandID == '') {
-			echo '<option selected disabled>Velg land</option>';
-		}
-		else {
-			echo '<option disabled>Velg land</option>';
-		}
+		
+		echo '<select name="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				$id = $row["id"];
-				$navn = $row["navn"];
 
-				if ($LandID == $id) {
-					echo '<option selected value="' . $id . '">' . $navn . '</option>';
-				}
-				else {
-					echo '<option value="' . $id . '">' . $navn . '</option>';
-				}
+			echo '<option ';
+
+			if ($objektID == '') { echo 'selected '; }
+
+			echo 'disabled>Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$navn = utf8_encode($row["valuta_navn"]);
+				$forkortelse = utf8_encode($row["forkortelse"]);
+
+				echo '<option ';
+
+				if ($objektID == $id) { echo'selected '; }
+
+				echo 'value="' . $id . '">' . $navn . ' (' . $forkortelse . ')</option>';
 			}
+		}
+		else {
+			echo "<option>Tomt resultat for ' . $objektnavn . '</option>";
+		}
+		echo '</select>';
+    }
+
+    function landListe($objektID) {
+    	$objektnavn = 'land';
+    	$sql = "SELECT id, navn FROM land ORDER BY navn;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select name="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+
+			if ($objektID == '') { echo 'selected '; }
+
+			echo 'disabled>Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$navn = utf8_encode($row["navn"]);
+
+				echo '<option ';
+
+				if ($objektID == $id) { echo'selected '; }
+				
+				echo 'value="' . $id . '">' . $navn . '</option>';
+			}
+		}
+		else {
+			echo "<option>Tomt resultat for ' . $objektnavn . '</option>";
 		}
 		echo '</select>';
     }

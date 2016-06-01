@@ -17,7 +17,7 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	echo landListe('160') . '<br>';
+	echo landListe('800') . '<br>';
 
 	/* Eksempel på valider bruker */
 
@@ -30,7 +30,7 @@
 	$person_id = '2';*/
 
 	$BrukerID = IGNORE;
-	$brukernavn = 'IGNORE';
+	$brukernavn = IGNORE;
 	$epost = IGNORE;
 	$ukryptert_passord = IGNORE;
 	$land_id = IGNORE;
