@@ -15,7 +15,7 @@
                 <h2>Endre Klasser</h2>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <lable for="Klassenavn">klassenavn</lable>
+                            <lable for="klassenavn">klassenavn</lable>
                             <input class="form-control" type="text" placeholder="Klassetype" name="klassenavn" id="klassenavn" required>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
     elseif ($_POST['ny']) {
 ?>       
             <div class="col-md-12">
-            <form method="post" action=" <?php $_SERVER['PHP_SELF']; ?> " id="klasse">
+            <form method="post" action="<?php $_SERVER['PHP_SELF']; ?> " id="klasse">
              <h2>Legg til klasse</h2>
             <div class="col-md-6">
                 <div class="form-group">
