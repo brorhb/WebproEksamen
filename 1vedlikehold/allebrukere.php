@@ -47,17 +47,17 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT bruker.id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id WHERE bruker.id = '$id';";
+                    $sql = "SELECT b.id, b.passord, p.fornavn, p.etternavn, p.fodselsdato, b.land_id, l.navn, b.epost, b.mobilnr FROM bruker b LEFT JOIN person p ON b.person_id = p.id LEFT JOIN land l ON b.land_id = l.id WHERE b.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = utf8_encode($row["id"]);
+                            $id = utf8_encode($row["b.id"]);
                             $passord = utf8_encode($row["passord"]);
                             $fornavn = utf8_encode($row["fornavn"]);
                             $etternavn = utf8_encode($row["etternavn"]);
                             $dob = utf8_encode($row["fodselsdato"]);
-                            $land = utf8_encode($row["land_id"]);
+                            $land = utf8_encode($row["navn"]);
                             $epost = utf8_encode($row["epost"]);
                             $mobil = utf8_encode($row["mobilnr"]);
                             echo '
@@ -75,9 +75,12 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
+                                <input class="form-control" type="text" placeholder="DDMMYYYY" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
                                 <lable for="land">Land</lable>
-                                <input class="form-control" type="text" placeholder="Land" name="land" id="land" value="' . @$land . '" required>
+                                <select required value="" class="form-control" name="land" id="land">
+                                    <option disabled selected>Velg land</option>
+                                    ' . landliste() . '
+                                </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
@@ -103,7 +106,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
+                                <input class="form-control" type="text" placeholder="DDMMYYYY" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
                                 <lable for="land">Land</lable>
                                 <input class="form-control" type="text" placeholder="Land" name="land" id="land" value="' . @$land . '" required>
                             </div>
@@ -145,7 +148,7 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT bruker.id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id;";
+                            $sql = "SELECT b.id, b.passord, p.fornavn, p.etternavn, p.fodselsdato, b.land_id, l.navn, b.epost, b.mobilnr FROM bruker b LEFT JOIN person p ON b.person_id = p.id LEFT JOIN land l ON b.land_id = l.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
@@ -156,7 +159,7 @@
                                     $fornavn = utf8_encode($row["fornavn"]);
                                     $etternavn = utf8_encode($row["etternavn"]);
                                     $dob = utf8_encode($row["fodselsdato"]);
-                                    $land = utf8_encode($row["land_id"]);
+                                    $land = utf8_encode($row["navn"]);
                                     $epost = utf8_encode($row["epost"]);
                                     $mobil = utf8_encode($row["mobilnr"]);
                                     echo '<tr>
