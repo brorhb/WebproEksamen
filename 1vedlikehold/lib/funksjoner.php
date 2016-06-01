@@ -383,26 +383,6 @@
 		connectDB()->close();*/
 	}
 
-	function oppdaterSpørsmål($spørsmål,$kategoriID) {
-		// Først sjekker man om det eksisterer, hvis det ikke eksisterer med den IDen så lager man en ny. Eksisterer det, oppdaterer man infoen.
-
-		/*connectDB();
-
-		$spørsmål = connectDB()->real_escape_string(utf8_decode($spørsmål));
-		$kategoriID = connectDB()->real_escape_string(utf8_decode($kategoriID));
-
-		$sql = "INSERT INTO qz_sporsmaal (sporsmaal, kategoriID)
-		VALUES ('$spørsmål', '$kategoriID');";
-
-		if (connectDB()->query($sql) === TRUE) {
-			//echo "New record created successfully";
-		} else {
-			//echo "Error: " . $sql . "<br>" . connectDB()->error;
-		}
-
-		connectDB()->close();*/
-	}
-
 	function sjekkOmSvaralternativErKorrekt($svarID) {
 		/*connectDB();
 
