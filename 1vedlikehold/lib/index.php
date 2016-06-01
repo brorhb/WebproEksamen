@@ -29,11 +29,11 @@
 
 	echo oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id);*/
 
-	$PassasjertypeID = '1';
-	$type = 'Ungdommer';
-	$beskrivelse = 'Testbeskrivelse da';
+	$LuftfartoyID = '4';
+	$modell_id = '1';
+	$tailnr = 'LN3846';
 
-	if(oppdaterPassasjertype($PassasjertypeID, $type, $beskrivelse)) {
+	if(oppdaterLuftfartoy($LuftfartoyID, $modell_id, $tailnr)) {
 		echo "Noe ble satt inn!";
 	}
 	else {

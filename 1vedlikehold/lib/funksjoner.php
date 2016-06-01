@@ -359,14 +359,14 @@
 		
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($LandID));
+		$id = connectDB()->real_escape_string(utf8_decode($LuftfartoyID));
 		$modell_id = connectDB()->real_escape_string(utf8_decode($modell_id));
 		$tailnr = connectDB()->real_escape_string(utf8_decode($tailnr));
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO land (id, modell_id, landskode, tailnr)
-			VALUES ('$id', '$modell_id', '$landskode', '$tailnr');";
+			$sql = "INSERT INTO luftfartoy (id, modell_id, tailnr)
+			VALUES ('$id', '$modell_id', '$tailnr');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -377,7 +377,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE land SET navn='$navn', landskode='$landskode', tailnr='$tailnr' WHERE id='$id';";
+			$sql = "UPDATE luftfartoy SET modell_id='$modell_id', tailnr='$tailnr' WHERE id='$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
