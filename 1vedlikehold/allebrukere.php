@@ -6,7 +6,7 @@
     
     if ($_POST['slett']) {
         $id = @$_POST['id'];
-        if(slettLand($id)) {
+        if(slettBruker($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
@@ -15,13 +15,15 @@
     }
     elseif ($_POST['lagre']) {
         $id = @$_POST['id'];
-        $navn = $_POST['navn'];
-        $landskode = $_POST['landskode'];
-        $valuta_id = $_POST['valuta_id'];
-        $iso = $_POST["iso"];
-        $iso3 = $_POST["iso3"];
+        $passord = $_POST['passord'];
+        $fornavn = $_POST['fornavn'];
+        $etternavn = $_POST['etternavn'];
+        $dob = $_POST['fodselsdato'];
+        $land = $_POST['land_id'];
+        $epost = $_POST["epost"];
+        $mobil = $_POST["mobilnr"];
 
-        if(oppdaterLand($id, $navn, $landskode, $valuta_id, $iso, $iso3)) {
+        if(oppdaterBruker($id, $passord, $fornavn, $etternavn, $dob, $land, $epost, $mobil)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {
@@ -45,68 +47,71 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT land.id AS land_id, land.navn, land.landskode, land.iso, land.iso3, valuta.valuta_navn FROM land LEFT JOIN valuta ON land.valuta_id = valuta.id WHERE land.id = '$id';";
+                    $sql = "SELECT bruker.id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id WHERE bruker.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = utf8_encode($row["id"]);
-                            $navn = utf8_encode($row["navn"]);
-                            $landskode = utf8_encode($row["landskode"]);
-                            $valuta_navn = utf8_encode($row["valuta_navn"]);
-                            $iso = utf8_encode($row["iso"]);
-                            $iso3 = utf8_encode($row["iso3"]);
+                            $id = @$_POST['id'];
+                            $passord = $_POST['passord'];
+                            $fornavn = $_POST['fornavn'];
+                            $etternavn = $_POST['etternavn'];
+                            $dob = $_POST['fodselsdato'];
+                            $land = $_POST['land_id'];
+                            $epost = $_POST["epost"];
+                            $mobil = $_POST["mobilnr"];
                             echo '
                             <div class="form-group col-md-6">
-                                <lable for="navn">Navn</lable>
-                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <lable for="brukerID">Bruker ID</lable>
+                                <input class="form-control" type="text" placeholder="Bruker ID" name="id" id="id" value="' . @$id . '" disabled required>
+                                <lable for="passord">Passord</lable>
+                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="landskode">landskode</lable>
-                                <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
+                                <lable for="fornavn">Fornavn</lable>
+                                <input class="form-control" type="text" placeholder="Fornavn" name="fornavn" id="foravn" value="' . @$fornavn . '">
+                                <lable for="etternavn">Etternavn</lable>
+                                <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="valutanavn">Valuta navn</lable>
-                                <select class="form-control" id="valuta_id" name="valuta_id">
-                                    <option disabled selected>' . $valuta_navn . '</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+                                <lable for="fodselsdato">Fodselsdato</lable>
+                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
+                                <lable for="land">Land</lable>
+                                <input class="form-control" type="text" placeholder="Land" name="land" id="land" value="' . @$land . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="iso">iso</lable>
-                                <input class="form-control" type="text" placeholder="iso" name="iso" id="beskrivelse" value="' . @$iso . '" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <lable for="iso3">iso3</lable>
-                                <input class="form-control" type="text" placeholder="iso3" name="iso3" id="beskrivelse" value="' . @$iso3 . '" required>
+                                <lable for="epost">E-post</lable>
+                                <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
+                                <lable for="mobil">Mobilnummer</lable>
+                                <input class="form-control" type="text" placeholder="Mobilnummer" name="mobil" id="mobil" value="' . @$mobil . '" required>
                             </div>';
                         }
                     }
                     else {
                         echo '
                             <div class="form-group col-md-6">
-                                <lable for="navn">Navn</lable>
-                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <lable for="brukerID">Bruker ID</lable>
+                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$id . '" disabled required>
+                                <lable for="passord">Passord</lable>
+                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="landskode">landskode</lable>
-                                <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
+                                <lable for="fornavn">Fornavn</lable>
+                                <input class="form-control" type="text" placeholder="Fornavn" name="fornavn" id="foravn" value="' . @$fornavn . '">
+                                <lable for="etternavn">Etternavn</lable>
+                                <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="valutaid">Valuta id</lable>
-                                <input class="form-control" type="text" placeholder="valuta id" name="valuta_id" id="valuta_id" value="' . @$valuta_id . '" required>
+                                <lable for="fodselsdato">Fodselsdato</lable>
+                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
+                                <lable for="land">Land</lable>
+                                <input class="form-control" type="text" placeholder="Land" name="land" id="land" value="' . @$land . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="iso">iso</lable>
-                                <input class="form-control" type="text" placeholder="iso" name="iso" id="beskrivelse" value="' . @$iso . '" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <lable for="iso3">iso3</lable>
-                                <input class="form-control" type="text" placeholder="iso3" name="iso3" id="beskrivelse" value="' . @$iso3 . '" required>
+                                <lable for="epost">E-post</lable>
+                                <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
+                                <lable for="mobil">Mobilnummer</lable>
+                                <input class="form-control" type="text" placeholder="Mobilnummer" name="mobil" id="mobil" value="' . @$mobil . '" required>
                             </div>';
                     }
                     connectDB()->close();
@@ -128,23 +133,25 @@
                 <thead>
                     <tr>
                         <th>Valgt</th>
-                        <th>Navn</th>
-                        <th>Landskode</th>
-                        <th>Valutta id</th>
-                        <th>iso</th>
-                        <th>iso3</th>
+                        <th>Bruker ID</th>
+                        <th>Fornavn</th>
+                        <th>Etternavn</th>
+                        <th>Født</th>
+                        <th>Land</th>
+                        <th>Epost</th>
+                        <th>Mobil</th>
                     </tr>
                 </thead>
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT bruker.id AS bruker_id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id;";
+                            $sql = "SELECT bruker.id, bruker.passord, person.fornavn, person.etternavn, person.fodselsdato, bruker.land_id, bruker.epost, bruker.mobilnr FROM bruker LEFT JOIN person ON bruker.person_id = person.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
-                                    $id = utf8_encode($row["bruker_id"]);
+                                    $id = utf8_encode($row["id"]);
                                     $passord = utf8_encode($row["passord"]);
                                     $fornavn = utf8_encode($row["fornavn"]);
                                     $etternavn = utf8_encode($row["etternavn"]);
@@ -154,6 +161,7 @@
                                     $mobil = utf8_encode($row["mobilnr"]);
                                     echo '<tr>
                                                 <td><input type="radio" name="id" value="' . $id . '"></td>
+                                                <td>' . $id . '</td>
                                                 <td>' . $fornavn . '</td>
                                                 <td>' . $etternavn . '</td>
                                                 <td>' . $dob . '</td>
