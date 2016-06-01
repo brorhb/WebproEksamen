@@ -1,16 +1,20 @@
 /* Legg til/endre klasse */
 
-function ValiderOppdaterKlasse() {
-    var type = document.forms["oppdater"]["type"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmelding = "", resultat = true;
-    if (type == null || type == "") {
-        feilmelding = "Type må fylles ut<br/>";
+function validerOppdaterKlasse() {
+    var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmeldinger = "", resultat = true;
+    if (!klassenavn) {
+        feilmeldinger = "Klassenavn må fylles ut";
         resultat = false;
     }
-    else if (beskrivelse == null || beskrivelse == "") {
-        feilmelding = feilmelding + "Beskrivelse må fylles ut<br/>";
+    else if (!beskrivelse) {
+        feilmeldinger = feilmelding + "Beskrivelse må fylles ut";
         resultat = false;
     }
-    document.getElementById('feilmelding').innerHTML = feilmelding;
+       swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
     return resultat;
 }
 
