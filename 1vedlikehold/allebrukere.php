@@ -77,7 +77,7 @@
                                 <lable for="fodselsdato">Fodselsdato</lable>
                                 <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$dob . '">
                                 <lable for="land">Land</lable>
-                                    ' . landliste() . '
+                                <input class="form-control" type="text" placeholder="Land" name="land" id="land" value="' . @$land . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
