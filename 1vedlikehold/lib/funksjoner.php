@@ -899,13 +899,28 @@
 
 		echo '<select name="land_id">';
 
+		if ($LandID == '') {
+			echo '<option selected disabled>Velg land</option>';
+		}
+		else {
+			echo '<option disabled>Velg land</option>';
+		}
+
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				echo '<option value="' . $row["id"]. '">' . $row["navn"] . '</option>';
+				$id = $row["id"];
+				$navn = $row["navn"];
+
+				if ($LandID == $id) {
+					echo '<option selected value="' . $id . '">' . $navn . '</option>';
+				}
+				else {
+					echo '<option value="' . $id . '">' . $navn . '</option>';
+				}
 			}
 		}
-		echo "</select>";
+		echo '</select>';
     }
 
 ?>

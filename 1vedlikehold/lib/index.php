@@ -17,7 +17,7 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	echo landListe();
+	echo landListe('160');
 
 	
 
