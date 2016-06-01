@@ -353,6 +353,43 @@
 		connectDB()->close();
 	}
 
+	/* bruker, person, modell og seteoppsett kommer her */
+
+	function oppdaterLuftfartoy($LuftfartoyID, $modell_id, $tailnr) {
+		
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_decode($LandID));
+		$modell_id = connectDB()->real_escape_string(utf8_decode($modell_id));
+		$tailnr = connectDB()->real_escape_string(utf8_decode($tailnr));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO land (id, modell_id, landskode, tailnr)
+			VALUES ('$id', '$modell_id', '$landskode', '$tailnr');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE land SET navn='$navn', landskode='$landskode', tailnr='$tailnr' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+			
+		connectDB()->close();
+	}
+
 	function HentValutaIDFraLandID($LandID) {
 		connectDB();
 
