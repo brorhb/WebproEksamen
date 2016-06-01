@@ -5,20 +5,25 @@
 
     
     if ($_POST['slett']) {
-        
+        $id = @$_POST['id'];
+        if(slettKlasse($id)) {
+            echo "Informasjonen ble slettet.";
+        }
+        else {
+            echo "Noe galt skjedde...";
+        }
     }
     elseif ($_POST['lagre']) {
         $id = @$_POST['id'];
         $klassenavn = $_POST['klassenavn'];
+        $beskrivelse = $_POST['beskrivelse'];
 
-        echo "ID: " . $id;
-        echo "Klassenavn: " . $type;
-        /*if(oppdaterKlasse($id, $klassenavn)) {
-            echo "Informasjonen ble oppdattert.";
+        if(oppdaterKlasse($id, $klassenavn, $beskrivelse)) {
+            echo "Informasjonen ble oppdatert.";
         }
         else {
             echo "Noe galt skjedde...";
-        }*/
+        }
     }
     elseif ($_POST['ny'] || $_POST['endre']) {
         // Hvis endre eller ny er trykket ned
@@ -37,20 +42,37 @@
             <div class="col-md-6">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM klasse WHERE id = '$id';";
+                    $sql = "SELECT * FROM klasse WHERE id='$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = $row["id"];
-                            $type = $row["type"];
+                            $id = utf8_encode($row["id"]);
+                            $type = utf8_encode($row["type"]);
+                            $beskrivelse = utf8_encode($row["beskrivelse"]);
                             echo '
                             <div class="form-group">
                                 <lable for="Klassenavn">Klassenavn</lable>
-                                <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . $type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . $id . '">
+                                <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . @$type . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                            </div>
+                            <div class="form-group">
+                                <lable for="Beskrivelse">Beskrivelse</lable>
+                                <input class="form-control" type="text" placeholder="Beskrivelse" name="beskrivelse" id="beskrivelse" value="' . @$beskrivelse . '" required>
                             </div>';
                         }
+                    }
+                    else {
+                        echo '
+                            <div class="form-group">
+                                <lable for="Klassenavn">Klassenavn</lable>
+                                <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . @$type . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                            </div>
+                            <div class="form-group">
+                                <lable for="Beskrivelse">Beskrivelse</lable>
+                                <input class="form-control" type="text" placeholder="Beskrivelse" name="beskrivelse" id="beskrivelse" value="' . @$beskrivelse . '" required>
+                            </div>';
                     }
                     connectDB()->close();
             echo'
@@ -72,6 +94,7 @@
                     <tr>
                         <th>Valgt</th>
                         <th>Klassenavn</th>
+                        <th>Beskrivelse</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -85,7 +108,8 @@
 
                                     $klasseID = utf8_encode($row["id"]);
                                     $type = utf8_encode($row["type"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $klasseID . '"></td><td>' . $type . '</td></tr>';
+                                    $beskrivelse = utf8_encode($row["beskrivelse"]);
+                                    echo '<tr><td><input type="radio" name="id" value="' . $klasseID . '"></td><td>' . $type . '</td><td>' . $beskrivelse . '</td></tr>';
                                 }
                             }
                         

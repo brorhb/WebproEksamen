@@ -52,17 +52,18 @@
 		return $conn;
 	}
 
-	function oppdaterKlasse($KlasseID, $type) {
+	function oppdaterKlasse($KlasseID, $type, $beskrivelse) {
 		
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($KlasseID));
 		$type = connectDB()->real_escape_string(utf8_decode($type));
+		$beskrivelse = connectDB()->real_escape_string(utf8_decode($beskrivelse));
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO klasse (id, type)
-			VALUES ('$id', '$type');";
+			$sql = "INSERT INTO klasse (id, type, beskrivelse)
+			VALUES ('$id', '$type', '$beskrivelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -73,7 +74,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE klasse SET type='$type' WHERE id='$id';";
+			$sql = "UPDATE klasse SET type='$type', beskrivelse='$beskrivelse' WHERE id='$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -83,6 +84,21 @@
 			}
 		}
 			
+		connectDB()->close();
+	}
+
+	function slettKlasse($KlasseID) {
+		connectDB();
+
+		$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
 		connectDB()->close();
 	}
 

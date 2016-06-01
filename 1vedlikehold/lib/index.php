@@ -29,18 +29,18 @@
 
 	echo oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id);*/
 
-	/*if(oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $lontitude, $tidssone_gmt, $land_id)) {
+	/*if(oppdaterKlasse($KlasseID, $type, $beskrivelse)) {
 		echo "Noe ble satt inn!";
 	}
 	else {
 		echo "Noe galt skjedde";
 	}*/
 
-	connectDB();
+	//connectDB();
 
 	/*$sql = "INSERT INTO flyplass (id, navn, flyplasskode, latitude, longitude, tidssone_gmt, land_id)
 			VALUES ('', 'Testnavn', 'ABC', '123', '123', '1', '1');";*/
-	$sql = "UPDATE flyplass SET navn='Navnet', flyplasskode='KOD', latitude='123', longitude='123', tidssone_gmt='1', land_id='1' WHERE id='1';";
+	/*$sql = "UPDATE flyplass SET navn='Navnet', flyplasskode='KOD', latitude='123', longitude='123', tidssone_gmt='1', land_id='1' WHERE id='1';";
 	connectDB()->query($sql);
-	echo 'Rader berørt: ' . connectDB()->affected_rows;
+	echo 'Rader berørt: ' . connectDB()->affected_rows;*/
 ?>
