@@ -52,17 +52,17 @@
 
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = @$_POST['id'];
-                            $passord = $_POST['passord'];
-                            $fornavn = $_POST['fornavn'];
-                            $etternavn = $_POST['etternavn'];
-                            $dob = $_POST['fodselsdato'];
-                            $land = $_POST['land_id'];
-                            $epost = $_POST["epost"];
-                            $mobil = $_POST["mobilnr"];
+                            $id = utf8_encode($row["id"]);
+                            $passord = utf8_encode($row["passord"]);
+                            $fornavn = utf8_encode($row["fornavn"]);
+                            $etternavn = utf8_encode($row["etternavn"]);
+                            $dob = utf8_encode($row["fodselsdato"]);
+                            $land = utf8_encode($row["land_id"]);
+                            $epost = utf8_encode($row["epost"]);
+                            $mobil = utf8_encode($row["mobilnr"]);
                             echo '
                             <div class="form-group col-md-6">
-                                <lable for="brukerID">Bruker ID</lable>
+                                <lable for="id">Bruker ID</lable>
                                 <input class="form-control" type="text" placeholder="Bruker ID" name="id" id="id" value="' . @$id . '" disabled required>
                                 <lable for="passord">Passord</lable>
                                 <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
@@ -90,8 +90,8 @@
                     else {
                         echo '
                             <div class="form-group col-md-6">
-                                <lable for="brukerID">Bruker ID</lable>
-                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$id . '" disabled required>
+                                <lable for="id">Bruker ID</lable>
+                                <input class="form-control" type="text" placeholder="Bruker ID" name="id" id="id" value="' . @$id . '" disabled required>
                                 <lable for="passord">Passord</lable>
                                 <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
