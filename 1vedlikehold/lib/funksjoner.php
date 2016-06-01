@@ -355,6 +355,57 @@
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
+    function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr) {
+		
+		connectDB();
+
+		$brukerID = connectDB()->real_escape_string(utf8_decode($brukerID));
+        $personID = connectDB()->real_escape_string(utf8_decode($personID));
+        $brukernavn = connectDB()->real_escape_string(utf8_decode($brukernavn));
+        $ukryptertPassord = connectDB()->real_escape_string(utf8_decode($ukryptertPassord));
+        $kryptertPassord = md5($ukryptertPassord);
+		$fornavn = connectDB()->real_escape_string(utf8_decode($fornavn));
+		$etternavn = connectDB()->real_escape_string(utf8_decode($etternavn));
+		$fodselsdato = connectDB()->real_escape_string(utf8_decode($fodselsdato));
+        $land = connectDB()->real_escape_string(utf8_decode($land));
+        $landID = connectDB()->real_escape_string(utf8_decode($landID));
+        $epost = connectDB()->real_escape_string(utf8_decode($epost));
+        $mobilnr = connectDB()->real_escape_string(utf8_decode($mobilnr));
+
+		if ($id == '') {
+
+			$sql = "
+                    START TRANSACTION;
+                    INSERT INTO person (id, fornavn, etternavn, fodselsdato) VALUES ('', '$fornavn', '$etternavn', '$fodselsdato');
+                    INSERT INTO bruker (id, brukernavn, epost, passord, land_id, mobilnr, person_id) VALUES ('', $brukernavn', '$epost', '$passord', '$landID', '$mobilnr', (SELECT MAX(id) FROM person));
+                    COMMIT;";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "
+                    START TRANSACTION;
+                    UPDATE person SET fornavn='$fornavn', etternavn='$etternavn', fodselsdato='$fodselsdato' WHERE id='$personID';
+                    UPDATE bruker SET brukernavn='$brukernavn', epost='$epost', passord='$kryptertPassord', land_id='$landID',  mobilnr='$mobilnr' WHERE person_id='$personID';
+                    COMMIT;";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		
+		connectDB()->close();
+	}
+
 	function oppdaterPerson($PersonID, $fornavn, $etternavn, $fodselsdato) {
 		
 		connectDB();
@@ -897,7 +948,7 @@
     	$sql = "SELECT id, navn FROM land ORDER BY navn;";
 		$result = connectDB()->query($sql);
 
-		echo '<select name="land_id">';
+		echo '<select class="form-control" name="land_id">';
 
 		if ($LandID == '') {
 			echo '<option selected disabled>Velg land</option>';
