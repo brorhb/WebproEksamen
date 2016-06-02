@@ -1,3 +1,8 @@
+//InNumeric
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 /* Legg til/endre klasse */
 
 function validerOppdaterKlasse() {
@@ -84,7 +89,7 @@ function validerLand() {
         feilmeldinger += "Iso må fylles ut";
         resultat = false;
     }
-    else if (!isNaN(iso)) {
+    else if (!IsNaN(iso)) {
         feilmeldinger += "iso kan kun være bokstaver";
         resultat = false;
     }
@@ -97,7 +102,7 @@ function validerLand() {
         feilmeldinger += "iso3 må ha en verdi";
         resultat = false;
     }
-    else if (!isNaN(iso3)) {
+    else if (!IsNumeric(iso3)) {
         feilmeldinger += "iso3 kan kun være bokstaver"
         resultat = false;
     }
@@ -116,13 +121,34 @@ function validerLand() {
 }
 /* Legg til/endre land  */
 
+/*Legg til passasjertype*/
+function validerOppdaterPassasjertype() {
+    var passasjertype = document.forms["oppdater"]["Passasjertype"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
+    var teller = 0;
+    if (!passasjertype) {
+        feilmeldinger = "Passasjertype ";
+        teller++;
 
-
-//function 
-
+        resultat = false;
+    }
+    if (!beskrivelse){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "beskrivelse må fylles ut";
+        teller++;
+        resultat = false;
+    }
+       swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
+    return resultat;
+}
+/*Legg til passasjertype*/
 
 /* Legg til/endre klasse */
-
 function validerOppdaterKlasse() {
     var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
     var teller = 0;
