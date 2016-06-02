@@ -3,7 +3,7 @@
     //krevInnlogging('0');
     include_once("head.php");
 
-    if ($_POST['slett']) {
+    if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettBruker($id)) {
             echo "Informasjonen ble slettet.";
@@ -12,7 +12,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['lagre']) {
+    elseif (@$_POST['lagre']) {
         $brukerID = @$_POST['brukerID'];
         $personID = @$_POST['personID'];
         $brukernavn = $_POST["brukernavn"];
@@ -32,7 +32,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['ny'] || $_POST['endre']) {
+    elseif (@$_POST['ny'] || @$_POST['endre']) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
