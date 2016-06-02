@@ -174,3 +174,20 @@
 
 </script>
 <p id="demo"></p>
+
+<ol>
+	<li>Klasse</li>
+	<li>Type_luftfartoy</li>
+	<li>Passasjertype</li>
+	<li>Valuta</li>
+	<li>Land</li>
+	<li>Flyplass</li>
+	<li>Bruker (og person)</li>
+	<li>Luftfartøy modellspesifikt (modell og seteoppsett)</li>
+	<li>Luftfartoy</li>
+	<li>Søkegrupper (gruppe og flyplass_gruppe)</li>
+	<li>Tilgang (tilgang og bruker_tilgang)</li>
+	<li>Ruter (rute og rute_kombinasjon)</li>
+	<li>Flighter (flyvning og pris)</li>
+	<li>Bestillinger (person, bestilling, bestilling_flyvning, passasjer_flyvning)</li>
+</ol>
