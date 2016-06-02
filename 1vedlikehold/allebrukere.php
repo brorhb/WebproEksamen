@@ -13,7 +13,8 @@
         }
     }
     elseif ($_POST['lagre']) {
-        $id = @$_POST['id'];
+        $brukerID = @$_POST['brukerID'];
+        $personID = @$_POST['personID'];
         $brukernavn = $_POST["brukernavn"];
         $ukryptertPassord = $_POST['passord'];
         $fornavn = $_POST['fornavn'];
