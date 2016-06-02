@@ -30,19 +30,19 @@
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" "onsubmit="validerOppdaterPassasjertype()">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
-                    echo '<h2>Ny klasse</h2>';
+                    echo '<h2>Ny passasjertype</h2>';
                 }
                 elseif ($_POST['endre']) {
-                    echo '<h2>Endre klasse</h2>';
+                    echo '<h2>Endre passasjernavn</h2>';
                 }
         echo '
             <div class="col-md-6">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM passasjertype WHERE id='$id';";
+                    $sql = "SELECT * FROM Passasjertype WHERE id='$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
@@ -88,7 +88,7 @@
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
-            <h2>Alle Klasser</h2>
+            <h2>Alle passasjertyper</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -100,7 +100,7 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT * FROM passasjertype;";
+                            $sql = "SELECT * FROM Passasjertype;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {

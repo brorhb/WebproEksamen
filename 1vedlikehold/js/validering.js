@@ -116,8 +116,58 @@ function validerLand() {
 }
 /* Legg til/endre land  */
 
-/* Legg til/endre valuta */
 
+<<<<<<< Updated upstream
 //function 
+=======
+>>>>>>> Stashed changes
 
-/* Legg til/endre valuta */
+/*Legg til passasjertype*/
+function validerOppdaterPassasjertype() {
+    var Passasjertype = document.forms["oppdater"]["Passasjertype"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
+    var teller = 0;
+    if (!Passasjertype) {
+        feilmeldinger = "Passasjertype ";
+        teller++;
+
+        resultat = false;
+    }
+    if (!beskrivelse){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "beskrivelse ";
+        teller++;
+        resultat = false;
+    }
+    feilmeldinger += "må fylles ut.";
+       swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
+    return resultat;
+}
+/*Legg til passasjertype*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
