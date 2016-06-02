@@ -6,7 +6,7 @@
     
     if ($_POST['slett']) {
         $id = @$_POST['id'];
-        if(slettLuftfartoy($LuftfartoyID)) {
+        if(slettLuftfartoy($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
@@ -30,7 +30,7 @@
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" name="oppdater" method="post">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
                     echo '<h2>Nytt fly</h2>';
@@ -52,6 +52,11 @@
                             $tailnr = utf8_encode($row["tailnr"]);
                             echo '
 
+                        <div class="form-group">
+                                <lable for="id">id</lable>
+                                <input class="form-control" type="text" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; modellListe(@$modell_id);
+                            echo '
+                            </div>
                             <div class="form-group">
                                 <lable for="tailnr">tailnr</lable>
                                 <input class="form-control" type="text" placeholder="tailnr" name="tailnr" id="tailnr" value="' . @$tailnr . '" required>
@@ -60,10 +65,10 @@
                     }
                     else {
                         echo '
-                            <div class="form-group">
+                            <          <div class="form-group">
                                 <lable for="id">id</lable>
-                                <input class="form-control" type="text" placeholder="id" name="id" id="id" value="' . @$id . '" required>
-                                <input class="form-control" type="hidden" placeholder="modell_id" name="modell_id" id="modell_id" value="' . @$modell_id . '">
+                                <input class="form-control" type="text" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; modellListe(@$modell_id);
+                            echo '
                             </div>
                             <div class="form-group">
                                 <lable for="tailnr">tailnr</lable>
