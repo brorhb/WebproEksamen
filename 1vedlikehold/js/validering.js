@@ -407,3 +407,81 @@ function validerPersonBruker() {
 }
 
 /* Valider endre/legg til på alle brukere siden */
+
+// valider modeller
+function validerOppdaterModeller() {
+    var navn = document.forms["oppdater"]["navn"].value, type = document.forms["oppdater"]["type"].value,
+     kapasitet = document.forms["oppdater"]["kapasitet"].value, rader = document.forms["oppdater"]["rader"].value,
+      bredde = document.forms["oppdater"]["bredde"].value, resultat = true, feilmeldinger = "";
+    var teller = 0;
+    if (!navn) {
+        feilmeldinger = "Navn er ikke fylt ut ";
+        teller++;
+
+        resultat = false;
+    }
+    if (!type){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "Type er ikke valgt ";
+        teller++;
+        resultat = false;
+    }
+    if (!kapasitet){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "kapasitet mangler ";
+        teller++;
+        resultat = false;
+    }
+    if (!isNaN(kapasitet){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "kapasitet må være ett tall ";
+        teller++;
+        resultat = false;
+    }
+    if (!rader){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "rader mangler ";
+        teller++;
+        resultat = false;
+    }
+    if (!isNaN(rader){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "rader må være ett tall ";
+        teller++;
+        resultat = false;
+    }
+    if (!bredde){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "bredde mangler ";
+        teller++;
+        resultat = false;
+    }
+    if (!isNaN(bredde){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "bredde må være ett tall ";
+        teller++;
+        resultat = false;
+    }
+    feilmeldinger += "må fylles ut.";
+       swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
+    return resultat;
+}
+// valider modeller
