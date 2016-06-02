@@ -17,7 +17,16 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	echo valutaListe('2') . '<br>';
+	$IDen = "1u";
+
+	echo modellListe($IDen) . '<br>';
+
+	if (sjekkOmModellIDeksisterer($IDen)) {
+		echo "eksisterer";
+	}
+	else {
+		echo "eksisterer ikke";
+	}
 
 	/* Eksempel på valider bruker */
 
@@ -97,4 +106,56 @@
 	/*$sql = "UPDATE flyplass SET navn='Navnet', flyplasskode='KOD', latitude='123', longitude='123', tidssone_gmt='1', land_id='1' WHERE id='1';";
 	connectDB()->query($sql);
 	echo 'Rader berørt: ' . connectDB()->affected_rows;*/
+
+
+
 ?>
+
+<button onclick="myFunction()">Skriv ut feilmeldinger</button>
+
+<script type="text/javascript">
+
+/*function myFunction() {
+	var maaFyllesUt = [];
+	var kommentar = [];
+	var output = "";
+	var resultat = false;
+
+	if (true) {
+		maaFyllesUt.push("brukernavn");
+		resultat = false;
+	}
+	if (true) {
+		maaFyllesUt.push("klasseListe");
+		resultat = false;
+	}
+	if (true) {
+		maaFyllesUt.push("klassenavn");
+		resultat = false;
+	}
+	
+
+	//alert(maaFyllesUt);
+	//document.getElementById("demo").innerHTML = maaFyllesUt;
+
+	for (var i = 0; i < maaFyllesUt.length; i++) {
+		output += maaFyllesUt[i];
+		if (i = maaFyllesUt.length - 2) {
+			output += "og ";
+		}
+		else {
+			output += ", ";
+		}
+	}
+	if (maaFyllesUt.length > 0) {
+		output += " må fylles ut.";
+	}
+	else {
+		output += "Ingen output";
+	}
+
+	document.getElementById("demo").innerHTML = output;
+}*/
+
+</script>
+<p id="demo"></p>
