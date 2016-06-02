@@ -17,11 +17,11 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	$IDen = "1u";
+	$IDen = "4";
 
-	echo modellListe($IDen) . '<br>';
+	echo luftfartoyListe($IDen) . '<br>';
 
-	if (sjekkOmModellIDeksisterer($IDen)) {
+	if (sjekkOmLuftfartoyIDeksisterer($IDen)) {
 		echo "eksisterer";
 	}
 	else {

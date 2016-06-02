@@ -1271,6 +1271,67 @@
 		echo '</select>';
 	}
 
+	function sjekkOmSeteoppsettIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM seteoppsett WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+/* Forløpig ingen hensikt med seteoppsett liste */
+
+	function sjekkOmLuftfartoyIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM luftfartoy WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function luftfartoyListe($objektID) {
+		$objektnavn = 'luftfartoy';
+		$objektIDeksisterer = sjekkOmLuftfartoyIDeksisterer($objektID);
+		$sql = "SELECT id, tailnr FROM luftfartoy ORDER BY tailnr;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled>Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$tailnr = utf8_encode($row["tailnr"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $tailnr . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
 	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
 		$id = utf8_decode($BrukerID);
 		$brukernavn = utf8_decode($brukernavn);
