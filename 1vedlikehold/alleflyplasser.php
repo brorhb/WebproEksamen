@@ -15,10 +15,15 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $flyplassnavn = $_POST['flyplassnavn'];
-        $beskrivelse = $_POST['beskrivelse'];
+        $navn = $_POST['navn'];
+        $flyplasskode = $_POST['flyplasskode'];
+        $latitude= $_POST['latitude'];
+        $longitude = $_POST['longitude'];
+        $ftidssone_gmt = $_POST['tidssone_gmt'];
+        $land_id = $_POST['land_id'];
 
-        if(oppdaterflyplass($id, $flyplassnavn, $beskrivelse)) {
+
+        if(oppdaterflyplass($id, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {

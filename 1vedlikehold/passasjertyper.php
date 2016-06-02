@@ -30,7 +30,7 @@
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" "onsubmit="validerOppdaterPassasjertype()">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterPassasjertype()">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
                     echo '<h2>Ny passasjertype</h2>';
