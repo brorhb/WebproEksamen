@@ -171,6 +171,7 @@ function validerOppdaterKlasse() {
 /* Legg til/endre klasse */
 
 /*legg til/ Alleflyplasser*/
+
 function validerAlleflyplasser() {
     var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value,
     longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "";
@@ -222,7 +223,7 @@ function validerAlleflyplasser() {
     }
 
     //tidssone_gmt
-    ___
+    
     //land
      else if (!land_id) {
         feilmeldinger += "Land må fylles ut";
@@ -247,6 +248,7 @@ function validerAlleflyplasser() {
 /* Legg til/endre valuta */
 
 /* Slett */
+
 function sikkerSlett() {
     swal({   
         title: "Are you sure?",   
@@ -268,13 +270,14 @@ function sikkerSlett() {
             } 
     });
 }
+
 /* Slett  */ 
 /* Valider endre/legg til på alle brukere siden */
 
 function validerPersonBruker() {
     var brukerID = document.forms["oppdater"]["brukerID"].value, personID = document.forms["oppdater"]["personID"].value, brukernavn = document.forms["oppdater"]["brukernavn"].value, ukryptertPassord = document.forms["oppdater"]["ukryptertpassord"].value, fornavn = document.forms["oppdater"]["fornavn"].value, etternavn = document.forms["oppdater"]["etternavn"].value, fodselsdato = document.forms["oppdater"]["fodselsdato"].value, land = document.forms["oppdater"]["land"].value, landID = document.forms["oppdater"]["landID"].value, epost = document.forms["oppdater"]["epost"].value, mobilnr = document.forms["oppdater"]["mobilnr"].value, resultat = true, feilmeldinger = "", teller = 0;
     
-    /* brukerID */
+    // brukerID 
     if (!brukerID) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -293,9 +296,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* brukerID */
+    // brukerID 
     
-    /* personID */
+    // personID 
     if (!personID) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -314,9 +317,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* personID */
+    // personID 
     
-    /* brukernavn */
+    // brukernavn 
     if (!brukernavn) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -326,9 +329,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* brukernavn */
+    // brukernavn 
     
-    /* ukryptertPassord */
+    // ukryptertPassord 
     if (!ukryptertPassord) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -338,9 +341,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* ukryptertPassord */
+    // ukryptertPassord 
     
-    /* fornavn */
+    // fornavn 
     if (!fornavn) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -350,9 +353,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* fornavn */
+    // fornavn 
     
-    /* etternavn */
+    // etternavn
     if (!etternavn) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -362,9 +365,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* etternavn */
+    // etternavn 
     
-    /* fodselsdato */
+    // fodselsdato 
     if (!fodselsdato) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -392,9 +395,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* fodselsdato */
+    // fodselsdato 
     
-    /* land */
+    // land 
     if (!land) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -404,9 +407,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* land */
+    // land 
     
-    /* landID */
+    // landID 
     if (!landID) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -425,9 +428,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* landID */
+    // landID 
     
-    /* epost */
+    // epost 
     if (!epost) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -437,9 +440,9 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* epost */
+    // epost 
     
-    /* mobilnr */
+    // mobilnr 
     if (!mobilnr) {
         if (teller > 0) {
             feilmeldinger += "og";
@@ -469,7 +472,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    /* mobilnr */
+    // mobilnr
     
     swal({
         title: "Obs!",
@@ -483,18 +486,19 @@ function validerPersonBruker() {
 /* Valider endre/legg til på alle brukere siden */
 
 // valider modeller
-/*
 function validerOppdaterModeller() {
-    var navn = document.forms["oppdater"]["navn"].value, type = document.forms["oppdater"]["type"].value,
-     kapasitet = document.forms["oppdater"]["kapasitet"].value, rader = document.forms["oppdater"]["rader"].value,
-      bredde = document.forms["oppdater"]["bredde"].value, resultat = true, feilmeldinger = "";
+    var navn = document.forms["oppdater"]["navn"].value, type = document.forms["oppdater"]["type"].value, kapasitet = document.forms["oppdater"]["kapasitet"].value, rader = document.forms["oppdater"]["rader"].value, bredde = document.forms["oppdater"]["bredde"].value, resultat = true, feilmeldinger = "";
     var teller = 0;
+    
+    // navn
     if (!navn) {
         feilmeldinger = "Navn er ikke fylt ut ";
         teller++;
 
         resultat = false;
     }
+    
+    // Type
     if (!type){
         if (teller > 0) {
             feilmeldinger += "og ";
@@ -503,6 +507,8 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
+    
+    // kapasitet
     if (!kapasitet){
         if (teller > 0) {
             feilmeldinger += "og ";
@@ -511,7 +517,7 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
-    if (!isNaN(kapasitet){
+    if (!isNaN(kapasitet)){
         if (teller > 0) {
             feilmeldinger += "og ";
         }
@@ -519,6 +525,8 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
+    
+    // rader
     if (!rader){
         if (teller > 0) {
             feilmeldinger += "og ";
@@ -527,7 +535,7 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
-    if (!isNaN(rader){
+    if (!isNaN(rader)){
         if (teller > 0) {
             feilmeldinger += "og ";
         }
@@ -535,6 +543,8 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
+    
+    // bredde
     if (!bredde){
         if (teller > 0) {
             feilmeldinger += "og ";
@@ -543,7 +553,7 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
-    if (!isNaN(bredde){
+    if (!isNaN(bredde)){
         if (teller > 0) {
             feilmeldinger += "og ";
         }
@@ -552,12 +562,14 @@ function validerOppdaterModeller() {
         resultat = false;
     }
     
+    // swal
        swal({
         title: "Obs!",
         text: feilmeldinger,
         type: "warning"
     });
+    
     return resultat;
 }
-*/
+
 // valider modeller
