@@ -1,3 +1,8 @@
+//InNumeric
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 /* Legg til/endre klasse */
 
 function validerOppdaterKlasse() {
@@ -84,7 +89,7 @@ function validerLand() {
         feilmeldinger += "Iso må fylles ut";
         resultat = false;
     }
-    else if (!isNaN(iso)) {
+    else if (!IsNaN(iso)) {
         feilmeldinger += "iso kan kun være bokstaver";
         resultat = false;
     }
@@ -97,7 +102,7 @@ function validerLand() {
         feilmeldinger += "iso3 må ha en verdi";
         resultat = false;
     }
-    else if (!isNaN(iso3)) {
+    else if (!IsNumeric(iso3)) {
         feilmeldinger += "iso3 kan kun være bokstaver"
         resultat = false;
     }
@@ -116,11 +121,6 @@ function validerLand() {
 }
 /* Legg til/endre land  */
 
-
-<<<<<<< Updated upstream
-//function 
-=======
->>>>>>> Stashed changes
 
 /*Legg til passasjertype*/
 function validerOppdaterPassasjertype() {
