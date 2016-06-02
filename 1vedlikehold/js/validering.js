@@ -1,8 +1,3 @@
-//InNumeric
-function isNumeric(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
 /* Legg til/endre klasse */
 
 function validerOppdaterKlasse() {
@@ -102,7 +97,7 @@ function validerLand() {
         feilmeldinger += "iso3 må ha en verdi";
         resultat = false;
     }
-    else if (!IsNumeric(iso3)) {
+    else if (!IsNaN(iso3)) {
         feilmeldinger += "iso3 kan kun være bokstaver"
         resultat = false;
     }
@@ -149,25 +144,3 @@ function validerOppdaterPassasjertype() {
     return resultat;
 }
 /*Legg til passasjertype*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

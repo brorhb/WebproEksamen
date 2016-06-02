@@ -173,7 +173,7 @@
                         <input type="submit" name="ny" class="btn btn-success" value="Legg til" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett"/>
+                        <input type="submit" name="slett" class="btn btn-danger" value="Slett" onclick="sikkerSlett()"/>
                     </div>
                 </form>
         </div>
