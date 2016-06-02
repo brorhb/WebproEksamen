@@ -172,8 +172,7 @@ function validerOppdaterKlasse() {
 
 /* Legg til/endre valuta */
 
-/* Slett Valuta */
-
+/* Slett */
 function sikkerSlett() {
     swal({   
         title: "Are you sure?",   
@@ -189,13 +188,10 @@ function sikkerSlett() {
          function(isConfirm){   
             if (isConfirm) {     
                 swal("Deleted!", "Your imaginary file has been deleted.", "success");   
-                /*return true;
             } 
             else {     
                 swal("Cancelled", "Your imaginary file is safe :)", "error");  
-                return false;
             } 
-    */ 
     });
-
-/* Slett Valuta   */ 
+}
+/* Slett  */ 

@@ -33,23 +33,27 @@
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
-                    echo '<h2>Ny klasse</h2>';
+                    echo '<h2>Ny modell</h2>';
                 }
                 elseif ($_POST['endre']) {
-                    echo '<h2>Endre klasse</h2>';
+                    echo '<h2>Endre modell</h2>';
                 }
         echo '
             <div class="col-md-6">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM passasjertype WHERE id='$id';";
-                    $result = connectDB()->query($sql);
+                    $sql = "SELECT modell.id , modell.navn, type_luftfartoy.type, modell.kapasitet, modell.rader, modell.bredde FROM modell LEFT JOIN type_luftfartoy ON modell.type_luftfartoy_id = type_luftfartoy.id;";
+                            $result = connectDB()->query($sql);
 
-                    if($result->num_rows > 0 ) {
-                        while ($row = $result->fetch_assoc()) {
-                            $id = utf8_encode($row["id"]);
-                            $Passasjertype = utf8_encode($row["type"]);
-                            $beskrivelse = utf8_encode($row["beskrivelse"]);
+                            if($result->num_rows > 0 ) {
+                                while ($row = $result->fetch_assoc()) {
+
+                                    $id = utf8_encode($row["id"]);
+                                    $navn = utf8_encode($row["navn"]);
+                                    $type = utf8_encode($row["type"]);
+                                    $kapasitet = utf8_encode($row["kapasitet"]);
+                                    $rader = utf8_encode($row["rader"]);
+                                    $bredde = utf8_encode($row["bredde"]);
                             echo '
                             <div class="form-group">
                                 <lable for="Passasjertype">Passasjertype</lable>
