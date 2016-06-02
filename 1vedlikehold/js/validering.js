@@ -170,6 +170,80 @@ function validerOppdaterKlasse() {
 }
 /* Legg til/endre klasse */
 
+/*legg til/ Alleflyplasser*/
+function validerAlleflyplasser() {
+    var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value,
+    longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "";
+    var teller = 0;
+    // navn
+    if (!navn) {
+        feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
+        resultat = false;
+    }
+    else if (navn.length < 4) {
+        feilmeldinger += "Navnet kan ikke være under 4 tegn langt";
+        resultat = false;    
+    }
+    else if (!isNaN(navn)) {
+        feilmeldinger += "Navnet kan ikke inneholde tall";
+        resultat = false;
+    }
+    // flyplasskode
+    else if (!flyplasskode) {
+        feilmeldinger += "Flyplasskode må fylles ut";
+        resultat = false;
+    }
+    else if (isNaN(flyplasskode) || flyplasskode == 0) {
+        feilmeldinger += "Flyplasskode FEILMEDLING";
+        resultat = false;
+    }
+    // latitude
+    //else if (latitude == 0) {
+        //feilmeldinger += "Latitude FEILMEDLING";
+        //resultat = false;
+   // }
+    else if (!latitude {
+        feilmeldinger += "Longtude FEILMEDLING";
+        resultat = false;
+    }
+    else if (!IsNaN(latitude)) {
+        feilmeldinger += "Latitude FEILMEDLING";
+        resultat = false;
+    }
+    
+    //Longtude
+    else if (!longtude {
+        feilmeldinger += "Longtude må ha en verdi";
+        resultat = false;
+    }
+    else if (!IsNaN(longtude)) {
+        feilmeldinger += "Longtude kan kun inneholde tall"
+        resultat = false;
+    }
+
+    //tidssone_gmt
+    ___
+    //land
+     else if (!land_id) {
+        feilmeldinger += "Land må fylles ut";
+        resultat = false;
+    }
+    else if (isNaN(land_id) || land_id == 0) {
+        feilmeldinger += "Flyplasskode FEILMEDLING";
+        resultat = false;
+
+        
+    // Alert
+    swal({
+       title: "Obs!",
+       text: feilmeldinger,
+       type: "warning"
+    });
+    return resultat;
+}
+
+/*legg til/ Alleflyplasser*/ 
+
 /* Legg til/endre valuta */
 
 /* Slett */
