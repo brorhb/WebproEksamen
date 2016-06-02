@@ -195,3 +195,215 @@ function sikkerSlett() {
     });
 }
 /* Slett  */ 
+/* Valider endre/legg til på alle brukere siden */
+
+function validerPersonBruker() {
+    var brukerID = document.forms["oppdater"]["brukerID"].value, personID = document.forms["oppdater"]["personID"].value, brukernavn = document.forms["oppdater"]["brukernavn"].value, ukryptertPassord = document.forms["oppdater"]["ukryptertpassord"].value, fornavn = document.forms["oppdater"]["fornavn"].value, etternavn = document.forms["oppdater"]["etternavn"].value, fodselsdato = document.forms["oppdater"]["fodselsdato"].value, land = document.forms["oppdater"]["land"].value, landID = document.forms["oppdater"]["landID"].value, epost = document.forms["oppdater"]["epost"].value, mobilnr = document.forms["oppdater"]["mobilnr"].value, resultat = true, feilmeldinger = "", teller = 0;
+    
+    /* brukerID */
+    if (!brukerID) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Bruker ID er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    if (isNaN(brukerID)) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Bruker ID er ikke et nummer";
+        resultat = false;
+        teller++;
+    }
+    /* brukerID */
+    
+    /* personID */
+    if (!personID) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Person ID er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    if (isNaN(personID)) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Person ID er ikke et nummer";
+        resultat = false;
+        teller++;
+    }
+    /* personID */
+    
+    /* brukernavn */
+    if (!brukernavn) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Brukernavn er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    /* brukernavn */
+    
+    /* ukryptertPassord */
+    if (!ukryptertPassord) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Passord er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    /* ukryptertPassord */
+    
+    /* fornavn */
+    if (!fornavn) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Fornavn er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    /* fornavn */
+    
+    /* etternavn */
+    if (!etternavn) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Etternavn er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    /* etternavn */
+    
+    /* fodselsdato */
+    if (!fodselsdato) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Fødselsdato er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    if (isNaN(fodselsdato)) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Fødselsdato er ikke en dato";
+        resultat = false;
+        teller++;
+    }
+    if (!fodselsdato == 8) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Fødselsdato er ikke en gyldig dato (DDMMYYY)";
+        resultat = false;
+        teller++;
+    }
+    /* fodselsdato */
+    
+    /* land */
+    if (!land) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Land er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    /* land */
+    
+    /* landID */
+    if (!landID) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Land ID er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    if (isNaN(landID)) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Land ID er ikke et nummer";
+        resultat = false;
+        teller++;
+    }
+    /* landID */
+    
+    /* epost */
+    if (!epost) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "E-post er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    /* epost */
+    
+    /* mobilnr */
+    if (!mobilnr) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Mobilnr er ikke fylt ut";
+        resultat = false;
+        teller++;
+    }
+    
+    if (isNaN(mobilnr)) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Mobilnr er ikke ett nummer";
+        resultat = false;
+        teller++;
+    }
+    
+    if (mobilnr.length < 8) {
+        if (teller > 0) {
+            feilmeldinger += "og";
+            teller++;
+        }
+        feilmeldinger += "Mobilnr er ikke gyldig";
+        resultat = false;
+        teller++;
+    }
+    /* mobilnr */
+    
+    swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
+    
+    return resultat;
+}
+
+/* Valider endre/legg til på alle brukere siden */
