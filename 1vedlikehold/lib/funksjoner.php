@@ -355,6 +355,21 @@
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
+    function slettPersonBruker() {
+        connectDB();
+
+		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+    }
+
 	function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr) {
 		
 		connectDB();
@@ -374,8 +389,7 @@
 
 		if ($id == '') {
 
-			$sql = "
-                    START TRANSACTION;
+			$sql = "START TRANSACTION;
                     INSERT INTO person (id, fornavn, etternavn, fodselsdato) VALUES ('', '$fornavn', '$etternavn', '$fodselsdato');
                     INSERT INTO bruker (id, brukernavn, epost, passord, land_id, mobilnr, person_id) VALUES ('', '$brukernavn', '$epost', '$kryptertPassord', '$landID', '$mobilnr', (SELECT MAX(id) FROM person));
                     COMMIT;";
@@ -389,8 +403,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "
-                    START TRANSACTION;
+			$sql = "START TRANSACTION;
                     UPDATE person SET fornavn='$fornavn', etternavn='$etternavn', fodselsdato='$fodselsdato' WHERE id='$personID';
                     UPDATE bruker SET brukernavn='$brukernavn', epost='$epost', passord='$kryptertPassord', land_id='$landID', mobilnr='$mobilnr' WHERE person_id='$personID';
                     COMMIT;";
@@ -995,7 +1008,7 @@
     	$sql = "SELECT id, navn FROM land ORDER BY navn;";
 		$result = connectDB()->query($sql);
 		
-		echo '<select name="' . $objektnavn . '_id">';
+		echo '<select class="form-control" name="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
 
