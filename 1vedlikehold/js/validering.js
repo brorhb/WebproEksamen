@@ -1,16 +1,23 @@
 /* Legg til/endre klasse */
 
 function validerOppdaterKlasse() {
-    var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, feilmeldinger = "", resultat = true;
+    var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
+    var teller = 0;
     if (!klassenavn) {
-        feilmeldinger = "Klassenavn må fylles ut";
+        feilmeldinger = "Klassenavn ";
+        teller++;
 
         resultat = false;
     }
-    else if (!beskrivelse) {
-        feilmeldinger = feilmelding + "Beskrivelse må fylles ut";
+    if (!beskrivelse){
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "beskrivelse ";
+        teller++;
         resultat = false;
     }
+    feilmeldinger += "må fylles ut.";
        swal({
         title: "Obs!",
         text: feilmeldinger,
@@ -54,3 +61,9 @@ function validerLand() {
     });
 }
 /* Legg til/endre land  */
+
+/* Legg til/endre valuta */
+
+function 
+
+/* Legg til/endre valuta */
