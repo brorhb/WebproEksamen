@@ -17,7 +17,7 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	echo landListe('800') . '<br>';
+	echo valutaListe('2') . '<br>';
 
 	/* Eksempel på valider bruker */
 
@@ -44,6 +44,17 @@
 	}
 
 	/* Slutt eksempel på valider bruker */
+
+	echo "<br>";
+
+	$valutaID = '1';
+
+	if (sjekkOmValutaIDeksisterer($valutaID)) {
+		echo '<p>Valuta ID <strong>' . $valutaID . '</strong> eksisterer</p>';
+	}
+	else {
+		echo '<p>Valuta ID <strong>' . $valutaID . '</strong> eksisterer <strong>IKKE</strong></p>';
+	}
 	
 
 	/*$FlyplassID = '';

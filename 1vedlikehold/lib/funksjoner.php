@@ -893,19 +893,33 @@
 		connectDB()->close();
     }
 
+    function sjekkOmValutaIDeksisterer($objektID) {
+    	connectDB();
+
+		$sql = "SELECT id FROM valuta WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+    }
+
     function valutaListe($objektID) {
     	$objektnavn = 'valuta';
+    	$objektIDeksisterer = sjekkOmValutaIDeksisterer($objektID);
     	$sql = "SELECT id, valuta_navn, forkortelse FROM valuta ORDER BY valuta_navn;";
 		$result = connectDB()->query($sql);
 		
-		echo '<select name="' . $objektnavn . '_id">';
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
 
 			echo '<option ';
-
-			if ($objektID == '') { echo 'selected '; }
-
+			if (!$objektIDeksisterer) { echo 'selected '; }
 			echo 'disabled>Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
@@ -914,9 +928,7 @@
 				$forkortelse = utf8_encode($row["forkortelse"]);
 
 				echo '<option ';
-
 				if ($objektID == $id) { echo'selected '; }
-
 				echo 'value="' . $id . '">' . $navn . ' (' . $forkortelse . ')</option>';
 			}
 		}
