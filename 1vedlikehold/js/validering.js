@@ -483,6 +483,7 @@ function validerPersonBruker() {
 /* Valider endre/legg til på alle brukere siden */
 
 // valider modeller
+/*
 function validerOppdaterModeller() {
     var navn = document.forms["oppdater"]["navn"].value, type = document.forms["oppdater"]["type"].value,
      kapasitet = document.forms["oppdater"]["kapasitet"].value, rader = document.forms["oppdater"]["rader"].value,
@@ -550,7 +551,7 @@ function validerOppdaterModeller() {
         teller++;
         resultat = false;
     }
-    feilmeldinger += "må fylles ut.";
+    
        swal({
         title: "Obs!",
         text: feilmeldinger,
@@ -558,4 +559,5 @@ function validerOppdaterModeller() {
     });
     return resultat;
 }
+*/
 // valider modeller
