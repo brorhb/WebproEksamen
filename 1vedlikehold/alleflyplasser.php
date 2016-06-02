@@ -47,7 +47,7 @@
             <div class="col-md-6">';
                 
                     connectDB();
-                    $sql = "SELECT * FROM flyplass WHERE id='$id';";
+                    $sql = "SELECT f.id, f.navn, f.flyplasskode, f.latitude, f.longitude, f.tidssone_gmt, f.land_id FROM flyplass f LEFT JOIN land l ON f.land_id=l.id WHERE f.id='$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
