@@ -231,7 +231,7 @@ function validerFlyplasser() {
     else if (isNaN(land_id) || land_id == 0) {
         feilmeldinger += "Flyplasskode FEILMEDLING";
         resultat = false;
-
+        }
         
     // Alert
     swal({
