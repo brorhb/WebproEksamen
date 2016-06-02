@@ -17,11 +17,11 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
-	$IDen = "4";
+	$IDen = "1";
 
-	echo luftfartoyListe($IDen) . '<br>';
+	echo tilgangListe($IDen) . '<br>';
 
-	if (sjekkOmLuftfartoyIDeksisterer($IDen)) {
+	if (sjekkOmTilgangIDeksisterer($IDen)) {
 		echo "eksisterer";
 	}
 	else {

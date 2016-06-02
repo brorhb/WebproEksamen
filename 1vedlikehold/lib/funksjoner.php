@@ -1332,6 +1332,96 @@
 		echo '</select>';
 	}
 
+/* Sjekk om flyplass_gruppe eksisterer tas senere */
+
+	function sjekkOmGruppeIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM gruppe WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function gruppeListe($objektID) {
+		$objektnavn = 'gruppe';
+		$objektIDeksisterer = sjekkOmGruppeIDeksisterer($objektID);
+		$sql = "SELECT id, navn FROM gruppe ORDER BY navn;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled>Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$navn = utf8_encode($row["navn"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $navn . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
+	function sjekkOmTilgangIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM tilgang WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function tilgangListe($objektID) {
+		$objektnavn = 'tilgang';
+		$objektIDeksisterer = sjekkOmTilgangIDeksisterer($objektID);
+		$sql = "SELECT id, navn FROM tilgang ORDER BY navn;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled>Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$navn = utf8_encode($row["navn"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $navn . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
 	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
 		$id = utf8_decode($BrukerID);
 		$brukernavn = utf8_decode($brukernavn);
