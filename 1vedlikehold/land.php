@@ -36,10 +36,10 @@
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerLand()">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
-                    echo '<h2>Ny klasse</h2>';
+                    echo '<h2>Nytt land</h2>';
                 }
                 elseif ($_POST['endre']) {
-                    echo '<h2>Endre klasse</h2>';
+                    echo '<h2>Endre land</h2>';
                 }
         echo '
             <div class="col-md-12">';
@@ -125,7 +125,7 @@
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
-            <h2>Alle Klasser</h2>
+            <h2>Alle land</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
