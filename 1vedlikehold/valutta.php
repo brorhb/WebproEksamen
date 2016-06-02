@@ -4,7 +4,7 @@
     include_once("head.php");
 
     
-    if (@$_POST['slett']) {
+    if ($_POST['slett']) {
         $ValutaID = @$_POST['id'];
         if (slettValuta($ValutaID)) {
             echo "Informasjonen ble slettet.";
@@ -13,7 +13,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif (@$_POST['lagre']) {
+    elseif ($_POST['lagre']) {
         $ValutaID = @$_POST['id'];
         $valuta_navn = $_POST['valuta_navn'];
         $forkortelse = $_POST['forkortelse'];
@@ -25,12 +25,12 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    elseif ($_POST['ny'] || $_POST['endre']) {
         // Hvis endre eller ny er trykket ned
         $ValutaID = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterValuta ()">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
                     echo '<h2>Ny valuta</h2>';
@@ -127,7 +127,7 @@
                         <input type="submit" name="ny" class="btn btn-success" value="Legg til" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett"/>
+                        <input type="submit" name="slett" class="btn btn-danger" onclick="sikkerSlett()" value="Slett" />
                     </div>
                 </form>
         </div>

@@ -117,17 +117,17 @@ function validerLand() {
 /* Legg til/endre land  */
 
 
-<<<<<<< Updated upstream
-//function 
-=======
->>>>>>> Stashed changes
 
-/*Legg til passasjertype*/
-function validerOppdaterPassasjertype() {
-    var Passasjertype = document.forms["oppdater"]["Passasjertype"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
+//function 
+
+
+/* Legg til/endre klasse */
+
+function validerOppdaterKlasse() {
+    var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
     var teller = 0;
-    if (!Passasjertype) {
-        feilmeldinger = "Passasjertype ";
+    if (!klassenavn) {
+        feilmeldinger = "Klassenavn ";
         teller++;
 
         resultat = false;
@@ -148,26 +148,34 @@ function validerOppdaterPassasjertype() {
     });
     return resultat;
 }
-/*Legg til passasjertype*/
+/* Legg til/endre klasse */
 
+/* Legg til/endre valuta */
 
+/* Slett Valuta */
 
+function sikkerSlett() {
+    swal({   
+        title: "Are you sure?",   
+        text: "You will not be able to recover this imaginary file!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel plx!",   
+        closeOnConfirm: false,   
+        closeOnCancel: false 
+    }, 
+         function(isConfirm){   
+            if (isConfirm) {     
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");   
+                /*return true;
+            } 
+            else {     
+                swal("Cancelled", "Your imaginary file is safe :)", "error");  
+                return false;
+            } 
+    */ 
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Slett Valuta   */ 
