@@ -171,10 +171,9 @@ function validerOppdaterKlasse() {
 /* Legg til/endre klasse */
 
 /*legg til/ Alleflyplasser*/
+
 function validerFlyplasser() {
-    var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value,
-    longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
+    var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value, longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "", teller = 0;
     // navn
     if (!navn) {
         feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
@@ -198,11 +197,11 @@ function validerFlyplasser() {
         resultat = false;
     }
     // latitude
-    //else if (latitude == 0) {
-        //feilmeldinger += "Latitude FEILMEDLING";
-        //resultat = false;
-   // }
-    else if (!latitude {
+    else if (latitude == 0) {
+        feilmeldinger += "Latitude FEILMEDLING";
+        resultat = false;
+    }
+    else if (!latitude) {
         feilmeldinger += "Longtude FEILMEDLING";
         resultat = false;
     }
@@ -210,9 +209,8 @@ function validerFlyplasser() {
         feilmeldinger += "Latitude FEILMEDLING";
         resultat = false;
     }
-    
     //Longtude
-    else if (!longtude {
+    else if (!longtude) {
         feilmeldinger += "Longtude må ha en verdi";
         resultat = false;
     }
@@ -220,7 +218,6 @@ function validerFlyplasser() {
         feilmeldinger += "Longtude kan kun inneholde tall"
         resultat = false;
     }
-
     //tidssone_gmt
     
     //land
