@@ -355,21 +355,6 @@
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
-    function slettPersonBruker() {
-        connectDB();
-
-		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
-		$result = connectDB()->query($sql);
-
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
-			}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-    }
-
 	function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr) {
 		
 		connectDB();
@@ -419,6 +404,20 @@
 		connectDB()->close();
 	}
 
+    function slettPersonBruker() {
+        connectDB();
+
+		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+    }
 
     function oppdaterPerson($PersonID, $fornavn, $etternavn, $fodselsdato) {
 		
