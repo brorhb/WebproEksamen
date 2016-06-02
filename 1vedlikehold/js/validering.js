@@ -141,10 +141,6 @@ function validerOppdaterPassasjertype() {
     });
     return resultat;
 }
-<<<<<<< HEAD
-/*Legg til passasjertype*/
-=======
-/*Legg til passasjertype*/
 
 /* Legg til/endre klasse */
 function validerOppdaterKlasse() {
@@ -203,4 +199,3 @@ function sikkerSlett() {
     });
 
 /* Slett Valuta   */ 
->>>>>>> 11853621e53a77b49aee830e353890878d8c24b7
