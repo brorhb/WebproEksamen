@@ -19,9 +19,9 @@
 
 	$IDen = "1";
 
-	echo tilgangListe($IDen) . '<br>';
+	echo rute_kombinasjonListe($IDen) . '<br>';
 
-	if (sjekkOmTilgangIDeksisterer($IDen)) {
+	if (sjekkOmRute_kombinasjonIDeksisterer($IDen)) {
 		echo "eksisterer";
 	}
 	else {

@@ -1422,6 +1422,55 @@
 		echo '</select>';
 	}
 
+/* bruker_tilgang ordnes senere */
+
+/* Rute_kombinasjon lages senere */
+
+	function sjekkOmRute_kombinasjonIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM rute WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function rute_kombinasjonListe($objektID) {
+		$objektnavn = 'rute_kombinasjon';
+		$objektIDeksisterer = sjekkOmRute_kombinasjonIDeksisterer($objektID);
+		$sql = "SELECT rk.id, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fra, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS til FROM rute_kombinasjon rk ORDER BY id;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled>Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$fra = utf8_encode($row["fra"]);
+				$til = utf8_encode($row["til"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $fra . ' - ' . $til . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
 	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
 		$id = utf8_decode($BrukerID);
 		$brukernavn = utf8_decode($brukernavn);
