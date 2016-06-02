@@ -171,8 +171,7 @@ function validerOppdaterKlasse() {
 /* Legg til/endre klasse */
 
 /*legg til/ Alleflyplasser*/
-
-function validerAlleflyplasser() {
+function validerFlyplasser() {
     var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value,
     longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "";
     var teller = 0;
