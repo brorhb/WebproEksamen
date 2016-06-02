@@ -355,21 +355,6 @@
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
-    function slettPersonBruker() {
-        connectDB();
-
-		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
-		$result = connectDB()->query($sql);
-
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
-			}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-    }
-
 	function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr) {
 		
 		connectDB();
@@ -389,7 +374,8 @@
 
 		if ($id == '') {
 
-			$sql = "START TRANSACTION;
+			$sql = "
+                    START TRANSACTION;
                     INSERT INTO person (id, fornavn, etternavn, fodselsdato) VALUES ('', '$fornavn', '$etternavn', '$fodselsdato');
                     INSERT INTO bruker (id, brukernavn, epost, passord, land_id, mobilnr, person_id) VALUES ('', '$brukernavn', '$epost', '$kryptertPassord', '$landID', '$mobilnr', (SELECT MAX(id) FROM person));
                     COMMIT;";
@@ -403,7 +389,8 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "START TRANSACTION;
+			$sql = "
+                    START TRANSACTION;
                     UPDATE person SET fornavn='$fornavn', etternavn='$etternavn', fodselsdato='$fodselsdato' WHERE id='$personID';
                     UPDATE bruker SET brukernavn='$brukernavn', epost='$epost', passord='$kryptertPassord', land_id='$landID', mobilnr='$mobilnr' WHERE person_id='$personID';
                     COMMIT;";
@@ -583,8 +570,8 @@
 	}
 
 
-	function HentLand_IDFraFlyplass_ID($flyplass_id) {
-		connectDB();
+    function HentLand_IDFraFlyplass_ID($flyplass_id) {
+        connectDB();
 
 		$sql = "SELECT land_id FROM flyplass WHERE id = '$flyplass_id';";
 		$result = connectDB()->query($sql);
@@ -596,10 +583,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentGruppe_IDFraFlyplass_Gruppe_ID($flyplass_gruppe_id) {
-		connectDB();
+    function HentGruppe_IDFraFlyplass_Gruppe_ID($flyplass_gruppe_id) {
+        connectDB();
 
 		$sql = "SELECT gruppe_id FROM flyplass_gruppe WHERE id = '$flyplass_gruppe_id';";
 		$result = connectDB()->query($sql);
@@ -611,10 +598,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentFlyplass_IDFraFlyplass_Gruppe_ID($flyplass_gruppe_id) {
-		connectDB();
+    function HentFlyplass_IDFraFlyplass_Gruppe_ID($flyplass_gruppe_id) {
+        connectDB();
 
 		$sql = "SELECT flyplass_id FROM flyplass_gruppe WHERE id = '$flyplass_gruppe_id';";
 		$result = connectDB()->query($sql);
@@ -626,10 +613,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentValuta_IDFraRute_ID($rute_id) {
-		connectDB();
+    function HentValuta_IDFraRute_ID($rute_id) {
+        connectDB();
 
 		$sql = "SELECT valuta_id FROM rute WHERE id = '$rute_id';";
 		$result = connectDB()->query($sql);
@@ -641,10 +628,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentRute_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
-		connectDB();
+    function HentRute_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
+        connectDB();
 
 		$sql = "SELECT rute_id FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
 		$result = connectDB()->query($sql);
@@ -656,10 +643,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentFra_Flyplass_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
-		connectDB();
+    function HentFra_Flyplass_IDFraRute_kombinasjon_ID($rute_kombinasjon_id) {
+        connectDB();
 
 		$sql = "SELECT flyplass_id_fra FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
 		$result = connectDB()->query($sql);
@@ -671,10 +658,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentTil_Flyplass_IDFraRute_Kombinasjon_ID($rute_kombinasjon_id) {
-		connectDB();
+    function HentTil_Flyplass_IDFraRute_Kombinasjon_ID($rute_kombinasjon_id) {
+        connectDB();
 
 		$sql = "SELECT flyplass_id_til FROM rute_kombinasjon WHERE id = '$rute_kombinasjon_id';";
 		$result = connectDB()->query($sql);
@@ -686,10 +673,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentLuftfartoy_IDFraFlyvning_ID($flyvning_id) {
-		connectDB();
+    function HentLuftfartoy_IDFraFlyvning_ID($flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT luftfartoy_id FROM flyvning WHERE id = '$flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -701,10 +688,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentRute_Kombinasjon_IDFraFlyvning_ID($flyvning_id) {
-		connectDB();
+    function HentRute_Kombinasjon_IDFraFlyvning_ID($flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT rute_kombinasjon_id FROM flyvning WHERE id = '$flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -716,10 +703,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentFlyvning_IDFraPris_ID($pris_id) {
-		connectDB();
+    function HentFlyvning_IDFraPris_ID($pris_id) {
+        connectDB();
 
 		$sql = "SELECT flyvning_id FROM pris WHERE id = '$pris_id';";
 		$result = connectDB()->query($sql);
@@ -731,10 +718,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentKlasse_IDFraPris_ID($pris_id) {
-		connectDB();
+    function HentKlasse_IDFraPris_ID($pris_id) {
+        connectDB();
 
 		$sql = "SELECT klasse_id FROM pris WHERE id = '$pris_id';";
 		$result = connectDB()->query($sql);
@@ -746,10 +733,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentPassasjertype_IDFraPris_ID($pris_id) {
-		connectDB();
+    function HentPassasjertype_IDFraPris_ID($pris_id) {
+        connectDB();
 
 		$sql = "SELECT passasjertype_id FROM pris WHERE id = '$pris_id';";
 		$result = connectDB()->query($sql);
@@ -761,10 +748,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentBruker_IDFraBruker_Tilgang_ID($bruker_tilgang_id) {
-		connectDB();
+    function HentBruker_IDFraBruker_Tilgang_ID($bruker_tilgang_id) {
+        connectDB();
 
 		$sql = "SELECT bruker_id FROM bruker_tilgang WHERE id = '$bruker_tilgang_id';";
 		$result = connectDB()->query($sql);
@@ -776,10 +763,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentTilgang_IDFraBruker_Tilgang_ID($bruker_tilgang_id) {
-		connectDB();
+    function HentTilgang_IDFraBruker_Tilgang_ID($bruker_tilgang_id) {
+        connectDB();
 
 		$sql = "SELECT tilgang_id FROM bruker_tilgang WHERE id = '$bruker_tilgang_id';";
 		$result = connectDB()->query($sql);
@@ -791,10 +778,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentBruker_IDFraBestilling_ID($bestilling_id) {
-		connectDB();
+    function HentBruker_IDFraBestilling_ID($bestilling_id) {
+        connectDB();
 
 		$sql = "SELECT bruker_id FROM bestilling WHERE id = '$bestilling_id';";
 		$result = connectDB()->query($sql);
@@ -806,10 +793,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentBestilling_IDFraBestilling_Flyvning_ID($bestilling_flyvning_id) {
-		connectDB();
+    function HentBestilling_IDFraBestilling_Flyvning_ID($bestilling_flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT bestilling_id FROM bestilling_flyvning WHERE id = '$bestilling_flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -821,10 +808,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentFlyvning_IDFraBestilling_Flyvning_ID($bestilling_flyvning_id) {
-		connectDB();
+    function HentFlyvning_IDFraBestilling_Flyvning_ID($bestilling_flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT flyvning_id FROM bestilling_flyvning WHERE id = '$bestilling_flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -836,10 +823,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentBestilling_Flyvning_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
-		connectDB();
+    function HentBestilling_Flyvning_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT bestilling_flyvning_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -851,10 +838,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentPerson_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
-		connectDB();
+    function HentPerson_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT person_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -866,10 +853,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentPris_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
-		connectDB();
+    function HentPris_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT pris_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -881,10 +868,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentSeteoppsett_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
-		connectDB();
+    function HentSeteoppsett_IDFraPassasjer_Flyvning_ID($passasjer_flyvning_id) {
+        connectDB();
 
 		$sql = "SELECT seteoppsett_id FROM passasjer_flyvning WHERE id = '$passasjer_flyvning_id';";
 		$result = connectDB()->query($sql);
@@ -896,10 +883,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentModell_IDFraLuftfartoy_ID($luftfartoy_id) {
-		connectDB();
+    function HentModell_IDFraLuftfartoy_ID($luftfartoy_id) {
+        connectDB();
 
 		$sql = "SELECT modell_id FROM luftfartoy WHERE id = '$luftfartoy_id';";
 		$result = connectDB()->query($sql);
@@ -911,10 +898,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentType_Luftfartoy_IDFraModell_ID($modell_id) {
-		connectDB();
+    function HentType_Luftfartoy_IDFraModell_ID($modell_id) {
+        connectDB();
 
 		$sql = "SELECT type_luftfartoy_id FROM modell WHERE id = '$modell_id';";
 		$result = connectDB()->query($sql);
@@ -926,10 +913,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentModell_IDFraSeteoppsett_ID($seteoppsett_id) {
-		connectDB();
+    function HentModell_IDFraSeteoppsett_ID($seteoppsett_id) {
+        connectDB();
 
 		$sql = "SELECT modell_id FROM seteoppsett WHERE id = '$seteoppsett_id';";
 		$result = connectDB()->query($sql);
@@ -941,10 +928,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function HentKlasse_IDFraSeteoppsett_ID($seteoppsett_id) {
-		connectDB();
+    function HentKlasse_IDFraSeteoppsett_ID($seteoppsett_id) {
+        connectDB();
 
 		$sql = "SELECT klasse_id FROM seteoppsett WHERE id = '$seteoppsett_id';";
 		$result = connectDB()->query($sql);
@@ -956,143 +943,10 @@
 			}
 		}
 		connectDB()->close();
-	}
+    }
 
-	function sjekkOmKlasseIDeksisterer($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM klasse WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function klasseListe($objektID) {
-		$objektnavn = 'klasse';
-		$objektIDeksisterer = sjekkOmKlasseIDeksisterer($objektID);
-		$sql = "SELECT id, type FROM klasse ORDER BY type;";
-		$result = connectDB()->query($sql);
-		
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
-
-		if ($result->num_rows > 0) {
-
-			echo '<option ';
-			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
-
-			while($row = $result->fetch_assoc()) {
-				$id = utf8_encode($row["id"]);
-				$type = utf8_encode($row["type"]);
-
-				echo '<option ';
-				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $type . '</option>';
-			}
-		}
-		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
-		}
-		echo '</select>';
-	}
-
-	function sjekkOmType_luftfartoyIDeksisterer($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM type_luftfartoy WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function type_luftfartoyListe($objektID) {
-		// OBS! "Velg type luftfartøy" er hardkodet p.ga. _ og ø
-		$objektnavn = 'type_luftfartoy';
-		$objektIDeksisterer = sjekkOmType_luftfartoyIDeksisterer($objektID);
-		$sql = "SELECT id, type FROM type_luftfartoy ORDER BY type;";
-		$result = connectDB()->query($sql);
-		
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
-
-		if ($result->num_rows > 0) {
-
-			echo '<option ';
-			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg type luftfatøy</option>';
-
-			while($row = $result->fetch_assoc()) {
-				$id = utf8_encode($row["id"]);
-				$type = utf8_encode($row["type"]);
-
-				echo '<option ';
-				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $type . '</option>';
-			}
-		}
-		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
-		}
-		echo '</select>';
-	}
-
-	function sjekkOmPassasjertypeIDeksisterer($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM passasjertype WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function passasjertypeListe($objektID) {
-		$objektnavn = 'passasjertype';
-		$objektIDeksisterer = sjekkOmPassasjertypeIDeksisterer($objektID);
-		$sql = "SELECT id, type FROM passasjertype ORDER BY type;";
-		$result = connectDB()->query($sql);
-		
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
-
-		if ($result->num_rows > 0) {
-
-			echo '<option ';
-			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
-
-			while($row = $result->fetch_assoc()) {
-				$id = utf8_encode($row["id"]);
-				$type = utf8_encode($row["type"]);
-
-				echo '<option ';
-				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $type . '</option>';
-			}
-		}
-		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
-		}
-		echo '</select>';
-	}
-
-	function sjekkOmValutaIDeksisterer($objektID) {
-		connectDB();
+    function sjekkOmValutaIDeksisterer($objektID) {
+    	connectDB();
 
 		$sql = "SELECT id FROM valuta WHERE id = '$objektID';";
 		$result = connectDB()->query($sql);
@@ -1104,12 +958,12 @@
 			return FALSE;
 		}
 		connectDB()->close();
-	}
+    }
 
-	function valutaListe($objektID) {
-		$objektnavn = 'valuta';
-		$objektIDeksisterer = sjekkOmValutaIDeksisterer($objektID);
-		$sql = "SELECT id, valuta_navn, forkortelse FROM valuta ORDER BY valuta_navn;";
+    function valutaListe($objektID) {
+    	$objektnavn = 'valuta';
+    	$objektIDeksisterer = sjekkOmValutaIDeksisterer($objektID);
+    	$sql = "SELECT id, valuta_navn, forkortelse FROM valuta ORDER BY valuta_navn;";
 		$result = connectDB()->query($sql);
 		
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
@@ -1131,38 +985,24 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo "<option>Tomt resultat for ' . $objektnavn . '</option>";
 		}
 		echo '</select>';
-	}
+    }
 
-	function sjekkOmLandIDeksisterer($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM land WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function landListe($objektID) {
-		$objektnavn = 'land';
-		$objektIDeksisterer = sjekkOmLandIDeksisterer($objektID);
-		$sql = "SELECT id, navn FROM land ORDER BY navn;";
+    function landListe($objektID) {
+    	$objektnavn = 'land';
+    	$sql = "SELECT id, navn FROM land ORDER BY navn;";
 		$result = connectDB()->query($sql);
 		
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+		echo '<select name="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
 
 			echo '<option ';
-			if (!$objektIDeksisterer) { echo 'selected '; }
+
+			if ($objektID == '') { echo 'selected '; }
+
 			echo 'disabled>Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
@@ -1170,108 +1010,19 @@
 				$navn = utf8_encode($row["navn"]);
 
 				echo '<option ';
+
 				if ($objektID == $id) { echo'selected '; }
+				
 				echo 'value="' . $id . '">' . $navn . '</option>';
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo "<option>Tomt resultat for ' . $objektnavn . '</option>";
 		}
 		echo '</select>';
-	}
+    }
 
-	function sjekkOmFlyplassIDeksisterer($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM flyplass WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function flyplassListe($objektID) {
-		$objektnavn = 'flyplass';
-		$objektIDeksisterer = sjekkOmFlyplassIDeksisterer($objektID);
-		$sql = "SELECT id, navn, flyplasskode FROM flyplass ORDER BY navn;";
-		$result = connectDB()->query($sql);
-		
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
-
-		if ($result->num_rows > 0) {
-
-			echo '<option ';
-			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
-
-			while($row = $result->fetch_assoc()) {
-				$id = utf8_encode($row["id"]);
-				$type = utf8_encode($row["navn"]);
-				$flyplasskode = utf8_encode($row["flyplasskode"]);
-
-				echo '<option ';
-				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $type . ' (' . $flyplasskode . ')</option>';
-			}
-		}
-		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
-		}
-		echo '</select>';
-	}
-
-/* Bruker og person trenger asynkron søk */
-
-	function sjekkOmModellIDeksisterer($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM modell WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function modellListe($objektID) {
-		$objektnavn = 'modell';
-		$objektIDeksisterer = sjekkOmModellIDeksisterer($objektID);
-		$sql = "SELECT id, navn FROM modell ORDER BY navn;";
-		$result = connectDB()->query($sql);
-		
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
-
-		if ($result->num_rows > 0) {
-
-			echo '<option ';
-			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
-
-			while($row = $result->fetch_assoc()) {
-				$id = utf8_encode($row["id"]);
-				$navn = utf8_encode($row["navn"]);
-
-				echo '<option ';
-				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $navn . '</option>';
-			}
-		}
-		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
-		}
-		echo '</select>';
-	}
-
-	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
+    function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
 		$id = utf8_decode($BrukerID);
 		$brukernavn = utf8_decode($brukernavn);
 		$epost = utf8_decode($epost);
@@ -1305,6 +1056,6 @@
 		}
 
 		return $tilbakemelding;
-	}
+    }
 
 ?>
