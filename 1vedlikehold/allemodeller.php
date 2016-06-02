@@ -15,10 +15,11 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $Passasjertype = $_POST['Passasjertype'];
-        $beskrivelse = $_POST['beskrivelse'];
+        $navn = $_POST['navn'];
+        $type = $_POST['type_luftfartoy'];
+        $kapasitet = $_POST[''];
 
-        if(oppdaterPassasjertype($id, $Passasjertype, $beskrivelse)) {
+        if(oppdaterTypeLuftfartoy($id, $navn, $type)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {
@@ -39,7 +40,7 @@
                     echo '<h2>Endre modell</h2>';
                 }
         echo '
-            <div class="col-md-6">';
+            <div class="col-md-12">';
                 
                     connectDB();
                     $sql = "SELECT modell.id , modell.navn, type_luftfartoy.type, modell.kapasitet, modell.rader, modell.bredde FROM modell LEFT JOIN type_luftfartoy ON modell.type_luftfartoy_id = type_luftfartoy.id;";
@@ -55,27 +56,57 @@
                                     $rader = utf8_encode($row["rader"]);
                                     $bredde = utf8_encode($row["bredde"]);
                             echo '
-                            <div class="form-group">
-                                <lable for="Passasjertype">Passasjertype</lable>
-                                <input class="form-control" type="text" placeholder="Passasjertype" name="Passasjertype" id="Passasjertype" value="' . @$Passasjertype . '" required>
+                            <div class="form-group col-md-6">
+                                <lable for="navn">Navn</lable>
+                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
-                            <div class="form-group">
-                                <lable for="Beskrivelse">Beskrivelse</lable>
-                                <input class="form-control" type="text" placeholder="Beskrivelse" name="beskrivelse" id="beskrivelse" value="' . @$beskrivelse . '" required>
+                            <div class="form-group col-md-6">
+                                <lable for="type_luftfartoy">Type luftfartøy</lable>';
+                            
+                            type_luftfartoyListe($type);
+                                
+                            echo '
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="kapasitet">kapasitet</lable>
+                                <input class="form-control" type="text" placeholder="kapasitet" name="kapasitet" id="kapasitet" value="' . @$kapasitet . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="rader">Rader</lable>
+                                <input class="form-control" type="text" placeholder="rader" name="rader" id="rader" value="' . @$rader . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="bredde">bredde</lable>
+                                <input class="form-control" type="text" placeholder="bredde" name="bredde" id="bredde" value="' . @$bredde . '" required>
                             </div>';
                         }
                     }
                     else {
                         echo '
-                            <div class="form-group">
-                                <lable for="Passasjertype">Passasjertype</lable>
-                                <input class="form-control" type="text" placeholder="Passasjertype" name="Passasjertype" id="Passasjertype" value="' . @$Passasjertype . '" required>
+                            <div class="form-group col-md-6">
+                                <lable for="navn">Navn</lable>
+                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
-                            <div class="form-group">
-                                <lable for="Beskrivelse">Beskrivelse</lable>
-                                <input class="form-control" type="text" placeholder="Beskrivelse" name="beskrivelse" id="beskrivelse" value="' . @$beskrivelse . '" required>
+                            <div class="form-group col-md-6">
+                                <lable for="type_luftfartoy">Type luftfartøy</lable>';
+                            
+                            type_luftfartoyListe($type);
+                                
+                            echo '
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="kapasitet">kapasitet</lable>
+                                <input class="form-control" type="text" placeholder="kapasitet" name="kapasitet" id="kapasitet" value="' . @$kapasitet . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="rader">Rader</lable>
+                                <input class="form-control" type="text" placeholder="rader" name="rader" id="rader" value="' . @$rader . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="bredde">bredde</lable>
+                                <input class="form-control" type="text" placeholder="bredde" name="bredde" id="bredde" value="' . @$bredde . '" required>
                             </div>';
                     }
                     connectDB()->close();
