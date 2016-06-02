@@ -15,15 +15,15 @@
     elseif (@$_POST['lagre']) {
         $brukerID = @$_POST['brukerID'];
         $personID = @$_POST['personID'];
-        $brukernavn = $_POST["brukernavn"];
+        $brukernavn = $_POST['brukernavn'];
         $ukryptertPassord = $_POST['passord'];
         $fornavn = $_POST['fornavn'];
         $etternavn = $_POST['etternavn'];
         $fodselsdato = $_POST['fodselsdato'];
         $land = $_POST['navn'];
-        $landID = $_POST["land_id"];
-        $epost = $_POST["epost"];
-        $mobilnr = $_POST["mobilnr"];
+        $landID = $_POST['land_id'];
+        $epost = $_POST['epost'];
+        $mobilnr = $_POST['mobilnr'];
 
         if (oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr)) {
             echo "Informasjonen ble oppdatert.";
@@ -65,7 +65,14 @@
                             $landID = utf8_encode($row["land_id"]);
                             $epost = utf8_encode($row["epost"]);
                             $mobilnr = utf8_encode($row["mobilnr"]);
+                            
                             echo '
+                            <div class="form-group col-md-6">
+                                <lable for="brukerID">Bruker ID</lable>
+                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
+                                <lable for="personID">Person ID</lable>
+                                <input class="form-control" type="text" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
+                            </div>
                             <div class="form-group col-md-6">
                                 <lable for="brukernavn">Brukernavn</lable>
                                 <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
