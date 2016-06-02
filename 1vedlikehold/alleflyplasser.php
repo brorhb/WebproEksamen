@@ -53,30 +53,61 @@
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
                             $id = utf8_encode($row["id"]);
-                            $type = utf8_encode($row["type"]);
-                            $beskrivelse = utf8_encode($row["beskrivelse"]);
+                            $navn = utf8_encode($row["navn"]);
+                            $flyplasskode = utf8_encode($row["flyplasskode"]);
+                            $latitude = utf8_encode($row["latitude"]);
+                            $longitude = utf8_encode($row["longitude"]);
+                            $tidssone_gmt = utf8_encode($row["tidssone_gmt"]);
+                            $land_id = utf8_encode($row["land_id"]);
+                    
                             echo '
                             <div class="form-group">
-                                <lable for="Flyplassnavn">Flyplassnavn</lable>
-                                <input class="form-control" type="text" placeholder="flyplass" name="flyplassnavn" id="flyplassnavn" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <input class="form-control" type="hidden" placeholder="Flyplass ID" name="id" id="id" value="' . @$id . '" disabled required>
+                                <lable for="navn">Flyplassnavn</lable>
+                                <input class="form-control" type="text" placeholder="Flyplassnavn" name="navn" id="navn" value="' . @$navn . '">
                             </div>
                             <div class="form-group">
-                                <lable for="Beskrivelse">Beskrivelse</lable>
-                                <input class="form-control" type="text" placeholder="Beskrivelse" name="beskrivelse" id="beskrivelse" value="' . @$beskrivelse . '" required>
-                            </div>';
+                                <lable for="flyplasskode">Flyplasskode</lable>
+                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>';
+                                echo landListe();
+                                echo '
+                            </div>
+                            <div class="form-group">
+                                <lable for="latitude">Latitude</lable>
+                                <input class="form-control" type="text" placeholder="Latitude" name="latitude" id="latitude" value="' . @$latitude . '">
+                                <lable for="longitude">Longitude</lable>
+                                <input class="form-control" type="text" placeholder="Longitude" name="longitude" id="longitude" value="' . @$longitude . '">
+                            </div>
+                            <div class="form-group">
+                                <lable for="tidssone_gmt">Tidssone GMT</lable>
+                                <input class="form-control" type="text" placeholder="Tidssone GMT" name="tidssone_gmt" id="tidssone_gmt" value="' . @$tidssone_gmt . '">
+                            </div>
+
+                            ';
                         }
                     }
                     else {
                         echo '
                             <div class="form-group">
-                                <lable for="Flyplassnavn">Flyplassnavn</lable>
-                                <input class="form-control" type="text" placeholder="Flyplassnavn" name="flyplassnavn" id="flyplassnavn" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <input class="form-control" type="hidden" placeholder="Flyplass ID" name="id" id="id" value="' . @$id . '" disabled required>
+                                <lable for="navn">Flyplassnavn</lable>
+                                <input class="form-control" type="text" placeholder="Flyplassnavn" name="navn" id="navn" value="' . @$navn . '">
                             </div>
                             <div class="form-group">
-                                <lable for="Beskrivelse">Beskrivelse</lable>
-                                <input class="form-control" type="text" placeholder="Beskrivelse" name="beskrivelse" id="beskrivelse" value="' . @$beskrivelse . '" required>
+                                <lable for="flyplasskode">Flyplasskode</lable>
+                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>';
+                                echo landListe();
+                                echo '
+                            </div>
+                            <div class="form-group">
+                                <lable for="latitude">Latitude</lable>
+                                <input class="form-control" type="text" placeholder="Latitude" name="latitude" id="latitude" value="' . @$latitude . '">
+                                <lable for="longitude">Longitude</lable>
+                                <input class="form-control" type="text" placeholder="Longitude" name="longitude" id="longitude" value="' . @$longitude . '">
+                            </div>
+                            <div class="form-group">
+                                <lable for="tidssone_gmt">Tidssone GMT</lable>
+                                <input class="form-control" type="text" placeholder="Tidssone GMT" name="tidssone_gmt" id="tidssone_gmt" value="' . @$tidssone_gmt . '">
                             </div>';
                     }
                     connectDB()->close();
@@ -109,13 +140,13 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT * FROM flyplass;";
+                            $sql = "SELECT f.id, f.navn, f.flyplasskode, f.latitude, f.longitude, f.tidssone_gmt, f.land_id FROM flyplass f LEFT JOIN land l ON f.land_id=l.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
-                                    $FlyplassID = utf8_encode($row["id"]);
+                                    $id = utf8_encode($row["id"]);
                                     $navn = utf8_encode($row["navn"]);
                                     $flyplasskode = utf8_encode($row["flyplasskode"]);
                                     $latitude = utf8_encode($row["latitude"]);
@@ -123,7 +154,7 @@
                                     $tidssone_gmt = utf8_encode($row["tidssone_gmt"]);
                                     $land_id = utf8_encode($row["land_id"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $FlyplassID . '"></td>
+                                                <td><input type="radio" name="id" value="' . $id . '"></td>
                                                 <td>' . $navn . '</td>
                                                 <td>' . $flyplasskode . '</td>
                                                 <td>' . $latitude . '</td>
