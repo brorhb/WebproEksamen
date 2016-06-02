@@ -28,6 +28,21 @@
 		echo "eksisterer ikke";
 	}
 
+	echo "<br><br>";
+
+	$objektID = "";
+	echo klasseListe($objektID) . "<br>";
+	echo type_luftfartoyListe($objektID) . "<br>";
+	echo passasjertypeListe($objektID) . "<br>";
+	echo valutaListe($objektID) . "<br>";
+	echo landListe($objektID) . "<br>";
+	echo flyplassListe($objektID) . "<br>";
+	echo modellListe($objektID) . "<br>";
+	echo luftfartoyListe($objektID) . "<br>";
+	echo gruppeListe($objektID) . "<br>";
+	echo tilgangListe($objektID) . "<br>";
+	echo rute_kombinasjonListe($objektID) . "<br>";
+
 	/* Eksempel på valider bruker */
 
 	/*$BrukerID = '9';
