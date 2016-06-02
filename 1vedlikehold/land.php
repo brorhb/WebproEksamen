@@ -45,7 +45,7 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT land.id AS land_id, land.navn, land.landskode, land.iso, land.iso3, valuta.valuta_navn FROM land LEFT JOIN valuta ON land.valuta_id = valuta.id WHERE land.id = '$id';";
+                    $sql = "SELECT land.id AS land_id, land.navn, land.landskode, land.iso, land.iso3, valuta.valuta_navn, valuta.id AS valuta_id FROM land LEFT JOIN valuta ON land.valuta_id = valuta.id WHERE land.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if($result->num_rows > 0 ) {
@@ -54,6 +54,7 @@
                             $navn = utf8_encode($row["navn"]);
                             $landskode = utf8_encode($row["landskode"]);
                             $valuta_navn = utf8_encode($row["valuta_navn"]);
+                            $valuta_id = utf8_encode($row["valuta_id"]);
                             $iso = utf8_encode($row["iso"]);
                             $iso3 = utf8_encode($row["iso3"]);
                             echo '
@@ -67,13 +68,11 @@
                                 <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="valutanavn">Valuta navn</lable>
-                                <select class="form-control" id="valuta_id" name="valuta_id">
-                                    <option disabled selected>' . $valuta_navn . '</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+                                <lable for="valutanavn">Valuta navn</lable>';
+                            
+                            valutaListe($valuta_id);
+                                
+                            echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="iso">iso</lable>
@@ -97,8 +96,11 @@
                                 <input class="form-control" type="text" placeholder="landskode" name="landskode" id="landskode" value="' . @$landskode . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="valutaid">Valuta id</lable>
-                                <input class="form-control" type="text" placeholder="valuta id" name="valuta_id" id="valuta_id" value="' . @$valuta_id . '" required>
+                                <lable for="valutanavn">Valuta navn</lable>';
+                            
+                            valutaListe($valuta_id);
+                                
+                            echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="iso">iso</lable>
