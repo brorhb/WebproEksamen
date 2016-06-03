@@ -1,7 +1,5 @@
-<?php
-    include_once("lib/funksjoner.php");
+<?php include_once("head.php");
     //krevInnlogging('0');
-    include_once("head.php");
 
     
     if (@$_POST['slett']) {
