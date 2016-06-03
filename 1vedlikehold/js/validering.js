@@ -65,7 +65,7 @@ function validerTypeLuftfartoy() {
 /* Legg til/endre type (type_luftfartoy)*/
 
 /* Legg til/endre land  */
-function validerLand() {
+function validerOppdaterLand() {
 
     var maaFyllesUt = [];
     var kommentar = [];
@@ -78,7 +78,7 @@ function validerLand() {
     var iso3 = document.forms["oppdater"]["iso3"].value;
     /* Ulike valideringer */
     
-    if (true) {
+    if (navn == "" || navn == null) {
         maaFyllesUt.push("navn");
         resultat = false;
     }
@@ -91,11 +91,11 @@ function validerLand() {
         resultat = false;
     }
 
-    if (iso.value == "") {
+    if (iso == "" || iso == null) {
         maaFyllesUt.push("iso");
         resultat = false;
     }
-    if (true) {
+    if (iso3 == "" || iso3 == null) {
         maaFyllesUt.push("iso3");
         resultat = false;
     }
@@ -118,12 +118,12 @@ function validerOppdaterPassasjertype() {
     var kommentar = [];
     var resultat = true;
 
-    var passasjertype = document.forms["oppdater"]["passasjertype"].value;
+    var Passasjertype = document.forms["oppdater"]["Passasjertype"].value;
     var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
-    if (passasjertype == "" || passasjertype == null) {
+    if (Passasjertype == "" || Passasjertype == null) {
         maaFyllesUt.push("passasjertype");
         resultat = false;
     }
