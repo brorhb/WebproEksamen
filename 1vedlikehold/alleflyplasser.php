@@ -213,7 +213,7 @@
     
 
         echo'<div class="col-md-12">
-            <form action="' . $_SERVER['PHP_SELF'] . '" method="post" onsubmit="return validerOppdaterAlleflyplasser()">
+            <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
             <h2>Alle flyplasser</h2>
             <table class="table table-striped">
                 <thead>
