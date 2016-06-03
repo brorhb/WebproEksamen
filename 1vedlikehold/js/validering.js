@@ -112,19 +112,19 @@ function validerLand() {
 /* Legg til/endre land  */
 
 /*Legg til passasjertyper*/
-function validerOppdaterPassasjertyper() {
+function validerOppdaterPassasjertype() {
     /* Klarerer variabler */
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
 
-    var passasjertyper = document.forms["oppdater"]["passasjertyper"].value;
+    var passasjertype = document.forms["oppdater"]["passasjertype"].value;
     var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
-    if (passasjertyper == "" || passasjertyper == null) {
-        maaFyllesUt.push("passasjertyper");
+    if (passasjertype == "" || passasjertype == null) {
+        maaFyllesUt.push("passasjertype");
         resultat = false;
     }
 
