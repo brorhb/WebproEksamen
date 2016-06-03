@@ -172,7 +172,7 @@ function validerOppdaterKlasse() {
 
 /*legg til/ Alleflyplasser*/
 
-function validerOppdaterFlyplass() {
+/*function validerOppdaterFlyplass() {
     var navn = document.forms["oppdater"]["navn"].value;
     var flyplasskode = document.forms["oppdater"]["flyplasskode"].value;
     var latitude = document.forms["oppdater"]["latitude"].value;
@@ -215,12 +215,12 @@ function validerOppdaterFlyplass() {
     
     return resultat;
 }
-
+*/
 /*legg til/ Alleflyplasser*/ 
 
 /* Legg til/endre valuta */
 
-/* Slett */
+/* Slett */ 
 
 function sikkerSlett() {
     swal({   
