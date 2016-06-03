@@ -35,7 +35,7 @@
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerFlyplass()>
             <div class="col-md-12">';
                 if ($_POST['ny']) {
                     echo '<h2>Ny flyplass</h2>';
@@ -69,7 +69,6 @@
                             <div class="form-group">
                                 <lable for="flyplasskode">Flyplasskode</lable>
                                 <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>';
-                                echo landListe();
                                 echo '
                             </div>
                             <div class="form-group">

@@ -172,70 +172,47 @@ function validerOppdaterKlasse() {
 
 /*legg til/ Alleflyplasser*/
 
-function validerFlyplasser() {
-    var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value, longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "", teller = 0;
-    // navn
-    if (!navn) {
-        feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
+function validerOppdaterFlyplass() {
+    var navn = document.forms["oppdater"]["navn"].value;
+    var flyplasskode = document.forms["oppdater"]["flyplasskode"].value;
+    var latitude = document.forms["oppdater"]["latitude"].value;
+    var longtude = document.forms["oppdater"]["longtude"].value;
+    var tidssone_gmt = document.forms["oppdater"]["tidssone_gmt"].value;
+    var land_id = document.forms["oppdater"]["land_id"].value;
+    var resultat = true;
+    if (navn == null || navn == "") {
+        swal({
+            title: "Obs!",
+            text: "Navn må fylles ut",
+            type: "warning"
+        });
         resultat = false;
     }
-    else if (navn.length < 4) {
-        feilmeldinger += "Navnet kan ikke være under 4 tegn langt";
-        resultat = false;    
-    }
-    else if (!isNaN(navn)) {
-        feilmeldinger += "Navnet kan ikke inneholde tall";
+    else if (flyplasskode == null || flyplasskode == "") {
+        alert("Flyplasskode må fylles ut");
         resultat = false;
     }
-    // flyplasskode
-    else if (!flyplasskode) {
-        feilmeldinger += "Flyplasskode må fylles ut";
+    }
+    else if (latitude == null || latitude == "") {
+        alert("Latitude må fylles ut");
         resultat = false;
     }
-    else if (isNaN(flyplasskode) || flyplasskode == 0) {
-        feilmeldinger += "Flyplasskode FEILMEDLING";
+    }
+    else if (longtude == null || longtude == "") {
+        alert("Longtude må fylles ut");
         resultat = false;
     }
-    // latitude
-    else if (latitude == 0) {
-        feilmeldinger += "Latitude FEILMEDLING";
+    }
+    else if (tidssone_gmt == null || tidssone_gmt == "") {
+        alert("Tidssone må fylles ut");
         resultat = false;
     }
-    else if (!latitude) {
-        feilmeldinger += "Longtude FEILMEDLING";
+    }
+    else if (land_id == null || land_id == "") {
+        alert("Land ID må fylles ut");
         resultat = false;
     }
-    else if (!IsNaN(latitude)) {
-        feilmeldinger += "Latitude FEILMEDLING";
-        resultat = false;
-    }
-    //Longtude
-    else if (!longtude) {
-        feilmeldinger += "Longtude må ha en verdi";
-        resultat = false;
-    }
-    else if (!IsNaN(longtude)) {
-        feilmeldinger += "Longtude kan kun inneholde tall"
-        resultat = false;
-    }
-    //tidssone_gmt
     
-    //land
-     else if (!land_id) {
-        feilmeldinger += "Land må fylles ut";
-        resultat = false;
-    }
-    else if (isNaN(land_id) || land_id == 0) {
-        feilmeldinger += "Flyplasskode FEILMEDLING";
-        resultat = false;
-        }
-        
-    // Alert
-    swal({
-       title: "Obs!",
-       text: feilmeldinger,
-       type: "warning"
-    });
     return resultat;
 }
 
