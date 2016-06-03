@@ -526,28 +526,28 @@ function validerLuftfartoy() {
 
     var maaFyllesUt = [];
     var kommentar = [];
-    var resultat = false;
+    var resultat = true;
 
-    var modell_id = document.forms["oppdater"]["modell_id"].value;
+    var modellid = document.getElementById("modell_id");
     var tailnr = document.forms["oppdater"]["tailnr"].value;
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
-    if (modell_id == "" || modell_id == null) {
-        maaFyllesUt.push("modell_id");
-        resultat = true;
+    if (modellid.value == "") {
+        maaFyllesUt.push("modell");
+        resultat = false;
     }
 
     // Sjekker om feltet er tomt
     if (tailnr == "" || tailnr == null) {
         maaFyllesUt.push("tailnr");
-        resultat = true;
+        resultat = false;
     }
 
     /* Valideringer slutt */
     
     // Skriver ut feilmeldingsboks
-    if (resultat) {
+    if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
     

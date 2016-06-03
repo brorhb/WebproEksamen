@@ -15,7 +15,7 @@
     }
     elseif ($_POST['lagre']) {
         $id = @$_POST['id'];
-        $modell_id = $_POST['modell_id'];
+        $modell_id = $_POST['modell_id_radio'];
         $tailnr = $_POST['tailnr'];
 
         if(oppdaterLuftfartoy($LuftfartoyID, $modell_id, $tailnr)) {
@@ -53,7 +53,7 @@
                             echo '
 
                         <div class="form-group">
-                                <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
+                                <input class="form-control" type="hidden" placeholder="id" name="modell_id_radio" id="modell_id_radio" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
                             <div class="form-group">
@@ -66,7 +66,7 @@
                         echo '
                                 <div class="form-group">
                                 <lable for="modell">Velg modell</label>
-                                <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
+                                <input class="form-control" type="hidden" placeholder="id" name="modell_id_radio" id="modell_id_radio" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
                             <div class="form-group">
@@ -92,24 +92,24 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>modell_id</th>
+                        <th>Valg</th>
+                        <th>Flymodell</th>
                         <th>tailnr</th>
                     </tr>
                 </thead>
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT * FROM luftfartoy;";
+                            $sql = "SELECT l.id, l.tailnr, (SELECT m.navn FROM modell AS m WHERE m.id = l.modell_id) AS navn FROM luftfartoy AS l;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
 
                                     $id = utf8_encode($row["id"]);
-                                    $modell_id = utf8_encode($row["modell_id"]);
                                     $tailnr = utf8_encode($row["tailnr"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $modell_id . '</td><td>' . $tailnr . '</td></tr>';
+                                    $navn = utf8_encode($row["navn"]);
+                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $navn . '</td><td>' . $tailnr . '</td></tr>';
                                 }
                             }
                         
