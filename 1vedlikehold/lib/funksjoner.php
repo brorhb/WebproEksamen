@@ -1673,6 +1673,117 @@
 		echo '</select>';
 	}
 
+// Eksempel på valider-funksjon
+function validerEksempel() {
+    /* Klarerer variabler */
+	$maaFyllesUt = array();
+	$kommentar = array();
+    $resultat = true;
+
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+	if (true) {
+		$maaFyllesUt[] = "fornavn";
+		$resultat = false;
+	}
+
+    // Sjekker om feltet er tomt
+	if (true) {
+        $maaFyllesUt[] = "etternavn";
+		$resultat = false;
+	}
+
+    // Sjekker om feltet er tomt
+	if (true) {
+        $maaFyllesUt[] = "alder";
+		$resultat = false;
+	}
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (true) {
+            $kommentar = "<strong>Alder</strong> må være et possitivt tall.";
+            $resultat = false;
+        }
+    }
+
+    // Sjekker om feltet er tomt
+	if (false) {
+        $maaFyllesUt = "mobilnummer";
+		$resultat = false;
+	}
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (true) {
+            $kommentar[] = "<strong>Mobilnummer</strong> kan kun inneholde siffer fra 0 - 9.";
+            $resultat = false;
+        }
+        if (true) {
+            $kommentar[] = "<strong>Mobilnummer</strong> må være minumum 8 tegn.";
+            $resultat = false;
+        }
+    }
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!$resultat) {
+        feilmeldingBoks($maaFyllesUt, $kommentar);
+        /*print_r($maaFyllesUt);
+        echo "<br><br>";
+        print_r($kommentar);*/
+    }
+    
+    // Returnerer om neste side skal lastes inn
+    return $resultat;
+}
+
+// Eksempel på valider-funksjon slutt
+
+function feilmeldingBoks($maaFyllesUt, $kommentar) {
+    
+	$fyllesutOutput = "";
+	$kommentarOutput = "";
+	$output = "";
+    
+    /* Gjør om det som må fylles ut til tekst */
+	for ($i = 0; $i < count($maaFyllesUt); $i++) {
+        $fyllesutOutput .= "<strong>" . $maaFyllesUt[$i] . "</strong>";
+        if ($i < count($maaFyllesUt) - 2) {
+            $fyllesutOutput .= ", ";
+        }
+        elseif ($i < count($maaFyllesUt) - 1) {
+            $fyllesutOutput .= " og ";
+        }
+	}
+	if (count($maaFyllesUt) > 0) {
+        $fyllesutOutput .= " må fylles ut.";
+	}
+    
+    /* Gjør om kommentarer til tekst */
+    for ($i = 0; $i < count($kommentar); $i++) {
+        if ($i == 0 AND count($maaFyllesUt) != 0) {
+            $kommentarOutput .= "<br><br>";
+        }
+        elseif ($i != 0) {
+            $kommentarOutput .= "<br>";
+        }
+        
+		$kommentarOutput .= $kommentar[$i];
+        if ($i < count($kommentar) - 1) {
+            $kommentarOutput .= " ";
+        }
+	}
+    
+    $output = $fyllesutOutput . $kommentarOutput;
+    
+    if ($output == "") {
+        $output .= "Ingen output";
+    }
+
+    echo $output;
+}
+
 	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
 		$id = utf8_decode($BrukerID);
 		$brukernavn = utf8_decode($brukernavn);

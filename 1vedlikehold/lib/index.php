@@ -17,6 +17,8 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
 
+	validerEksempel();
+
 	$IDen = "1";
 
 	echo ruteListe($IDen) . '<br>';
