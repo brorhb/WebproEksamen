@@ -19,7 +19,7 @@
         $flyplasskode = $_POST['flyplasskode'];
         $latitude= $_POST['latitude'];
         $longitude = $_POST['longitude'];
-        $ftidssone_gmt = $_POST['tidssone_gmt'];
+        $tidssone_gmt = $_POST['tidssone_gmt'];
         $land_id = $_POST['land_id'];
 
 
@@ -35,7 +35,7 @@
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerFlyplass()>
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterFlyplass()">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
                     echo '<h2>Ny flyplass</h2>';
@@ -59,25 +59,31 @@
                             $longitude = utf8_encode($row["longitude"]);
                             $tidssone_gmt = utf8_encode($row["tidssone_gmt"]);
                             $land_id = utf8_encode($row["land_id"]);
-                    
                             echo '
-                            <div class="form-group">
-                                <input class="form-control" type="hidden" placeholder="Flyplass ID" name="id" id="id" value="' . @$id . '" disabled required>
-                                <lable for="navn">Flyplassnavn</lable>
-                                <input class="form-control" type="text" placeholder="Flyplassnavn" name="navn" id="navn" value="' . @$navn . '">
+                            <div class="form-group col-md-6">
+                                <lable for="navn">Navn</lable>
+                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
-                            <div class="form-group">
-                                <lable for="flyplasskode">Flyplasskode</lable>
-                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>';
+                            <div class="form-group-col-md-6">
+                                <lable for="flyplasskode">Flyplassnavn</lable>
+                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplassskode . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="land_id">Land ID</lable>';
+                            
+                            land_idListe($land_id);
+                    
                                 echo '
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                                 <lable for="latitude">Latitude</lable>
-                                <input class="form-control" type="text" placeholder="Latitude" name="latitude" id="latitude" value="' . @$latitude . '">
+                                <input class="form-control" type="text" placeholder="Latitude" name="latitude" id="latitude" value="' . @$latitude . '" required>
                                 <lable for="longitude">Longitude</lable>
-                                <input class="form-control" type="text" placeholder="Longitude" name="longitude" id="longitude" value="' . @$longitude . '">
+                                <input class="form-control" type="text" placeholder="Longitude" name="longitude" id="longitude" value="' . @$longitude . '"required>
                             </div>
-                            <div class="form-group">
+
+                            <div class="form-group col-md-6">
                                 <lable for="tidssone_gmt">Tidssone GMT</lable>
                                 <select class="form-control" name="tidssone_gmt" id="tidssone_gmt">
                                     <option selected disabled value="' . @$tidssone_gmt . '">' . $tidssone_gmt . '</option>
@@ -164,33 +170,32 @@
                                     <option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
                                     <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nukualofa</option>
                                 </select>
-                            </div>
-
-                            ';
+                            </div>';
                         }
                     }
                     else {
                         echo '
-                            <div class="form-group">
-                                <input class="form-control" type="hidden" placeholder="Flyplass ID" name="id" id="id" value="' . @$id . '" disabled required>
-                                <lable for="navn">Flyplassnavn</lable>
-                                <input class="form-control" type="text" placeholder="Flyplassnavn" name="navn" id="navn" value="' . @$navn . '">
+                            <div class="form-group col-md-6">
+                                <lable for="navn">Navn</lable>
+                                <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
-                            <div class="form-group">
-                                <lable for="flyplasskode">Flyplasskode</lable>
-                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>';
-                                echo landListe();
-                                echo '
+                            <div class="form-group-col-md-6">
+                                <lable for="flyplasskode">Flyplassnavn</lable>
+                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplassskode . '" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
+                                <lable for="land_id">Land ID</lable>';
+                            
+                            land_idListe($land_id);
+                    
+                        echo '
+                            </div>
+                            <div class="form-group col-md-6">
                                 <lable for="latitude">Latitude</lable>
-                                <input class="form-control" type="text" placeholder="Latitude" name="latitude" id="latitude" value="' . @$latitude . '">
+                                <input class="form-control" type="text" placeholder="Latitude" name="latitude" id="latitude" value="' . @$latitude . '" required>
                                 <lable for="longitude">Longitude</lable>
-                                <input class="form-control" type="text" placeholder="Longitude" name="longitude" id="longitude" value="' . @$longitude . '">
-                            </div>
-                            <div class="form-group">
-                                <lable for="tidssone_gmt">Tidssone GMT</lable>
-                                <input class="form-control" type="text" placeholder="Tidssone GMT" name="tidssone_gmt" id="tidssone_gmt" value="' . @$tidssone_gmt . '">
+                                <input class="form-control" type="text" placeholder="Longitude" name="longitude" id="longitude" value="' . @$longitude . '"required>
                             </div>';
                     }
                     connectDB()->close();
@@ -206,7 +211,7 @@
     
 
         echo'<div class="col-md-12">
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerFlyplasser()">
+            <form action="' . $_SERVER['PHP_SELF'] . '">
             <h2>Alle flyplasser</h2>
             <table class="table table-striped">
                 <thead>
