@@ -215,6 +215,34 @@ function validerOppdaterFlyplass() {
 
 /* Legg til/endre valuta */
 
+function validerOppdaterValuta() {
+    var valuta_navn = document.forms["oppdater"]["valuta_navn"].value, forkortelse = document.forms["oppdater"]["forkortelse"].value, resultat = true, feilmeldinger = "";
+    var teller = 0;
+    if (!valuta_navn) {
+        feilmeldinger = "Valuta ";
+        teller++;
+
+        resultat = false;
+    }
+    if (!forkortelse) {
+        if (teller > 0) {
+            feilmeldinger += "og ";
+        }
+        feilmeldinger += "beskrivelse ";
+        teller++;
+        resultat = false;
+    }
+    feilmeldinger += "må fylles ut.";
+       swal({
+        title: "Obs!",
+        text: feilmeldinger,
+        type: "warning"
+    });
+    return resultat;
+}
+
+/* Legg til/endre valuta */
+
 /* Slett */ 
 
 function sikkerSlett() {
