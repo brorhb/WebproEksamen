@@ -317,6 +317,21 @@ function sikkerSlett() {
     return resultat;
 }*/
 
+/* 
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (true) {
+            kommentar.push("<strong>Mobilnummer</strong> kan kun inneholde siffer fra 0 - 9.");
+            resultat = false;
+        }
+        if (true) {
+            kommentar.push("<strong>Mobilnummer</strong> må være minumum 8 tegn.");
+            resultat = false;
+        }
+    } 
+*/
+
+
 function validerPersonBruker() {
     var brukernavn = document.forms["oppdater"]["brukernavn"].value;
     var passord = document.forms["oppdater"]["passord"].value;
@@ -324,92 +339,94 @@ function validerPersonBruker() {
     var etternavn = document.forms["oppdater"]["etternavn"].value;
     var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
     var landID = document.getElementById("land_id");
-    /*var epost = document.forms["oppdater"]["epost"].value;
-    var mobilnr = document.forms["oppdater"]["mobilnr"].value;*/
+    var epost = document.forms["oppdater"]["epost"].value;
+    var mobilnr = document.forms["oppdater"]["mobilnr"].value;
     var resultat = true;
     
-    //Brukernavn
-    if (brukernavn == null || brukernavn == "") {
-        swal({
-            title: "Obs!",
-            text: "brukernavn må fylles ut",
-            type: "warning"
-        });
-        resultat = false;
-    }
-    //brukernavn slutt
+    /* Klarerer variabler */
+	var maaFyllesUt = [];
+	var kommentar = [];
+
+    /* Ulike valideringer */
     
-    //Passord
-    else if (passord == null || passord == "") {
-        swal({
-            title: "Obs!",
-            text: "Passord må fylles ut",
-            type: "warning"
-        });
-        resultat = false;
+    // Sjekker om feltet er tomt
+	if (brukernavn == "") {
+		maaFyllesUt.push("brukernavn");
+		resultat = false;
+	}
+
+    // Sjekker om feltet er tomt
+	if (passord == "") {
+        maaFyllesUt.push("passord");
+		resultat = false;
+	}
+
+    // Sjekker om feltet er tomt
+	if (fornavn == "") {
+        maaFyllesUt.push("fornavn");
+		resultat = false;
+	}
+
+    // Sjekker om feltet er tomt
+	if (etternavn == "") {
+        maaFyllesUt.push("etternavn");
+		resultat = false;
+	}
+
+    // Sjekker om feltet er tomt
+	if (fodselsdato == "") {
+        maaFyllesUt.push("fødselsdato");
+		resultat = false;
+	}
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (fodselsdato.length != 8) {
+            kommentar.push("<strong>Fødselsdato</strong> må være 8 siffer (DDMMYYYY).");
+            resultat = false;
+        }
+        if (isNaN(fodselsdato)) {
+            kommentar.push("<strong>Fødselsdato</strong> må være 8 siffer (DDMMYYYY).");
+            resultat = false;
+        }
     }
-    //Passord slutt
     
-    //Fornavn
-    else if (fornavn == null || fornavn == "") {
-        swal({
-            title: "Obs!",
-            text: "Fornavn må fylles ut",
-            type: "warning"
-        });
-        resultat = false;
-    }
-    //Fornavn slutt
+    // Sjekker om feltet er tomt
+	if (landID.value == "") {
+        maaFyllesUt.push("land");
+		resultat = false;
+	}
     
-    //Etternavn
-    else if (etternavn == null || etternavn == "") {
-        swal({
-            title: "Obs!",
-            text: "Etternavn må fylles ut",
-            type: "warning"
-        });
-        resultat = false;
-    }
-    //Etternavn slutt
+    // Sjekker om feltet er tomt
+	if (epost == "") {
+        maaFyllesUt.push("epost");
+		resultat = false;
+	}
     
-    //Fødselsdato
-    else if (fodselsdato == null || fodselsdato == "") {
-        swal({
-            title: "Obs!",
-            text: "Fødselsdato må fylles ut (DDMMYYYY)",
-            type: "warning"
-        });
-        resultat = false;
+    // Sjekker om feltet er tomt
+	if (mobilnr == "") {
+        maaFyllesUt.push("mobilnummer");
+		resultat = false;
+	}
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (mobilnr.length != 8) {
+            kommentar.push("<strong>Mobilnummer</strong> må være 8 siffer.");
+            resultat = false;
+        }
+        if (isNaN(mobilnr)) {
+            kommentar.push("<strong>Fødselsdato</strong> må være 8 siffer.");
+            resultat = false;
+        }
     }
-    else if (isNaN(fodselsdato)) {
-        swal({
-            title: "Obs!",
-            text: "Fødselsdato må bestå av 8 siffer (DDMMYYYY)",
-            type: "warning"
-        });
-        resultat = false;
-    }
-    else if (fodselsdato.length != 8) {
-        swal({
-            title: "Obs!",
-            text: "Fødselsdato må bestå av 8 siffer (DDMMYYYY)",
-            type: "warning"
-        });
-        resultat = false;
-    }
-    //Fødselsdato slutt
+
+    /* Valideringer slutt */
     
-    //LandID
-    else if (landID.value == "") {
-        swal({
-            title: "Obs!",
-            text: "Land må velges",
-            type: "warning"
-        });
-        resultat = false;
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    //LandID slutt
     
+    // Returnerer om neste side skal lastes inn
     return resultat;
 }
 

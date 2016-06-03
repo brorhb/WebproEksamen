@@ -66,10 +66,6 @@
                             
                             echo '
                             <div class="form-group col-md-6">
-                                <input class="form-control" type="hidden" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
-                                <input class="form-control" type="hidden" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
-                            </div>
-                            <div class="form-group col-md-6">
                                 <lable for="brukernavn">Brukernavn</lable>
                                 <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
                                 <lable for="passord">Passord</lable>
@@ -94,6 +90,10 @@
                                 <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
                                 <lable for="mobilnr">Mobilnummer</lable>
                                 <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input class="form-control" type="hidden" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
+                                <input class="form-control" type="hidden" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
                             </div>';
                         }
                     }
@@ -123,6 +123,10 @@
                                 <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
                                 <lable for="mobilnr">Mobilnummer</lable>
                                 <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input class="form-control" type="hidden" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
+                                <input class="form-control" type="hidden" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
                             </div>';
                     }
                     connectDB()->close();
