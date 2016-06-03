@@ -46,12 +46,13 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT rk.id AS rutenr, r.basis_pris AS pris, r.valuta_id AS valuta, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_fra)) AS fraLand, (SELECT navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, reisetid AS tid, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_til)) AS tilLand, (SELECT navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM rute_kombinasjon rk LEFT JOIN flyplass f ON rk.flyplass_id_fra = f.id AND rk.flyplass_id_til = f.id LEFT JOIN land l ON f.land_id = l.id LEFT JOIN rute r ON rk.rute_id = r.id LEFT JOIN valuta v ON r.valuta_id = v.id WHERE rk.id='$id';";
+                    $sql = "SELECT rk.id AS ruteKombinasjonNr, r.id AS ruteNr, r.basis_pris AS pris, r.valuta_id AS valuta, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_fra)) AS fraLand, (SELECT id FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, reisetid AS tid, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_til)) AS tilLand, (SELECT id FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM rute_kombinasjon rk LEFT JOIN flyplass f ON rk.flyplass_id_fra = f.id AND rk.flyplass_id_til = f.id LEFT JOIN land l ON f.land_id = l.id LEFT JOIN rute r ON rk.rute_id = r.id LEFT JOIN valuta v ON r.valuta_id = v.id WHERE rk.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if ($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $rutenr = utf8_encode($row["rutenr"]);
+                            $ruteKombinasjonNr = utf8_encode($row["ruteKombinasjonNr"]);
+                            $ruteNr = utf8_encode($row["ruteNr"]);
                             $valuta = utf8_encode($row["valuta"]);
                             $pris = utf8_encode($row["pris"]);
                             $fraLand = utf8_encode($row["fraLand"]);
@@ -67,9 +68,9 @@
                                 <input class="form-control" type="text" placeholder="Basis pris" name="pris" id="pris" value="' . @$pris . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="fraFlyplas">Fra flyplass</lable>';
+                                <lable for="fraFlyplas">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
-                               echo '<lable for="tilFlyplas">Til flyplass</lable>'; 
+                               echo '<lable for="tilFlyplas">Flyplass 2</lable>'; 
                                echo flyplassListe(@$tilFlyplass);
                                echo ' 
                             </div>
@@ -89,9 +90,9 @@
                                 <input class="form-control" type="text" placeholder="Basis pris" name="pris" id="pris" value="' . @$pris . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="fraFlyplas">Fra flyplass</lable>';
+                                <lable for="fraFlyplas">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
-                               echo '<lable for="tilFlyplas">Til flyplass</lable>'; 
+                               echo '<lable for="tilFlyplas">Flyplass 2</lable>'; 
                                echo flyplassListe(@tilFlyplass);
                                echo ' 
                             </div>
@@ -131,12 +132,13 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT rk.id AS rutenr, r.basis_pris AS pris, r.valuta_id AS valuta, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_fra)) AS fraLand, (SELECT navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, reisetid AS tid, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_til)) AS tilLand, (SELECT navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM rute_kombinasjon rk LEFT JOIN flyplass f ON rk.flyplass_id_fra = f.id AND rk.flyplass_id_til = f.id LEFT JOIN land l ON f.land_id = l.id LEFT JOIN rute r ON rk.rute_id = r.id LEFT JOIN valuta v ON r.valuta_id = v.id;";
+                            $sql = "SELECT rk.id AS ruteKombinasjonNr, r.id AS ruteNr, r.basis_pris AS pris, r.valuta_id AS valuta, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_fra)) AS fraLand, (SELECT navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, reisetid AS tid, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_til)) AS tilLand, (SELECT navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM rute_kombinasjon rk LEFT JOIN flyplass f ON rk.flyplass_id_fra = f.id AND rk.flyplass_id_til = f.id LEFT JOIN land l ON f.land_id = l.id LEFT JOIN rute r ON rk.rute_id = r.id LEFT JOIN valuta v ON r.valuta_id = v.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
                                 while ($row = $result->fetch_assoc()) {
-                                    $rutenr = utf8_encode($row["rutenr"]);
+                                    $ruteKombinasjonNr = utf8_encode($row["ruteKombinasjonNr"]);
+                                    $ruteNr = utf8_encode($row["ruteNr"]);
                                     $fraLand = utf8_encode($row["fraLand"]);
                                     $fraFlyplass = utf8_encode($row["fraFlyplass"]);
                                     $tid = utf8_encode($row["tid"]);
@@ -145,9 +147,9 @@
                                     echo '
                                     <tr>
                                         <td>
-                                            <input type="radio" name="id" value="' . $rutenr . '">
+                                            <input type="radio" name="id" value="' . $ruteKombinasjonNr . '">
                                         </td>
-                                        <td>' . $rutenr . '</td>
+                                        <td>' . $ruteNr . '</td>
                                         <td>' . $fraLand . '</td>
                                         <td>' . $fraFlyplass . '</td>
                                         <td>' . $tid . '</td>
