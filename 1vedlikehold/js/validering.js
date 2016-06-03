@@ -66,69 +66,47 @@ function validerTypeLuftfartoy() {
 
 /* Legg til/endre land  */
 function validerLand() {
-    var navn = document.forms["oppdater"]["navn"].value, landskode = document.forms["oppdater"]["landskode"].value, valuta_id = document.forms["oppdater"]["valuta_id"].value,
-    iso = document.forms["oppdater"]["iso"].value, iso3 = document.forms["oppdater"]["iso3"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
-    // navn
-    if (!navn) {
-        feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
-        resultat = false;
-    } 
-    else if (navn.length < 4) {
-        feilmeldinger += "Navnet kan ikke være under 4 tegn langt";
-        resultat = false;    
-    }
-    else if (!isNaN(navn)) {
-        feilmeldinger += "Navnet kan ikke inneholde tall";
-        resultat = false;
-    }
-    // landskode
-    else if (!landskode) {
-        feilmeldinger += "landskode må fylles ut";
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+    var navn = document.forms["oppdater"]["navn"].value;
+    var landskode = document.forms["oppdater"]["landskode"].value;
+    var valuta_id = document.getElementById("valuta_id");
+    var iso = document.forms["oppdater"]["iso"].value;
+    var iso3 = document.forms["oppdater"]["iso3"].value;
+    /* Ulike valideringer */
+    
+    if (true) {
+        maaFyllesUt.push("navn");
         resultat = false;
     }
-    else if (isNaN(landskode) || landskode == 0) {
-        feilmeldinger += "Landskode må være ett tall";
+    if (landskode == "" || landskode == null) {
+        maaFyllesUt.push("landskode");
         resultat = false;
     }
-    // valuta_id
-    else if (valuta_id == 0) {
-        feilmeldinger += "Valuta må velges";
+    if (valuta_id.value == "") {
+        maaFyllesUt.push("valuta_id");
         resultat = false;
     }
-    // iso
-    else if (!iso) {
-        feilmeldinger += "Iso må fylles ut";
+
+    if (true) {
+        maaFyllesUt.push("iso");
         resultat = false;
     }
-    else if (!isNaN(iso)) {
-        feilmeldinger += "iso kan kun være bokstaver";
+    if (true) {
+        maaFyllesUt.push("iso3");
         resultat = false;
     }
-    else if (iso.length !== 2) {
-        feilmeldinger += "iso må være på 2 tegn";
-        resultat = false;
-    }
-    //iso3
-    else if (!iso3) {
-        feilmeldinger += "iso3 må ha en verdi";
-        resultat = false;
-    }
-    else if (!isNaN(iso3)) {
-        feilmeldinger += "iso3 kan kun være bokstaver"
-        resultat = false;
-    }
-    else if (iso3.length != 3){
-        feilmeldinger += "iso3 må være på 3 tegn";
-        resultat = false;
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
     }
     
-    // Alert
-    swal({
-       title: "Obs!",
-       text: feilmeldinger,
-       type: "warning"
-    });
+    // Returnerer om det er noen feil
     return resultat;
 }
 /* Legg til/endre land  */
