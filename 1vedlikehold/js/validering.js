@@ -6,18 +6,18 @@ function validerOppdaterKlasse() {
     var kommentar = [];
     var resultat = true;
 
-    var klassenavn = document.getElementById("klassenavn");
-    var beskrivelse = document.getElementById("beskrivelse");
+    var klassenavn = document.forms["oppdater"]["klassenavn"].value;
+    var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
-    if (true) {
+    if (klassenavn == "" || klassenavn == null) {
         maaFyllesUt.push("klassenavn");
         resultat = false;
     }
 
     // Sjekker om feltet er tomt
-    if (true) {
+    if (beskrivelse == "" || beskrivelse == null) {
         maaFyllesUt.push("beskrivelse");
         resultat = false;
     }
@@ -91,7 +91,7 @@ function validerLand() {
         resultat = false;
     }
 
-    if (true) {
+    if (iso.value == "") {
         maaFyllesUt.push("iso");
         resultat = false;
     }
@@ -111,25 +111,25 @@ function validerLand() {
 }
 /* Legg til/endre land  */
 
-/*Legg til passasjertype*/
-function validerOppdaterPassasjertype() {
+/*Legg til passasjertyper*/
+function validerOppdaterPassasjertyper() {
     /* Klarerer variabler */
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
 
-    var passasjertype = document.getElementById("passasjertype");
-    var beskrivelse = document.getElementById("beskrivelse");
+    var passasjertyper = document.forms["oppdater"]["passasjertyper"].value;
+    var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
-    if (true) {
-        maaFyllesUt.push("passasjertype");
+    if (passasjertyper == "" || passasjertyper == null) {
+        maaFyllesUt.push("passasjertyper");
         resultat = false;
     }
 
     // Sjekker om feltet er tomt
-    if (true) {
+    if (beskrivelse == "" || beskrivelse == null) {
         maaFyllesUt.push("beskrivelse");
         resultat = false;
     }
@@ -147,28 +147,35 @@ function validerOppdaterPassasjertype() {
 
 /* Legg til/endre klasse */
 function validerOppdaterKlasse() {
-    var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
-    if (!klassenavn) {
-        feilmeldinger = "Klassenavn ";
-        teller++;
+    /* Klarerer variabler */
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
 
+    var klassenavn = document.forms["oppdater"]["klassenavn"].value;/*vanlig*/
+    var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;/*vanlig*/
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+   
+    if (klassenavn == "" || klassenavn == null) {
+        maaFyllesUt.push("klassenavn");
         resultat = false;
     }
-    if (!beskrivelse){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "beskrivelse ";
-        teller++;
+    // Sjekker om feltet er tomt
+    if (beskrivelse == "" || beskrivelse == null) {
+        maaFyllesUt.push("beskrivelse");
         resultat = false;
     }
-    feilmeldinger += "må fylles ut.";
-       swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om det er noen feil
     return resultat;
 }
 /* Legg til/endre klasse */
@@ -538,8 +545,8 @@ function validerLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-    var modellid = document.getElementById("modell_id");
-    var tailnr = document.forms["oppdater"]["tailnr"].value;
+    var modellid = document.getElementById("modell_id"); /*lesteboks*/
+    var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
