@@ -222,12 +222,23 @@ function validerOppdaterAlleFlyplasser() {
         maaFyllesUt.push("latitude");
         resultat = false;
     }
-
+    else {
+        if (isNaN(latitude)) {
+            kommentar.push("<strong>Latitude</strong> kan kun inneholde siffer, komma eller punktum.");
+            resultat = false;
+        }
+    }
 
     // Sjekker om feltet er tomt
     if (longitude == "" || longitude == null) {
         maaFyllesUt.push("longitude");
         resultat = false;
+    }
+       else {
+        if (isNaN(longitude)) {
+            kommentar.push("<strong>Longitude</strong> kan kun inneholde siffer, komma eller punktum.");
+            resultat = false;
+        }
     }
     // Sjekker om feltet er tomt listeboks
     if (tidssone_gmt.value == "") {
@@ -241,7 +252,6 @@ function validerOppdaterAlleFlyplasser() {
     }
 
 
-    /* Valideringer slutt */
     
     // Skriver ut feilmeldingsboks
     if (!resultat) {
