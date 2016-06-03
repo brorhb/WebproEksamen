@@ -241,28 +241,35 @@ function validerOppdaterAlleflyplasser() {
 /* Legg til/endre valuta */
 
 function validerOppdaterValuta() {
-    var valuta_navn = document.forms["oppdater"]["valuta_navn"].value, forkortelse = document.forms["oppdater"]["forkortelse"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
-    if (!valuta_navn) {
-        feilmeldinger = "Valuta ";
-        teller++;
 
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+    var valuta_navn = document.forms["oppdater"]["valuta_navn"].value;
+    var forkortelse = document.forms["oppdater"]["forkortelse"].value
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+    if (valuta_navn == "" || valuta_navn == null) {
+        maaFyllesUt.push("valuta navn");
         resultat = false;
     }
-    if (!forkortelse) {
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "beskrivelse ";
-        teller++;
+
+    // Sjekker om feltet er tomt
+    if (forkortelse == "" || forkortelse == null) {
+        maaFyllesUt.push("forkortelse");
         resultat = false;
     }
-    feilmeldinger += "må fylles ut.";
-       swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om det er noen feil
     return resultat;
 }
 
