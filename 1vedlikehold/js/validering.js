@@ -9,7 +9,7 @@ function validerOppdaterKlasse() {
 
         resultat = false;
     }
-    if (!beskrivelse){
+    if (!beskrivelse) {
         if (teller > 0) {
             feilmeldinger += "og ";
         }
@@ -56,7 +56,7 @@ function validerLand() {
     if (!navn) {
         feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
         resultat = false;
-    }
+    } 
     else if (navn.length < 4) {
         feilmeldinger += "Navnet kan ikke være under 4 tegn langt";
         resultat = false;    
@@ -88,7 +88,7 @@ function validerLand() {
         feilmeldinger += "iso kan kun være bokstaver";
         resultat = false;
     }
-    else if (iso.length != 2){
+    else if (iso.length !== 2) {
         feilmeldinger += "iso må være på 2 tegn";
         resultat = false;
     }
@@ -387,7 +387,7 @@ function validerPersonBruker() {
             feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Fødselsdato er ikke en gyldig dato (DDMMYYY)";
+        feilmeldinger += "Fødselsdato er ikke en gyldig dato (DDMMYYYY)";
         resultat = false;
         teller++;
     }
@@ -483,9 +483,7 @@ function validerPersonBruker() {
 
 // valider modeller
 function validerOppdaterModeller() {
-    var navn = document.forms["oppdater"]["navn"].value, type = document.forms["oppdater"]["type"].value, kapasitet = document.forms["oppdater"]["kapasitet"].value, rader = document.forms["oppdater"]["rader"].value, bredde = document.forms["oppdater"]["bredde"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
-    
+    var navn = document.forms.oppdater.navn.value, type = document.forms.oppdater.type.value, kapasitet = document.forms.oppdater.kapasitet.value, rader = document.forms.oppdater.rader.value, bredde = document.forms.oppdater.bredde.value, resultat = true, feilmeldinger = "", teller = 0;
     // navn
     if (!navn) {
         feilmeldinger = "Navn er ikke fylt ut ";
