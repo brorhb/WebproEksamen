@@ -84,7 +84,7 @@ function validerLand() {
         feilmeldinger += "Iso må fylles ut";
         resultat = false;
     }
-    else if (!IsNaN(iso)) {
+    else if (!isNaN(iso)) {
         feilmeldinger += "iso kan kun være bokstaver";
         resultat = false;
     }
@@ -97,7 +97,7 @@ function validerLand() {
         feilmeldinger += "iso3 må ha en verdi";
         resultat = false;
     }
-    else if (!IsNaN(iso3)) {
+    else if (!isNaN(iso3)) {
         feilmeldinger += "iso3 kan kun være bokstaver"
         resultat = false;
     }
@@ -279,19 +279,19 @@ function validerPersonBruker() {
     // brukerID 
     if (!brukerID) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Bruker ID er ikke fylt ut";
+        //feilmeldinger += "Bruker ID er ikke fylt ut";
         resultat = false;
         teller++;
     }
     if (isNaN(brukerID)) {
         if (teller > 0) {
-            feilmeldinger += "og";
+           //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Bruker ID er ikke et nummer";
+        //feilmeldinger += "Bruker ID er ikke et nummer";
         resultat = false;
         teller++;
     }
@@ -300,19 +300,19 @@ function validerPersonBruker() {
     // personID 
     if (!personID) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Person ID er ikke fylt ut";
+        //feilmeldinger += "Person ID er ikke fylt ut";
         resultat = false;
         teller++;
     }
     if (isNaN(personID)) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Person ID er ikke et nummer";
+        //feilmeldinger += "Person ID er ikke et nummer";
         resultat = false;
         teller++;
     }
@@ -321,10 +321,10 @@ function validerPersonBruker() {
     // brukernavn 
     if (!brukernavn) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Brukernavn er ikke fylt ut";
+        //feilmeldinger += "Brukernavn er ikke fylt ut";
         resultat = false;
         teller++;
     }
@@ -333,10 +333,10 @@ function validerPersonBruker() {
     // ukryptertPassord 
     if (!ukryptertPassord) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Passord er ikke fylt ut";
+        //feilmeldinger += "Passord er ikke fylt ut";
         resultat = false;
         teller++;
     }
@@ -345,10 +345,10 @@ function validerPersonBruker() {
     // fornavn 
     if (!fornavn) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Fornavn er ikke fylt ut";
+        //feilmeldinger += "Fornavn er ikke fylt ut";
         resultat = false;
         teller++;
     }
@@ -357,10 +357,11 @@ function validerPersonBruker() {
     // etternavn
     if (!etternavn) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Etternavn er ikke fylt ut";
+        alert("feil i form");
+        //feilmeldinger += "Etternavn er ikke fylt ut";
         resultat = false;
         teller++;
     }
@@ -369,28 +370,28 @@ function validerPersonBruker() {
     // fodselsdato 
     if (!fodselsdato) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Fødselsdato er ikke fylt ut";
+        //feilmeldinger += "Fødselsdato er ikke fylt ut";
         resultat = false;
         teller++;
     }
     if (isNaN(fodselsdato)) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Fødselsdato er ikke en dato";
+        //feilmeldinger += "Fødselsdato er ikke en dato";
         resultat = false;
         teller++;
     }
     if (!fodselsdato == 8) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Fødselsdato er ikke en gyldig dato (DDMMYYYY)";
+        //feilmeldinger += "Fødselsdato er ikke en gyldig dato (DDMMYYYY)";
         resultat = false;
         teller++;
     }
@@ -399,10 +400,10 @@ function validerPersonBruker() {
     // land 
     if (!land) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Land er ikke fylt ut";
+        //feilmeldinger += "Land er ikke fylt ut";
         resultat = false;
         teller++;
     }
@@ -411,19 +412,19 @@ function validerPersonBruker() {
     // landID 
     if (!landID) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Land ID er ikke fylt ut";
+        //feilmeldinger += "Land ID er ikke fylt ut";
         resultat = false;
         teller++;
     }
     if (isNaN(landID)) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Land ID er ikke et nummer";
+        //feilmeldinger += "Land ID er ikke et nummer";
         resultat = false;
         teller++;
     }
@@ -432,10 +433,10 @@ function validerPersonBruker() {
     // epost 
     if (!epost) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "E-post er ikke fylt ut";
+        //feilmeldinger += "E-post er ikke fylt ut";
         resultat = false;
         teller++;
     }
@@ -444,40 +445,40 @@ function validerPersonBruker() {
     // mobilnr 
     if (!mobilnr) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Mobilnr er ikke fylt ut";
+        //feilmeldinger += "Mobilnr er ikke fylt ut";
         resultat = false;
         teller++;
     }
     
     if (isNaN(mobilnr)) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Mobilnr er ikke ett nummer";
+        //feilmeldinger += "Mobilnr er ikke ett nummer";
         resultat = false;
         teller++;
     }
     
     if (mobilnr.length < 8) {
         if (teller > 0) {
-            feilmeldinger += "og";
+            //feilmeldinger += "og";
             teller++;
         }
-        feilmeldinger += "Mobilnr er ikke gyldig";
+        //feilmeldinger += "Mobilnr er ikke gyldig";
         resultat = false;
         teller++;
     }
     // mobilnr slutt
     
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
+    //swal({
+        //title: "Obs!",
+        //text: feilmeldinger,
+        //type: "warning"
+    //});
     
     return resultat;
 }
