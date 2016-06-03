@@ -295,38 +295,96 @@ function sikkerSlett() {
 
 function validerPersonBruker() {
     var brukernavn = document.forms["oppdater"]["brukernavn"].value;
-    var ukryptertPassord = document.forms["oppdater"]["passord"].value;
-    /*
-    var ukryptertPassord = document.forms["oppdater"]["ukryptertPassord"].value;
+    var passord = document.forms["oppdater"]["passord"].value;
     var fornavn = document.forms["oppdater"]["fornavn"].value;
     var etternavn = document.forms["oppdater"]["etternavn"].value;
     var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
-    var land = document.forms["oppdater"]["land"].value;
-    var landID = document.forms["oppdater"]["landID"].value;
-    var epost = document.forms["oppdater"]["epost"].value;
+    var landID = document.getElementById("land_id");
+    /*var epost = document.forms["oppdater"]["epost"].value;
     var mobilnr = document.forms["oppdater"]["mobilnr"].value;*/
     var resultat = true;
     
-    //brukernavn
+    //Brukernavn
     if (brukernavn == null || brukernavn == "") {
         swal({
             title: "Obs!",
-            text: "brukernavn finnes ikke",
+            text: "brukernavn må fylles ut",
             type: "warning"
         });
         resultat = false;
     }
     //brukernavn slutt
-    // ukryptertPassord
-    else if (ukryptertPassord == null || ukryptertPassord == "") {
+    
+    //Passord
+    else if (passord == null || passord == "") {
         swal({
             title: "Obs!",
-            text: "ukryptertPassord finnes ikke",
+            text: "Passord må fylles ut",
             type: "warning"
         });
         resultat = false;
     }
-    //ukryptertPassord slutt
+    //Passord slutt
+    
+    //Fornavn
+    else if (fornavn == null || fornavn == "") {
+        swal({
+            title: "Obs!",
+            text: "Fornavn må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //Fornavn slutt
+    
+    //Etternavn
+    else if (etternavn == null || etternavn == "") {
+        swal({
+            title: "Obs!",
+            text: "Etternavn må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //Etternavn slutt
+    
+    //Fødselsdato
+    else if (fodselsdato == null || fodselsdato == "") {
+        swal({
+            title: "Obs!",
+            text: "Fødselsdato må fylles ut (DDMMYYYY)",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (isNaN(fodselsdato)) {
+        swal({
+            title: "Obs!",
+            text: "Fødselsdato må bestå av 8 siffer (DDMMYYYY)",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (fodselsdato.length != 8) {
+        swal({
+            title: "Obs!",
+            text: "Fødselsdato må bestå av 8 siffer (DDMMYYYY)",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //Fødselsdato slutt
+    
+    //LandID
+    else if (landID.value == "") {
+        swal({
+            title: "Obs!",
+            text: "Land må velges",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //LandID slutt
     
     return resultat;
 }
