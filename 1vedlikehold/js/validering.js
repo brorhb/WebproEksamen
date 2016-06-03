@@ -295,9 +295,9 @@ function sikkerSlett() {
 }*/
 
 function validerPersonBruker() {
-    var brukerID = document.forms["oppdater"]["brukerID"].value;
-    var personID = document.forms["oppdater"]["personID"].value;
     var brukernavn = document.forms["oppdater"]["brukernavn"].value;
+    var ukryptertPassord = document.forms["oppdater"]["passord"].value;
+    /*
     var ukryptertPassord = document.forms["oppdater"]["ukryptertPassord"].value;
     var fornavn = document.forms["oppdater"]["fornavn"].value;
     var etternavn = document.forms["oppdater"]["etternavn"].value;
@@ -305,23 +305,29 @@ function validerPersonBruker() {
     var land = document.forms["oppdater"]["land"].value;
     var landID = document.forms["oppdater"]["landID"].value;
     var epost = document.forms["oppdater"]["epost"].value;
-    var mobilnr = document.forms["oppdater"]["mobilnr"].value;
+    var mobilnr = document.forms["oppdater"]["mobilnr"].value;*/
     var resultat = true;
     
-    //brukerID
-    if (brukerID == null || brukerID == "") {
+    //brukernavn
+    if (brukernavn == null || brukernavn == "") {
         swal({
             title: "Obs!",
-            text: "brukerID finnes ikke",
+            text: "brukernavn finnes ikke",
             type: "warning"
         });
         resultat = false;
     }
-    //brukerID slutt
-    else if (personID == null || personID == "") {
-        alert("personID finnes ikke");
+    //brukernavn slutt
+    // ukryptertPassord
+    else if (ukryptertPassord == null || ukryptertPassord == "") {
+        swal({
+            title: "Obs!",
+            text: "ukryptertPassord finnes ikke",
+            type: "warning"
+        });
         resultat = false;
     }
+    //ukryptertPassord slutt
     
     return resultat;
 }
@@ -329,6 +335,8 @@ function validerPersonBruker() {
 function validerOppdaterModeller() {
     var navn = document.forms["oppdater"]["navn"].value;
     var kapasitet = document.forms["oppdater"]["kapasitet"].value;
+    var rader = document.forms["oppdater"]["rader"].value;
+    var rader = document.forms["oppdater"]["bredde"].value;
     var resultat = true;
     if (navn == null || navn == "") {
         swal({
@@ -339,11 +347,99 @@ function validerOppdaterModeller() {
         resultat = false;
     }
     else if (kapasitet == null || kapasitet == "") {
-        alert("kapasitet må fylles ut");
+        swal({
+            title: "Obs!",
+            text: "Kapasitet må legges til",
+            type: "warning"
+        });
         resultat = false;
     }
-    
+    else if (isNaN(kapasitet)) {
+        swal({
+            title: "Obs!",
+            text: "Kapasitet må være ett tall",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (rader == null || rader == "") {
+        swal({
+            title: "Obs!",
+            text: "Rader må legges til",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (isNaN(rader)) {
+        swal({
+            title: "Obs!",
+            text: "Rader må være ett tall",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (bredde == null || bredde == "") {
+        swal({
+            title: "Obs!",
+            text: "Bredde må legges til",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (isNaN(bredde)) {
+        swal({
+            title: "Obs!",
+            text: "Bredde må være ett tall",
+            type: "warning"
+        });
+        resultat = false;
+    }
     return resultat;
 }
 
 // valider modeller
+
+
+// experimental
+function myFunction() {
+	var maaFyllesUt = [];
+	var kommentar = [];
+	var output = "";
+	var resultat = false;
+
+	if (true) {
+		maaFyllesUt.push("brukernavn");
+		resultat = false;
+	}
+	if (true) {
+		maaFyllesUt.push("klasseListe");
+		resultat = false;
+	}
+	if (true) {
+		maaFyllesUt.push("klassenavn");
+		resultat = false;
+	}
+	
+
+	//alert(maaFyllesUt);
+	//document.getElementById("demo").innerHTML = maaFyllesUt;
+
+	for (var i = 0; i < maaFyllesUt.length; i++) {
+		output += maaFyllesUt[i];
+		if (i = maaFyllesUt.length - 2) {
+			output += "og ";
+		}
+		else {
+			output += ", ";
+		}
+	}
+	if (maaFyllesUt.length > 0) {
+		output += " må fylles ut.";
+	}
+	else {
+		output += "Ingen output";
+	}
+
+	document.getElementById("demo").innerHTML = output;
+}
+// experimental
