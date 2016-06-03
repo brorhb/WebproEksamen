@@ -446,73 +446,75 @@ function validerPersonBruker() {
     // Returnerer om neste side skal lastes inn
     return resultat;
 }
+/*legg til/endre modeller*/
 
 function validerOppdaterModeller() {
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
     var navn = document.forms["oppdater"]["navn"].value;
+    var type_luftfartoy_id = document.getElementById("type_luftfartoy_id");
     var kapasitet = document.forms["oppdater"]["kapasitet"].value;
     var rader = document.forms["oppdater"]["rader"].value;
-    var rader = document.forms["oppdater"]["bredde"].value;
-    var resultat = true;
-    if (navn == null || navn == "") {
-        swal({
-            title: "Obs!",
-            text: "Navn må fylles ut",
-            type: "warning"
-        });
+    var bredde = document.forms["oppdater"]["bredde"].value;
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+    if (navn == "" || navn == null) {
+    maaFyllesUt.push("navn");
+    resultat = false;
+    }
+
+    if (type_luftfartoy_id.value == "") {
+        maaFyllesUt.push("luftfartøy");
         resultat = false;
     }
-    else if (kapasitet == null || kapasitet == "") {
-        swal({
-            title: "Obs!",
-            text: "Kapasitet må legges til",
-            type: "warning"
-        });
+
+    // Sjekker om feltet er tomt
+    if (kapasitet == "" || kapasitet == null) {
+        maaFyllesUt.push("kapasitet");
         resultat = false;
     }
-    else if (isNaN(kapasitet)) {
-        swal({
-            title: "Obs!",
-            text: "Kapasitet må være ett tall",
-            type: "warning"
-        });
+
+        // Sjekker om feltet er tomt
+    if (rader == "" || rader == null) {
+        maaFyllesUt.push("rader");
         resultat = false;
     }
-    else if (rader == null || rader == "") {
-        swal({
-            title: "Obs!",
-            text: "Rader må legges til",
-            type: "warning"
-        });
+        // Sjekker om feltet er tomt
+    if (bredde == "" || bredde == null) {
+        maaFyllesUt.push("bredde");
         resultat = false;
     }
-    else if (isNaN(rader)) {
-        swal({
-            title: "Obs!",
-            text: "Rader må være ett tall",
-            type: "warning"
-        });
-        resultat = false;
+        else {
+            if (true) {
+                kommentar.push("Kan kun inneholde siffer")
+            }
+        }
+
+    /* Valideringer slutt */
+   
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    else if (bredde == null || bredde == "") {
-        swal({
-            title: "Obs!",
-            text: "Bredde må legges til",
-            type: "warning"
-        });
-        resultat = false;
-    }
-    else if (isNaN(bredde)) {
-        swal({
-            title: "Obs!",
-            text: "Bredde må være ett tall",
-            type: "warning"
-        });
-        resultat = false;
-    }
+    
+    // Returnerer om det er noen feil
     return resultat;
 }
 
-// valider modeller
+/* legg til/endre luftfartoy/fly */
+
+if (landskode == "" || landskode == null) {
+        maaFyllesUt.push("landskode");
+        resultat = false;
+    }
+
+
+/*legg til/endre modeller*/
+
 
 /* legg til/endre luftfartoy/fly */
 
