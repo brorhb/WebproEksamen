@@ -30,21 +30,32 @@ function validerOppdaterKlasse() {
 
 /* Legg til/endre type (type_luftfartoy)*/
 function validerTypeLuftfartoy() {
-    var type = document.forms["oppdater"]["type"].value, resultat = true, feilmeldinger = "";
 
-    if (!type) {
-        feilmeldinger += "Type er ikke fylt ut";
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+   var type = document.forms["oppdater"]["type"].value
+    /* Ulike valideringer */
+    
+
+    // Sjekker om feltet er tomt
+    if (type == "" || type == null) {
+        maaFyllesUt.push("type");
         resultat = false;
     }
-    
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
 
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om det er noen feil
     return resultat;
 }
+
 /* Legg til/endre type (type_luftfartoy)*/
 
 /* Legg til/endre land  */
