@@ -485,87 +485,69 @@ function validerPersonBruker() {
 /* Valider endre/legg til på alle brukere siden */
 
 // valider modeller
-function validerOppdaterModeller() {
-    var navn = document.forms.oppdater.navn.value, type = document.forms.oppdater.type.value, kapasitet = document.forms.oppdater.kapasitet.value, rader = document.forms.oppdater.rader.value, bredde = document.forms.oppdater.bredde.value, resultat = true, feilmeldinger = "", teller = 0;
-    
+/*function validerOppdaterModeller() {
+    var navn = document.form["oppdater"]["navn"].value, type = document.forms["oppdater"]["type"].value, kapasitet = document.forms["oppdater"]["kapasitet"].value, rader = document.forms["oppdater"]["rader"].value, bredde = document.forms["oppdater"]["bredde"].value, resultat = true;
     // navn
     if (!navn) {
-        feilmeldinger = "Navn er ikke fylt ut ";
-        teller++;
-
+        alert("Navn er ikke fylt ut ");
         resultat = false;
     }
     
     // Type
-    if (!type){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "Type er ikke valgt ";
-        teller++;
+    if (type == null || type == "") {
+        alert("Type er ikke valgt ");
         resultat = false;
     }
     
     // kapasitet
-    if (!kapasitet){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "kapasitet mangler ";
-        teller++;
+    else if (!kapasitet) {
+        alert("kapasitet mangler ");
         resultat = false;
     }
-    if (!isNaN(kapasitet)){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "kapasitet må være ett tall ";
-        teller++;
+    else if (!isNaN(kapasitet)) {
+        alert("kapasitet må være ett tall ");
         resultat = false;
     }
     
     // rader
-    if (!rader){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "rader mangler ";
-        teller++;
+    else if (!rader){
+        alert("rader mangler ");
         resultat = false;
     }
-    if (!isNaN(rader)){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "rader må være ett tall ";
-        teller++;
+    else if (!isNaN(rader)){
+        alert("rader må være ett tall ");
         resultat = false;
     }
     
     // bredde
-    if (!bredde){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "bredde mangler ";
-        teller++;
+    else if (!bredde){
+        alert("bredde mangler ");
         resultat = false;
     }
-    if (!isNaN(bredde)){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "bredde må være ett tall ";
-        teller++;
+    else if (!isNaN(bredde)){
+        alert("bredde må være ett tall ");
         resultat = false;
     }
     
-    // swal
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
+    return resultat;
+}*/
+
+function validerOppdaterModeller() {
+    var navn = document.forms["oppdater"]["navn"].value;
+    var kapasitet = document.forms["oppdater"]["kapasitet"].value;
+    var resultat = true;
+    if (navn == null || navn == "") {
+        swal({
+            title: "Obs!",
+            text: "Navn må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (kapasitet == null || kapasitet == "") {
+        alert("kapasitet må fylles ut");
+        resultat = false;
+    }
     
     return resultat;
 }
