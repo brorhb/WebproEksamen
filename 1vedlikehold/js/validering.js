@@ -484,6 +484,7 @@ function validerPersonBruker() {
 // valider modeller
 function validerOppdaterModeller() {
     var navn = document.forms.oppdater.navn.value, type = document.forms.oppdater.type.value, kapasitet = document.forms.oppdater.kapasitet.value, rader = document.forms.oppdater.rader.value, bredde = document.forms.oppdater.bredde.value, resultat = true, feilmeldinger = "", teller = 0;
+    
     // navn
     if (!navn) {
         feilmeldinger = "Navn er ikke fylt ut ";
@@ -557,7 +558,7 @@ function validerOppdaterModeller() {
     }
     
     // swal
-       swal({
+    swal({
         title: "Obs!",
         text: feilmeldinger,
         type: "warning"
