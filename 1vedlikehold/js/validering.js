@@ -350,31 +350,31 @@ function validerPersonBruker() {
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
-	if (brukernavn == "") {
+	if (brukernavn == "" || brukernavn == null) {
 		maaFyllesUt.push("brukernavn");
 		resultat = false;
 	}
 
     // Sjekker om feltet er tomt
-	if (passord == "") {
+	if (passord == "" || passord == null) {
         maaFyllesUt.push("passord");
 		resultat = false;
 	}
 
     // Sjekker om feltet er tomt
-	if (fornavn == "") {
+	if (fornavn == "" || fornavn == null) {
         maaFyllesUt.push("fornavn");
 		resultat = false;
 	}
 
     // Sjekker om feltet er tomt
-	if (etternavn == "") {
+	if (etternavn == "" || etternavn == null) {
         maaFyllesUt.push("etternavn");
 		resultat = false;
 	}
 
     // Sjekker om feltet er tomt
-	if (fodselsdato == "") {
+	if (fodselsdato == "" || fodselsdato == null) {
         maaFyllesUt.push("fødselsdato");
 		resultat = false;
 	}
@@ -391,19 +391,19 @@ function validerPersonBruker() {
     }
     
     // Sjekker om feltet er tomt
-	if (landID.value == "") {
+	if (landID.value == "" || landID.value == null) {
         maaFyllesUt.push("land");
 		resultat = false;
 	}
     
     // Sjekker om feltet er tomt
-	if (epost == "") {
+	if (epost == "" || epost == null) {
         maaFyllesUt.push("epost");
 		resultat = false;
 	}
     
     // Sjekker om feltet er tomt
-	if (mobilnr == "") {
+	if (mobilnr == "" || mobilnr == null) {
         maaFyllesUt.push("mobilnummer");
 		resultat = false;
 	}
