@@ -268,6 +268,9 @@ function sikkerSlett() {
 }
 
 /* Slett  */ 
+
+
+
 /* Valider endre/legg til på alle brukere siden */
 
 function validerPersonBruker() {
@@ -292,7 +295,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // brukerID 
+    // brukerID slutt
     
     // personID 
     if (!personID) {
@@ -313,7 +316,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // personID 
+    // personID slutt
     
     // brukernavn 
     if (!brukernavn) {
@@ -325,7 +328,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // brukernavn 
+    // brukernavn slutt
     
     // ukryptertPassord 
     if (!ukryptertPassord) {
@@ -337,7 +340,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // ukryptertPassord 
+    // ukryptertPassord slutt
     
     // fornavn 
     if (!fornavn) {
@@ -349,7 +352,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // fornavn 
+    // fornavn slutt
     
     // etternavn
     if (!etternavn) {
@@ -361,7 +364,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // etternavn 
+    // etternavn slutt
     
     // fodselsdato 
     if (!fodselsdato) {
@@ -391,7 +394,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // fodselsdato 
+    // fodselsdato slutt
     
     // land 
     if (!land) {
@@ -403,7 +406,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // land 
+    // land slutt
     
     // landID 
     if (!landID) {
@@ -424,7 +427,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // landID 
+    // landID slutt
     
     // epost 
     if (!epost) {
@@ -436,7 +439,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // epost 
+    // epost slutt
     
     // mobilnr 
     if (!mobilnr) {
@@ -468,7 +471,7 @@ function validerPersonBruker() {
         resultat = false;
         teller++;
     }
-    // mobilnr
+    // mobilnr slutt
     
     swal({
         title: "Obs!",

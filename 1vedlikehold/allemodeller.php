@@ -43,7 +43,7 @@
             <div class="col-md-12">';
                 
                     connectDB();
-                    $sql = "SELECT modell.id , modell.navn, type_luftfartoy.type, modell.kapasitet, modell.rader, modell.bredde FROM modell LEFT JOIN type_luftfartoy ON modell.type_luftfartoy_id = type_luftfartoy.id;";
+                    $sql = "SELECT m.id , m.navn, tl.type, m.kapasitet, m.rader, m.bredde FROM modell m LEFT JOIN type_luftfartoy tl ON m.type_luftfartoy_id = tl.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
@@ -138,7 +138,7 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT modell.id , modell.navn, type_luftfartoy.type, modell.kapasitet, modell.rader, modell.bredde FROM modell LEFT JOIN type_luftfartoy ON modell.type_luftfartoy_id = type_luftfartoy.id;";
+                            $sql = "SELECT m.id , m.navn, tl.type, m.kapasitet, m.rader, m.bredde FROM modell m LEFT JOIN type_luftfartoy tl ON m.type_luftfartoy_id = tl.id;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
