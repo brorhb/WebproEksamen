@@ -499,7 +499,7 @@ function validerOppdaterModeller() {
 
 /* legg til/endre luftfartoy/fly */
 
-function validerLuftfartoy() {
+/*function validerLuftfartoy() {
     var modell_id = document.forms["oppdater"]["modell_id"].value;
     var tailnr = document.forms["oppdater"]["tailnr"].value;
     var resultat = true;
@@ -520,6 +520,38 @@ function validerLuftfartoy() {
         resultat = false;
     }
     
+    return resultat;
+}*/
+function validerLuftfartoy() {
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = false;
+
+    var modell_id = document.forms["oppdater"]["modell_id"].value;
+    var tailnr = document.forms["oppdater"]["tailnr"].value;
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+    if (modell_id == "" || modell_id == null) {
+        maaFyllesUt.push("modell_id");
+        resultat = true;
+    }
+
+    // Sjekker om feltet er tomt
+    if (tailnr == "" || tailnr == null) {
+        maaFyllesUt.push("tailnr");
+        resultat = true;
+    }
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om det er noen feil
     return resultat;
 }
 
