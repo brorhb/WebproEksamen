@@ -1,28 +1,34 @@
 /* Legg til/endre klasse */
 
 function validerOppdaterKlasse() {
-    var klassenavn = document.forms["oppdater"]["klassenavn"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
-    if (!klassenavn) {
-        feilmeldinger = "Klassenavn ";
-        teller++;
+    /* Klarerer variabler */
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
 
+    var klassenavn = document.getElementById("klassenavn");
+    var beskrivelse = document.getElementById("beskrivelse");
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+    if (true) {
+        maaFyllesUt.push("klassenavn");
         resultat = false;
     }
-    if (!beskrivelse) {
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "beskrivelse ";
-        teller++;
+
+    // Sjekker om feltet er tomt
+    if (true) {
+        maaFyllesUt.push("beskrivelse");
         resultat = false;
     }
-    feilmeldinger += "må fylles ut.";
-       swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om neste side skal lastes inn
     return resultat;
 }
 /* Legg til/endre klasse */
@@ -129,27 +135,35 @@ function validerLand() {
 
 /*Legg til passasjertype*/
 function validerOppdaterPassasjertype() {
-    var passasjertype = document.forms["oppdater"]["Passasjertype"].value, beskrivelse = document.forms["oppdater"]["beskrivelse"].value, resultat = true, feilmeldinger = "";
-    var teller = 0;
-    if (!passasjertype) {
-        feilmeldinger = "Passasjertype ";
-        teller++;
+    /* Klarerer variabler */
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
 
+    var passasjertype = document.getElementById("passasjertype");
+    var beskrivelse = document.getElementById("beskrivelse");
+    /* Ulike valideringer */
+    
+    // Sjekker om feltet er tomt
+    if (true) {
+        maaFyllesUt.push("passasjertype");
         resultat = false;
     }
-    if (!beskrivelse){
-        if (teller > 0) {
-            feilmeldinger += "og ";
-        }
-        feilmeldinger += "beskrivelse må fylles ut";
-        teller++;
+
+    // Sjekker om feltet er tomt
+    if (true) {
+        maaFyllesUt.push("beskrivelse");
         resultat = false;
     }
-       swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om neste side skal lastes inn
     return resultat;
 }
 
