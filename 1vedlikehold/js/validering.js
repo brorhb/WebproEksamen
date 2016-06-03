@@ -517,39 +517,59 @@ function validerEksempel() {
 
     /* Ulike valideringer */
     
+    // Sjekker om feltet er tomt
 	if (true) {
 		maaFyllesUt.push("fornavn");
 		resultat = true;
 	}
+
+    // Sjekker om feltet er tomt
 	if (true) {
         maaFyllesUt.push("etternavn");
 		resultat = true;
 	}
+
+    // Sjekker om feltet er tomt
 	if (true) {
-        	maaFyllesUt.push("alder");
+        maaFyllesUt.push("alder");
 		resultat = true;
 	}
-    if (true) {
-        kommentar.push("<strong>Alder</strong> må være et possitivt tall.");
-		resultat = true;
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (true) {
+            kommentar.push("<strong>Alder</strong> må være et possitivt tall.");
+            resultat = true;
+        }
     }
-	if (true) {
-        maaFyllesUt.push("fødselsdato");
+
+    // Sjekker om feltet er tomt
+	if (false) {
+        maaFyllesUt.push("mobilnummer");
 		resultat = true;
 	}
-    if (true) {
-        kommentar.push("Ikke gyldig <strong>fødselsdato</strong>.");
-		resultat = true;
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (true) {
+            kommentar.push("<strong>Mobilnummer</strong> kan kun inneholde siffer fra 0 - 9.");
+            resultat = true;
+        }
+        if (true) {
+            kommentar.push("<strong>Mobilnummer</strong> må være minumum 8 tegn.");
+            resultat = true;
+        }
     }
 
     /* Valideringer slutt */
     
+    // Skriver ut feilmeldingsboks
     if (resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
     
+    // Returnerer om det er noen feil
     return resultat;
 }
+
 // Eksempel på valider-funksjon slutt
 
 function feilmeldingBoks(maaFyllesUt, kommentar) {
