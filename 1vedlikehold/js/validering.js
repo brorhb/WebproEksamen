@@ -553,3 +553,52 @@ function validerOppdaterModeller() {
 }
 
 // valider modeller
+
+
+/* legg til/endre luftfartoy/fly */
+
+function validerLuftfartoy() {
+    var modell_id = document.forms["oppdater"]["modell_id"].value;
+    var tailnr = document.forms["oppdater"]["tailnr"].value;
+    var resultat = true;
+    if (modell_id == null || modell_id == "") {
+        swal({
+            title: "Obs!",
+            text: "Modell_id må velges",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (tailnr == null || tailnr == "") {
+        swal({
+            title: "Obs!",
+            text: "Tailnr må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    
+    return resultat;
+}
+
+/* legg til/endre luftfartoy/fly */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
