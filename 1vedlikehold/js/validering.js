@@ -209,6 +209,12 @@ function validerOppdaterAlleFlyplasser() {
         maaFyllesUt.push("flyplasskode");
         resultat = false;
     }
+    else {
+        if (flyplasskode.length != 3) {
+            kommentar.push("<strong>Flyplasskode</strong> kan kun inneholde tre tegn");
+            resultat = false;
+        }
+    }
 
 
     // Sjekker om feltet er tomt
