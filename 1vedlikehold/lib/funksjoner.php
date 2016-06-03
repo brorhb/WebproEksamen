@@ -304,7 +304,7 @@
 		connectDB()->close();
 	}
 
-	/*function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
+	function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
 		
 		connectDB();
 
@@ -336,7 +336,7 @@
 		connectDB()->close();
 
 		return $tilbalemelding;
-	}*/
+	}
 
 	function slettFlyplass($FlyplassID) {
 		connectDB();

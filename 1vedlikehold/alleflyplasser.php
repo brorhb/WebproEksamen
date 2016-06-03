@@ -87,6 +87,8 @@
                             echo ' 
                             <div class="form-group col-md-6">
                                 <lable for="tidssone_gmt">Tidssone GMT</lable>
+                                <select class="form-control" name="tidssone_gmt" id="tidssone_gmt">
+                                    <option selected disabled value="' . @$tidssone_gmt . '">' . $tidssone_gmt . '</option>
                                     <option value="-12">(GMT-12:00) International Date Line West</option>
                                     <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
                                     <option value="-10">(GMT-10:00) Hawaii</option>
@@ -170,8 +172,7 @@
                                     <option value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
                                     <option value="13">(GMT+13:00) Nukualofa</option>
                                 </select>
-                            </div>'; 
-                            echo tisdsoneListe($tidssone_gmt);
+                            </div>';
                         }
                     }
                     else {
