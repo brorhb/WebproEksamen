@@ -84,7 +84,7 @@ function validerLand() {
         feilmeldinger += "Iso må fylles ut";
         resultat = false;
     }
-    else if (!IsNaN(iso)) {
+    else if (!isNaN(iso)) {
         feilmeldinger += "iso kan kun være bokstaver";
         resultat = false;
     }
@@ -97,7 +97,7 @@ function validerLand() {
         feilmeldinger += "iso3 må ha en verdi";
         resultat = false;
     }
-    else if (!IsNaN(iso3)) {
+    else if (!isNaN(iso3)) {
         feilmeldinger += "iso3 kan kun være bokstaver"
         resultat = false;
     }
@@ -172,78 +172,55 @@ function validerOppdaterKlasse() {
 
 /*legg til/ Alleflyplasser*/
 
-function validerFlyplasser() {
-    var navn = document.forms["oppdater"]["navn"].value, flyplasskode = document.forms["oppdater"]["flyplasskode"].value, latitude = document.forms["oppdater"]["latitude"].value, longtude = document.forms["oppdater"]["longtude"].value, land_id = document.forms["oppdater"]["land_id"].value, resultat = true, feilmeldinger = "", teller = 0;
-    // navn
-    if (!navn) {
-        feilmeldinger += "Navnet er for kort (under 4 bokstaver), eller ikke fylt ut";
+/*function validerOppdaterFlyplass() {
+    var navn = document.forms["oppdater"]["navn"].value;
+    var flyplasskode = document.forms["oppdater"]["flyplasskode"].value;
+    var latitude = document.forms["oppdater"]["latitude"].value;
+    var longtude = document.forms["oppdater"]["longtude"].value;
+    var tidssone_gmt = document.forms["oppdater"]["tidssone_gmt"].value;
+    var land_id = document.forms["oppdater"]["land_id"].value;
+    var resultat = true;
+    if (navn == null || navn == "") {
+        swal({
+            title: "Obs!",
+            text: "Navn må fylles ut",
+            type: "warning"
+        });
         resultat = false;
     }
-    else if (navn.length < 4) {
-        feilmeldinger += "Navnet kan ikke være under 4 tegn langt";
-        resultat = false;    
-    }
-    else if (!isNaN(navn)) {
-        feilmeldinger += "Navnet kan ikke inneholde tall";
+    else if (flyplasskode == null || flyplasskode == "") {
+        alert("Flyplasskode må fylles ut");
         resultat = false;
     }
-    // flyplasskode
-    else if (!flyplasskode) {
-        feilmeldinger += "Flyplasskode må fylles ut";
+    }
+    else if (latitude == null || latitude == "") {
+        alert("Latitude må fylles ut");
         resultat = false;
     }
-    else if (isNaN(flyplasskode) || flyplasskode == 0) {
-        feilmeldinger += "Flyplasskode FEILMEDLING";
+    }
+    else if (longtude == null || longtude == "") {
+        alert("Longtude må fylles ut");
         resultat = false;
     }
-    // latitude
-    else if (latitude == 0) {
-        feilmeldinger += "Latitude FEILMEDLING";
+    }
+    else if (tidssone_gmt == null || tidssone_gmt == "") {
+        alert("Tidssone må fylles ut");
         resultat = false;
     }
-    else if (!latitude) {
-        feilmeldinger += "Longtude FEILMEDLING";
+    }
+    else if (land_id == null || land_id == "") {
+        alert("Land ID må fylles ut");
         resultat = false;
     }
-    else if (!IsNaN(latitude)) {
-        feilmeldinger += "Latitude FEILMEDLING";
-        resultat = false;
-    }
-    //Longtude
-    else if (!longtude) {
-        feilmeldinger += "Longtude må ha en verdi";
-        resultat = false;
-    }
-    else if (!IsNaN(longtude)) {
-        feilmeldinger += "Longtude kan kun inneholde tall"
-        resultat = false;
-    }
-    //tidssone_gmt
     
-    //land
-     else if (!land_id) {
-        feilmeldinger += "Land må fylles ut";
-        resultat = false;
-    }
-    else if (isNaN(land_id) || land_id == 0) {
-        feilmeldinger += "Flyplasskode FEILMEDLING";
-        resultat = false;
-        }
-        
-    // Alert
-    swal({
-       title: "Obs!",
-       text: feilmeldinger,
-       type: "warning"
-    });
     return resultat;
 }
-
+*/
 /*legg til/ Alleflyplasser*/ 
 
 /* Legg til/endre valuta */
 
-/* Slett */
+/* Slett */ 
 
 function sikkerSlett() {
     swal({   
@@ -268,221 +245,6 @@ function sikkerSlett() {
 }
 
 /* Slett  */ 
-
-
-
-/* Valider endre/legg til på alle brukere siden */
-
-function validerPersonBruker() {
-    var brukerID = document.forms["oppdater"]["brukerID"].value, personID = document.forms["oppdater"]["personID"].value, brukernavn = document.forms["oppdater"]["brukernavn"].value, ukryptertPassord = document.forms["oppdater"]["ukryptertpassord"].value, fornavn = document.forms["oppdater"]["fornavn"].value, etternavn = document.forms["oppdater"]["etternavn"].value, fodselsdato = document.forms["oppdater"]["fodselsdato"].value, land = document.forms["oppdater"]["land"].value, landID = document.forms["oppdater"]["landID"].value, epost = document.forms["oppdater"]["epost"].value, mobilnr = document.forms["oppdater"]["mobilnr"].value, resultat = true, feilmeldinger = "", teller = 0;
-    
-    // brukerID 
-    if (!brukerID) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Bruker ID er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    if (isNaN(brukerID)) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Bruker ID er ikke et nummer";
-        resultat = false;
-        teller++;
-    }
-    // brukerID slutt
-    
-    // personID 
-    if (!personID) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Person ID er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    if (isNaN(personID)) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Person ID er ikke et nummer";
-        resultat = false;
-        teller++;
-    }
-    // personID slutt
-    
-    // brukernavn 
-    if (!brukernavn) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Brukernavn er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    // brukernavn slutt
-    
-    // ukryptertPassord 
-    if (!ukryptertPassord) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Passord er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    // ukryptertPassord slutt
-    
-    // fornavn 
-    if (!fornavn) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Fornavn er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    // fornavn slutt
-    
-    // etternavn
-    if (!etternavn) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Etternavn er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    // etternavn slutt
-    
-    // fodselsdato 
-    if (!fodselsdato) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Fødselsdato er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    if (isNaN(fodselsdato)) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Fødselsdato er ikke en dato";
-        resultat = false;
-        teller++;
-    }
-    if (!fodselsdato == 8) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Fødselsdato er ikke en gyldig dato (DDMMYYYY)";
-        resultat = false;
-        teller++;
-    }
-    // fodselsdato slutt
-    
-    // land 
-    if (!land) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Land er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    // land slutt
-    
-    // landID 
-    if (!landID) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Land ID er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    if (isNaN(landID)) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Land ID er ikke et nummer";
-        resultat = false;
-        teller++;
-    }
-    // landID slutt
-    
-    // epost 
-    if (!epost) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "E-post er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    // epost slutt
-    
-    // mobilnr 
-    if (!mobilnr) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Mobilnr er ikke fylt ut";
-        resultat = false;
-        teller++;
-    }
-    
-    if (isNaN(mobilnr)) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Mobilnr er ikke ett nummer";
-        resultat = false;
-        teller++;
-    }
-    
-    if (mobilnr.length < 8) {
-        if (teller > 0) {
-            feilmeldinger += "og";
-            teller++;
-        }
-        feilmeldinger += "Mobilnr er ikke gyldig";
-        resultat = false;
-        teller++;
-    }
-    // mobilnr slutt
-    
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
-    
-    return resultat;
-}
-
-/* Valider endre/legg til på alle brukere siden */
 
 // valider modeller
 /*function validerOppdaterModeller() {
@@ -532,9 +294,49 @@ function validerPersonBruker() {
     return resultat;
 }*/
 
+function validerPersonBruker() {
+    var brukernavn = document.forms["oppdater"]["brukernavn"].value;
+    var ukryptertPassord = document.forms["oppdater"]["passord"].value;
+    /*
+    var ukryptertPassord = document.forms["oppdater"]["ukryptertPassord"].value;
+    var fornavn = document.forms["oppdater"]["fornavn"].value;
+    var etternavn = document.forms["oppdater"]["etternavn"].value;
+    var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
+    var land = document.forms["oppdater"]["land"].value;
+    var landID = document.forms["oppdater"]["landID"].value;
+    var epost = document.forms["oppdater"]["epost"].value;
+    var mobilnr = document.forms["oppdater"]["mobilnr"].value;*/
+    var resultat = true;
+    
+    //brukernavn
+    if (brukernavn == null || brukernavn == "") {
+        swal({
+            title: "Obs!",
+            text: "brukernavn finnes ikke",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //brukernavn slutt
+    // ukryptertPassord
+    else if (ukryptertPassord == null || ukryptertPassord == "") {
+        swal({
+            title: "Obs!",
+            text: "ukryptertPassord finnes ikke",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //ukryptertPassord slutt
+    
+    return resultat;
+}
+
 function validerOppdaterModeller() {
     var navn = document.forms["oppdater"]["navn"].value;
     var kapasitet = document.forms["oppdater"]["kapasitet"].value;
+    var rader = document.forms["oppdater"]["rader"].value;
+    var rader = document.forms["oppdater"]["bredde"].value;
     var resultat = true;
     if (navn == null || navn == "") {
         swal({
@@ -545,15 +347,57 @@ function validerOppdaterModeller() {
         resultat = false;
     }
     else if (kapasitet == null || kapasitet == "") {
-        alert("kapasitet må fylles ut");
+        swal({
+            title: "Obs!",
+            text: "Kapasitet må legges til",
+            type: "warning"
+        });
         resultat = false;
     }
-    
+    else if (isNaN(kapasitet)) {
+        swal({
+            title: "Obs!",
+            text: "Kapasitet må være ett tall",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (rader == null || rader == "") {
+        swal({
+            title: "Obs!",
+            text: "Rader må legges til",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (isNaN(rader)) {
+        swal({
+            title: "Obs!",
+            text: "Rader må være ett tall",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (bredde == null || bredde == "") {
+        swal({
+            title: "Obs!",
+            text: "Bredde må legges til",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (isNaN(bredde)) {
+        swal({
+            title: "Obs!",
+            text: "Bredde må være ett tall",
+            type: "warning"
+        });
+        resultat = false;
+    }
     return resultat;
 }
 
 // valider modeller
-
 
 /* legg til/endre luftfartoy/fly */
 
@@ -584,21 +428,47 @@ function validerLuftfartoy() {
 /* legg til/endre luftfartoy/fly */
 
 
+// experimental
+function myFunction() {
+	var maaFyllesUt = [];
+	var kommentar = [];
+	var output = "";
+	var resultat = false;
 
+	if (true) {
+		maaFyllesUt.push("brukernavn");
+		resultat = false;
+	}
+	if (true) {
+		maaFyllesUt.push("klasseListe");
+		resultat = false;
+	}
+	if (true) {
+		maaFyllesUt.push("klassenavn");
+		resultat = false;
+	}
+	
 
+	//alert(maaFyllesUt);
+	//document.getElementById("demo").innerHTML = maaFyllesUt;
 
+	for (var i = 0; i < maaFyllesUt.length; i++) {
+		output += maaFyllesUt[i];
+		if (i = maaFyllesUt.length - 2) {
+			output += "og ";
+		}
+		else {
+			output += ", ";
+		}
+	}
+	if (maaFyllesUt.length > 0) {
+		output += " må fylles ut.";
+	}
+	else {
+		output += "Ingen output";
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	document.getElementById("demo").innerHTML = output;
+}
+// experimental
 
