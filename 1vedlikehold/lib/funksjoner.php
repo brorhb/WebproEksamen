@@ -1063,7 +1063,7 @@
 	function passasjertypeListe($objektID) {
 		$objektnavn = 'passasjertype';
 		$objektIDeksisterer = sjekkOmPassasjertypeIDeksisterer($objektID);
-		$sql = "SELECT id, type FROM passasjertype ORDER BY type;";
+		$sql = "SELECT id, type, beskrivelse FROM passasjertype ORDER BY type;";
 		$result = connectDB()->query($sql);
 		
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
@@ -1077,10 +1077,11 @@
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
 				$type = utf8_encode($row["type"]);
+				$beskrivelse = utf8_encode($row["beskrivelse"]);
 
 				echo '<option ';
 				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $type . '</option>';
+				echo 'value="' . $id . '">' . $type . ' (' . $beskrivelse . ')</option>';
 			}
 		}
 		else {
@@ -1597,6 +1598,73 @@
 				echo '<option ';
 				if ($objektID == $id) { echo'selected '; }
 				echo 'value="' . $id . '">' . $fra . ' - ' . $til . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
+	function sjekkOmFlyvningIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM flyvning WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function flyvningListe($objektID, $fraTid, $tilTid) {
+		$objektnavn = 'flyvning';
+		$objektIDeksisterer = sjekkOmFlyvningIDeksisterer($objektID);
+		$sql = "SELECT f.id, f.avgang, ( SELECT f.navn FROM flyplass AS f WHERE f.id = (SELECT rk.flyplass_id_fra FROM rute_kombinasjon AS rk WHERE rk.id = f.rute_kombinasjon_id) ) AS fra,( SELECT f.navn FROM flyplass AS f WHERE f.id = (SELECT rk.flyplass_id_til FROM rute_kombinasjon AS rk WHERE rk.id = f.rute_kombinasjon_id) ) AS til FROM flyvning AS f";
+
+		$argument = 0;
+
+		if ($fraTid != "") {
+			$sql .= " WHERE f.avgang > '$fraTid'";
+			$argument++;
+		}
+		if ($tilTid != "") {
+			if ($argument == 0) {
+				$sql .= "WHERE";
+			}
+			else {
+				$sql .= " AND";
+			}
+			$sql .= " f.avgang < '$tilTid'";
+		}
+
+		$sql .= " ORDER BY f.avgang;";
+
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$avgang = utf8_encode($row["avgang"]);
+				$fra = utf8_encode($row["fra"]);
+				$til = utf8_encode($row["til"]);
+
+				$tid = gmdate("H:i d/m-y", $avgang);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $fra . ' - ' . $til . ' (' . $tid . ')</option>';
 			}
 		}
 		else {

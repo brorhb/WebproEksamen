@@ -31,6 +31,8 @@
 	echo "<br><br>";
 
 	$objektID = "";
+	$fraTid = "";
+	$tilTil = "";
 
 	echo "<ol>";
 		echo "<li>Klasse" . klasseListe($objektID) . "</li>";
@@ -45,8 +47,8 @@
 		echo "<li>Søkegrupper (gruppe og <strong>flyplass_gruppe</strong>)" . gruppeListe($objektID) . "</li>";
 		echo "<li>Tilgang (tilgang og <strong>bruker_tilgang</strong>)" . tilgangListe($objektID) . "</li>";
 		echo "<li>Ruter (rute og rute_kombinasjon)" . ruteListe($objektID) . rute_kombinasjonListe($objektID) . "</li>";
-		echo "<li>Flighter (flyvning og <strong>pris</strong>)</li>";
-		echo "<li>Bestillinger (person, bestilling, bestilling_flyvning, passasjer_flyvning)</li>";
+		echo "<li>Flighter (flyvning og <strong>pris</strong>)" . flyvningListe($objektID, $fraTid, $tilTid) . "</li>";
+		echo "<li>Bestillinger (person, bestilling, <strong>bestilling_flyvning, passasjer_flyvning</strong>)</li>";
 	echo "</ol>";
 
 
