@@ -66,7 +66,7 @@
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="flyplasskode">Flyplassnavn</lable>
+                                <lable for="flyplasskode">Flyplasskode</lable>
                                 <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplassskode . '" required>
                             </div>
                             <div class="form-group col-md-6">

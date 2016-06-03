@@ -182,43 +182,67 @@ function validerOppdaterKlasse() {
 
 /*legg til/ Alleflyplasser*/
 
-function validerOppdaterAlleflyplasser() {
-    var navn = document.forms["oppdater"]["navn"].value;
-    var flyplasskode = document.forms["oppdater"]["flyplasskode"].value;
-    var latitude = document.forms["oppdater"]["latitude"].value;
-    var longtude = document.forms["oppdater"]["longtude"].value;
-    var tidssone_gmt = document.forms["oppdater"]["tidssone_gmt"].value;
-    var land_id = document.forms["oppdater"]["land_id"].value;
+function validerOppdaterAlleFlyplasser() {
+
+    var maaFyllesUt = [];
+    var kommentar = [];
     var resultat = true;
-    if (navn == null || navn == "") {
-        swal({
-            title: "Obs!",
-            text: "Navn må fylles ut",
-            type: "warning"
-        });
+
+    var navn = document.forms["oppdater"]["navn"].value;
+    var flyplasskode = document.forms["oppdater"]["flyplasskode"].value; //kun 3 varchar
+    var latitude = document.forms["oppdater"]["latitude"].value;
+    var longitude = document.forms["oppdater"]["longitude"].value;
+    var tidssone_gmt = document.getElementById("tidssone_gmt"); //listeboks
+    var land_id = document.getElementById("land_id"); //listeboks
+    /* Ulike valideringer */
+    
+    
+    // Sjekker om feltet er tomt
+    if (navn == "" || navn == null) {
+        maaFyllesUt.push("navn");
         resultat = false;
     }
-    else if (flyplasskode == null || flyplasskode == "") {
-        alert("Flyplasskode må fylles ut");
+
+
+    // Sjekker om feltet er tomt
+    if (flyplasskode == "" || flyplasskode == null) {
+        maaFyllesUt.push("flyplasskode");
         resultat = false;
     }
-    else if (latitude == null || latitude == "") {
-        alert("Latitude må fylles ut");
+
+
+    // Sjekker om feltet er tomt
+    if (latitude == "" || latitude == null) {
+        maaFyllesUt.push("latitude");
         resultat = false;
     }
-    else if (longtude == null || longtude == "") {
-        alert("Longtude må fylles ut");
+
+
+    // Sjekker om feltet er tomt
+    if (longitude == "" || longitude == null) {
+        maaFyllesUt.push("longitude");
         resultat = false;
     }
-    else if (tidssone_gmt == null || tidssone_gmt == "") {
-        alert("Tidssone må fylles ut");
+    // Sjekker om feltet er tomt listeboks
+    if (tidssone_gmt.value == "") {
+        maaFyllesUt.push("tidssone gmt");
         resultat = false;
     }
-    else if (land_id == null || land_id == "") {
-        alert("Land ID må fylles ut");
+    // Sjekker om feltet er tomt listeboks
+    if (land_id.value == "") {
+        maaFyllesUt.push("land id");
         resultat = false;
+    }
+
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
     }
     
+    // Returnerer om det er noen feil
     return resultat;
 }
 /*legg til/ Alleflyplasser*/ 
