@@ -19,7 +19,7 @@
 
 	$IDen = "1";
 
-	echo rute_kombinasjonListe($IDen) . '<br>';
+	echo ruteListe($IDen) . '<br>';
 
 	if (sjekkOmRute_kombinasjonIDeksisterer($IDen)) {
 		echo "eksisterer";
@@ -31,17 +31,24 @@
 	echo "<br><br>";
 
 	$objektID = "";
-	echo klasseListe($objektID) . "<br>";
-	echo type_luftfartoyListe($objektID) . "<br>";
-	echo passasjertypeListe($objektID) . "<br>";
-	echo valutaListe($objektID) . "<br>";
-	echo landListe($objektID) . "<br>";
-	echo flyplassListe($objektID) . "<br>";
-	echo modellListe($objektID) . "<br>";
-	echo luftfartoyListe($objektID) . "<br>";
-	echo gruppeListe($objektID) . "<br>";
-	echo tilgangListe($objektID) . "<br>";
-	echo rute_kombinasjonListe($objektID) . "<br>";
+
+	echo "<ol>";
+		echo "<li>Klasse" . klasseListe($objektID) . "</li>";
+		echo "<li>Type_luftfartoy" . type_luftfartoyListe($objektID) . "</li>";
+		echo "<li>Passasjertype" . passasjertypeListe($objektID) . "</li>";
+		echo "<li>Valuta" . valutaListe($objektID) . "</li>";
+		echo "<li>Land" . landListe($objektID) . "</li>";
+		echo "<li>Flyplass" . flyplassListe($objektID) . "</li>";
+		echo "<li>Bruker (og person)</li>" . brukerListe($objektID) . personListe($objektID);
+		echo "<li>Luftfartøy modellspesifikt (modell og <strong>seteoppsett</strong>)" . modellListe($objektID) . "</li>";
+		echo "<li>Luftfartoy" . luftfartoyListe($objektID) . "</li>";
+		echo "<li>Søkegrupper (gruppe og <strong>flyplass_gruppe</strong>)" . gruppeListe($objektID) . "</li>";
+		echo "<li>Tilgang (tilgang og <strong>bruker_tilgang</strong>)" . tilgangListe($objektID) . "</li>";
+		echo "<li>Ruter (rute og rute_kombinasjon)" . ruteListe($objektID) . rute_kombinasjonListe($objektID) . "</li>";
+		echo "<li>Flighter (flyvning og <strong>pris</strong>)</li>";
+		echo "<li>Bestillinger (person, bestilling, bestilling_flyvning, passasjer_flyvning)</li>";
+	echo "</ol>";
+
 
 	/* Eksempel på valider bruker */
 
@@ -174,20 +181,3 @@
 
 </script>
 <p id="demo"></p>
-
-<ol>
-	<li>Klasse</li>
-	<li>Type_luftfartoy</li>
-	<li>Passasjertype</li>
-	<li>Valuta</li>
-	<li>Land</li>
-	<li>Flyplass</li>
-	<li>Bruker (og person)</li>
-	<li>Luftfartøy modellspesifikt (modell og seteoppsett)</li>
-	<li>Luftfartoy</li>
-	<li>Søkegrupper (gruppe og flyplass_gruppe)</li>
-	<li>Tilgang (tilgang og bruker_tilgang)</li>
-	<li>Ruter (rute og rute_kombinasjon)</li>
-	<li>Flighter (flyvning og pris)</li>
-	<li>Bestillinger (person, bestilling, bestilling_flyvning, passasjer_flyvning)</li>
-</ol>

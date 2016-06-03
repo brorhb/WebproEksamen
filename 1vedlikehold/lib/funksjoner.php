@@ -1223,6 +1223,98 @@
 		echo '</select>';
 	}
 
+	function sjekkOmBrukerIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM bruker WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function brukerListe($objektID) {
+		$objektnavn = 'bruker';
+		$objektIDeksisterer = sjekkOmBrukerIDeksisterer($objektID);
+		$sql = "SELECT b.id, b.brukernavn, b.epost, p.fornavn, p.etternavn FROM bruker AS b LEFT JOIN person AS p ON p.id = b.person_id ORDER BY p.etternavn, p.fornavn, b.epost, b.brukernavn;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$brukernavn = utf8_encode($row["brukernavn"]);
+				$epost = utf8_encode($row["epost"]);
+				$fornavn = utf8_encode($row["fornavn"]);
+				$etternavn = utf8_encode($row["etternavn"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $brukernavn . ' ' . $epost . ' (' . $etternavn . ', ' . $fornavn . ')</option>';
+			}
+		}
+		else {
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
+	function sjekkOmPersonIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM person WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function personListe($objektID) {
+		$objektnavn = 'person';
+		$objektIDeksisterer = sjekkOmPersonIDeksisterer($objektID);
+		$sql = "SELECT id, fornavn, etternavn FROM person ORDER BY etternavn, fornavn;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$fornavn = utf8_encode($row["fornavn"]);
+				$etternavn = utf8_encode($row["etternavn"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $etternavn . ', ' . $fornavn . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
 /* Bruker og person trenger asynkron søk */
 
 	function sjekkOmModellIDeksisterer($objektID) {
@@ -1304,7 +1396,7 @@
 	function luftfartoyListe($objektID) {
 		$objektnavn = 'luftfartoy';
 		$objektIDeksisterer = sjekkOmLuftfartoyIDeksisterer($objektID);
-		$sql = "SELECT id, tailnr FROM luftfartoy ORDER BY tailnr;";
+		$sql = "SELECT id, tailnr, (SELECT navn FROM modell WHERE id = luftfartoy.modell_id) AS modellnavn FROM luftfartoy ORDER BY tailnr;";
 		$result = connectDB()->query($sql);
 		
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
@@ -1318,10 +1410,11 @@
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
 				$tailnr = utf8_encode($row["tailnr"]);
+				$modellnavn = utf8_encode($row["modellnavn"]);
 
 				echo '<option ';
 				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $tailnr . '</option>';
+				echo 'value="' . $id . '">' . $tailnr . ' (' . $modellnavn . ')</option>';
 			}
 		}
 		else {
@@ -1422,7 +1515,50 @@
 
 /* bruker_tilgang ordnes senere */
 
-/* Rute_kombinasjon lages senere */
+	function sjekkOmRuteIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM rute WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function ruteListe($objektID) {
+		$objektnavn = 'rute';
+		$objektIDeksisterer = sjekkOmRuteIDeksisterer($objektID);
+		$sql = "SELECT r.id, (SELECT navn FROM flyplass AS f WHERE f.id = rk.flyplass_id_fra) AS fra, (SELECT navn FROM flyplass AS f WHERE f.id = rk.flyplass_id_til) AS til FROM rute AS r LEFT JOIN rute_kombinasjon AS rk ON r.id = rk.rute_id ORDER BY fra;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$fra = utf8_encode($row["fra"]);
+				$til = utf8_encode($row["til"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $fra . ' - ' . $til . ' (RuteID: ' . $id . ')</option>';
+			}
+		}
+		else {
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
 
 	function sjekkOmRute_kombinasjonIDeksisterer($objektID) {
 		connectDB();
