@@ -530,60 +530,60 @@ function validerEksempel() {
     /* Klarerer variabler */
 	var maaFyllesUt = [];
 	var kommentar = [];
-    var resultat = false;
+    var resultat = true;
 
     /* Ulike valideringer */
     
     // Sjekker om feltet er tomt
 	if (true) {
 		maaFyllesUt.push("fornavn");
-		resultat = true;
+		resultat = false;
 	}
 
     // Sjekker om feltet er tomt
 	if (true) {
         maaFyllesUt.push("etternavn");
-		resultat = true;
+		resultat = false;
 	}
 
     // Sjekker om feltet er tomt
 	if (true) {
         maaFyllesUt.push("alder");
-		resultat = true;
+		resultat = false;
 	}
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (true) {
             kommentar.push("<strong>Alder</strong> må være et possitivt tall.");
-            resultat = true;
+            resultat = false;
         }
     }
 
     // Sjekker om feltet er tomt
 	if (false) {
         maaFyllesUt.push("mobilnummer");
-		resultat = true;
+		resultat = false;
 	}
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (true) {
             kommentar.push("<strong>Mobilnummer</strong> kan kun inneholde siffer fra 0 - 9.");
-            resultat = true;
+            resultat = false;
         }
         if (true) {
             kommentar.push("<strong>Mobilnummer</strong> må være minumum 8 tegn.");
-            resultat = true;
+            resultat = false;
         }
     }
 
     /* Valideringer slutt */
     
     // Skriver ut feilmeldingsboks
-    if (resultat) {
+    if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
     
-    // Returnerer om det er noen feil
+    // Returnerer om neste side skal lastes inn
     return resultat;
 }
 
