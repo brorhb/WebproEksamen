@@ -19,12 +19,11 @@
         $fornavn = $_POST['fornavn'];
         $etternavn = $_POST['etternavn'];
         $fodselsdato = $_POST['fodselsdato'];
-        $land = $_POST['navn'];
         $landID = $_POST['land_id'];
         $epost = $_POST['epost'];
         $mobilnr = $_POST['mobilnr'];
 
-        if (oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr)) {
+        if (oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {
@@ -67,10 +66,8 @@
                             
                             echo '
                             <div class="form-group col-md-6">
-                                <lable for="brukerID">Bruker ID</lable>
-                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
-                                <lable for="personID">Person ID</lable>
-                                <input class="form-control" type="text" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
+                                <input class="form-control" type="hidden" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
+                                <input class="form-control" type="hidden" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="brukernavn">Brukernavn</lable>

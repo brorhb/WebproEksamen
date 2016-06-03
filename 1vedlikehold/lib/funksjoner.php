@@ -355,7 +355,7 @@
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
-	function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $land, $landID, $epost, $mobilnr) {
+	function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr) {
 		
 		connectDB();
 
@@ -367,7 +367,6 @@
 		$fornavn = connectDB()->real_escape_string(utf8_decode($fornavn));
 		$etternavn = connectDB()->real_escape_string(utf8_decode($etternavn));
 		$fodselsdato = connectDB()->real_escape_string(utf8_decode($fodselsdato));
-        $land = connectDB()->real_escape_string(utf8_decode($land));
         $landID = connectDB()->real_escape_string(utf8_decode($landID));
         $epost = connectDB()->real_escape_string(utf8_decode($epost));
         $mobilnr = connectDB()->real_escape_string(utf8_decode($mobilnr));
@@ -984,7 +983,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -996,7 +995,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1029,7 +1028,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg type luftfatøy</option>';
+			echo 'disabled value="">Velg type luftfatøy</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1041,7 +1040,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1073,7 +1072,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1085,7 +1084,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1117,7 +1116,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1130,7 +1129,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1162,7 +1161,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1174,7 +1173,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1206,7 +1205,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1219,7 +1218,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1253,7 +1252,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1265,7 +1264,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1314,7 +1313,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1326,7 +1325,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1360,7 +1359,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1372,7 +1371,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1404,7 +1403,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1416,7 +1415,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}
@@ -1452,7 +1451,7 @@
 
 			echo '<option ';
 			if (!$objektIDeksisterer) { echo 'selected '; }
-			echo 'disabled>Velg ' . $objektnavn . '</option>';
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
 
 			while($row = $result->fetch_assoc()) {
 				$id = utf8_encode($row["id"]);
@@ -1465,7 +1464,7 @@
 			}
 		}
 		else {
-			echo '<option disabled>Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
 	}

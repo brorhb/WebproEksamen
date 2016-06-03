@@ -172,7 +172,7 @@ function validerOppdaterKlasse() {
 
 /*legg til/ Alleflyplasser*/
 
-/*function validerOppdaterFlyplass() {
+function validerOppdaterFlyplass() {
     var navn = document.forms["oppdater"]["navn"].value;
     var flyplasskode = document.forms["oppdater"]["flyplasskode"].value;
     var latitude = document.forms["oppdater"]["latitude"].value;
@@ -192,21 +192,17 @@ function validerOppdaterKlasse() {
         alert("Flyplasskode må fylles ut");
         resultat = false;
     }
-    }
     else if (latitude == null || latitude == "") {
         alert("Latitude må fylles ut");
         resultat = false;
-    }
     }
     else if (longtude == null || longtude == "") {
         alert("Longtude må fylles ut");
         resultat = false;
     }
-    }
     else if (tidssone_gmt == null || tidssone_gmt == "") {
         alert("Tidssone må fylles ut");
         resultat = false;
-    }
     }
     else if (land_id == null || land_id == "") {
         alert("Land ID må fylles ut");
@@ -215,7 +211,6 @@ function validerOppdaterKlasse() {
     
     return resultat;
 }
-*/
 /*legg til/ Alleflyplasser*/ 
 
 /* Legg til/endre valuta */
@@ -296,38 +291,96 @@ function sikkerSlett() {
 
 function validerPersonBruker() {
     var brukernavn = document.forms["oppdater"]["brukernavn"].value;
-    var ukryptertPassord = document.forms["oppdater"]["passord"].value;
-    /*
-    var ukryptertPassord = document.forms["oppdater"]["ukryptertPassord"].value;
+    var passord = document.forms["oppdater"]["passord"].value;
     var fornavn = document.forms["oppdater"]["fornavn"].value;
     var etternavn = document.forms["oppdater"]["etternavn"].value;
     var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
-    var land = document.forms["oppdater"]["land"].value;
-    var landID = document.forms["oppdater"]["landID"].value;
-    var epost = document.forms["oppdater"]["epost"].value;
+    var landID = document.getElementById("land_id");
+    /*var epost = document.forms["oppdater"]["epost"].value;
     var mobilnr = document.forms["oppdater"]["mobilnr"].value;*/
     var resultat = true;
     
-    //brukernavn
+    //Brukernavn
     if (brukernavn == null || brukernavn == "") {
         swal({
             title: "Obs!",
-            text: "brukernavn finnes ikke",
+            text: "brukernavn må fylles ut",
             type: "warning"
         });
         resultat = false;
     }
     //brukernavn slutt
-    // ukryptertPassord
-    else if (ukryptertPassord == null || ukryptertPassord == "") {
+    
+    //Passord
+    else if (passord == null || passord == "") {
         swal({
             title: "Obs!",
-            text: "ukryptertPassord finnes ikke",
+            text: "Passord må fylles ut",
             type: "warning"
         });
         resultat = false;
     }
-    //ukryptertPassord slutt
+    //Passord slutt
+    
+    //Fornavn
+    else if (fornavn == null || fornavn == "") {
+        swal({
+            title: "Obs!",
+            text: "Fornavn må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //Fornavn slutt
+    
+    //Etternavn
+    else if (etternavn == null || etternavn == "") {
+        swal({
+            title: "Obs!",
+            text: "Etternavn må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //Etternavn slutt
+    
+    //Fødselsdato
+    else if (fodselsdato == null || fodselsdato == "") {
+        swal({
+            title: "Obs!",
+            text: "Fødselsdato må fylles ut (DDMMYYYY)",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (isNaN(fodselsdato)) {
+        swal({
+            title: "Obs!",
+            text: "Fødselsdato må bestå av 8 siffer (DDMMYYYY)",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (fodselsdato.length != 8) {
+        swal({
+            title: "Obs!",
+            text: "Fødselsdato må bestå av 8 siffer (DDMMYYYY)",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //Fødselsdato slutt
+    
+    //LandID
+    else if (landID.value == "") {
+        swal({
+            title: "Obs!",
+            text: "Land må velges",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //LandID slutt
     
     return resultat;
 }
@@ -399,12 +452,40 @@ function validerOppdaterModeller() {
 
 // valider modeller
 
+/* legg til/endre luftfartoy/fly */
+
+function validerLuftfartoy() {
+    var modell_id = document.forms["oppdater"]["modell_id"].value;
+    var tailnr = document.forms["oppdater"]["tailnr"].value;
+    var resultat = true;
+    if (modell_id == null || modell_id == "") {
+        swal({
+            title: "Obs!",
+            text: "Modell_id må velges",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (tailnr == null || tailnr == "") {
+        swal({
+            title: "Obs!",
+            text: "Tailnr må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    
+    return resultat;
+}
+
+/* legg til/endre luftfartoy/fly */
+
 // Eksempel på valider-funksjon
 function validerEksempel() {
     /* Klarerer variabler */
 	var maaFyllesUt = [];
 	var kommentar = [];
-	var resultat = false;
+    var resultat = false;
 
     /* Ulike valideringer */
     
@@ -413,11 +494,11 @@ function validerEksempel() {
 		resultat = true;
 	}
 	if (true) {
-		maaFyllesUt.push("etternavn");
+        maaFyllesUt.push("etternavn");
 		resultat = true;
 	}
 	if (true) {
-		maaFyllesUt.push("alder");
+        	maaFyllesUt.push("alder");
 		resultat = true;
 	}
     if (true) {
@@ -425,14 +506,14 @@ function validerEksempel() {
 		resultat = true;
     }
 	if (true) {
-		maaFyllesUt.push("fødselsdato");
+        maaFyllesUt.push("fødselsdato");
 		resultat = true;
 	}
     if (true) {
         kommentar.push("Ikke gyldig <strong>fødselsdato</strong>.");
 		resultat = true;
     }
-    
+
     /* Valideringer slutt */
     
     if (resultat) {
@@ -443,7 +524,6 @@ function validerEksempel() {
 }
 // Eksempel på valider-funksjon slutt
 
-
 function feilmeldingBoks(maaFyllesUt, kommentar) {
     
 	var fyllesutOutput = "";
@@ -452,7 +532,7 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
     
     /* Gjør om det som må fylles ut til tekst */
 	for (var i = 0; i < maaFyllesUt.length; i++) {
-		fyllesutOutput += "<strong>" + maaFyllesUt[i] + "</strong>";
+        fyllesutOutput += "<strong>" + maaFyllesUt[i] + "</strong>";
         if (i < maaFyllesUt.length - 2) {
             fyllesutOutput += ", ";
         }
@@ -461,7 +541,7 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
         }
 	}
 	if (maaFyllesUt.length > 0) {
-		fyllesutOutput += " må fylles ut.";
+        fyllesutOutput += " må fylles ut.";
 	}
     
     /* Gjør om kommentarer til tekst */
@@ -484,7 +564,7 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
     if (output == "") {
         output += "Ingen output";
     }
-
+    
     swal({
             title: "Obs!",
             text: output,
