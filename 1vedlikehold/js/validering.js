@@ -223,6 +223,58 @@ function validerOppdaterAlleflyplasser() {
 }
 /*legg til/ Alleflyplasser*/ 
 
+/*legg til/ Ruter*/
+function validerOppdaterRuter() {
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+    
+     /*lesteboks*/
+
+    var tid = document.forms["oppdater"]["tid"].value;
+    var pris = document.forms["oppdater"]["pris"].value;
+    var valuta = document.getElementById("valuta");
+    var fraFlyplass = document.getElementById("fraFlyplass");
+    var tilFlyplass = document.getElementById("tilFlyplass");
+    
+    
+
+    // Sjekker om feltet er tomt
+    if (tid == "" || tid == null) {
+        maaFyllesUt.push("tid");
+        resultat = false;
+    }
+
+    if (pris == "" || pris == null) {
+        maaFyllesUt.push("pris");
+        resultat = false;
+    }
+     if (valuta.value == "") {
+        maaFyllesUt.push("valuta");
+        resultat = false;
+    }
+     if (fraFlyplass.value == "") {
+        maaFyllesUt.push("fraFlyplass");
+        resultat = false;
+    }
+     if (tilFlyplass.value == "") {
+        maaFyllesUt.push("tilFlyplass");
+        resultat = false;
+    }
+
+    /* Valideringer slutt */
+    
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    // Returnerer om det er noen feil
+    return resultat;
+}
+/*legg til /ruter*/
+
 /* Legg til/endre valuta */
 
 function validerOppdaterValuta() {
