@@ -614,7 +614,7 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
         if (i == 0 && maaFyllesUt.length != 0) {
             kommentarOutput += "<br><br>";
         }
-        else if (maaFyllesUt.length != 0) {
+        else if (i != 0) {
             kommentarOutput += "<br>";
         }
         
