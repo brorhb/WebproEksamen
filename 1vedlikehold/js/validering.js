@@ -172,7 +172,7 @@ function validerOppdaterKlasse() {
 
 /*legg til/ Alleflyplasser*/
 
-function validerOppdaterFlyplass() {
+function validerOppdaterAlleflyplasser() {
     var navn = document.forms["oppdater"]["navn"].value;
     var flyplasskode = document.forms["oppdater"]["flyplasskode"].value;
     var latitude = document.forms["oppdater"]["latitude"].value;
