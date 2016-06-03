@@ -1,6 +1,6 @@
 <?php include_once("head.php");
     //krevInnlogging('0');
-    //test
+    //test 
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
