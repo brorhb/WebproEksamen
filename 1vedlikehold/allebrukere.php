@@ -1,7 +1,6 @@
-<?php
-    include_once("lib/funksjoner.php");
+<?php include_once("head.php");
     //krevInnlogging('0');
-    include_once("head.php");
+    
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
@@ -52,7 +51,7 @@
                     $sql = "SELECT b.id AS brukerID, b.brukernavn, b.passord, p.id AS personID, p.fornavn, p.etternavn, p.fodselsdato, b.land_id, l.navn, b.epost, b.mobilnr FROM bruker b LEFT JOIN person p ON b.person_id = p.id LEFT JOIN land l ON b.land_id = l.id WHERE b.id = '$id';";
                     $result = connectDB()->query($sql);
 
-                    if($result->num_rows > 0 ) {
+                    if ($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
                             $brukerID = utf8_encode($row["brukerID"]);
                             $personID = utf8_encode($row["personID"]);

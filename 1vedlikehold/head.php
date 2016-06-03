@@ -38,6 +38,8 @@
 
         <link rel="stylesheet" href="css/style.css">
         <!-- stilark --> 
+        
+        <?php include_once("lib/funksjoner.php"); ?>
     </head>
 
     <body>
