@@ -141,7 +141,7 @@
     
 
         echo'<div class="col-md-12">
-            <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
+            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" id="tabell">
             <h2>Alle Klasser</h2>
             <table class="table table-striped">
                 <thead>

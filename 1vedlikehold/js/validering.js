@@ -399,47 +399,100 @@ function validerOppdaterModeller() {
 
 // valider modeller
 
-
-// experimental
-function myFunction() {
+// Eksempel på valider-funksjon
+function validerEksempel() {
+    /* Klarerer variabler */
 	var maaFyllesUt = [];
 	var kommentar = [];
-	var output = "";
 	var resultat = false;
 
+    /* Ulike valideringer */
+    
 	if (true) {
-		maaFyllesUt.push("brukernavn");
-		resultat = false;
+		maaFyllesUt.push("fornavn");
+		resultat = true;
 	}
 	if (true) {
-		maaFyllesUt.push("klasseListe");
-		resultat = false;
+		maaFyllesUt.push("etternavn");
+		resultat = true;
 	}
 	if (true) {
-		maaFyllesUt.push("klassenavn");
-		resultat = false;
+		maaFyllesUt.push("alder");
+		resultat = true;
 	}
-	
+    if (true) {
+        kommentar.push("<strong>Alder</strong> må være et possitivt tall.");
+		resultat = true;
+    }
+	if (true) {
+		maaFyllesUt.push("fødselsdato");
+		resultat = true;
+	}
+    if (true) {
+        kommentar.push("Ikke gyldig <strong>fødselsdato</strong>.");
+		resultat = true;
+    }
+    
+    /* Valideringer slutt */
+    
+    if (resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+    
+    return resultat;
+}
+// Eksempel på valider-funksjon slutt
 
-	//alert(maaFyllesUt);
-	//document.getElementById("demo").innerHTML = maaFyllesUt;
 
+function feilmeldingBoks(maaFyllesUt, kommentar) {
+    
+	var fyllesutOutput = "";
+	var kommentarOutput = "";
+	var output = "";
+    
+    /* Gjør om det som må fylles ut til tekst */
 	for (var i = 0; i < maaFyllesUt.length; i++) {
-		output += maaFyllesUt[i];
-		if (i = maaFyllesUt.length - 2) {
-			output += "og ";
-		}
-		else {
-			output += ", ";
-		}
+		fyllesutOutput += "<strong>" + maaFyllesUt[i] + "</strong>";
+        if (i < maaFyllesUt.length - 2) {
+            fyllesutOutput += ", ";
+        }
+        else if (i < maaFyllesUt.length - 1) {
+            fyllesutOutput += " og ";
+        }
 	}
 	if (maaFyllesUt.length > 0) {
-		output += " må fylles ut.";
+		fyllesutOutput += " må fylles ut.";
 	}
-	else {
-		output += "Ingen output";
+    
+    /* Gjør om kommentarer til tekst */
+    for (var i = 0; i < kommentar.length; i++) {
+        if (i == 0 && maaFyllesUt.length != 0) {
+            kommentarOutput += "<br><br>";
+        }
+        else if (maaFyllesUt.length != 0) {
+            kommentarOutput += "<br>";
+        }
+        
+		kommentarOutput += kommentar[i];
+        if (i < kommentar.length - 1) {
+            kommentarOutput += " ";
+        }
 	}
+    
+    output = fyllesutOutput + kommentarOutput;
+    
+    if (output == "") {
+        output += "Ingen output";
+    }
 
-	document.getElementById("demo").innerHTML = output;
+    swal({
+            title: "Obs!",
+            text: output,
+            type: "error",
+            html: true
+    });
 }
-// experimental
+
+function sikkerSlett() {
+    var slett = "";
+}

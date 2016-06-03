@@ -3,6 +3,8 @@
     //krevInnlogging('0');
     include_once("head.php");
 
+    echo '<button onclick="validerEksempel()">Skriv ut feilmeldinger</button>';
+    echo '<p id="demo"></p>';
     
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
@@ -124,7 +126,7 @@
     
 
         echo'<div class="col-md-12">
-            <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
+            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" id="tabell" onsubmit="return sikkerSlett()">
             <h2>Alle land</h2>
             <table class="table table-striped">
                 <thead>
@@ -173,7 +175,7 @@
                         <input type="submit" name="ny" class="btn btn-success" value="Legg til" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" class="btn btn-danger" value="Slett" onclick="sikkerSlett()"/>
+                        <input type="submit" name="slett" class="btn btn-danger" value="Slett" id="slett"/>
                     </div>
                 </form>
         </div>
