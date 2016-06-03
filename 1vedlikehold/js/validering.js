@@ -250,7 +250,7 @@ function sikkerSlett() {
 
 /* Valider endre/legg til på alle brukere siden */
 
-function validerPersonBruker() {
+/*function validerPersonBruker() {
     var brukerID = document.forms["oppdater"]["brukerID"].value, personID = document.forms["oppdater"]["personID"].value, brukernavn = document.forms["oppdater"]["brukernavn"].value, ukryptertPassord = document.forms["oppdater"]["ukryptertpassord"].value, fornavn = document.forms["oppdater"]["fornavn"].value, etternavn = document.forms["oppdater"]["etternavn"].value, fodselsdato = document.forms["oppdater"]["fodselsdato"].value, land = document.forms["oppdater"]["land"].value, landID = document.forms["oppdater"]["landID"].value, epost = document.forms["oppdater"]["epost"].value, mobilnr = document.forms["oppdater"]["mobilnr"].value, resultat = true, feilmeldinger = "", teller = 0;
     
     // brukerID 
@@ -459,7 +459,7 @@ function validerPersonBruker() {
     
     return resultat;
 }
-
+*/
 /* Valider endre/legg til på alle brukere siden */
 
 // valider modeller
@@ -509,6 +509,38 @@ function validerPersonBruker() {
     
     return resultat;
 }*/
+
+function validerPersonBruker() {
+    var brukerID = document.forms["oppdater"]["brukerID"].value;
+    var personID = document.forms["oppdater"]["personID"].value;
+    var brukernavn = document.forms["oppdater"]["brukernavn"].value;
+    var ukryptertPassord = document.forms["oppdater"]["ukryptertPassord"].value;
+    var fornavn = document.forms["oppdater"]["fornavn"].value;
+    var etternavn = document.forms["oppdater"]["etternavn"].value;
+    var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
+    var land = document.forms["oppdater"]["land"].value;
+    var landID = document.forms["oppdater"]["landID"].value;
+    var epost = document.forms["oppdater"]["epost"].value;
+    var mobilnr = document.forms["oppdater"]["mobilnr"].value;
+    var resultat = true;
+    
+    //brukerID
+    if (brukerID == null || brukerID == "") {
+        swal({
+            title: "Obs!",
+            text: "brukerID finnes ikke",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    //brukerID slutt
+    else if (personID == null || personID == "") {
+        alert("personID finnes ikke");
+        resultat = false;
+    }
+    
+    return resultat;
+}
 
 function validerOppdaterModeller() {
     var navn = document.forms["oppdater"]["navn"].value;
