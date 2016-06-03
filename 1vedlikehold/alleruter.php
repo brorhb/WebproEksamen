@@ -93,7 +93,7 @@
                                 <lable for="fraFlyplas">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
                                echo '<lable for="tilFlyplas">Flyplass 2</lable>'; 
-                               echo flyplassListe(@tilFlyplass);
+                               echo flyplassListe(@$tilFlyplass);
                                echo ' 
                             </div>
                             <div class="form-group col-md-6">
