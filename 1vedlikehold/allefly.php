@@ -53,8 +53,7 @@
                             echo '
 
                         <div class="form-group">
-                                <lable for="id">id</lable>
-                                <input class="form-control" type="text" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; modellListe(@$modell_id);
+                                <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
                             <div class="form-group">
@@ -65,9 +64,9 @@
                     }
                     else {
                         echo '
-                            <          <div class="form-group">
-                                <lable for="id">id</lable>
-                                <input class="form-control" type="text" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; modellListe(@$modell_id);
+                                <div class="form-group">
+                                <lable for="modell">Velg modell</label>
+                                <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
                             <div class="form-group">
