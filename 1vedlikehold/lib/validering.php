@@ -110,7 +110,7 @@
 		echo '<p style="color:#c9302c;">' . $output . '</p>';
 	}
 
-	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id) {
+	function validerPersonBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id, $fornavn, $etternavn, $fodselsdato) {
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
 		$kommentar = array();
@@ -123,20 +123,16 @@
 		$land_id = utf8_decode($land_id);
 		$mobilnummer = utf8_decode($mobilnummer);
 		$person_id = utf8_decode($person_id);
+		$fornavn = utf8_decode($fornavn);
+		$etternavn = utf8_decode($etternavn);
+		$fodselsdato = utf8_decode($fodselsdato);
 
 		/* Ulike valideringer */
 
-		// Sjekker om feltet er tomt
-		if ($id == "" || $id == null) {
-			$maaFyllesUt[] = "brukerID";
+		// På IDen sjekker man kun om den eksisterer hvis den er er fyllt ut. Hvis den ikke er fyllt ut, skal den ikke valideres p.ga. da oppretter man en ny linje i databasen.
+		if (($id != "" || $id != null) AND !sjekkOmBrukerIDeksisterer($id)) {
+			$kommentar[] = "<strong>Brukeren</strong> eksisterer ikke.";
 			$resultat = false;
-		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
-		else {
-			if (!is_numeric($id)) {
-				$kommentar[] = "<strong>BrukerID</strong>en må kun bestå av tall.";
-				$resultat = false;
-			}
 		}
 
 		// Sjekker om feltet er tomt
@@ -226,7 +222,7 @@
 	}
 
 /*Validering Klasse - VET IKKE OM DEN FUNGERER*/
-function validerOppdaterKlasse($klassenavn, $beskrivelse) {
+function validerKlasse($klassenavn, $beskrivelse) {
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
 		$kommentar = array();
@@ -263,7 +259,7 @@ function validerOppdaterKlasse($klassenavn, $beskrivelse) {
 /*Validering Klasse - VET IKKE OM DEN FUNGERER*/
 
 /*Validering Passasjertype - VET IKKE OM DEN FUNGERER*/
-function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
+function validerPassasjertype($passasjertype, $beskrivelse) {
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
 		$kommentar = array();
@@ -307,7 +303,7 @@ function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
 /*Validering passasjertype - VET IKKE OM DEN FUNGERER*/
 
 /*Validering land - VET IKKE OM DEN FUNGERER*/
-function validerOppdaterLand($navn,$landskode, $valuta_id, $iso, $iso3) {
+function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
@@ -390,7 +386,7 @@ function validerOppdaterLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 /*Validering land - VET IKKE OM DEN FUNGERER*/
 
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
-function validerOppdaterValuta($valuta_navn,$forkortelse) {
+function validerValuta($valuta_navn,$forkortelse) {
 
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
@@ -437,7 +433,7 @@ function validerOppdaterValuta($valuta_navn,$forkortelse) {
 
 /*Validering ruter- VET IKKE OM DEN FUNGERER*/
 
-function validerOppdaterRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
+function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 
 		/* Klarerer variabler */
 		$maaFyllesUt = array();

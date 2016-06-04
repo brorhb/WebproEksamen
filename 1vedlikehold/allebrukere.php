@@ -23,11 +23,15 @@
         $epost = $_POST['epost'];
         $mobilnr = $_POST['mobilnr'];
 
-        if (oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr)) {
+        if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
+
+            oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
             echo "Informasjonen ble oppdatert.";
+
         }
         else {
-            echo "Noe galt skjedde...";
+            // valider-funksjonen i if-setningen printer ut feilmeldingen selv
+            //echo "Noe galt skjedde...";
         }
     }
     elseif (@$_POST['ny'] || @$_POST['endre']) {
