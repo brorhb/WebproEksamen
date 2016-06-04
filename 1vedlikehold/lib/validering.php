@@ -225,4 +225,43 @@
 		return $resultat;
 	}
 
+/*Validering Klasse - VET IKKE OM DEN FUNGERER*/
+function validerOppdaterKlasse($klassenavn, $beskrivelse) {
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$klassenavn = utf8_decode($klassenavn);
+		$beskrivelse = utf8_decode($beskrivelse);
+	
+
+		/* Ulike valideringer */
+		
+		// Sjekker om feltet er tomt
+	
+		if ($klassenavn == "" || $klassenavn == null) {
+			$maaFyllesUt[] = "klassenavn";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($beskrivelse == "" || $beskrivelse == null) {
+			$maaFyllesUt[] = "beskrivelse";
+			$resultat = false;
+		}
+		/* Valideringer slutt */
+		
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+/*Validering Klasse - VET IKKE OM DEN FUNGERER*/
+
+
+
 ?>
