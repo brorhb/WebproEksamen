@@ -90,7 +90,7 @@
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
-            <div id="page-content-wrapper" class="forside_bg">
+            <div id="page-content-wrapper">
                 <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
                     <span class="hamb-top"></span>
                     <span class="hamb-middle"></span>
