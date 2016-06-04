@@ -428,9 +428,10 @@ function validerOppdaterValuta($valuta_navn,$forkortelse) {
 	}
 
 
-/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+/*Validering ruter- VET IKKE OM DEN FUNGERER*/
 
-/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+
+/*Validering ruter - VET IKKE OM DEN FUNGERER*/
 
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
 ?>
