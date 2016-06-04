@@ -433,12 +433,78 @@ function validerOppdaterValuta($valuta_navn,$forkortelse) {
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
-
+/*Validering valuta - VET IKKE OM DEN FUNGERER*/
 
 /*Validering ruter- VET IKKE OM DEN FUNGERER*/
+<?php
+function validerOppdaterRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$tid = utf8_decode($tid);
+		$pris = utf8_decode($pris);
+		$valuta = utf8_decode($valuta);
+		$fraFlyplass = utf8_decode($fraFlyplass);
+		$tilFlyplass = utf8_decode($tilFlyplass);
+		
+		//$mobilnummer = utf8_decode($mobilnummer);
+		//$person_id = utf8_decode($person_id);
+
+		/* Ulike valideringer */
+		
+		// Sjekker om feltet er tomt
+		if ($tid == "" || $tid== null) {
+			$maaFyllesUt[] = "tid";
+			$resultat = false;
+		}
+		if ($pris == "" || $pris == null) {
+			$maaFyllesUt[] = "pris";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!is_numeric($pris)) {
+				$kommentar[] = "<strong>Pris</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+
+
+		if ($valuta == "" || $valuta == null) {
+				$maaFyllesUt[] = "valuta";
+				$resultat = false;
+			}
+			// Feltet er fylt ut, sjekker ytterligere valideringer
+			else {
+				if (strlen($valuta) < 3) {
+					$kommentar[] = "<strong>Valutaen</strong> må inneholde minumum 3 tegn.";
+					$resultat = false;
+				}
+			}
+			if ($fraFlyplass == "" || $fraFlyplass== null) {
+			$maaFyllesUt[] = "tid";
+			$resultat = false;
+		}
+			if ($tilFlyplass== "" || $tilFlyplass== null) {
+			$maaFyllesUt[] = "tilFlyplass";
+			$resultat = false;
+		}
+
+			
+		/* Valideringer slutt */
+		
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
 
 /*Validering ruter - VET IKKE OM DEN FUNGERER*/
 
-/*Validering valuta - VET IKKE OM DEN FUNGERER*/
 ?>
