@@ -140,7 +140,12 @@
 			$maaFyllesUt[] = "brukernavn";
 			$resultat = false;
 		}
-
+	else {
+			if (!sjekkOmBrukernavnEksisterer($brukernavn, $brukerID) ) {
+				$kommentar[] = "<strong>Brukernavn</strong> eksisterer ikke.";
+				$resultat = false;
+			}
+		}
 		// Sjekker om feltet er tomt
 		if ($epost == "" || $epost == null) {
 			$maaFyllesUt[] = "epost";
@@ -150,6 +155,10 @@
 		else {
 			if (filter_var($epost, FILTER_VALIDATE_EMAIL) === false) {
 				$kommentar[] = "<strong>Epostadressen</strong> er ugyldig.";
+				$resultat = false;
+			}
+			if (sjekkOmEpostEksisterer($epost, $brukerID) ) {
+				$kommentar[] = "<strong>E-post</strong> eksisterer.";
 				$resultat = false;
 			}
 		}
@@ -193,6 +202,10 @@
 			}
 			if (strlen($mobilnummer) < 8) {
 				$kommentar[] = "<strong>Mobilnummeret</strong> må inneholde minimum 8 tegn.";
+				$resultat = false;
+			}
+			if (sjekkOmMobilnummerEksisterer($mobilnummer, $landID, $brukerID)) {
+				$kommentar[] = "<strong>Mobilnummer</strong> eksisterer.";
 				$resultat = false;
 			}
 		}
