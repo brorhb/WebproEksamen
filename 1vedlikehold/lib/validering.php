@@ -269,15 +269,22 @@ function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
 		$kommentar = array();
 		$resultat = true;
 
-		$passasjertype = utf8_decode($passasjertype);
+		$id= utf8_decode($id);
+		$Passasjertype = utf8_decode($Passasjertype);
 		$beskrivelse = utf8_decode($beskrivelse);
 
 
 		/* Ulike valideringer */
 
+		 // Sjekker om feltet er tomt
+        if ($id == "" || $id == null) {
+            $maaFyllesUt[] = "id";
+            $resultat = false;
+        }
+
 		// Sjekker om feltet er tomt
 
-		if ($passasjertype == "" || $passasjertype == null) {
+		if ($Passasjertype == "" || $Passasjertype == null) {
 			$maaFyllesUt[] = "passasjertype";
 			$resultat = false;
 		}
