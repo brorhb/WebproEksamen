@@ -668,6 +668,86 @@ function validerLuftfartoy() {
 
 /* legg til/endre luftfartoy/fly */
 
+/*sok alleavganger.php  return validerFlyvning() MÅ TESTES */
+
+
+function validerFlyvning() {
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+    var flyvningNr = document.forms["oppdater"]["flyvningNr"].value;
+    var ruteNr = document.getElementById("ruteNr"); //listeboks
+    var tailNr = document.getElementById("tailNr"); //listeboks
+    var type = document.getElementById("type"); //listeboks
+    var avgang = document.forms["oppdater"]["avgang"].value;
+    var fraFlyplass = document.getElementById("fraFlyplass"); //listeboks
+    var gate = document.forms["oppdater"]["gate"].value;
+    var tilFlyplass = document.getElementById("tilFlyplass"); //listeboks
+    /* Ulike valideringer */
+
+
+    // Sjekker om feltet er tomt
+    if (flyvningNr == "" || flyvningNr == null) {
+        maaFyllesUt.push("flyvningNr");
+        resultat = false;
+    }
+
+        // Sjekker om feltet er tomt listeboks
+    if (ruteNr.value == "") {
+        maaFyllesUt.push("ruteNr");
+        resultat = false;
+    }
+
+    // Sjekker om feltet er tomt listeboks
+    if (tailNr.value == "") {
+        maaFyllesUt.push("tailNr");
+        resultat = false;
+    }
+
+    // Sjekker om feltet er tomt listeboks
+    if (type.value == "") {
+        maaFyllesUt.push("type");
+        resultat = false;
+    }
+
+
+    // Sjekker om feltet er tomt
+    if (avgang == "" || avgang == null) {
+        maaFyllesUt.push("avgang");
+        resultat = false;
+    }
+        // Sjekker om feltet er tomt listeboks
+    if (fraFlyplass.value == "") {
+        maaFyllesUt.push("fraFlyplass");
+        resultat = false;
+    }
+
+        // Sjekker om feltet er tomt
+    if (gate == "" || gate == null) {
+        maaFyllesUt.push("gate");
+        resultat = false;
+    }
+
+        // Sjekker om feltet er tomt listeboks
+    if (tilFlyplass.value == "") {
+        maaFyllesUt.push("tilFlyplass");
+        resultat = false;
+    }
+
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+
+    // Returnerer om det er noen feil
+    return resultat;
+}
+
+
+/*sok alleavganger.php*/
+
 // Eksempel på valider-funksjon
 function validerEksempel() {
     /* Klarerer variabler */
