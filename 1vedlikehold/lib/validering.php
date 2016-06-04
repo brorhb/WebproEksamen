@@ -299,6 +299,90 @@ function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
 	}
 /*Validering passasjertype - VET IKKE OM DEN FUNGERER*/
 
-/*Validering Klasse - VET IKKE OM DEN FUNGERER*/
+/*Validering land - VET IKKE OM DEN FUNGERER*/
+function validerOppdaterLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$navn = utf8_decode($navn);
+		$landskode = utf8_decode($landskode);
+		$valuta_id = utf8_decode($valuta_id);
+		$iso = utf8_decode($iso);
+		$iso3 = utf8_decode($iso3);
+		
+		//$mobilnummer = utf8_decode($mobilnummer);
+		//$person_id = utf8_decode($person_id);
+
+		/* Ulike valideringer */
+		
+		// Sjekker om feltet er tomt
+		if ($navn == "" || $navn == null) {
+			$maaFyllesUt[] = "navn";
+			$resultat = false;
+		}
+
+	if ($landskode == "" || $landskode == null) {
+			$maaFyllesUt[] = "landskode";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (strlen($landskode) < 3) {
+				$kommentar[] = "<strong>Landskoden</strong> må inneholde minumum 3 tegn.";
+				$resultat = false;
+			}
+		}
+		if ($valuta_id == "" || $valuta_id == null) {
+			$maaFyllesUt[] = "valuta";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!sjekkOmValutaIDeksisterer($valuta_id)) {
+				$kommentar[] = "<strong>Valuta</strong> eksisterer ikke.";
+				$resultat = false;
+			}
+		}
+			if ($iso == "" || $iso == null) {
+			$maaFyllesUt[] = "iso";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (strlen($iso) < 3) {
+				$kommentar[] = "<strong>Iso</strong> må inneholde minumum 3 tegn.";
+				$resultat = false;
+			}
+		}
+			if ($iso3 == "" || $iso3 == null) {
+			$maaFyllesUt[] = "iso3";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (strlen($iso3) < 3) {
+				$kommentar[] = "<strong>Iso3</strong> må inneholde minumum 3 tegn.";
+				$resultat = false;
+			}
+		}
+
+		/* Valideringer slutt */
+		
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+
+/*Validering land - VET IKKE OM DEN FUNGERER*/
+
+/*Validering land - VET IKKE OM DEN FUNGERER*/
+
+/*Validering land - VET IKKE OM DEN FUNGERER*/
 ?>
