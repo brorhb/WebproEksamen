@@ -107,7 +107,7 @@
 			$output .= "Ingen output";
 		}
 
-		echo $output;
+		echo '<p style="color:#c9302c;">' . $output . '</p>';
 	}
 
 	function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id) {
