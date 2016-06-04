@@ -199,13 +199,38 @@
 
 		// Sjekker om feltet er tomt
 		if ($person_id == "" || $person_id == null) {
-			$maaFyllesUt[] = "person";
+			$maaFyllesUt[] = "person id";
 			$resultat = false;
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
 			if (!sjekkOmPersonIDeksisterer($person_id)) {
 				$kommentar[] = "<strong>Personen</strong> eksisterer ikke.";
+				$resultat = false;
+			}
+		}
+
+				// Sjekker om feltet er tomt
+		if ($fornavn == "" || $fornavn == null) {
+			$maaFyllesUt[] = "fornavn";
+			$resultat = false;
+		}
+
+				// Sjekker om feltet er tomt
+		if ($etternavn == "" || $etternavn == null) {
+			$maaFyllesUt[] = "etternavn";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($fodselsdato == "" || $fodselsdato == null) {
+			$maaFyllesUt[] = "fodselsdato";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if ($fodselsdato > time()) {
+				$kommentar[] = "passasjer må være født";
 				$resultat = false;
 			}
 		}
