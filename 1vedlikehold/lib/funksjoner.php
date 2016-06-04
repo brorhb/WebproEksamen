@@ -55,7 +55,7 @@
 	}
 
 	function oppdaterKlasse($KlasseID, $type, $beskrivelse) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($KlasseID));
@@ -85,7 +85,7 @@
 				return FALSE;
 			}
 		}
-			
+
 		connectDB()->close();
 	}
 
@@ -105,7 +105,7 @@
 	}
 
 	function oppdaterType_luftfartoy($TypeID, $type) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($TypeID));
@@ -134,7 +134,7 @@
 				return FALSE;
 			}
 		}
-			
+
 		connectDB()->close();
 	}
 
@@ -154,7 +154,7 @@
 	}
 
 	function oppdaterPassasjertype($PassasjertypeID, $type, $beskrivelse) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($PassasjertypeID));
@@ -184,7 +184,7 @@
 				return FALSE;
 			}
 		}
-			
+
 		connectDB()->close();
 	}
 
@@ -204,7 +204,7 @@
 	}
 
 	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
@@ -234,7 +234,7 @@
 				return FALSE;
 			}
 		}
-			
+
 		connectDB()->close();
 	}
 
@@ -254,7 +254,7 @@
 	}
 
 	function oppdaterLand($LandID, $navn, $landskode, $valuta_id, $iso, $iso3) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($LandID));
@@ -287,7 +287,7 @@
 				return FALSE;
 			}
 		}
-			
+
 		connectDB()->close();
 	}
 
@@ -307,7 +307,7 @@
 	}
 
 	function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($FlyplassID));
@@ -358,7 +358,7 @@
 	/* bruker, person, modell og seteoppsett kommer her */
 
 	function oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr) {
-		
+
 		connectDB();
 
 		$brukerID = connectDB()->real_escape_string(utf8_decode($brukerID));
@@ -401,7 +401,7 @@
 				return FALSE;
 			}
 		}
-		
+
 		connectDB()->close();
 	}
 
@@ -421,7 +421,7 @@
     }
 
     function oppdaterPerson($PersonID, $fornavn, $etternavn, $fodselsdato) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($PersonID));
@@ -452,7 +452,7 @@
 				return FALSE;
 			}
 		}
-		
+
 		connectDB()->close();
 	}
 
@@ -472,7 +472,7 @@
 	}
 
 	function oppdaterLuftfartoy($LuftfartoyID, $modell_id, $tailnr) {
-		
+
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_decode($LuftfartoyID));
@@ -502,7 +502,7 @@
 				return FALSE;
 			}
 		}
-		
+
 		connectDB()->close();
 	}
 
@@ -978,7 +978,7 @@
 		$objektIDeksisterer = sjekkOmKlasseIDeksisterer($objektID);
 		$sql = "SELECT id, type FROM klasse ORDER BY type;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1023,7 +1023,7 @@
 		$objektIDeksisterer = sjekkOmType_luftfartoyIDeksisterer($objektID);
 		$sql = "SELECT id, type FROM type_luftfartoy ORDER BY type;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1067,7 +1067,7 @@
 		$objektIDeksisterer = sjekkOmPassasjertypeIDeksisterer($objektID);
 		$sql = "SELECT id, type, beskrivelse FROM passasjertype ORDER BY type;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1112,7 +1112,7 @@
 		$objektIDeksisterer = sjekkOmValutaIDeksisterer($objektID);
 		$sql = "SELECT id, valuta_navn, forkortelse FROM valuta ORDER BY valuta_navn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1157,7 +1157,7 @@
 		$objektIDeksisterer = sjekkOmLandIDeksisterer($objektID);
 		$sql = "SELECT id, navn FROM land ORDER BY navn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1201,7 +1201,7 @@
 		$objektIDeksisterer = sjekkOmFlyplassIDeksisterer($objektID);
 		$sql = "SELECT id, navn, flyplasskode FROM flyplass ORDER BY navn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1246,7 +1246,7 @@
 		$objektIDeksisterer = sjekkOmBrukerIDeksisterer($objektID);
 		$sql = "SELECT b.id, b.brukernavn, b.epost, p.fornavn, p.etternavn FROM bruker AS b LEFT JOIN person AS p ON p.id = b.person_id ORDER BY p.etternavn, p.fornavn, b.epost, b.brukernavn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1293,7 +1293,7 @@
 		$objektIDeksisterer = sjekkOmPersonIDeksisterer($objektID);
 		$sql = "SELECT id, fornavn, etternavn FROM person ORDER BY etternavn, fornavn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1340,7 +1340,7 @@
 		$objektIDeksisterer = sjekkOmModellIDeksisterer($objektID);
 		$sql = "SELECT id, navn FROM modell ORDER BY navn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1401,7 +1401,7 @@
 		$objektIDeksisterer = sjekkOmLuftfartoyIDeksisterer($objektID);
 		$sql = "SELECT id, tailnr, (SELECT navn FROM modell WHERE id = luftfartoy.modell_id) AS modellnavn FROM luftfartoy ORDER BY tailnr;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1448,7 +1448,7 @@
 		$objektIDeksisterer = sjekkOmGruppeIDeksisterer($objektID);
 		$sql = "SELECT id, navn FROM gruppe ORDER BY navn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1492,7 +1492,7 @@
 		$objektIDeksisterer = sjekkOmTilgangIDeksisterer($objektID);
 		$sql = "SELECT id, navn FROM tilgang ORDER BY navn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1538,7 +1538,7 @@
 		$objektIDeksisterer = sjekkOmRuteIDeksisterer($objektID);
 		$sql = "SELECT r.id, (SELECT navn FROM flyplass AS f WHERE f.id = rk.flyplass_id_fra) AS fra, (SELECT navn FROM flyplass AS f WHERE f.id = rk.flyplass_id_til) AS til FROM rute AS r LEFT JOIN rute_kombinasjon AS rk ON r.id = rk.rute_id ORDER BY fra;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1583,7 +1583,7 @@
 		$objektIDeksisterer = sjekkOmRute_kombinasjonIDeksisterer($objektID);
 		$sql = "SELECT rk.id, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fra, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS til FROM rute_kombinasjon rk ORDER BY id;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1647,7 +1647,7 @@
 		$sql .= " ORDER BY f.avgang;";
 
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
@@ -1711,7 +1711,7 @@
 		$objektIDeksisterer = sjekkOmBestillingIDeksisterer($objektID);
 		$sql = "SELECT id, fornavn, etternavn FROM person ORDER BY etternavn, fornavn;";
 		$result = connectDB()->query($sql);
-		
+
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {

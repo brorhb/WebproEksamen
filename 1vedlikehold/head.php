@@ -2,7 +2,7 @@
 <html lang="no">
     <head>
         <title>Bjarum Airlines</title>
-        
+
         <!-- meta -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,8 +37,8 @@
         <!-- datepicker -->
 
         <link rel="stylesheet" href="css/style.css">
-        <!-- stilark --> 
-        
+        <!-- stilark -->
+
         <?php include_once("lib/funksjoner.php"); ?>
     </head>
 

@@ -1,6 +1,6 @@
 <?php
 
-	include_once("funksjoner.php");
+	// include_once("funksjoner.php");
 
 	// Eksempel på valider-funksjon
 	function validerEksempel() {
@@ -10,7 +10,7 @@
 		$resultat = true;
 
 		/* Ulike valideringer */
-		
+
 		// Sjekker om feltet er tomt
 		if (true) {
 			$maaFyllesUt[] = "fornavn";
@@ -54,12 +54,12 @@
 		}
 
 		/* Valideringer slutt */
-		
+
 		// Skriver ut feilmeldingsboks
 		if (!$resultat) {
 			feilmeldingBoks($maaFyllesUt, $kommentar);
 		}
-		
+
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
@@ -67,11 +67,11 @@
 	// Eksempel på valider-funksjon slutt
 
 	function feilmeldingBoks($maaFyllesUt, $kommentar) {
-		
+
 		$fyllesutOutput = "";
 		$kommentarOutput = "";
 		$output = "";
-		
+
 		/* Gjør om det som må fylles ut til tekst */
 		for ($i = 0; $i < count($maaFyllesUt); $i++) {
 			$fyllesutOutput .= "<strong>" . $maaFyllesUt[$i] . "</strong>";
@@ -85,7 +85,7 @@
 		if (count($maaFyllesUt) > 0) {
 			$fyllesutOutput .= " må fylles ut.";
 		}
-		
+
 		/* Gjør om kommentarer til tekst */
 		for ($i = 0; $i < count($kommentar); $i++) {
 			if ($i == 0 AND count($maaFyllesUt) != 0) {
@@ -94,15 +94,15 @@
 			elseif ($i != 0) {
 				$kommentarOutput .= "<br>";
 			}
-			
+
 			$kommentarOutput .= $kommentar[$i];
 			if ($i < count($kommentar) - 1) {
 				$kommentarOutput .= " ";
 			}
 		}
-		
+
 		$output = $fyllesutOutput . $kommentarOutput;
-		
+
 		if ($output == "") {
 			$output .= "Ingen output";
 		}
@@ -125,7 +125,7 @@
 		$person_id = utf8_decode($person_id);
 
 		/* Ulike valideringer */
-		
+
 		// Sjekker om feltet er tomt
 		if ($id == "" || $id == null) {
 			$maaFyllesUt[] = "brukerID";
@@ -215,12 +215,12 @@
 		}
 
 		/* Valideringer slutt */
-		
+
 		// Skriver ut feilmeldingsboks
 		if (!$resultat) {
 			feilmeldingBoks($maaFyllesUt, $kommentar);
 		}
-		
+
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
@@ -234,12 +234,12 @@ function validerOppdaterKlasse($klassenavn, $beskrivelse) {
 
 		$klassenavn = utf8_decode($klassenavn);
 		$beskrivelse = utf8_decode($beskrivelse);
-	
+
 
 		/* Ulike valideringer */
-		
+
 		// Sjekker om feltet er tomt
-	
+
 		if ($klassenavn == "" || $klassenavn == null) {
 			$maaFyllesUt[] = "klassenavn";
 			$resultat = false;
@@ -251,12 +251,12 @@ function validerOppdaterKlasse($klassenavn, $beskrivelse) {
 			$resultat = false;
 		}
 		/* Valideringer slutt */
-		
+
 		// Skriver ut feilmeldingsboks
 		if (!$resultat) {
 			feilmeldingBoks($maaFyllesUt, $kommentar);
 		}
-		
+
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
@@ -271,12 +271,12 @@ function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
 
 		$passasjertype = utf8_decode($passasjertype);
 		$beskrivelse = utf8_decode($beskrivelse);
-	
+
 
 		/* Ulike valideringer */
-		
+
 		// Sjekker om feltet er tomt
-	
+
 		if ($passasjertype == "" || $passasjertype == null) {
 			$maaFyllesUt[] = "passasjertype";
 			$resultat = false;
@@ -288,12 +288,12 @@ function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
 			$resultat = false;
 		}
 		/* Valideringer slutt */
-		
+
 		// Skriver ut feilmeldingsboks
 		if (!$resultat) {
 			feilmeldingBoks($maaFyllesUt, $kommentar);
 		}
-		
+
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
@@ -312,12 +312,12 @@ function validerOppdaterLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 		$valuta_id = utf8_decode($valuta_id);
 		$iso = utf8_decode($iso);
 		$iso3 = utf8_decode($iso3);
-		
+
 		//$mobilnummer = utf8_decode($mobilnummer);
 		//$person_id = utf8_decode($person_id);
 
 		/* Ulike valideringer */
-		
+
 		// Sjekker om feltet er tomt
 		if ($navn == "" || $navn == null) {
 			$maaFyllesUt[] = "navn";
@@ -370,12 +370,12 @@ function validerOppdaterLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 		}
 
 		/* Valideringer slutt */
-		
+
 		// Skriver ut feilmeldingsboks
 		if (!$resultat) {
 			feilmeldingBoks($maaFyllesUt, $kommentar);
 		}
-		
+
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
