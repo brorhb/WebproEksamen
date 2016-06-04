@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="flyplasskode">Flyplasskode</lable>
-                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplassskode . '" required>
+                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="land_id">Land ID</lable>';
