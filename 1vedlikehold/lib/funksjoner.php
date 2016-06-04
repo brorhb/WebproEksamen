@@ -1181,6 +1181,38 @@
 		echo '</select>';
 	}
 
+	function landskodeListe($objektID) {
+		// Spesialtilfelle p.ga. landskode skal vises i lista, men IDen er landID
+		$objektnavn = 'land';
+		$objektnavnet = 'landskode';
+		$objektIDeksisterer = sjekkOmLandIDeksisterer($objektID);
+		$sql = "SELECT id, navn, landskode FROM land ORDER BY navn;";
+		$result = connectDB()->query($sql);
+
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled value="">Velg ' . $objektnavnet . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$navn = utf8_encode($row["navn"]);
+				$landskode = utf8_encode($row["landskode"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $navn . ' (+' . $landskode . ')</option>';
+			}
+		}
+		else {
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavnet . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}
+
 	function sjekkOmFlyplassIDeksisterer($objektID) {
 		connectDB();
 

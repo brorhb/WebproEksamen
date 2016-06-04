@@ -27,14 +27,15 @@
 
             oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
             echo "Informasjonen ble oppdatert.";
-
+            $feiletPHPvalidering = false;
         }
         else {
             // valider-funksjonen i if-setningen printer ut feilmeldingen selv
             //echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
@@ -86,7 +87,7 @@
                                 <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
                                 <lable for="land">Land</lable>
                                 '; 
-                            echo landListe($landID);
+                            echo landskodeListe($landID);
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -107,7 +108,7 @@
                                 <lable for="brukernavn">Brukernavn</lable>
                                 <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
                                 <lable for="passord">Passord</lable>
-                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
+                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$ukryptertPassord . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fornavn">Fornavn</lable>
@@ -119,7 +120,7 @@
                                 <lable for="fodselsdato">Fodselsdato</lable>
                                 <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
                                 <lable for="land">Land</lable>';
-                        echo landListe(@$landID);
+                        echo landskodeListe(@$landID);
                         echo '
                             </div>
                             <div class="form-group col-md-6">

@@ -19,7 +19,7 @@
 
 	//validerEksempel();
 
-	$BrukerID = "2";
+	/*$BrukerID = "2";
 	$brukernavn = "hei";
 	$epost = "jkkjdf@dd.no";
 	$ukryptert_passord = "jksdd4";
@@ -29,7 +29,7 @@
 
 	if(validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id)) {
 		// Oppfaterfunksjonen kjøres
-	}
+	}*/
 
 	echo "<br><br>";
 
@@ -55,7 +55,7 @@
 		echo "<li>Type_luftfartoy" . type_luftfartoyListe($objektID) . "</li>";
 		echo "<li>Passasjertype" . passasjertypeListe($objektID) . "</li>";
 		echo "<li>Valuta" . valutaListe($objektID) . "</li>";
-		echo "<li>Land" . landListe($objektID) . "</li>";
+		echo "<li>Land" . landListe($objektID) . landskodeListe($objektID) . "</li>";
 		echo "<li>Flyplass" . flyplassListe($objektID) . "</li>";
 		echo "<li>Bruker (og person)</li>" . brukerListe($objektID) . personListe($objektID);
 		echo "<li>Luftfartøy modellspesifikt (modell og <strong>seteoppsett</strong>)" . modellListe($objektID) . "</li>";
