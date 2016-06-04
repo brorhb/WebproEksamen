@@ -55,17 +55,4 @@ $(document).ready(function () {
         toggleFields();
     });
 
-    // pris alle avgange
-    $(leggTil).click(function (e) {
-        e.preventDefault();
-        if (x < max_fields) {
-            x++;
-            $.get("" , function(data) {
-                $(wrapper).append(data);
-            }
-        }
-    });
-    //pris alle avganger
-
-
 });

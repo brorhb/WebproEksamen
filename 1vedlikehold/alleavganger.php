@@ -1,6 +1,6 @@
 <?php include_once("head.php");
     //krevInnlogging('0');
-    
+
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
@@ -43,7 +43,7 @@
                 }
         echo '
             <div class="col-md-12">';
-                
+
                     connectDB();
                     $sql = "SELECT f.id AS flyvningNr, (SELECT rk.rute_id FROM rute_kombinasjon rk WHERE rk.id = f.rute_kombinasjon_id) AS ruteNr, (SELECT id FROM luftfartoy l WHERE f.luftfartoy_id = l.id) AS tailNr, (SELECT m.navn FROM modell m WHERE l.modell_id = m.id) AS type, f.avgang, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, f.gate, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN luftfartoy l ON f.luftfartoy_id = l.id WHERE f.id = '$id';";
                     $result = connectDB()->query($sql);
@@ -58,7 +58,7 @@
                             $fraFlyplass = utf8_encode($row["fraFlyplass"]);
                             $gate = utf8_encode($row["gate"]);
                             $tilFlyplass = utf8_encode($row["tilFlyplass"]);
-                            
+
                             echo '
                             <div class="form-group col-md-6">
                                 <lable for="avgang">Avganger</lable>
@@ -67,17 +67,17 @@
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$gate . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="ruteNr">Rute Nr</lable>'; 
+                                <lable for="ruteNr">Rute Nr</lable>';
                             echo rute_kombinasjonListe($ruteNr);
                             echo '
-                                <lable for="luftfartoy">Tail Nr</lable>'; 
+                                <lable for="luftfartoy">Tail Nr</lable>';
                             echo luftfartoyListe($tailNr);
                             echo '</div>';
                         }
-                        
+
                         echo '<h3>Pris</h3>
                         <div class="wrapper">';
-                        
+
                         $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 1;";
                         $result2 = connectDB()->query($sql2);
 
@@ -86,7 +86,7 @@
                                 $passasjertype2 = utf8_encode($row2["passasjertype"]);
                                 $fraDato2 = utf8_encode($row2["fraDato"]);
                                 $tilDato2 = utf8_encode($row2["tilDato"]);
-                                
+
                                 echo '
                                 <div class="form-group col-md-12">
                                     <lable for="passasjertype">Passasjer Type</lable>';
@@ -112,7 +112,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>';
-                                            
+
                                             $sql3 = "SELECT k.id, k.type FROM klasse k;";
                                             $result3 = connectDB()->query($sql3);
 
@@ -120,7 +120,7 @@
                                                 while ($row3 = $result3->fetch_assoc()) {
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
-                                
+
                                                     echo '<tr>
                                                 <td>
                                                     <input type="checkbox" name="id" value="' . $id3 . '">
@@ -137,12 +137,11 @@
                                             }
                                         echo '</tbody>
                                     </table>
-                                
                             </div>';
                             }
                         }
                        echo '</div>
-                       <button class="btn btn-default leggTil">Legg til</button>
+                       <input class="leggTil">Legg til</button>
                        ';
                     }
                     else {
@@ -154,16 +153,16 @@
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$gate . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="ruteNr">Rute Nr</lable>'; 
+                                <lable for="ruteNr">Rute Nr</lable>';
                             echo rute_kombinasjonListe($ruteNr);
                             echo '
-                                <lable for="luftfartoy">Tail Nr</lable>'; 
+                                <lable for="luftfartoy">Tail Nr</lable>';
                             echo luftfartoyListe($tailNr);
                             echo '</div>';
-                        
-                        
+
+
                         echo '<div class="wrapper">
-                        
+
                         <h3>Pris</h3>';
                         $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 1;";
                         $result2 = connectDB()->query($sql2);
@@ -173,7 +172,7 @@
                                 $passasjertype2 = utf8_encode($row2["passasjertype"]);
                                 $fraDato2 = utf8_encode($row2["fraDato"]);
                                 $tilDato2 = utf8_encode($row2["tilDato"]);
-                                
+
                                 echo '
                                 <div class="form-group col-md-12">
                                     <lable for="passasjertype">Passasjer Type</lable>';
@@ -199,7 +198,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>';
-                                            
+
                                             $sql3 = "SELECT k.id, k.type FROM klasse k;";
                                             $result3 = connectDB()->query($sql3);
 
@@ -207,7 +206,7 @@
                                                 while ($row3 = $result3->fetch_assoc()) {
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
-                                
+
                                                     echo '<tr>
                                                 <td>
                                                     <input type="checkbox" name="id" value="' . $id3 . '">
@@ -240,7 +239,7 @@
             </form>
             <!-- Innhold -->';
     }
-    
+
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '" id="tabell">
@@ -284,7 +283,7 @@
                                           </tr>';
                                 }
                             }
-                        
+
         echo '
                      </tbody>
                     </table>
@@ -302,7 +301,7 @@
         <!-- Innhold -->
         ';
 
-    
+
 
 
 
