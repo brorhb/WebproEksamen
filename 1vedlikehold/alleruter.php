@@ -98,7 +98,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="valuta">Valuta</lable>';
-                               echo valutaListe();
+                               echo valutaListe(@$valuta);
                                echo '
                             </div>';
                     }
