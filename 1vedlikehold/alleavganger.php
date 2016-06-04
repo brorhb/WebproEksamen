@@ -91,11 +91,11 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <lable for="fraDato">Fra Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="fraDato" value="' . @$fraDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato . '" required>
                                </div>
                                <div class="form-group col-md-6">
                                     <lable for="tilDato">Til Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="tilDato" value="' . @$tilDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato . '" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <table class="table table-striped">
@@ -145,11 +145,11 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <lable for="fraDato">Fra Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="fraDato" value="' . @$fraDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato . '" required>
                                </div>
                                <div class="form-group col-md-6">
                                     <lable for="tilDato">Til Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="tilDato" value="' . @$tilDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato . '" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <table class="table table-striped">
@@ -214,11 +214,11 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <lable for="fraDato">Fra Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="fraDato" value="' . @$fraDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato . '" required>
                                </div>
                                <div class="form-group col-md-6">
                                     <lable for="tilDato">Til Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="tilDato" value="' . @$tilDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato . '" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <table class="table table-striped">
