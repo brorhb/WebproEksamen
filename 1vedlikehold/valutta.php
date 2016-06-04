@@ -3,8 +3,8 @@
     //krevInnlogging('0');
     include_once("head.php");
 
-    
-    if ($_POST['slett']) {
+
+    if (@$_POST['slett']) {
         $ValutaID = @$_POST['id'];
         if (slettValuta($ValutaID)) {
             echo "Informasjonen ble slettet.";
@@ -13,7 +13,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['lagre']) {
+    elseif (@$_POST['lagre']) {
         $ValutaID = @$_POST['id'];
         $valuta_navn = $_POST['valuta_navn'];
         $forkortelse = $_POST['forkortelse'];
@@ -25,7 +25,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['ny'] || $_POST['endre']) {
+    elseif (@$_POST['ny'] || @$_POST['endre']) {
         // Hvis endre eller ny er trykket ned
         $ValutaID = @$_POST['id'];
 
@@ -40,7 +40,7 @@
                 }
         echo '
             <div class="col-md-6">';
-                
+
                     connectDB();
                     $sql = "SELECT * FROM valuta WHERE id='$ValutaID';";
                     $result = connectDB()->query($sql);
@@ -84,7 +84,7 @@
             </form>
             <!-- Innhold -->';
     }
-    
+
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
@@ -116,7 +116,7 @@
                                           </tr>';
                                 }
                             }
-                        
+
         echo '
                      </tbody>
                     </table>
@@ -134,7 +134,7 @@
         <!-- Innhold -->
         ';
 
-    
+
 
 
 

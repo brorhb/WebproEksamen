@@ -3,8 +3,8 @@
     //krevInnlogging('0');
     include_once("head.php");
 
-    
-    if ($_POST['slett']) {
+
+    if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettLuftfartoy($id)) {
             echo "Informasjonen ble slettet.";
@@ -13,7 +13,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['lagre']) {
+    elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
         $modell_id = $_POST['modell_id_radio'];
         $tailnr = $_POST['tailnr'];
@@ -25,7 +25,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['ny'] || $_POST['endre']) {
+    elseif (@$_POST['ny'] || @$_POST['endre']) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
@@ -40,7 +40,7 @@
                 }
         echo '
             <div class="col-md-6">';
-                
+
                     connectDB();
                     $sql = "SELECT * FROM luftfartoy WHERE id='$id';";
                     $result = connectDB()->query($sql);
@@ -84,7 +84,7 @@
             </form>
             <!-- Innhold -->';
     }
-    
+
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
@@ -112,7 +112,7 @@
                                     echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $navn . '</td><td>' . $tailnr . '</td></tr>';
                                 }
                             }
-                        
+
         echo '
                      </tbody>
                     </table>
@@ -130,7 +130,7 @@
         <!-- Innhold -->
         ';
 
-    
+
 
 
 

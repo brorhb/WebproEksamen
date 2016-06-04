@@ -3,8 +3,8 @@
     //krevInnlogging('0');
     include_once("head.php");
 
-    
-    if ($_POST['slett']) {
+
+    if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettRute($id)) {
             echo "Informasjonen ble slettet.";
@@ -13,7 +13,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['lagre']) {
+    elseif (@$_POST['lagre']) {
         $rutenr = $_POST["rutenr"];
         $pris = $_POST["pris"];
         $fraLand = $_POST["fraLand"];
@@ -29,7 +29,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    elseif ($_POST['ny'] || $_POST['endre']) {
+    elseif (@$_POST['ny'] || @$_POST['endre']) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
@@ -44,7 +44,7 @@
                 }
         echo '
             <div class="col-md-12">';
-                
+
                     connectDB();
                     $sql = "SELECT rk.id AS ruteKombinasjonNr, r.id AS ruteNr, r.basis_pris AS pris, r.valuta_id AS valuta, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_fra)) AS fraLand, (SELECT id FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, reisetid AS tid, (SELECT navn FROM land l WHERE l.id = (SELECT land_id FROM flyplass f WHERE f.id = rk.flyplass_id_til)) AS tilLand, (SELECT id FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM rute_kombinasjon rk LEFT JOIN flyplass f ON rk.flyplass_id_fra = f.id AND rk.flyplass_id_til = f.id LEFT JOIN land l ON f.land_id = l.id LEFT JOIN rute r ON rk.rute_id = r.id LEFT JOIN valuta v ON r.valuta_id = v.id WHERE rk.id = '$id';";
                     $result = connectDB()->query($sql);
@@ -70,14 +70,14 @@
                             <div class="form-group col-md-6">
                                 <lable for="fraFlyplas">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
-                               echo '<lable for="tilFlyplas">Flyplass 2</lable>'; 
+                               echo '<lable for="tilFlyplas">Flyplass 2</lable>';
                                echo flyplassListe(@$tilFlyplass);
-                               echo ' 
+                               echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="valuta">Valuta</lable>';
                                echo valutaListe(@$valuta);
-                               echo ' 
+                               echo '
                             </div>';
                         }
                     }
@@ -92,14 +92,14 @@
                             <div class="form-group col-md-6">
                                 <lable for="fraFlyplas">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
-                               echo '<lable for="tilFlyplas">Flyplass 2</lable>'; 
+                               echo '<lable for="tilFlyplas">Flyplass 2</lable>';
                                echo flyplassListe(@$tilFlyplass);
-                               echo ' 
+                               echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="valuta">Valuta</lable>';
                                echo valutaListe();
-                               echo ' 
+                               echo '
                             </div>';
                     }
                     connectDB()->close();
@@ -112,7 +112,7 @@
             </form>
             <!-- Innhold -->';
     }
-    
+
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterRuter()">
@@ -158,7 +158,7 @@
                                     </tr>';
                                 }
                             }
-                        
+
         echo '
                      </tbody>
                     </table>
@@ -176,7 +176,7 @@
         <!-- Innhold -->
         ';
 
-    
+
 
 
 
