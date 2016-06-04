@@ -17,7 +17,17 @@
 
 	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br><br>';
 
-	validerEksempel();
+	//validerEksempel();
+
+	$BrukerID = "";
+	$brukernavn = "";
+	$epost = "jkkjdf@dd";
+	$ukryptert_passord = "d4";
+	$land_id = "160";
+	$mobilnummer = "r";
+	$person_id = "2";
+
+	validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id);
 
 	echo "<br><br>";
 

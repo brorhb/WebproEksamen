@@ -178,7 +178,7 @@
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (sjekkOmLandIDeksisterer($land_id)) {
+			if (!sjekkOmLandIDeksisterer($land_id)) {
 				$kommentar[] = "<strong>Landet</strong> eksisterer ikke.";
 				$resultat = false;
 			}
@@ -191,7 +191,7 @@
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (is_numeric($mobilnummer)) {
+			if (!is_numeric($mobilnummer)) {
 				$kommentar[] = "<strong>Mobilnummeret</strong> kan kun inneholde siffer fra 0 - 9.";
 				$resultat = false;
 			}
@@ -208,7 +208,7 @@
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (sjekkOmPersonIDeksisterer($person_id)) {
+			if (!sjekkOmPersonIDeksisterer($person_id)) {
 				$kommentar[] = "<strong>Personen</strong> eksisterer ikke.";
 				$resultat = false;
 			}

@@ -1675,4 +1675,80 @@
 		echo '</select>';
 	}
 
+	function sjekkOmPrisIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM pris WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmBestillingIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM bestilling WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	/* Ikke modifisert enda
+	function bestillingListe($objektID) {
+		$objektnavn = 'person';
+		$objektIDeksisterer = sjekkOmBestillingIDeksisterer($objektID);
+		$sql = "SELECT id, fornavn, etternavn FROM person ORDER BY etternavn, fornavn;";
+		$result = connectDB()->query($sql);
+		
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+
+		if ($result->num_rows > 0) {
+
+			echo '<option ';
+			if (!$objektIDeksisterer) { echo 'selected '; }
+			echo 'disabled value="">Velg ' . $objektnavn . '</option>';
+
+			while($row = $result->fetch_assoc()) {
+				$id = utf8_encode($row["id"]);
+				$fornavn = utf8_encode($row["fornavn"]);
+				$etternavn = utf8_encode($row["etternavn"]);
+
+				echo '<option ';
+				if ($objektID == $id) { echo'selected '; }
+				echo 'value="' . $id . '">' . $etternavn . ', ' . $fornavn . '</option>';
+			}
+		}
+		else {
+			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
+		}
+		echo '</select>';
+	}*/
+
+	function sjekkOmBestilling_flyvningIDeksisterer($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM bestilling_flyvning WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 ?>
