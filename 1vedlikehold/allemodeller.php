@@ -1,7 +1,7 @@
 <?php include_once("head.php");
     //krevInnlogging('0');
 
-    
+
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettPassasjertype($id)) {
@@ -39,7 +39,7 @@
                 }
         echo '
             <div class="col-md-12">';
-                
+
                     connectDB();
                     $sql = "SELECT m.id , m.navn, tl.type, m.kapasitet, m.rader, m.bredde FROM modell m LEFT JOIN type_luftfartoy tl ON m.type_luftfartoy_id = tl.id WHERE m.id='$id';";
                             $result = connectDB()->query($sql);
@@ -61,9 +61,9 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="type_luftfartoy">Type luftfartøy</lable>';
-                            
+
                             type_luftfartoyListe($type);
-                                
+
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -89,9 +89,9 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="type_luftfartoy">Type luftfartøy</lable>';
-                            
-                            type_luftfartoyListe($type);
-                                
+
+                            type_luftfartoyListe(@$type);
+
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -117,7 +117,7 @@
             </form>
             <!-- Innhold -->';
     }
-    
+
 
         echo'<div class="col-md-12">
             <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
@@ -158,7 +158,7 @@
                                           </tr>';
                                 }
                             }
-                        
+
         echo '
                      </tbody>
                     </table>
@@ -176,7 +176,7 @@
         <!-- Innhold -->
         ';
 
-    
+
 
 
 
