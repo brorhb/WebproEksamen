@@ -76,26 +76,28 @@
                         }
                         
                         echo '<h3>Pris</h3>';
-                        $sql2 = "SELECT p.* FROM passasjertype p LIMIT = '1';";
+                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 1;";
                         $result2 = connectDB()->query($sql2);
 
                         if ($result2->num_rows > 0 ) {
                             while ($row2 = $result2->fetch_assoc()) {
-                                
+                                $passasjertype2 = utf8_encode($row2["passasjertype"]);
+                                $fraDato2 = utf8_encode($row2["fraDato"]);
+                                $tilDato2 = utf8_encode($row2["tilDato"]);
                                 
                                 echo '
                                 <div class="form-group col-md-12">
                                     <lable for="passasjertype">Passasjer Type</lable>';
-                                    echo passasjertypeListe();
+                                    echo passasjertypeListe($passasjertype2);
                                     echo '
                                 </div>
                                 <div class="form-group col-md-6">
                                     <lable for="fraDato">Fra Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato2 . '" required>
                                </div>
                                <div class="form-group col-md-6">
                                     <lable for="tilDato">Til Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato . '" required>
+                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato2 . '" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <table class="table table-striped">
