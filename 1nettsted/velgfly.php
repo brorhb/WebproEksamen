@@ -7,8 +7,8 @@
     <div class="row">
         <div class="col-md-8">
             <?php
-                $fraLand = $_GET["fraLand"];
-                $tilLand = $_GET["tilLand"];
+                $fraLand = $_GET["flyplass_id"];
+                $tilLand = $_GET["flyplass_id"];
                 $fradato = $_GET["fradato"];
                 $tildato = $_GET["tildato"];
                 $antallVoksene = $_GET["antallVoksene"];
@@ -18,11 +18,11 @@
             ?>
         </div>
     </div>
-    
+
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
     <div class="row" id="reiseEndring">
         <div class="col-md-6">
-            
+
         <!-- Fra/til land -->
                 <div class="row">
                     <div class="col-md-6">
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6" id="retur">
                         <div class="form-group">
                             <label for="Til"><h4>Til</h4></label>
@@ -47,9 +47,9 @@
                         </div>
                     </div>
                 </div><!-- /row -->
-        <!-- Fra/til land -->    
-            
-        
+        <!-- Fra/til land -->
+
+
         <!-- antall voksene -->
         <div class="row">
             <div class="col-md-3">
@@ -71,7 +71,7 @@
                 </div>
             </div>
         <!-- antall voksene -->
-        
+
         <!-- antall unge -->
         <div class="col-md-3">
             <div class="form-group">
@@ -92,7 +92,7 @@
             </div>
         </div>
         <!-- antall unge -->
-        
+
         <!-- Radio knapper -->
                     <div class="col-md-6" style="margin-top:30px;">
                         <div class="radio" name="reiseType" id="reiseType">
@@ -104,9 +104,9 @@
                             </div>
                         </div>
                     </div>
-        </div>            
+        </div>
         <!-- Radio knapper -->
-        
+
         <div class="row">
         <!-- Dato -->
                 <div class="col-md-6" id="fraDato">
@@ -121,10 +121,10 @@
                         <input class="form-control" type="text" class="span2" value="<?php echo $tildato; ?>" id="dpd2" name="tildato" required>
                     </div>
                 </div>
-        
+
         <!-- Dato -->
         </div>
-        
+
         </div>
     </div>
     <input type="button" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>

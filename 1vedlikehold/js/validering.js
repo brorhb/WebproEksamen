@@ -386,13 +386,13 @@ function sikkerSlett() {
         alert("Navn er ikke fylt ut ");
         resultat = false;
     }
-    
+
     // Type
     if (type == null || type == "") {
         alert("Type er ikke valgt ");
         resultat = false;
     }
-    
+
     // kapasitet
     else if (!kapasitet) {
         alert("kapasitet mangler ");
@@ -402,7 +402,7 @@ function sikkerSlett() {
         alert("kapasitet må være ett tall ");
         resultat = false;
     }
-    
+
     // rader
     else if (!rader){
         alert("rader mangler ");
@@ -412,7 +412,7 @@ function sikkerSlett() {
         alert("rader må være ett tall ");
         resultat = false;
     }
-    
+
     // bredde
     else if (!bredde){
         alert("bredde mangler ");
@@ -422,11 +422,11 @@ function sikkerSlett() {
         alert("bredde må være ett tall ");
         resultat = false;
     }
-    
+
     return resultat;
 }*/
 
-/* 
+/*
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (true) {
@@ -437,7 +437,7 @@ function sikkerSlett() {
             kommentar.push("<strong>Mobilnummer</strong> må være minumum 8 tegn.");
             resultat = false;
         }
-    } 
+    }
 */
 
 
@@ -630,7 +630,7 @@ if (landskode == "" || landskode == null) {
         });
         resultat = false;
     }
-    
+
     return resultat;
 }*/
 function validerLuftfartoy() {
@@ -863,28 +863,28 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
 
 function sikkerSlett() {
     var resultat = true;
-
     var slett = document.getElementById("Slett");
+    
     if (true) {
         resultat = false;
 
         swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this imaginary file!",
+            title: "Er du sikker?",
+            text: "Filen vil ikke kunne bli gjennopprettet!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
+            confirmButtonText: "Ja, slett!",
+            cancelButtonText: "Nei, avbryt!",
             closeOnConfirm: false,
             closeOnCancel: false
         },
             function (isConfirm) {
                 if (isConfirm) {
-                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    swal("Slettet!", "Filen er blitt slettet.", "success");
                 }
                 else {
-                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                    swal("Avbrutt", "Filen er fortsatt trygt lagret :)", "error");
                 }
             });
     }
