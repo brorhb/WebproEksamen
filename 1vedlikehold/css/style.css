@@ -1,3 +1,12 @@
+/* FORSIDEBILDET */
+.forside_bg {
+    background-image: url("fly.jpeg");
+    background-size: 100% auto;
+    background-position: top center;
+    background-attachment: fixed;
+}
+
+
 /* LOGIN */
 /* LOGIN */
 .login {

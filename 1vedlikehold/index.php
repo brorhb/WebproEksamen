@@ -6,7 +6,9 @@
 
 <!-- Innhold -->
 <div class="col-md-12">
-    
+    <div class="forside_bg">
+       
+    </div>
 </div>
 <!-- Innhold -->
 
