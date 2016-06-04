@@ -298,10 +298,7 @@ function validerPassasjertype($passasjertype, $beskrivelse) {
 		/* Ulike valideringer */
 
 		 // Sjekker om feltet er tomt
-        if ($id == "" || $id == null) {
-            $maaFyllesUt[] = "id";
-            $resultat = false;
-        }
+
 
 		// Sjekker om feltet er tomt
 

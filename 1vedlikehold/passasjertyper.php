@@ -18,14 +18,18 @@
         $Passasjertype = $_POST['Passasjertype'];
         $beskrivelse = $_POST['beskrivelse'];
 
-        if(oppdaterPassasjertype($id, $Passasjertype, $beskrivelse)) {
+
+        if(validerPassasjertype($Passasjertype, $beskrivelse)) {
+            oppdaterPassasjertype($id, $Passasjertype, $beskrivelse); 
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering=false;
         }
         else {
             echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    elseif (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
