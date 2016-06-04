@@ -37,11 +37,15 @@
 
 	echo ruteListe($IDen) . '<br>';
 
-	if (sjekkOmRute_kombinasjonIDeksisterer($IDen)) {
-		echo "eksisterer";
+	$mobilnummer = "87654321";
+	$landID = "160";
+	$brukerID = "2";
+
+	if (sjekkOmMobilnummerEksisterer($mobilnummer, $landID, $brukerID)) {
+		echo "Mobilnummeret <strong>" . landskodeListe($landID) . $mobilnummer . "</strong> <u>eksisterer</u> for anoen brukere unntatt BrukerID (" . $brukerID . ").";
 	}
 	else {
-		echo "eksisterer ikke";
+		echo "Mobilnummeret <strong>" . landskodeListe($landID) . $mobilnummer . "</strong> <u>eksisterer ikke</u> for anoen brukere unntatt BrukerID (" . $brukerID . ").";
 	}
 
 	echo "<br><br>";

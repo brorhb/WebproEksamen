@@ -1783,4 +1783,64 @@
 		connectDB()->close();
 	}
 
+	function sjekkOmBrukernavnEksisterer($brukernavn, $brukerID) {
+		// Hvis brukerID er satt sjekkes det ikke for den brukeren p.ga. når man oppdaterer finnes brukernavnet fra før hos brukeren man oppdaterer
+		connectDB();
+
+		$sql = "SELECT brukernavn FROM bruker WHERE brukernavn LIKE '$brukernavn'";
+		if ($brukerID != "" || $brukerID != NULL) {
+			 $sql .= "AND id <> '$brukerID'";
+		}
+		$sql .= ";";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmEpostEksisterer($epost, $brukerID) {
+		// Hvis brukerID er satt sjekkes det ikke for den brukeren p.ga. når man oppdaterer finnes eposten fra før hos brukeren man oppdaterer
+		connectDB();
+
+		$sql = "SELECT epost FROM bruker WHERE epost LIKE '$epost'";
+		if ($brukerID != "" || $brukerID != NULL) {
+			 $sql .= "AND id <> '$brukerID'";
+		}
+		$sql .= ";";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmMobilnummerEksisterer($mobilnummer, $landID, $brukerID) {
+		// Hvis brukerID er satt sjekkes det ikke for den brukeren p.ga. når man oppdaterer finnes mobilnummeret fra før hos brukeren man oppdaterer
+		connectDB();
+
+		$sql = "SELECT mobilnr FROM bruker WHERE mobilnr LIKE '$mobilnummer' AND land_id = '$landID'";
+		if ($brukerID != "" || $brukerID != NULL) {
+			 $sql .= "AND id <> '$brukerID'";
+		}
+		$sql .= ";";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 ?>
