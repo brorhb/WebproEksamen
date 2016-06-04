@@ -1022,7 +1022,7 @@
 		echo '</select>';
     }
 
-    function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
+    /*function validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnr, $person_id) {
 		$id = utf8_decode($BrukerID);
 		$brukernavn = utf8_decode($brukernavn);
 		$epost = utf8_decode($epost);
@@ -1056,6 +1056,6 @@
 		}
 
 		return $tilbakemelding;
-    }
+    }*/
 
 ?>
