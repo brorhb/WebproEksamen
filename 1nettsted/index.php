@@ -8,13 +8,13 @@
 
 <!-- Innhold -->
 <div class="container">
-    
+
     <!-- Bestille reise -->
     <form method="GET" action="velgfly.php" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 bestillReiseBoks">
-                
-                
+
+
                 <!-- Fra/til land -->
                 <div class="row">
                     <div class="col-md-6">
@@ -27,7 +27,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6" id="retur">
                         <div class="form-group">
                             <label for="Til"><h4>Til</h4></label>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <!-- Radio knapper -->
-                    
+
                     <!-- Antall reisende -->
                     <div class="col-md-3">
                         <div class="form-group">
@@ -71,7 +71,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-3">
                         <div class="form-group">
                             <select class="form-control" name="antallUnge" id="antallUnge">
@@ -90,7 +90,7 @@
                     </div>
                     <!-- Antall reisende -->
                 </div> <!-- /row -->
-                
+
                 <!-- Dato -->
                 <div class="row">
                     <div class="col-md-6" id="fraDato">
@@ -107,53 +107,48 @@
                     </div>
                 </div>
                 <!-- Dato -->
-                
+
                 <input type="submit" class="btn btn-default" value="Bekreft" onclick="validerBestilling();"/>
             </div>
         </div>
     </form>
     <!-- Bestille reise -->
-    
+
     <!-- Populære reiser -->
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2>Populære reiser</h2>
-            <p>I tvil på hvor du vil reise? Her en liten oversikt over populære reisemål</p>
+            <h2>Alle ruter</h2>
+            <p>I tvil på hvor du vil reise? Her en oversikt over alle våre ruter</p>
             <table class="table">
                 <thead>
                     <tr>
-                        <th><h4>Land</h4></th>
-                        <th><h4>Flyplass</h4></th>
-                        <th><h4>Pris</h4></th>
+                        <th><h4>Valgt</h4></th>
+                        <th><h4>Avgang</h4></th>
+                        <th><h4>Fra</h4></th>
+                        <th><h4>Til</h4></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                        <td>fra 499,-</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                        <td>fra 499,-</td>
-                    </tr><tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                        <td>fra 499,-</td>
-                    </tr><tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                        <td>fra 499,-</td>
-                    </tr><tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                        <td>fra 499,-</td>
-                    </tr><tr>
-                        <td><strong>Polen</strong></td>
-                        <td>Krakow</td>
-                        <td>fra 499,-</td>
-                    </tr>
+                    <?php
+                    $sql = "SELECT f.id, f.avgang, ( SELECT f.navn FROM flyplass AS f WHERE f.id = (SELECT rk.flyplass_id_fra FROM rute_kombinasjon AS rk WHERE rk.id = f.rute_kombinasjon_id) ) AS fra,( SELECT f.navn FROM flyplass AS f WHERE f.id = (SELECT rk.flyplass_id_til FROM rute_kombinasjon AS rk WHERE rk.id = f.rute_kombinasjon_id) ) AS til FROM flyvning AS f;";
+                    $result = connectDB()->query($sql);
+
+                        if($result->num_rows > 0 ) {
+                            while ($row = $result->fetch_assoc()) {
+                                $id = utf8_encode($row["id"]);
+                                $avgang = utf8_encode($row["avgang"]);
+                                $fra = utf8_encode($row["fra"]);
+                                $til = utf8_encode($row["til"]);
+
+                                echo '
+                                    <td><input type="radio" name="id" value="' . $id . '"></td>
+                                    <td>' . $avgang . '</td>
+                                    <td>' . $fra . '</td>
+                                    <td>' . $til . '</td>
+                                ';
+                            }
+                        }
+                     ?>
                 </tbody>
             </table>
         </div>
