@@ -526,6 +526,39 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 		return $resultat;
 	}
 
-/*Validering ruter - VET IKKE OM DEN FUNGERER*/
+/*Validering type - VET IKKE OM DEN FUNGERER*/
+function validerType($type) {
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$type = utf8_decode($type);
+
+		/* Ulike valideringer */
+
+		// Sjekker om feltet er tomt
+
+		if ($type == "" || $type == null) {
+			$maaFyllesUt[] = "Type";
+			$resultat = false;
+		}
+
+		/* Valideringer slutt */
+
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+/*Validering type - VET IKKE OM DEN FUNGERER*/
+
 
 ?>
+
+
+
+
