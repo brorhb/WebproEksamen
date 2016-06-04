@@ -19,15 +19,17 @@
 
 	//validerEksempel();
 
-	$BrukerID = "";
-	$brukernavn = "";
-	$epost = "jkkjdf@dd";
-	$ukryptert_passord = "d4";
+	$BrukerID = "2";
+	$brukernavn = "hei";
+	$epost = "jkkjdf@dd.no";
+	$ukryptert_passord = "jksdd4";
 	$land_id = "160";
-	$mobilnummer = "r";
-	$person_id = "2";
+	$mobilnummer = "94939394";
+	$person_id = "1";
 
-	validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id);
+	if(validerBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id)) {
+		// Oppfaterfunksjonen kjøres
+	}
 
 	echo "<br><br>";
 
