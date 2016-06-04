@@ -9,7 +9,7 @@ function validerOppdaterKlasse() {
     var klassenavn = document.forms["oppdater"]["klassenavn"].value;
     var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;
     /* Ulike valideringer */
-    
+
     // Sjekker om feltet er tomt
     if (klassenavn == "" || klassenavn == null) {
         maaFyllesUt.push("klassenavn");
@@ -22,12 +22,12 @@ function validerOppdaterKlasse() {
         resultat = false;
     }
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om neste side skal lastes inn
     return resultat;
 }
@@ -41,9 +41,9 @@ function validerTypeLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-   var type = document.forms["oppdater"]["type"].value
+    var type = document.forms["oppdater"]["type"].value
     /* Ulike valideringer */
-    
+
 
     // Sjekker om feltet er tomt
     if (type == "" || type == null) {
@@ -52,12 +52,12 @@ function validerTypeLuftfartoy() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
@@ -77,7 +77,7 @@ function validerOppdaterLand() {
     var iso = document.forms["oppdater"]["iso"].value;
     var iso3 = document.forms["oppdater"]["iso3"].value;
     /* Ulike valideringer */
-    
+
     if (navn == "" || navn == null) {
         maaFyllesUt.push("navn");
         resultat = false;
@@ -100,12 +100,12 @@ function validerOppdaterLand() {
         resultat = false;
     }
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
@@ -121,7 +121,7 @@ function validerOppdaterPassasjertype() {
     var Passasjertype = document.forms["oppdater"]["Passasjertype"].value;
     var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;
     /* Ulike valideringer */
-    
+
     // Sjekker om feltet er tomt
     if (Passasjertype == "" || Passasjertype == null) {
         maaFyllesUt.push("passasjertype");
@@ -135,12 +135,12 @@ function validerOppdaterPassasjertype() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om neste side skal lastes inn
     return resultat;
 }
@@ -155,9 +155,9 @@ function validerOppdaterKlasse() {
     var klassenavn = document.forms["oppdater"]["klassenavn"].value;/*vanlig*/
     var beskrivelse = document.forms["oppdater"]["beskrivelse"].value;/*vanlig*/
     /* Ulike valideringer */
-    
+
     // Sjekker om feltet er tomt
-   
+
     if (klassenavn == "" || klassenavn == null) {
         maaFyllesUt.push("klassenavn");
         resultat = false;
@@ -169,12 +169,12 @@ function validerOppdaterKlasse() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
@@ -195,8 +195,8 @@ function validerOppdaterAlleFlyplasser() {
     var tidssone_gmt = document.getElementById("tidssone_gmt"); //listeboks
     var land_id = document.getElementById("land_id"); //listeboks
     /* Ulike valideringer */
-    
-    
+
+
     // Sjekker om feltet er tomt
     if (navn == "" || navn == null) {
         maaFyllesUt.push("navn");
@@ -234,7 +234,7 @@ function validerOppdaterAlleFlyplasser() {
         maaFyllesUt.push("longitude");
         resultat = false;
     }
-       else {
+    else {
         if (isNaN(longitude)) {
             kommentar.push("<strong>Longitude</strong> kan kun inneholde siffer, komma eller punktum.");
             resultat = false;
@@ -252,16 +252,16 @@ function validerOppdaterAlleFlyplasser() {
     }
 
 
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
-/*legg til/ Alleflyplasser*/ 
+/*legg til/ Alleflyplasser*/
 
 /*legg til/ Ruter*/
 function validerOppdaterRuter() {
@@ -269,16 +269,16 @@ function validerOppdaterRuter() {
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
-    
-     /*lesteboks*/
+
+    /*lesteboks*/
 
     var tid = document.forms["oppdater"]["tid"].value;
     var pris = document.forms["oppdater"]["pris"].value;
     var valuta = document.getElementById("valuta");
     var fraFlyplass = document.getElementById("fraFlyplass");
     var tilFlyplass = document.getElementById("tilFlyplass");
-    
-    
+
+
 
     // Sjekker om feltet er tomt
     if (tid == "" || tid == null) {
@@ -290,26 +290,26 @@ function validerOppdaterRuter() {
         maaFyllesUt.push("pris");
         resultat = false;
     }
-     if (valuta.value == "") {
+    if (valuta.value == "") {
         maaFyllesUt.push("valuta");
         resultat = false;
     }
-     if (fraFlyplass.value == "") {
+    if (fraFlyplass.value == "") {
         maaFyllesUt.push("fraFlyplass");
         resultat = false;
     }
-     if (tilFlyplass.value == "") {
+    if (tilFlyplass.value == "") {
         maaFyllesUt.push("tilFlyplass");
         resultat = false;
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
@@ -326,7 +326,7 @@ function validerOppdaterValuta() {
     var valuta_navn = document.forms["oppdater"]["valuta_navn"].value;
     var forkortelse = document.forms["oppdater"]["forkortelse"].value
     /* Ulike valideringer */
-    
+
     // Sjekker om feltet er tomt
     if (valuta_navn == "" || valuta_navn == null) {
         maaFyllesUt.push("valuta navn");
@@ -340,43 +340,43 @@ function validerOppdaterValuta() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
 
 /* Legg til/endre valuta */
 
-/* Slett */ 
+/* Slett */
 
 function sikkerSlett() {
-    swal({   
-        title: "Are you sure?",   
-        text: "You will not be able to recover this imaginary file!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
-        cancelButtonText: "No, cancel plx!",   
-        closeOnConfirm: false,   
-        closeOnCancel: false 
-    }, 
-         function(isConfirm){   
-            if (isConfirm) {     
-                swal("Deleted!", "Your imaginary file has been deleted.", "success");   
-            } 
-            else {     
-                swal("Cancelled", "Your imaginary file is safe :)", "error");  
-            } 
-    });
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+        function (isConfirm) {
+            if (isConfirm) {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            }
+            else {
+                swal("Cancelled", "Your imaginary file is safe :)", "error");
+            }
+        });
 }
 
-/* Slett  */ 
+/* Slett  */
 
 // valider modeller
 /*function validerOppdaterModeller() {
@@ -451,42 +451,42 @@ function validerPersonBruker() {
     var epost = document.forms["oppdater"]["epost"].value;
     var mobilnr = document.forms["oppdater"]["mobilnr"].value;
     var resultat = true;
-    
+
     /* Klarerer variabler */
-	var maaFyllesUt = [];
-	var kommentar = [];
+    var maaFyllesUt = [];
+    var kommentar = [];
 
     /* Ulike valideringer */
-    
-    // Sjekker om feltet er tomt
-	if (brukernavn == "" || brukernavn == null) {
-		maaFyllesUt.push("brukernavn");
-		resultat = false;
-	}
 
     // Sjekker om feltet er tomt
-	if (passord == "" || passord == null) {
+    if (brukernavn == "" || brukernavn == null) {
+        maaFyllesUt.push("brukernavn");
+        resultat = false;
+    }
+
+    // Sjekker om feltet er tomt
+    if (passord == "" || passord == null) {
         maaFyllesUt.push("passord");
-		resultat = false;
-	}
+        resultat = false;
+    }
 
     // Sjekker om feltet er tomt
-	if (fornavn == "" || fornavn == null) {
+    if (fornavn == "" || fornavn == null) {
         maaFyllesUt.push("fornavn");
-		resultat = false;
-	}
+        resultat = false;
+    }
 
     // Sjekker om feltet er tomt
-	if (etternavn == "" || etternavn == null) {
+    if (etternavn == "" || etternavn == null) {
         maaFyllesUt.push("etternavn");
-		resultat = false;
-	}
+        resultat = false;
+    }
 
     // Sjekker om feltet er tomt
-	if (fodselsdato == "" || fodselsdato == null) {
+    if (fodselsdato == "" || fodselsdato == null) {
         maaFyllesUt.push("fødselsdato");
-		resultat = false;
-	}
+        resultat = false;
+    }
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (fodselsdato.length != 8) {
@@ -498,24 +498,24 @@ function validerPersonBruker() {
             resultat = false;
         }
     }
-    
+
     // Sjekker om feltet er tomt
-	if (landID.value == "" || landID.value == null) {
+    if (landID.value == "" || landID.value == null) {
         maaFyllesUt.push("land");
-		resultat = false;
-	}
-    
+        resultat = false;
+    }
+
     // Sjekker om feltet er tomt
-	if (epost == "" || epost == null) {
+    if (epost == "" || epost == null) {
         maaFyllesUt.push("epost");
-		resultat = false;
-	}
-    
+        resultat = false;
+    }
+
     // Sjekker om feltet er tomt
-	if (mobilnr == "" || mobilnr == null) {
+    if (mobilnr == "" || mobilnr == null) {
         maaFyllesUt.push("mobilnummer");
-		resultat = false;
-	}
+        resultat = false;
+    }
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (mobilnr.length != 8) {
@@ -529,12 +529,12 @@ function validerPersonBruker() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om neste side skal lastes inn
     return resultat;
 }
@@ -552,11 +552,11 @@ function validerOppdaterModeller() {
     var rader = document.forms["oppdater"]["rader"].value;
     var bredde = document.forms["oppdater"]["bredde"].value;
     /* Ulike valideringer */
-    
+
     // Sjekker om feltet er tomt
     if (navn == "" || navn == null) {
-    maaFyllesUt.push("navn");
-    resultat = false;
+        maaFyllesUt.push("navn");
+        resultat = false;
     }
 
     if (type_luftfartoy_id.value == "") {
@@ -570,29 +570,29 @@ function validerOppdaterModeller() {
         resultat = false;
     }
 
-        // Sjekker om feltet er tomt
+    // Sjekker om feltet er tomt
     if (rader == "" || rader == null) {
         maaFyllesUt.push("rader");
         resultat = false;
     }
-        // Sjekker om feltet er tomt
+    // Sjekker om feltet er tomt
     if (bredde == "" || bredde == null) {
         maaFyllesUt.push("bredde");
         resultat = false;
     }
-        else {
-            if (true) {
-                kommentar.push("Kan kun inneholde siffer")
-            }
+    else {
+        if (true) {
+            kommentar.push("Kan kun inneholde siffer")
         }
+    }
 
     /* Valideringer slutt */
-   
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
@@ -600,9 +600,9 @@ function validerOppdaterModeller() {
 /* legg til/endre luftfartoy/fly */
 
 if (landskode == "" || landskode == null) {
-        maaFyllesUt.push("landskode");
-        resultat = false;
-    }
+    maaFyllesUt.push("landskode");
+    resultat = false;
+}
 
 
 /*legg til/endre modeller*/
@@ -642,7 +642,7 @@ function validerLuftfartoy() {
     var modellid = document.getElementById("modell_id"); /*lesteboks*/
     var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
-    
+
     // Sjekker om feltet er tomt
     if (modellid.value == "") {
         maaFyllesUt.push("modell");
@@ -656,12 +656,12 @@ function validerLuftfartoy() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om det er noen feil
     return resultat;
 }
@@ -671,29 +671,29 @@ function validerLuftfartoy() {
 // Eksempel på valider-funksjon
 function validerEksempel() {
     /* Klarerer variabler */
-	var maaFyllesUt = [];
-	var kommentar = [];
+    var maaFyllesUt = [];
+    var kommentar = [];
     var resultat = true;
 
     /* Ulike valideringer */
-    
-    // Sjekker om feltet er tomt
-	if (true) {
-		maaFyllesUt.push("fornavn");
-		resultat = false;
-	}
 
     // Sjekker om feltet er tomt
-	if (true) {
+    if (true) {
+        maaFyllesUt.push("fornavn");
+        resultat = false;
+    }
+
+    // Sjekker om feltet er tomt
+    if (true) {
         maaFyllesUt.push("etternavn");
-		resultat = false;
-	}
+        resultat = false;
+    }
 
     // Sjekker om feltet er tomt
-	if (true) {
+    if (true) {
         maaFyllesUt.push("alder");
-		resultat = false;
-	}
+        resultat = false;
+    }
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (true) {
@@ -703,10 +703,10 @@ function validerEksempel() {
     }
 
     // Sjekker om feltet er tomt
-	if (false) {
+    if (false) {
         maaFyllesUt.push("mobilnummer");
-		resultat = false;
-	}
+        resultat = false;
+    }
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (true) {
@@ -720,12 +720,12 @@ function validerEksempel() {
     }
 
     /* Valideringer slutt */
-    
+
     // Skriver ut feilmeldingsboks
     if (!resultat) {
         feilmeldingBoks(maaFyllesUt, kommentar);
     }
-    
+
     // Returnerer om neste side skal lastes inn
     return resultat;
 }
@@ -733,13 +733,13 @@ function validerEksempel() {
 // Eksempel på valider-funksjon slutt
 
 function feilmeldingBoks(maaFyllesUt, kommentar) {
-    
-	var fyllesutOutput = "";
-	var kommentarOutput = "";
-	var output = "";
-    
+
+    var fyllesutOutput = "";
+    var kommentarOutput = "";
+    var output = "";
+
     /* Gjør om det som må fylles ut til tekst */
-	for (var i = 0; i < maaFyllesUt.length; i++) {
+    for (var i = 0; i < maaFyllesUt.length; i++) {
         fyllesutOutput += "<strong>" + maaFyllesUt[i] + "</strong>";
         if (i < maaFyllesUt.length - 2) {
             fyllesutOutput += ", ";
@@ -747,11 +747,11 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
         else if (i < maaFyllesUt.length - 1) {
             fyllesutOutput += " og ";
         }
-	}
-	if (maaFyllesUt.length > 0) {
+    }
+    if (maaFyllesUt.length > 0) {
         fyllesutOutput += " må fylles ut.";
-	}
-    
+    }
+
     /* Gjør om kommentarer til tekst */
     for (var i = 0; i < kommentar.length; i++) {
         if (i == 0 && maaFyllesUt.length != 0) {
@@ -760,27 +760,54 @@ function feilmeldingBoks(maaFyllesUt, kommentar) {
         else if (i != 0) {
             kommentarOutput += "<br>";
         }
-        
-		kommentarOutput += kommentar[i];
+
+        kommentarOutput += kommentar[i];
         if (i < kommentar.length - 1) {
             kommentarOutput += " ";
         }
-	}
-    
+    }
+
     output = fyllesutOutput + kommentarOutput;
-    
+
     if (output == "") {
         output += "Ingen output";
     }
-    
+
     swal({
-            title: "Obs!",
-            text: output,
-            type: "error",
-            html: true
+        title: "Obs!",
+        text: output,
+        type: "error",
+        html: true
     });
 }
 
 function sikkerSlett() {
-    var slett = "";
+    var resultat = true;
+
+    var slett = document.getElementById("Slett");
+    if (true) {
+        resultat = false;
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                }
+                else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+    }
+
+    return resultat;
 }
