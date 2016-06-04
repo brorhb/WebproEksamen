@@ -262,6 +262,43 @@ function validerOppdaterKlasse($klassenavn, $beskrivelse) {
 	}
 /*Validering Klasse - VET IKKE OM DEN FUNGERER*/
 
+/*Validering Passasjertype - VET IKKE OM DEN FUNGERER*/
+function validerOppdaterPassasjertype($passasjertype, $beskrivelse) {
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
 
+		$passasjertype = utf8_decode($passasjertype);
+		$beskrivelse = utf8_decode($beskrivelse);
+	
+
+		/* Ulike valideringer */
+		
+		// Sjekker om feltet er tomt
+	
+		if ($passasjertype == "" || $passasjertype == null) {
+			$maaFyllesUt[] = "passasjertype";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($beskrivelse == "" || $beskrivelse == null) {
+			$maaFyllesUt[] = "beskrivelse";
+			$resultat = false;
+		}
+		/* Valideringer slutt */
+		
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+/*Validering passasjertype - VET IKKE OM DEN FUNGERER*/
+
+/*Validering Klasse - VET IKKE OM DEN FUNGERER*/
 
 ?>
