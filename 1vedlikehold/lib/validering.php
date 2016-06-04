@@ -436,7 +436,7 @@ function validerOppdaterValuta($valuta_navn,$forkortelse) {
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
 
 /*Validering ruter- VET IKKE OM DEN FUNGERER*/
-<?php
+
 function validerOppdaterRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 
 		/* Klarerer variabler */
