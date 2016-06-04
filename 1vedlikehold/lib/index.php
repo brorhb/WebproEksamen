@@ -15,9 +15,11 @@
 
 	echo "<br>BrukerID: " . @$_SESSION['brukerID'] . " slutt<br>";
 
-	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br>';
+	echo 'Info: ' . HentValutaIDFraLandID('2') . '<br><br>';
 
 	validerEksempel();
+
+	echo "<br><br>";
 
 	$IDen = "1";
 

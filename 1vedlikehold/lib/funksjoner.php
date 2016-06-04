@@ -1702,14 +1702,14 @@ function validerEksempel() {
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (true) {
-            $kommentar = "<strong>Alder</strong> må være et possitivt tall.";
+            $kommentar[] = "<strong>Alder</strong> må være et possitivt tall.";
             $resultat = false;
         }
     }
 
     // Sjekker om feltet er tomt
 	if (false) {
-        $maaFyllesUt = "mobilnummer";
+        $maaFyllesUt[] = "mobilnummer";
 		$resultat = false;
 	}
     // Feltet er fylt ut, sjekker ytterligere valideringer
@@ -1729,9 +1729,6 @@ function validerEksempel() {
     // Skriver ut feilmeldingsboks
     if (!$resultat) {
         feilmeldingBoks($maaFyllesUt, $kommentar);
-        /*print_r($maaFyllesUt);
-        echo "<br><br>";
-        print_r($kommentar);*/
     }
     
     // Returnerer om neste side skal lastes inn
