@@ -1,4 +1,4 @@
-<?php 
+<?php
 		$sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 1;";
         $result2 = connectDB()->query($sql2);
 
@@ -31,10 +31,10 @@
 								</tr>
 							</thead>
 							<tbody>
-<?php 
+<?php
 									$sql3 = "SELECT k.id, k.type FROM klasse k;";
 									$result3 = connectDB()->query($sql3);
-									
+
 									if ($result3->num_rows > 0 ) {
 										while ($row3 = $result3->fetch_assoc()) {
 											$id3 = utf8_encode($row3["id"]);
@@ -52,7 +52,7 @@
 													<input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
 												</td>
 											</tr>
-<?php 
+<?php
 										}
 									}
 ?>
