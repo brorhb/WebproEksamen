@@ -35,10 +35,10 @@
         echo'    <!-- Innhold -->
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerFlyvning()">
             <div class="col-md-12">';
-                if ($_POST['ny']) {
+                if (@$_POST['ny']) {
                     echo '<h2>Ny flyvning</h2>';
                 }
-                elseif ($_POST['endre']) {
+                elseif (@$_POST['endre']) {
                     echo '<h2>Endre flyvning</h2>';
                 }
         echo '
@@ -163,13 +163,14 @@
                                         </thead>
                                         <tbody>';
                                             
-                                            $sql3 = "SELECT k.id, k.type FROM klasse k;";
+                                            $sql3 = "SELECT k.id, k.type, (SELECT id FROM passasjertype p WHERE p.id = (SELECT p.klasse_id FROM pris p)) AS passasjertype FROM klasse k;";
                                             $result3 = connectDB()->query($sql3);
 
                                             if ($result3->num_rows > 0 ) {
                                                 while ($row3 = $result3->fetch_assoc()) {
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
+                                                    $passasjertype3 = utf8_encode($row3["passasjertype3"]);
                                 
                                                     echo '<tr>
                                                 <td>
@@ -200,16 +201,16 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="ruteNr">Rute Nr</lable>'; 
-                            echo rute_kombinasjonListe($ruteNr);
+                            echo rute_kombinasjonListe(@$ruteNr);
                             echo '
                                 <lable for="luftfartoy">Tail Nr</lable>'; 
-                            echo luftfartoyListe($tailNr);
+                            echo luftfartoyListe(@$tailNr);
                             
                             echo '
                             </div>
                             <div class="form-group col-md-12">
                                     <lable for="passasjertype">Passasjer Type</lable>';
-                                    echo passasjertypeListe();
+                                    echo passasjertypeListe(@$passasjertype3);
                                     echo '
                                 </div>
                                 <div class="form-group col-md-6">
