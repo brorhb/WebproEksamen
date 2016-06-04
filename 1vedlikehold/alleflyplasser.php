@@ -3,7 +3,7 @@
     //krevInnlogging('0');
     include_once("head.php");
 
-    
+
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettFlyplass($id)) {
@@ -45,7 +45,7 @@
                 }
         echo '
             <div class="col-md-12">';
-                
+
                     connectDB();
                     $sql = "SELECT f.id, f.navn, f.flyplasskode, f.latitude, f.longitude, f.tidssone_gmt, f.land_id FROM flyplass f LEFT JOIN land l ON f.land_id=l.id WHERE f.id='$id';";
                     $result = connectDB()->query($sql);
@@ -71,9 +71,9 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="land_id">Land ID</lable>';
-                            
+
                             echo landListe($land_id);
-                    
+
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -84,7 +84,7 @@
                             </div>
                             ';
 
-                            echo ' 
+                            echo '
                             <div class="form-group col-md-6">
                                 <lable for="tidssone_gmt">Tidssone GMT</lable>
                                 <select class="form-control" name="tidssone_gmt" id="tidssone_gmt">
@@ -188,9 +188,9 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="land_id">Land ID</lable>';
-                            
-                            echo landListe($land_id);
-                    
+
+                            echo landListe(@$land_id);
+
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -201,11 +201,11 @@
                             </div>
                             ';
 
-                            echo ' 
+                            echo '
                             <div class="form-group col-md-6">
                                 <lable for="tidssone_gmt">Tidssone GMT</lable>
                                 <select class="form-control" name="tidssone_gmt" id="tidssone_gmt">
-                                    <option selected disabled value="' . @$tidssone_gmt . '">' . $tidssone_gmt . '</option>
+                                    <option selected disabled value="' . @$tidssone_gmt . '">' . @$tidssone_gmt . '</option>
                                     <option value="-12">(GMT-12:00) International Date Line West</option>
                                     <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
                                     <option value="-10">(GMT-10:00) Hawaii</option>
@@ -301,7 +301,7 @@
             </form>
             <!-- Innhold -->';
     }
-    
+
 
         echo'<div class="col-md-12">
             <form action="' . $_SERVER['PHP_SELF'] . '" method="post">
@@ -345,7 +345,7 @@
                                           </tr>';
                                 }
                             }
-                        
+
         echo '
                      </tbody>
                     </table>
@@ -363,7 +363,7 @@
         <!-- Innhold -->
         ';
 
-    
+
 
 
 
