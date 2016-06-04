@@ -382,7 +382,55 @@ function validerOppdaterLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 
 /*Validering land - VET IKKE OM DEN FUNGERER*/
 
-/*Validering land - VET IKKE OM DEN FUNGERER*/
+/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+function validerOppdaterValuta($valuta_navn,$forkortelse) {
 
-/*Validering land - VET IKKE OM DEN FUNGERER*/
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$valuta_navn = utf8_decode($valuta_navn);
+		$forkortelse = utf8_decode($forkortelse);
+		
+		//$mobilnummer = utf8_decode($mobilnummer);
+		//$person_id = utf8_decode($person_id);
+
+		/* Ulike valideringer */
+		
+		// Sjekker om feltet er tomt
+		if ($valuta_navn == "" || $valuta_navn == null) {
+			$maaFyllesUt[] = "valuta_navn";
+			$resultat = false;
+		}
+
+	if ($forkortelse == "" || $forkortelse == null) {
+			$maaFyllesUt[] = "forkortelse";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (strlen($forkortelse) < 3) {
+				$kommentar[] = "<strong>Forkortelsen</strong> må inneholde minumum 3 tegn.";
+				$resultat = false;
+			}
+		}
+		
+		/* Valideringer slutt */
+		
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+
+
+/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+
+/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+
+/*Validering valuta - VET IKKE OM DEN FUNGERER*/
 ?>
