@@ -25,13 +25,13 @@
 
         if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
 
+            // Valideringen gogdkjent, oppdater databasen
             oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering = false;
         }
         else {
-            // valider-funksjonen i if-setningen printer ut feilmeldingen selv
-            //echo "Noe galt skjedde...";
+            // PHP-validering ikke godkjent, feilmeldinger skrives ut og skjemaet for å fylle ut info vises:
             $feiletPHPvalidering = true;
         }
     }
