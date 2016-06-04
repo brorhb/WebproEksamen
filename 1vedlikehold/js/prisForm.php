@@ -10,7 +10,7 @@
 ?>
 				<div class="form-group col-md-12">
 					<lable for="passasjertype">Passasjer Type</lable>
-					<?php passasjertypeListe($passasjertype2); ?>
+					<?php echo passasjertypeListe($passasjertype2); ?>
 				</div>
 				<div class="form-group col-md-6">
 					<lable for="fraDato">Fra Dato</lable>
