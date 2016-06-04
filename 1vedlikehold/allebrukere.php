@@ -37,10 +37,10 @@
         echo'    <!-- Innhold -->
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerPersonBruker()">
             <div class="col-md-12">';
-                if ($_POST['ny']) {
+                if (@$_POST['ny']) {
                     echo '<h2>Ny bruker</h2>';
                 }
-                elseif ($_POST['endre']) {
+                elseif (@$_POST['endre']) {
                     echo '<h2>Endre bruker</h2>';
                 }
         echo '
@@ -115,7 +115,7 @@
                                 <lable for="fodselsdato">Fodselsdato</lable>
                                 <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
                                 <lable for="land">Land</lable>';
-                        echo landListe();
+                        echo landListe(@$landID);
                         echo '
                             </div>
                             <div class="form-group col-md-6">
