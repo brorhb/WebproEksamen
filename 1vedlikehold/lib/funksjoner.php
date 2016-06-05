@@ -1737,11 +1737,10 @@
 		connectDB()->close();
 	}
 
-	/* Ikke modifisert enda
 	function bestillingListe($objektID) {
-		$objektnavn = 'person';
+		$objektnavn = 'bestilling';
 		$objektIDeksisterer = sjekkOmBestillingIDeksisterer($objektID);
-		$sql = "SELECT id, fornavn, etternavn FROM person ORDER BY etternavn, fornavn;";
+		$sql = "SELECT bestilling.id, person.fornavn, person.etternavn FROM bestilling LEFT JOIN bruker ON bestilling.bruker_id = bruker.id LEFT JOIN person ON person.id = bruker.person_id ORDER BY etternavn, fornavn;";
 		$result = connectDB()->query($sql);
 
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
@@ -1759,14 +1758,14 @@
 
 				echo '<option ';
 				if ($objektID == $id) { echo'selected '; }
-				echo 'value="' . $id . '">' . $etternavn . ', ' . $fornavn . '</option>';
+				echo 'value="' . $id . '">#' . $id . ' (' . $etternavn . ', ' . $fornavn . ')</option>';
 			}
 		}
 		else {
 			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
-	}*/
+	}
 
 	function sjekkOmBestilling_flyvningIDeksisterer($objektID) {
 		connectDB();
