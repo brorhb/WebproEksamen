@@ -109,7 +109,7 @@
                                     $klasseID = utf8_encode($row["id"]);
                                     $type = utf8_encode($row["type"]);
                                     $beskrivelse = utf8_encode($row["beskrivelse"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $klasseID . '"></td><td>' . $type . '</td><td>' . $beskrivelse . '</td></tr>';
+                                    echo '<tr><td><input type="radio" name="id" id="radioknapp" value="' . $klasseID . '"></td><td>' . $type . '</td><td>' . $beskrivelse . '</td></tr>';
                                 }
                             }
                         
@@ -120,7 +120,7 @@
                         <input type="submit" name="endre" class="btn btn-info" onclick="this.form.submited=this.name;" value="Endre" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 text-center">
-                        <input type="submit" name="ny" class="btn btn-success" value="Legg til" />
+                        <input type="submit" name="ny" class="btn btn-success" onclick="this.form.submited=this.name;" value="Legg til" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
                         <input type="submit" name="slett" class="btn btn-danger" onclick="this.form.submited=this.name;" value="Slett"/>

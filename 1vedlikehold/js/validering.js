@@ -896,20 +896,23 @@ function sikkerSlett() {
 
 function validerSubmitKnapp(handlingstype) {
     var resultat = true;
+    var erSjekketAv = validerAvsjekking("id");
 
+    // Trykket på legg til. Utfør operasjon
     if (handlingstype == "Legg til" || handlingstype == "legg til"|| handlingstype == "Ny"|| handlingstype == "ny") {
-        swal("Legg til", "Du trykket på legg til!", "success");
+        resultat = true;
+    }
+    // Alt under her må man velge et valg for å komme videre
+    else if(!erSjekketAv) {
+        swal(handlingstype, "Huk av for informasjonen du vil behandle.", "error");
         resultat = false;
     }
-    else if (handlingstype == "Endre" || handlingstype == "endre") {
-        swal("Endre", "Husk å velge hva du vil endre", "error");
-        resultat = false;
-    }
+    // Trykket på slett
     else if (handlingstype == "Slett" || handlingstype == "slett") {
-        swal("Slett", "Er du sikker på at du vil slette filen?", "warning");
+        resultat = false;
         swal({
             title: "Er du sikker?",
-            text: "Informasjonen vil bli slettet for godt!<form method=\"post\" id=\"slettForm\"><input type=\"hidden\" name=\"slett\" value=\"true\"></form>",
+            text: "Informasjonen vil bli slettet for godt!<form method=\"post\" id=\"slettForm\"><input type=\"hidden\" name=\"id\" value=" + erSjekketAv + "><input type=\"hidden\" name=\"slett\" value=\"true\"></form>",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -921,34 +924,39 @@ function validerSubmitKnapp(handlingstype) {
         },
         function(isConfirm){
             if (isConfirm) {
-                // "Kjør kode som forceer skjemaet";
-                /*if( !isSelected() ) {
-                    alert('Please select an option from group 1 .');
-                }*/
                 document.getElementById("slettForm").submit();
-                //swal.close();
+                swal.close();
+                resultat = true;
             } else {
                 swal("Kansellert", "Informasjonen er trygg :)", "error");
+                resultat = false;
             }
         });
-        resultat = false;
     }
+    // Trykket på endre
+    else if (handlingstype == "Endre" || handlingstype == "endre") {
+        resultat = true;
+    }
+    // Her skal det egentlg ikke være mulig å komme
     else {
-        swal("Noe galt skjedde...", "Dette valget skal i teorien være umulig å vise...", "error");
+        swal("Noe galt skjedde...", "Dette valget skal i teorien være umulig å vise hvis valideringen er gjort riktig.", "error");
+        resultat = false;
     }
 
     return resultat;
 }
 
-/*var isSelected = function() {
-    var radioObj = document.formName.id;
+function validerAvsjekking(name) {
+    var checkboxs=document.getElementsByName(name);
+    var erSjekketAv=false;
 
-    for(var i=0; i<radioObj.length; i++) {
-        if( radioObj[i].checked ) {
-            return true;
+    for(var i=0,l=checkboxs.length;i<l;i++)
+    {
+        if(checkboxs[i].checked)
+        {
+            erSjekketAv=checkboxs[i].value;
             break;
         }
     }
-
-    return false;
-};*/
+    return erSjekketAv;
+}
