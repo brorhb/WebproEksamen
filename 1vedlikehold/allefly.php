@@ -15,10 +15,10 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $modell_id = $_POST['modell_id_radio'];
+        $modell_id = $_POST['modell_id'];
         $tailnr = $_POST['tailnr'];
 
-        if(oppdaterLuftfartoy($LuftfartoyID, $modell_id, $tailnr)) {
+        if(oppdaterLuftfartoy($id, $modell_id, $tailnr)) {
             echo "Informasjonen ble oppdatert.";
         }
         else {
@@ -53,7 +53,7 @@
                             echo '
 
                         <div class="form-group">
-                                <input class="form-control" type="hidden" placeholder="id" name="modell_id_radio" id="modell_id_radio" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
+                                <input class="form-control" type="hidden" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
                             <div class="form-group">
@@ -66,7 +66,7 @@
                         echo '
                                 <div class="form-group">
                                 <lable for="modell">Velg modell</label>
-                                <input class="form-control" type="hidden" placeholder="id" name="modell_id_radio" id="modell_id_radio" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
+                                <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
                             <div class="form-group">
