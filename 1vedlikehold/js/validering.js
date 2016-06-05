@@ -270,11 +270,11 @@ function validerOppdaterRuter() {
     var kommentar = [];
     var resultat = true;
 
-    /*lesteboks*/
+ 
 
     var tid = document.forms["oppdater"]["tid"].value;
     var pris = document.forms["oppdater"]["pris"].value;
-    var valuta = document.getElementById("valuta");
+    var valuta = document.getElementById("valuta_id");
     var fraFlyplass = document.getElementById("fraFlyplass");
     var tilFlyplass = document.getElementById("tilFlyplass");
 
@@ -303,7 +303,7 @@ function validerOppdaterRuter() {
         resultat = false;
     }
 
-    /* Valideringer slutt */
+    
 
     // Skriver ut feilmeldingsboks
     if (!resultat) {
@@ -313,6 +313,8 @@ function validerOppdaterRuter() {
     // Returnerer om det er noen feil
     return resultat;
 }
+
+
 /*legg til /ruter*/
 
 /* Legg til/endre valuta */
