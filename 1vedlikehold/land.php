@@ -52,7 +52,7 @@
 
                     if($result->num_rows > 0 ) {
                         while ($row = $result->fetch_assoc()) {
-                            $id = utf8_encode($row["id"]);
+                            $id = utf8_encode($row["land_id"]);
                             $navn = utf8_encode($row["navn"]);
                             $landskode = utf8_encode($row["landskode"]);
                             $valuta_navn = utf8_encode($row["valuta_navn"]);
@@ -126,7 +126,7 @@
     
 
         echo'<div class="col-md-12">
-            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" id="tabell" onsubmit="return sikkerSlett()">
+            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" id="tabell">
             <h2>Alle land</h2>
             <table class="table table-striped">
                 <thead>
