@@ -893,3 +893,62 @@ function sikkerSlett() {
 
     return resultat;
 }
+
+function validerSubmitKnapp(handlingstype) {
+    var resultat = true;
+
+    if (handlingstype == "Legg til" || handlingstype == "legg til"|| handlingstype == "Ny"|| handlingstype == "ny") {
+        swal("Legg til", "Du trykket på legg til!", "success");
+        resultat = false;
+    }
+    else if (handlingstype == "Endre" || handlingstype == "endre") {
+        swal("Endre", "Husk å velge hva du vil endre", "error");
+        resultat = false;
+    }
+    else if (handlingstype == "Slett" || handlingstype == "slett") {
+        swal("Slett", "Er du sikker på at du vil slette filen?", "warning");
+        swal({
+            title: "Er du sikker?",
+            text: "Informasjonen vil bli slettet for godt!<form method=\"post\" id=\"slettForm\"><input type=\"hidden\" name=\"slett\" value=\"true\"></form>",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ja, slett det!",
+            cancelButtonText: "Nei, kanseller det!",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            html: true
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                // "Kjør kode som forceer skjemaet";
+                /*if( !isSelected() ) {
+                    alert('Please select an option from group 1 .');
+                }*/
+                document.getElementById("slettForm").submit();
+                //swal.close();
+            } else {
+                swal("Kansellert", "Informasjonen er trygg :)", "error");
+            }
+        });
+        resultat = false;
+    }
+    else {
+        swal("Noe galt skjedde...", "Dette valget skal i teorien være umulig å vise...", "error");
+    }
+
+    return resultat;
+}
+
+/*var isSelected = function() {
+    var radioObj = document.formName.id;
+
+    for(var i=0; i<radioObj.length; i++) {
+        if( radioObj[i].checked ) {
+            return true;
+            break;
+        }
+    }
+
+    return false;
+};*/
