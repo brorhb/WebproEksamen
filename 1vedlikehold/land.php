@@ -2,9 +2,6 @@
     include_once("lib/funksjoner.php");
     //krevInnlogging('0');
     include_once("head.php");
-
-    echo '<button onclick="validerEksempel()">Skriv ut feilmeldinger</button>';
-    echo '<p id="demo"></p>';
     
     if (@$_POST['slett']) {
         $id = @$_POST['id'];

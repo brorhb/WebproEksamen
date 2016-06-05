@@ -11,7 +11,8 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="js/jqueryFunc.js"></script>
+    <script type="text/javascript" src="js/jqueryFunc.js"></script>
+    <script type="text/javascript" src="js/valideringer.js"></script>
     <!-- Scripts -->
 
     <!-- stilark -->
@@ -40,6 +41,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <?php include_once ('../1vedlikehold/lib/funksjoner.php'); ?>
+    <?php include_once 'funksjoner.php'; ?>
 
     <!-- stilark -->
 

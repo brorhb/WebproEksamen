@@ -7,14 +7,28 @@
     <div class="row">
         <div class="col-md-8">
             <?php
-                $fraLand = $_GET["flyplass_id"];
-                $tilLand = $_GET["flyplass_id"];
+                $fraLand = $_GET["fraFlyplass_id"];
+                $tilLand = $_GET["tilFlyplass_id"];
                 $fradato = $_GET["fradato"];
                 $tildato = $_GET["tildato"];
                 $antallVoksene = $_GET["antallVoksene"];
                 $antallUnge = $_GET["antallUnge"];
                 $reisevalg = $_GET["reisevalg"];
-                echo '<h2>' . $fraLand . ' til ' . $tilLand . '</h2>';
+
+                connectDB();
+                $sqlFraLand = "SELECT navn AS navnFra FROM flyplass WHERE id='$fraLand';";
+                $sqlTilLand = "SELECT navn AS navnTil FROM flyplass WHERE id='$tilLand';";
+                $result = connectDB()->query($sqlFraLand);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $sqlFraLandResult = utf8_encode($row["navnFra"]);
+                        $sqlTilLandResult = utf8_encode($row["navnTil"]);
+
+                        echo '<h2>' . $sqlFraLandResult . ' til ' . $sqlTilLandResult . '</h2>';
+                    }
+                }
+
             ?>
         </div>
     </div>
@@ -28,22 +42,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="Fra"><h4>Fra</h4></label>
-                            <select class="form-control" name="fraLand" id="fraLand">
-                                <option selected value="<?php echo $fraLand; ?>"><?php echo $fraLand; ?></option>
-                                <option value="Norge">Norge</option>
-                                <option value="Sverige">Sverige</option>
-                            </select>
+                            <?php fraFlyplassListe(); ?>
                         </div>
                     </div>
 
                     <div class="col-md-6" id="retur">
                         <div class="form-group">
                             <label for="Til"><h4>Til</h4></label>
-                            <select class="form-control" name="tilLand" id="tilLand">
-                                <option selected value="<?php echo $tilLand; ?>"><?php echo $tilLand; ?></option>
-                                <option value="Norge">Norge</option>
-                                <option value="Sverige">Sverige</option>
-                            </select>
+                            <?php tilFlyplassListe(); ?>
                         </div>
                     </div>
                 </div><!-- /row -->

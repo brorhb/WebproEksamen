@@ -20,14 +20,14 @@
                     <div class="col-md-6">
                         <div class="form-group" name="fraFlyplass" id="fraFlyplass">
                             <label for="Fra"><h4>Fra</h4></label>
-                            <?php echo flyplassListe(); ?>
+                            <?php echo fraFlyplassListe(); ?>
                         </div>
                     </div>
 
                     <div class="col-md-6" name="tilFlyplass" id="retur">
                         <div class="form-group">
                             <label for="Til"><h4>Til</h4></label>
-                            <?php echo flyplassListe(); ?>
+                            <?php echo tilFlyplassListe(); ?>
                         </div>
                     </div>
                 </div><!-- /row -->

@@ -39,7 +39,7 @@
                     echo '<h2>Endre fly</h2>';
                 }
         echo '
-            <div class="col-md-6">';
+            <div class="col-md-12">';
 
                     connectDB();
                     $sql = "SELECT * FROM luftfartoy WHERE id='$id';";
@@ -52,11 +52,11 @@
                             $tailnr = utf8_encode($row["tailnr"]);
                             echo '
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <input class="form-control" type="hidden" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                                 <lable for="tailnr">tailnr</lable>
                                 <input class="form-control" type="text" placeholder="tailnr" name="tailnr" id="tailnr" value="' . @$tailnr . '" required>
                             </div>';
@@ -64,12 +64,12 @@
                     }
                     else {
                         echo '
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                 <lable for="modell">Velg modell</label>
                                 <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; modellListe(@$modell_id);
                             echo '
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                                 <lable for="tailnr">tailnr</lable>
                                 <input class="form-control" type="text" placeholder="tailnr" name="tailnr" id="tailnr" value="' . @$tailnr . '" required>
                             </div>';
