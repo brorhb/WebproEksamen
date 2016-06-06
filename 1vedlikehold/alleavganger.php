@@ -130,8 +130,9 @@
                                                             <td>
                                                                 <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
                                                             </td>
-                                                            <td>
-                                                                <input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
+                                                            <td>'; 
+                                                            echo valutaListe();
+                                                            echo '
                                                             </td>
                                                         </tr>';
                                                 }
@@ -213,8 +214,9 @@
                                                             <td>
                                                                 <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
                                                             </td>
-                                                            <td>
-                                                                <input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
+                                                            <td>'; 
+                                                            echo valutaListe();
+                                                            echo '
                                                             </td>
                                                         </tr>';
                                                 }
