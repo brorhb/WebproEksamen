@@ -365,10 +365,9 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 			$maaFyllesUt[] = "landskode";
 			$resultat = false;
 		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (strlen($landskode) < 3) {
-				$kommentar[] = "<strong>Landskoden</strong> må inneholde minumum 3 tegn.";
+			if (!is_numeric($landskode)) {
+				$kommentar[] = "<strong>landskode</strong> kan kun bestå av tall.";
 				$resultat = false;
 			}
 		}
@@ -384,13 +383,12 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 			}
 		}
 			if ($iso == "" || $iso == null) {
-			$maaFyllesUt[] = "iso";
+			$maaFyllesUt[] = "Latitude";
 			$resultat = false;
 		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (strlen($iso) < 2) {
-				$kommentar[] = "<strong>Iso</strong> må inneholde minumum 2 tegn.";
+			if (!is_numeric($iso)) {
+				$kommentar[] = "<strong>iso</strong> kan kun bestå av tall.";
 				$resultat = false;
 			}
 		}
@@ -398,10 +396,9 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 			$maaFyllesUt[] = "iso3";
 			$resultat = false;
 		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (strlen($iso3) < 3) {
-				$kommentar[] = "<strong>Iso3</strong> må inneholde minumum 3 tegn.";
+			if (!is_numeric($iso3)) {
+				$kommentar[] = "<strong>iso3</strong> kan kun bestå av tall.";
 				$resultat = false;
 			}
 		}
@@ -437,12 +434,12 @@ function validerValuta($valuta_navn,$forkortelse) {
 		
 		// Sjekker om feltet er tomt
 		if ($valuta_navn == "" || $valuta_navn == null) {
-			$maaFyllesUt[] = "valuta";
+			$maaFyllesUt[] = "Valuta";
 			$resultat = false;
 		}
 
 	if ($forkortelse == "" || $forkortelse == null) {
-			$maaFyllesUt[] = "forkortelse";
+			$maaFyllesUt[] = "Forkortelse";
 			$resultat = false;
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
@@ -486,7 +483,7 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 		/* Ulike valideringer */
 		
 		// Sjekker om feltet er tomt
-		if ($tid == "" || $tid== null) {
+		if ($tid == "" || $tid == null) {
 			$maaFyllesUt[] = "tid";
 			$resultat = false;
 		}
@@ -515,11 +512,11 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 				}
 			}
 			if ($fraFlyplass == "" || $fraFlyplass== null) {
-			$maaFyllesUt[] = "tid";
+			$maaFyllesUt[] = "fra flyplass";
 			$resultat = false;
 		}
 			if ($tilFlyplass== "" || $tilFlyplass== null) {
-			$maaFyllesUt[] = "tilFlyplass";
+			$maaFyllesUt[] = "til flyplass";
 			$resultat = false;
 		}
 
@@ -678,9 +675,11 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		$maaFyllesUt[] = "Navn";
 		$resultat = false;
 	}
+	
 	if ($flyplasskode == "" || $flyplasskode == null) {
-		$maaFyllesUt[] = "Flyplasskode";
+		$maaFyllesUt[] = "flyplasskode";
 		$resultat = false;
+	}
 
 		if ($latitude == "" || $latitude == null) {
 			$maaFyllesUt[] = "Latitude";
@@ -692,7 +691,7 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 				$resultat = false;
 			}
 		}
-	}
+	
 	if ($longitude == "" || $longitude == null) {
 		$maaFyllesUt[] = "Longitude";
 		$resultat = false;
@@ -712,6 +711,13 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		$maaFyllesUt[] = "Land_id";
 		$resultat = false;
 	}
+	
+	if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
 }		
 ?>
 
