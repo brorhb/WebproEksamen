@@ -457,6 +457,7 @@ function validerPersonBruker() {
     /* Klarerer variabler */
     var maaFyllesUt = [];
     var kommentar = [];
+    var resultat = true;
 
     /* Ulike valideringer */
 
