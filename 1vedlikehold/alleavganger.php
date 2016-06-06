@@ -24,8 +24,15 @@
         if (oppdaterFlyvning($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr)) {
             echo "Informasjonen ble oppdatert.";
         }
+        
+          // Valideringen gogdkjent, oppdater databasen
+            oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
+            echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering = false;
+        }
         else {
-            echo "Noe galt skjedde...";
+            // PHP-validering ikke godkjent, feilmeldinger skrives ut og skjemaet for å fylle ut info vises:
+            $feiletPHPvalidering = true;
         }
     }
     elseif (@$_POST['ny'] || @$_POST['endre']) {
