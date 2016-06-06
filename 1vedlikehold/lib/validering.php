@@ -659,9 +659,60 @@ function validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde){
 						$resultat = false;
 					}
 				}
+
 }
 
-		
+function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$navn = utf8_decode($navn);
+	$flyplasskode = utf8_decode($flyplasskode);
+	$latitude = utf8_decode($latitude);
+	$longitude = utf8_decode($longitude);
+	$tidssone_gmt = utf8_decode($tidssone_gmt);
+	$land_id = utf8_decode($land_id);
+
+	if ($navn == "" || $navn == null) {
+		$maaFyllesUt[] = "Navn";
+		$resultat = false;
+	}
+	if ($flyplasskode == "" || $flyplasskode == null) {
+		$maaFyllesUt[] = "Flyplasskode";
+		$resultat = false;
+
+		if ($latitude == "" || $latitude == null) {
+			$maaFyllesUt[] = "Latitude";
+			$resultat = false;
+		}
+		else {
+			if (!is_numeric($latitude)) {
+				$kommentar[] = "<strong>Latitude</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+	}
+	if ($longitude == "" || $longitude == null) {
+		$maaFyllesUt[] = "Longitude";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (!is_numeric($longitude)) {
+			$kommentar[] = "<strong>Longitude</strong> kan kun bestå av tall.";
+			$resultat = false;
+		}
+	}
+	if ($tidssone_gmt == "" || $tidssone_gmt == null) {
+		$maaFyllesUt[] = "Tidssone_gmt";
+		$resultat = false;
+	}
+	if ($land_id == "" || $land_id == null) {
+		$maaFyllesUt[] = "Land_id";
+		$resultat = false;
+	}
+}		
 ?>
 
 
