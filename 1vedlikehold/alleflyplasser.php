@@ -24,12 +24,11 @@
 
 
         if(validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id)) {
-            oppdaterflyplass($id, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id);
+            oppdaterFlyplass($id, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering = false;
         }
         else {
-       
             $feiletPHPvalidering = true;
         }
     }
@@ -38,7 +37,7 @@
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterAlleFlyplasser()">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterAlleFlyplasser();">
             <div class="col-md-12">';
                 if ($_POST['ny']) {
                     echo '<h2>Ny flyplass</h2>';
@@ -186,8 +185,9 @@
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="flyplasskode">Flyplassnavn</lable>
-                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplassskode . '" required>
+                                <lable for="flyplasskode">Flyplasskode</lable>
+                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="land_id">Land ID</lable>';

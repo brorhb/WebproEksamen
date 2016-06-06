@@ -437,12 +437,12 @@ function validerValuta($valuta_navn,$forkortelse) {
 		
 		// Sjekker om feltet er tomt
 		if ($valuta_navn == "" || $valuta_navn == null) {
-			$maaFyllesUt[] = "valuta";
+			$maaFyllesUt[] = "Valuta";
 			$resultat = false;
 		}
 
 	if ($forkortelse == "" || $forkortelse == null) {
-			$maaFyllesUt[] = "forkortelse";
+			$maaFyllesUt[] = "Forkortelse";
 			$resultat = false;
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
@@ -678,9 +678,11 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		$maaFyllesUt[] = "Navn";
 		$resultat = false;
 	}
+	
 	if ($flyplasskode == "" || $flyplasskode == null) {
-		$maaFyllesUt[] = "Flyplasskode";
+		$maaFyllesUt[] = "flyplasskode";
 		$resultat = false;
+	}
 
 		if ($latitude == "" || $latitude == null) {
 			$maaFyllesUt[] = "Latitude";
@@ -692,7 +694,7 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 				$resultat = false;
 			}
 		}
-	}
+	
 	if ($longitude == "" || $longitude == null) {
 		$maaFyllesUt[] = "Longitude";
 		$resultat = false;
@@ -712,6 +714,13 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		$maaFyllesUt[] = "Land_id";
 		$resultat = false;
 	}
+	
+	if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
 }		
 ?>
 
