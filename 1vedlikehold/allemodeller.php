@@ -1,30 +1,36 @@
 <?php include_once("head.php");
+        include_once("lib/funksjoner.php")
     //krevInnlogging('0');
 
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
-        if(slettPassasjertype($id)) {
+        if(slettVenterpaafunksjon($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
             echo "Noe galt skjedde...";
         }
     }
-    /*elseif (@$_POST['lagre']) {
+    else if (@$_POST['lagre']) {
         $id = @$_POST['id'];
         $navn = $_POST['navn'];
-        $type = $_POST['type_luftfartoy'];
-        $kapasitet = $_POST[''];
+        $type = $_POST['type'];
+        $kapasitet = $_POST['kapasitet'];
+        $rader = $_POST['rader'];
+        $bredde = $_POST['bredde'];
 
-        if(oppdaterTypeLuftfartoy($id, $navn, $type)) {
+
+        if(validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde)) {
+            oppdaterventerpafuksjon($id, $navn, $type);
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering=false;
         }
         else {
-            echo "Noe galt skjedde...";
+            $feiletPHPvalidering=true;
         }
-    }*/
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    }
+    if (@$_POST['ny'] || @$_POST['endre']) || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 

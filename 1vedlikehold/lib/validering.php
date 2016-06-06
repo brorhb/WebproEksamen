@@ -390,8 +390,8 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
-			if (strlen($iso) < 3) {
-				$kommentar[] = "<strong>Iso</strong> må inneholde minumum 3 tegn.";
+			if (strlen($iso) < 2) {
+				$kommentar[] = "<strong>Iso</strong> må inneholde minumum 2 tegn.";
 				$resultat = false;
 			}
 		}
@@ -605,6 +605,62 @@ function validerAlleFly($modell_id ,$tailnr) {
 	}
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
 
+function validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde){
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+		
+		$navn = utf8_decode($navn);
+		$type = utf8_decode($type);
+		$kapasitet = utf8_decode($kapasitet);
+		$rader = utf8_decode($rader);
+		$bredde = utf8_decode($bredde);
+		
+		if ($navn == "" || $navn == null) {
+			$maaFyllesUt[] = "navn";
+			$resultat = false;
+		}
+		if ($type == "" || $type == null) {
+			$maaFyllesUt[] = "type";
+			$resultat = false;
+		}
+	
+		if ($kapasitet == "" || $kapasitet == null) {
+			$maaFyllesUt[] = "kapasitet";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!is_numeric($kapasitet)) {
+				$kommentar[] = "<strong>Kapasiteten</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+		if ($rader == "" || $rader == null) {
+			$maaFyllesUt[] = "rader";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!is_numeric($rader)) {
+				$kommentar[] = "<strong>Rader</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+		if ($bredde == "" || $bredde == null) {
+					$maaFyllesUt[] = "bredde";
+					$resultat = false;
+				}
+				// Feltet er fylt ut, sjekker ytterligere valideringer
+				else {
+					if (!is_numeric($bredde)) {
+						$kommentar[] = "<strong>Bredden</strong> kan kun bestå av tall.";
+						$resultat = false;
+					}
+				}
+}
 
 
 ?>
