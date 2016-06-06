@@ -1,3 +1,75 @@
+<?php
+    include_once('lib/funksjoner.php');
+
+    // For å videresende til riktig side
+    if (erLoggetInn()) {
+        //header("Location: index.php");
+        echo '<head><meta http-equiv="refresh" content="0; url=index.php" /></head>';
+        echo "hei";
+    }
+    elseif (@$_POST['referer'])
+    {
+        $referer = $_POST['referer'];
+    }
+    else
+    {
+        // Sender brukeren til riktig side etter at man har logget inn
+        if (strpos($_SERVER['REQUEST_URI'],'login.php') == false) {
+            $referer = $_SERVER['REQUEST_URI'];
+        }
+        elseif (strpos($_SERVER['SCRIPT_NAME'],'login.php') == false) {
+            $referer = $_SERVER['SCRIPT_NAME'];
+        }
+        elseif (strpos($_SERVER['PHP_SELF'],'login.php') == false) {
+            $referer = $_SERVER['PHP_SELF'];
+        }
+        elseif (strpos($_SERVER['HTTP_REFERER'],'login.php') == false AND isset($_SERVER['HTTP_REFERER'])) {
+            $referer = $_SERVER['HTTP_REFERER'];
+        }
+        else {
+            $referer = 'index.php';
+        }
+    }
+
+    $loggInnKnapp = @$_POST['loggInnKnapp'];
+
+    if ($loggInnKnapp) {
+        /* Trykket på logg inn knapp */
+
+
+        $brukernavn = $_POST['brukernavn'];
+        $passord = $_POST['passord'];
+        $kryptertPassord = md5($passord);
+        
+        connectDB();
+        $sqlSetning = "SELECT * FROM bruker WHERE brukernavn = '$brukernavn' AND passord = '$kryptertPassord';";
+        $result = connectDB()->query($sqlSetning);
+
+        if ($result->num_rows == 0) {
+            $tilbakemelding = "Feil brukernavn eller passord";
+        }
+        elseif ($result->num_rows == 1) {
+
+            while($rad = $result->fetch_assoc()) {
+                $id = $rad["id"];
+
+                @session_start();
+                $_SESSION['brukerID'] = $id;
+
+                echo '<head><meta http-equiv="refresh" content="0; url=' . $referer . '" /></head>';
+                header("Location: " . $referer);
+            }
+        }
+        else {
+            // To brukere har samme brukernavn.
+            $tilbakemelding = "Ukjent feil. Kontakt systemadministrator";
+        }
+        connectDB()->close();
+
+    }
+    if (!$loggInnKnapp OR @$tilbakemelding) {
+
+        echo '
 <!doctype html>
 <html lang="no">
 <head>
@@ -48,23 +120,28 @@
         <div class="container">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login text-center">
-                    <form action="index.php">
+                    <form action="login.php" method="post">';
+
+                    echo '<p style="color:#FFFFFF;">' . @$tilbakemelding . '</p>';
+                    echo '<input type="hidden" name="referer" value="' . $referer . '" />';
+
+                    echo '
                     <h4>Logg inn</h4>
                     <div class="input-group">
                         <span class="input-group-addon" id="sizing-addon2">@</span>
-                        <input type="text" class="form-control" placeholder="Epost" aria-describedby="sizing-addon2">
+                        <input type="text" class="form-control" placeholder="Epost" aria-describedby="sizing-addon2" name="brukernavn">
                     </div>
                     <div class="input-group margin8top">
                         <span class="input-group-addon" id="sizing-addon2">*</span>
-                        <input type="text" class="form-control" placeholder="Passord" aria-describedby="sizing-addon2">
+                        <input type="text" class="form-control" placeholder="Passord" aria-describedby="sizing-addon2" name="passord">
                     </div>
                     <div class="margin16top">
-                        <input type="submit" class="btn btn-success" value="Logg inn">
+                        <input type="submit" class="btn btn-success" value="Logg inn" name="loggInnKnapp">
                     </div>
                     </form>
                 </div>
             </div>
         </div>
-<?php
-    
+        ';
+    }
 ?>
