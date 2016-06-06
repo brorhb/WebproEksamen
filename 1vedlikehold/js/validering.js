@@ -98,7 +98,7 @@ function validerOppdaterLand() {
         }
     }
     if (valuta_id.value == "") {
-        maaFyllesUt.push("valuta_id");
+        maaFyllesUt.push("valuta");
         resultat = false;
     }
 
