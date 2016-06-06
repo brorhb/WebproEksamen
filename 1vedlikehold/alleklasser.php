@@ -87,7 +87,7 @@
     
 
         echo'<div class="col-md-12">
-            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" onsubmit="return validerSubmitKnapp(this.submited);">
+            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" onsubmit="return validerSubmitKnapp(this.submited);" >
             <h2>Alle Klasser</h2>
             <table class="table table-striped">
                 <thead>
@@ -117,13 +117,13 @@
                      </tbody>
                     </table>
                     <div class="col-md-1">
-                        <input type="submit" name="endre" class="btn btn-info" onclick="this.form.submited=this.name;" value="Endre" />
+                        <input type="submit" name="endre" class="btn btn-info" onclick="this.form.submited=this.name;" value="Endre" onclick="this.form.submited=this.name;" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 text-center">
-                        <input type="submit" name="ny" class="btn btn-success" onclick="this.form.submited=this.name;" value="Legg til" />
+                        <input type="submit" name="ny" class="btn btn-success" onclick="this.form.submited=this.name;" value="Legg til" onclick="this.form.submited=this.name;" />
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" class="btn btn-danger" onclick="this.form.submited=this.name;" value="Slett"/>
+                        <input type="submit" name="slett" class="btn btn-danger" onclick="this.form.submited=this.name;" value="Slett" onclick="this.form.submited=this.name;"/>
                     </div>
                 </form>
         </div>
