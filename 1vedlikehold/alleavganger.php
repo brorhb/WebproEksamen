@@ -119,13 +119,15 @@
                                         </thead>
                                         <tbody>';
 
-                                            $sql3 = "SELECT k.id, k.type FROM klasse k;";
+                                            $sql3 = "SELECT k.id, (SELECT k.type FROM klasse k WHERE k.id = p.klasse_id) AS type, p.pris, (SELECT v.id FROM valuta v WHERE v.id = p.valuta_id) AS valuta FROM pris p LEFT JOIN klasse k ON k.id = p.klasse_id LEFT JOIN valuta v ON v.id = p.valuta_id;";
                                             $result3 = connectDB()->query($sql3);
 
                                             if ($result3->num_rows > 0 ) {
                                                 while ($row3 = $result3->fetch_assoc()) {
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
+                                                    $pris3 = utf8_encode($row3["pris"]);
+                                                    $valuta3 = utf8_encode($row3["valuta"]);
 
                                 
                                                     echo '
@@ -135,10 +137,10 @@
                                                             </td>
                                                             <td>' . $type3 . '</td>
                                                             <td>
-                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
+                                                                <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris">
                                                             </td>
                                                             <td>'; 
-                                                            echo valutaListe();
+                                                            echo valutaListe($valuta3);
                                                             echo '
                                                             </td>
                                                         </tr>';
