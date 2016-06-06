@@ -11,7 +11,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    /*elseif (@$_POST['lagre']) {
+    elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
         $navn = $_POST['navn'];
         $type = $_POST['type_luftfartoy'];
@@ -23,7 +23,7 @@
         else {
             echo "Noe galt skjedde...";
         }
-    }*/
+    }
     elseif (@$_POST['ny'] || @$_POST['endre']) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];

@@ -86,18 +86,51 @@ function validerOppdaterLand() {
         maaFyllesUt.push("landskode");
         resultat = false;
     }
+    // Feltet er fylt ut, sjekker ytterligere valideringer 
+    else {
+        if (landskode.str.length > 0 ) {
+            kommentar.push("<strong>Landskode</strong> må være minst et siffer mellom 0-4.");
+            resultat = false;
+        }
+        if (isNaN(landskode)) {
+            kommentar.push("<strong>Landskode</strong> må være minst et siffer mellom 0-4.");
+            resultat = false;
+        }
+    }
+    }
     if (valuta_id.value == "") {
         maaFyllesUt.push("valuta_id");
         resultat = false;
     }
 
-    if (iso == "" || iso == null) {
+   if (iso == "" || iso == null) {
         maaFyllesUt.push("iso");
         resultat = false;
+    }
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        if (iso.length != 2) {
+            kommentar.push("<strong>Iso</strong> må være 2 siffer.");
+            resultat = false;
+        }
+        if (isNaN(iso)) {
+            kommentar.push("<strong>Iso</strong> må være 2 siffer.");
+            resultat = false;
+        }
     }
     if (iso3 == "" || iso3 == null) {
         maaFyllesUt.push("iso3");
         resultat = false;
+    }
+     else {
+        if (iso3.length != 3) {
+            kommentar.push("<strong>Iso3</strong> må være 3 siffer.");
+            resultat = false;
+        }
+        if (isNaN(iso3)) {
+            kommentar.push("<strong>Iso3</strong> må være 3 siffer.");
+            resultat = false;
+        }
     }
     /* Valideringer slutt */
 
@@ -457,6 +490,7 @@ function validerPersonBruker() {
     /* Klarerer variabler */
     var maaFyllesUt = [];
     var kommentar = [];
+    var resultat = true;
 
     /* Ulike valideringer */
 
@@ -641,7 +675,7 @@ function validerLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-    var modellid = document.getElementById("modell_id"); /*lesteboks*/
+    var modell_id = document.getElementById("modell_id"); /*lesteboks*/
     var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
 

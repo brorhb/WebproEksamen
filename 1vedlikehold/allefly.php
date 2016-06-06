@@ -18,14 +18,16 @@
         $modell_id = $_POST['modell_id'];
         $tailnr = $_POST['tailnr'];
 
-        if(oppdaterLuftfartoy($id, $modell_id, $tailnr)) {
+        if(validerAlleFly($modell_id ,$tailnr)) {
+            oppdaterLuftfartoy($id, $modell_id, $tailnr);
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering=false;
         }
         else {
-            echo "Noe galt skjedde...";
+            $feiletPHPvalidering=true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
