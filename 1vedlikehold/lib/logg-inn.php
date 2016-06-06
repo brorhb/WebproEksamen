@@ -5,14 +5,14 @@
     if (erLoggetInn()) {
         header("Location: index.php");
     }
-    elseif (@$_POST['referer'])
+    /*elseif (@$_POST['referer'])
     {
         $referer = $_POST['referer'];
-    }
+    }*/
     else
     {
         // Sender brukeren til riktig side etter at man har logget inn
-        if (strpos($_SERVER['REQUEST_URI'],'login.php') == false) {
+        /*if (strpos($_SERVER['REQUEST_URI'],'login.php') == false) {
             $referer = $_SERVER['REQUEST_URI'];
         }
         elseif (strpos($_SERVER['SCRIPT_NAME'],'login.php') == false) {
@@ -24,9 +24,9 @@
         elseif (strpos($_SERVER['HTTP_REFERER'],'login.php') == false AND isset($_SERVER['HTTP_REFERER'])) {
             $referer = $_SERVER['HTTP_REFERER'];
         }
-        else {
+        else {*/
             $referer = 'index.php';
-        }
+        //}
     }
 
     $loggInnKnapp = @$_POST['loggInnKnapp'];
