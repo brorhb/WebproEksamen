@@ -675,7 +675,7 @@ function validerLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-    var modellid = document.getElementById("modell_id"); /*lesteboks*/
+    var modell_id = document.getElementById("modell_id"); /*lesteboks*/
     var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
 

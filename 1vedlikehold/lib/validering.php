@@ -564,7 +564,47 @@ function validerType($type) {
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
 	}
-/*Validering type - VET IKKE OM DEN FUNGERER*/
+/*Validering allefly - VET IKKE OM DEN FUNGERER*/
+
+function validerAlleFly($modell_id ,$tailnr) {
+
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$modell_id = utf8_decode($modell_id);
+		$tailnr = utf8_decode($tailnr);
+		
+		//$mobilnummer = utf8_decode($mobilnummer);
+		//$person_id = utf8_decode($person_id);
+
+		/* Ulike valideringer */
+		
+		// Sjekker om feltet er tomt
+		if ($modell_id == "" || $modell_id == null) {
+			$maaFyllesUt[] = "modell";
+			$resultat = false;
+		}
+
+	if ($tailnr == "" || $tailnr == null) {
+			$maaFyllesUt[] = "tailnr";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		
+		/* Valideringer slutt */
+		
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+
 
 
 ?>

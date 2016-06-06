@@ -20,14 +20,15 @@
         $iso = $_POST["iso"];
         $iso3 = $_POST["iso3"];
 
-        if(oppdaterLand($id, $navn, $landskode, $valuta_id, $iso, $iso3)) {
+        if(validerLand($navn,$landskode, $valuta_id, $iso, $iso3)) {oppdaterLand($id, $navn, $landskode, $valuta_id, $iso, $iso3);
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering=false;
         }
         else {
-            echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
