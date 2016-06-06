@@ -54,7 +54,7 @@
                             $forkortelse = utf8_encode($row["forkortelse"]);
                             echo '
                             <div class="form-group">
-                                <lable for="valuta">valuta</lable>
+                                <lable for="valuta">navn</lable>
                                 <input class="form-control" type="text" placeholder="valuta" name="valuta_navn" id="valuta_navn" value="' . @$valuta_navn . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$ValutaID . '">
                             </div>
