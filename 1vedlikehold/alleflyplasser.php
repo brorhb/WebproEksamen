@@ -23,14 +23,17 @@
         $land_id = $_POST['land_id'];
 
 
-        if(oppdaterflyplass($id, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id)) {
+        if(validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id)) {
+            oppdaterflyplass($id, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id);
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering = false;
         }
         else {
             echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
