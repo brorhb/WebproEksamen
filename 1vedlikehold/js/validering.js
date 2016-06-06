@@ -97,7 +97,6 @@ function validerOppdaterLand() {
             resultat = false;
         }
     }
-    }
     if (valuta_id.value == "") {
         maaFyllesUt.push("valuta_id");
         resultat = false;
