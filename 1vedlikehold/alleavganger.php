@@ -75,10 +75,9 @@
                             echo '</div>';
                         }
 
-                        echo '<h3>Pris</h3>
-                        <div class="wrapper">';
+                        echo '<h3>Pris</h3>';
+                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 5;";
 
-                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 1;";
                         $result2 = connectDB()->query($sql2);
 
                         if ($result2->num_rows > 0 ) {
@@ -121,28 +120,27 @@
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
 
-                                                    echo '<tr>
-                                                <td>
-                                                    <input type="checkbox" name="id" value="' . $id3 . '">
-                                                </td>
-                                                <td>' . $type3 . '</td>
-                                                <td>
-                                                    <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
-                                                </td>
-                                            </tr>';
-                                            }
+                                
+                                                    echo '
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" name="id" value="' . $id3 . '">
+                                                            </td>
+                                                            <td>' . $type3 . '</td>
+                                                            <td>
+                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
+                                                            </td>
+                                                            <td>
+                                                                <input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
+                                                            </td>
+                                                        </tr>';
+                                                }
                                             }
                                         echo '</tbody>
                                     </table>
-                            </div>';
+                                </div>';
                             }
                         }
-                       echo '</div>
-                       <input class="leggTil">Legg til</button>
-                       ';
                     }
                     else {
                         echo '
@@ -160,11 +158,10 @@
                             echo luftfartoyListe($tailNr);
                             echo '</div>';
 
+                        
+                        echo '<h3>Pris</h3>';
+                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 5;";
 
-                        echo '<div class="wrapper">
-
-                        <h3>Pris</h3>';
-                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 1;";
                         $result2 = connectDB()->query($sql2);
 
                         if ($result2->num_rows > 0 ) {
@@ -176,7 +173,7 @@
                                 echo '
                                 <div class="form-group col-md-12">
                                     <lable for="passasjertype">Passasjer Type</lable>';
-                                    echo passasjertypeListe($passasjertype2);
+                                    echo passasjertypeListe(@$passasjertype2);
                                     echo '
                                 </div>
                                 <div class="form-group col-md-6">
@@ -207,27 +204,26 @@
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
 
-                                                    echo '<tr>
-                                                <td>
-                                                    <input type="checkbox" name="id" value="' . $id3 . '">
-                                                </td>
-                                                <td>' . $type3 . '</td>
-                                                <td>
-                                                    <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
-                                                </td>
-                                            </tr>';
-                                            }
+                                                    echo '
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox" name="id" value="' . $id3 . '">
+                                                            </td>
+                                                            <td>' . $type3 . '</td>
+                                                            <td>
+                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
+                                                            </td>
+                                                            <td>
+                                                                <input class="form-control type="text" name="valuta" value="testValuta" placeholder="Valuta">
+                                                            </td>
+                                                        </tr>';
+                                                }
                                             }
                                         echo '</tbody>
                                     </table>
                                 </div>';
                             }
                         }
-                        echo '</div>
-                       <button class="btn btn-default leggTil">Legg til</button>';
                     }
                     connectDB()->close();
             echo'
@@ -301,10 +297,4 @@
         <!-- Innhold -->
         ';
 
-
-
-
-
-
-    include_once ("end.php");
-?>
+include_once ("end.php"); ?>
