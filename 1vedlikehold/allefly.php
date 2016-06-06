@@ -87,7 +87,7 @@
 
 
         echo'<div class="col-md-12">
-            <form method="post" action="' . $_SERVER['PHP_SELF'] . '">
+            <form method="post" action="' . $_SERVER['PHP_SELF'] . '" onsubmit="return validerSubmitKnapp(this.submited);">
             <h2>Alle fly</h2>
             <table class="table table-striped">
                 <thead>
@@ -117,13 +117,13 @@
                      </tbody>
                     </table>
                     <div class="col-md-1">
-                        <input type="submit" name="endre" class="btn btn-info" value="Endre" />
+                        <input type="submit" name="endre" class="btn btn-info" value="Endre" onclick="this.form.submited=this.name;"/>
                     </div>
                     <div class="col-md-1 col-md-offset-4 text-center">
-                        <input type="submit" name="ny" class="btn btn-success" value="Legg til" />
+                        <input type="submit" name="ny" class="btn btn-success" value="Legg til" onclick="this.form.submited=this.name;"/>
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett"/>
+                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett" onclick="this.form.submited=this.name;"/>
                     </div>
                 </form>
         </div>
