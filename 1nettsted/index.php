@@ -133,10 +133,12 @@
                                 $til = utf8_encode($row["til"]);
 
                                 echo '
+                                <tr>
                                     <td><input type="radio" name="id" value="' . $id . '"></td>
                                     <td>' . $avgang . '</td>
                                     <td>' . $fra . '</td>
                                     <td>' . $til . '</td>
+                                </tr>
                                 ';
                             }
                         }
