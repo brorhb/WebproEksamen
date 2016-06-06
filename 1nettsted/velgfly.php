@@ -191,7 +191,7 @@
 				<tbody>
 <?php
 					connectDB();
-					$sql = "SELECT f.id AS flyvningNr, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN luftfartoy l ON f.luftfartoy_id = l.id;";
+					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '1') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
 					$result = connectDB()->query($sql);
 
 						if($result->num_rows > 0 ) {
@@ -200,13 +200,14 @@
 								$fraFlyplass = utf8_encode($row["fraFlyplass"]);
 								$avgang = utf8_encode($row["avgang"]);
 								$tilFlyplass = utf8_encode($row["tilFlyplass"]);
+								$reiseTid = utf8_encode($row["reiseTid"]);
 ?>
 					<tr>
 						<td><?php echo $flyvningNr; ?></td>
 						<td><?php echo $fraFlyplass; ?></td>
 						<td><?php echo $avgang; ?></td>
 						<td><?php echo $tilFlyplass; ?></td>
-						<td></td>
+						<td><?php echo $avgang + $reiseTid ?></td>
 						<td><input type="radio" name="id" value="<?php echo $flyvningNr; ?>"></td>
 					</tr>
 <?php
