@@ -141,8 +141,8 @@
 			$resultat = false;
 		}
 	else {
-			if (!sjekkOmBrukernavnEksisterer($brukernavn, $brukerID) ) {
-				$kommentar[] = "<strong>Brukernavn</strong> eksisterer ikke.";
+			if (sjekkOmBrukernavnEksisterer($brukernavn, $brukerID) ) {
+				$kommentar[] = "<strong>Brukernavn</strong> eksisterer.";
 				$resultat = false;
 			}
 		}
@@ -211,7 +211,7 @@
 		}
 
 		// Sjekker om feltet er tomt
-		if ($person_id == "" || $person_id == null) {
+		/*if ($person_id == "" || $person_id == null) {
 			$maaFyllesUt[] = "person id";
 			$resultat = false;
 		}
@@ -221,7 +221,7 @@
 				$kommentar[] = "<strong>Personen</strong> eksisterer ikke.";
 				$resultat = false;
 			}
-		}
+		}*/
 
 				// Sjekker om feltet er tomt
 		if ($fornavn == "" || $fornavn == null) {
