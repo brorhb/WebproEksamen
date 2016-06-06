@@ -304,7 +304,7 @@ function validerPassasjertype($passasjertype, $beskrivelse) {
 		$resultat = true;
 
 		$id= utf8_decode($id);
-		$Passasjertype = utf8_decode($Passasjertype);
+		$passasjertype = utf8_decode($passasjertype);
 		$beskrivelse = utf8_decode($beskrivelse);
 
 
@@ -315,7 +315,7 @@ function validerPassasjertype($passasjertype, $beskrivelse) {
 
 		// Sjekker om feltet er tomt
 
-		if ($Passasjertype == "" || $Passasjertype == null) {
+		if ($passasjertype == "" || $passasjertype == null) {
 			$maaFyllesUt[] = "passasjertype";
 			$resultat = false;
 		}
