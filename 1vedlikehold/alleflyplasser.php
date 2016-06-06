@@ -29,7 +29,7 @@
             $feiletPHPvalidering = false;
         }
         else {
-            echo "Noe galt skjedde...";
+       
             $feiletPHPvalidering = true;
         }
     }
