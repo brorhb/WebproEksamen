@@ -146,7 +146,9 @@
                         </div>  
                     </div>
                     
-                    <input type="button" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>
+                    <div class="knapp">
+                        <input type="button" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>
+                    </div>
                     </form>
                 </div>
                 <!-- Reise info -->
@@ -164,7 +166,15 @@
 <!-- innhold -->
 <div class="container">
     <!-- Avgang -->
-    <form action="registrerReisende.php">
+    <form action="registrerReisende.php" method="get">
+    <input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
+    <input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
+    <input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
+    <input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>"/>
+    <input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
+    <input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>"/>
+    <input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
+
         <div class="col-md-10 col-md-offset-1">
             <h2><span class="glyphicon glyphicon-plane"></span> Avganger</h2>
             <table class="table">
