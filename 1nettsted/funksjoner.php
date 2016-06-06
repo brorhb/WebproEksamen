@@ -3,7 +3,7 @@
 // fraFlyplassListe
 function fraflyplassListe($objektID) {
 		$objektnavn = 'fraFlyplass';
-		$objektIDeksisterer = sjekkOmFlyplassIDeksisterer($objektID);
+		$objektIDeksisterer = sjekkOmFlyplassIDeksisterer(@$objektID);
 		$sql = "SELECT id, navn, flyplasskode FROM flyplass ORDER BY navn;";
 		$result = connectDB()->query($sql);
 

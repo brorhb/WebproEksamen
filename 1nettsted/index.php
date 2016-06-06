@@ -20,7 +20,7 @@
                     <div class="col-md-6">
                         <div class="form-group" name="fraFlyplass" id="fraFlyplass">
                             <label for="Fra"><h4>Fra</h4></label>
-                            <?php echo fraFlyplassListe(); ?>
+                            <?php echo fraFlyplassListe(@$objektID); ?>
                         </div>
                     </div>
 

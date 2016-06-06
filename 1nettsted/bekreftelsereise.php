@@ -7,13 +7,13 @@
     <div class="row">
         <div class="col-md-8">
             <?php
-                $fraLand = $_GET["fraLand"];
-                $tilLand = $_GET["tilLand"];
-                $fradato = $_GET["fradato"];
-                $tildato = $_GET["tildato"];
-                $antallVoksene = $_GET["antallVoksene"];
-                $antallUnge = $_GET["antallUnge"];
-                $reisevalg = $_GET["reisevalg"];
+                $fraLand = @$_GET["fraLand"];
+                $tilLand = @$_GET["tilLand"];
+                $fradato = @$_GET["fradato"];
+                $tildato = @$_GET["tildato"];
+                $antallVoksene = @$_GET["antallVoksene"];
+                $antallUnge = @$_GET["antallUnge"];
+                $reisevalg = @$_GET["reisevalg"];
                 echo '<h2>' . $fraLand . ' til ' . $tilLand . '</h2>';
             ?>
         </div>

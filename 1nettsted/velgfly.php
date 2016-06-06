@@ -5,13 +5,13 @@
 	<div class="row">
 		<div class="col-md-12">
 <?php
-				$fraLand = $_GET["fraFlyplass_id"];
-				$tilLand = $_GET["tilFlyplass_id"];
-				$fraDato = $_GET["fraDato"];
-				$tilDato = $_GET["tilDato"];
-				$antallVoksene = $_GET["antallVoksene"];
-				$antallUnge = $_GET["antallUnge"];
-				$reisevalg = $_GET["reisevalg"];
+				$fraLand = @$_GET["fraFlyplass_id"];
+				$tilLand = @$_GET["tilFlyplass_id"];
+				$fraDato = @$_GET["fraDato"];
+				$tilDato = @$_GET["tilDato"];
+				$antallVoksene = @$_GET["antallVoksene"];
+				$antallUnge = @$_GET["antallUnge"];
+				$reisevalg = @$_GET["reisevalg"];
 
 				connectDB();
 
