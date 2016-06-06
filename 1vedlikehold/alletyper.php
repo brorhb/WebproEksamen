@@ -17,7 +17,7 @@
         $id = @$_POST['id'];
         $type = $_POST['type'];
 
-        if(validerType($id, $type)) {
+        if(validerType($type)) {
             oppdaterType_luftfartoy($id, $type);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering=false;
