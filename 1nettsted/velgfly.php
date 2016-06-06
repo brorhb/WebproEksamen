@@ -9,8 +9,8 @@
 			<?php
 				$fraLand = $_GET["fraFlyplass_id"];
 				$tilLand = $_GET["tilFlyplass_id"];
-				$fradato = $_GET["fradato"];
-				$tildato = $_GET["tildato"];
+				$fraDato = $_GET["fraDato"];
+				$tilDato = $_GET["tilDato"];
 				$antallVoksene = $_GET["antallVoksene"];
 				$antallUnge = $_GET["antallUnge"];
 				$reisevalg = $_GET["reisevalg"];
@@ -131,13 +131,13 @@
 								<div class="col-md-6" id="fraDato">
 									<div class="form-group" id="fraDato">
 										<label for="Fra"><h4>Fra dato </h4></label>
-										<input class="form-control" type="text" class="span2" value="<?php echo $fradato; ?>" id="dpd1" name="fradato" required>
+										<input class="form-control" type="text" class="span2" value="<?php echo $fraDato; ?>" id="dpd1" name="fraDato" required>
 									</div>
 								</div>
 								<div class="col-md-6" id="tilDato">
 									<div class="form-group" id="tilDato">
 										<label for="Til"><h4>Til dato </h4></label>
-										<input class="form-control" type="text" class="span2" value="<?php echo $tildato; ?>" id="dpd2" name="tildato" required>
+										<input class="form-control" type="text" class="span2" value="<?php echo $tilDato; ?>" id="dpd2" name="tilDato" required>
 									</div>
 								</div>
 

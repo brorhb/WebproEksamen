@@ -8,13 +8,13 @@
 		</div>
 		
 		<div class="col-md-10 col-md-offset-1">
-			<form method="" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return validerReisende()">
+			<form method="get" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return validerReisende()">
 				<div class="form-group">
 <?php
 					$fraLand = $_GET["fraFlyplass_id"];
 					$tilLand = $_GET["tilFlyplass_id"];
-					$fradato = $_GET["fradato"];
-					$tildato = $_GET["tildato"];
+					$fraDato = $_GET["fraDato"];
+					$tilDato = $_GET["tilDato"];
 					$antallVoksene = $_GET["antallVoksene"];
 					$antallUnge = $_GET["antallUnge"];
 					$reisevalg = $_GET["reisevalg"];
