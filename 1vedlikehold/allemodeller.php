@@ -1,13 +1,8 @@
-<<<<<<< Updated upstream
-<?php include_once("head.php");
-        include_once("lib/funksjoner.php")
-    //krevInnlogging('0');
-=======
 <?php
     include_once("lib/funksjoner.php");
     krevInnlogging("0");
     include_once("head.php");
->>>>>>> Stashed changes
+
 
 
     if (@$_POST['slett']) {
