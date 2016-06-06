@@ -50,7 +50,6 @@
 								</div><!-- /row -->
 						<!-- Fra/til land -->
 
-
 						<!-- antall voksene -->
 						<div class="row">
 							<div class="col-md-3">
@@ -159,15 +158,16 @@
 
 <!-- innhold -->
 <div class="container">
+	
 	<!-- Avgang -->
 	<form action="registrerReisende.php" method="get">
-	<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
-	<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
-	<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
-	<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>"/>
-	<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
-	<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>"/>
-	<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
+		<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
+		<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
+		<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
+		<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>"/>
+		<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
+		<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>"/>
+		<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
 
 		<div class="col-md-10 col-md-offset-1">
 			<h2><span class="glyphicon glyphicon-plane"></span> Avganger</h2>
@@ -232,11 +232,12 @@
 			<h3 class="pull-right">Pris</h3>
 		</div>
 		<!-- Retur -->
+		
 		<div class="col-md-10 col-md-offset-1">
 			<input type="submit" class="btn btn-default pull-right" value="Bekreft"/>
 		</div>
 	</form>
-	</div>
+</div>
 <!-- innhold -->
 
-<?php include_once ("end.php"); ?>
+<?php include_once("end.php"); ?>
