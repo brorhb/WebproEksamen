@@ -4,7 +4,6 @@
     include_once("head.php");
 
 
-
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettVenterpaafunksjon($id)) {
