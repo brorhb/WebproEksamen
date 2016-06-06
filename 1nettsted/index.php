@@ -3,7 +3,7 @@
 ?>
 
 <!-- Header bilde -->
-    <div class="row headerBilde"></div>
+    <div class="headerBilde"></div>
 <!-- Header bilde -->
 
 <!-- Innhold -->

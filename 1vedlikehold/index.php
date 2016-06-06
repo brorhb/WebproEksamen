@@ -1,5 +1,7 @@
 <?php
-    include_once ("head.php");
+	include_once("lib/funksjoner.php");
+	krevInnlogging();
+    include_once("head.php");
 ?>
 
 

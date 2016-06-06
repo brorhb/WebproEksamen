@@ -37,7 +37,7 @@
 							<input type='text' class='form-control' name='etternavn' id='etternavn' placeholder='Etternavn' required /> </div>
 						<div class='col-md-6'>
 							<label for='epost'>Epost</label>
-							<input type='email' class='form-control' name='email' id='email' placeholder='eksempel@bjarvin.no' required /> </div>
+							<input type='email' class='form-control' name='email' id='email' placeholder='eksempel@bjarnum.no' required /> </div>
 						<div class='col-md-6'>
 							<label for='kjonn'>Kjønn</label>
 							<select class='form-control' name='kjonn' id='kjonn'>

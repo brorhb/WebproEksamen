@@ -15,7 +15,7 @@
 	function krevInnlogging($tilgangID) {
 		if (!erLoggetInn())
 		{
-			$innhold = include 'logg-inn.php';
+			$innhold = include 'login.php';
 			die($innhold);
 		}
 	}

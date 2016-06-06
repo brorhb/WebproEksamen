@@ -12,7 +12,7 @@
             echo "Noe galt skjedde...";
         }
     }
-    else if (@$_POST['lagre']) {
+    elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
         $navn = $_POST['navn'];
         $type = $_POST['type'];
