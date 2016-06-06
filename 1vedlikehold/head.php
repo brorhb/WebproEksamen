@@ -45,7 +45,14 @@
     <body>
         <div class="col-md-12 topheader">
             <h4 class="brandname">Bjarum Airlines adminpanel</h4>
-            <a href="login.php" class="logout"><h5 class="pull-right">Logg ut</h5></a>
+            <?php
+                if (erLoggetInn()) {
+                    echo '<a href="logout.php" class="logout"><h5 class="pull-right">Logg ut</h5></a>';
+                }
+                else {
+                    echo '<a href="login.php" class="logout"><h5 class="pull-right">Logg inn</h5></a>';
+                }
+            ?>
         </div>
         <div id="wrapper">
             <div class="overlay"></div>

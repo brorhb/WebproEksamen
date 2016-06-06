@@ -1,6 +1,6 @@
 <?php
 	include_once("lib/funksjoner.php");
-	krevInnlogging();
+	krevInnlogging("0");
     include_once("head.php");
 ?>
 
