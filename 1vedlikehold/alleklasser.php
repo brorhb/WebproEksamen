@@ -15,17 +15,19 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $klassenavn = $_POST['klassenavn'];
+        $type = $_POST['klassenavn'];
         $beskrivelse = $_POST['beskrivelse'];
 
-        if(oppdaterKlasse($id, $klassenavn, $beskrivelse)) {
+        if(validerKlasse($type, $beskrivelse)) {
+            oppdaterKlasse($id, $type, $beskrivelse); 
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering=false;
         }
         else {
-            echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
