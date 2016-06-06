@@ -88,12 +88,12 @@ function validerOppdaterLand() {
     }
     // Feltet er fylt ut, sjekker ytterligere valideringer 
     else {
-        if (landskode.str.length > 0 ) {
-            kommentar.push("<strong>Landskode</strong> må være minst et siffer mellom 0-4.");
+        if (isNaN(landskode)) {
+            kommentar.push("<strong>Landskode</strong> kan kun bestå av siffer.");
             resultat = false;
         }
-        if (isNaN(landskode)) {
-            kommentar.push("<strong>Landskode</strong> må være minst et siffer mellom 0-4.");
+        if (landskode.length > 4) {
+            kommentar.push("<strong>Landskode</strong> må være minst et siffer og maks 4.");
             resultat = false;
         }
     }
@@ -103,17 +103,17 @@ function validerOppdaterLand() {
     }
 
    if (iso == "" || iso == null) {
-        maaFyllesUt.push("iso");
+        maaFyllesUt.push("iso2");
         resultat = false;
     }
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
-        if (iso.length != 2) {
-            kommentar.push("<strong>Iso</strong> må være 2 siffer.");
+        if (isNaN(iso)) {
+            kommentar.push("<strong>iso2</strong> kan kun bestå av sifer.");
             resultat = false;
         }
-        if (isNaN(iso)) {
-            kommentar.push("<strong>Iso</strong> må være 2 siffer.");
+        if (iso.length != 2) {
+            kommentar.push("<strong>iso2</strong> må være 2 siffer.");
             resultat = false;
         }
     }
@@ -122,12 +122,12 @@ function validerOppdaterLand() {
         resultat = false;
     }
      else {
-        if (iso3.length != 3) {
-            kommentar.push("<strong>Iso3</strong> må være 3 siffer.");
+        if (isNaN(iso3)) {
+            kommentar.push("<strong>iso3</strong> kan kun bestå av sifer.");
             resultat = false;
         }
-        if (isNaN(iso3)) {
-            kommentar.push("<strong>Iso3</strong> må være 3 siffer.");
+        if (iso3.length != 3) {
+            kommentar.push("<strong>iso3</strong> må være 3 siffer.");
             resultat = false;
         }
     }
