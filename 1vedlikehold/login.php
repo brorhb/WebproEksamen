@@ -133,7 +133,7 @@
                     </div>
                     <div class="input-group margin8top">
                         <span class="input-group-addon" id="sizing-addon2">*</span>
-                        <input type="text" class="form-control" placeholder="Passord" aria-describedby="sizing-addon2" name="passord">
+                        <input type="password" class="form-control" placeholder="Passord" aria-describedby="sizing-addon2" name="passord">
                     </div>
                     <div class="margin16top">
                         <input type="submit" class="btn btn-success" value="Logg inn" name="loggInnKnapp">
