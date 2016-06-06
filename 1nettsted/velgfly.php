@@ -178,6 +178,20 @@
                         <th><h4>Valgt</h4></th>
                     </tr>
                 </thead>
+                <tbody>
+<?php
+                    connectDB();
+                    $sql = "SELECT f.id AS flyvningNr, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS tilFlyplass FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN luftfartoy l ON f.luftfartoy_id = l.id;";
+                    $result = connectDB()->query($sql);
+
+                        if($result->num_rows > 0 ) {
+                            while ($row = $result->fetch_assoc()) {
+                                $flyvningNr = utf8_encode($row["flyvningNr"]);
+                                $fraFlyplass = utf8_encode($row["fraFlyplass"]);
+                                $avgang = utf8_encode($row["avgang"]);
+                                $tilFlyplass = utf8_encode($row["tilFlyplass"]);
+?>
+                </tbody>
             </table>
             <h3 class="pull-right">Pris</h3>
         </div>
@@ -208,6 +222,4 @@
     </div>
 <!-- innhold -->
 
-<?php
-    include_once ("end.php");
-?>
+<?php include_once ("end.php"); ?>
