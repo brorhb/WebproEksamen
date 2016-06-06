@@ -1,12 +1,10 @@
-<?php
-	include_once ("head.php");
-?>
+<?php include_once ("head.php"); ?>
 
 <!-- Reise info -->
 <div class="col-md-12 reiseInfo">
 	<div class="row">
 		<div class="col-md-12">
-			<?php
+<?php
 				$fraLand = $_GET["fraFlyplass_id"];
 				$tilLand = $_GET["tilFlyplass_id"];
 				$fraDato = $_GET["fraDato"];
@@ -26,9 +24,9 @@
 						$fraNavn = utf8_encode($row["fraNavn"]);
 						$tilID = utf8_encode($row["tilID"]);
 						$tilNavn = utf8_encode($row["tilNavn"]);
+?>
+				<h2><?php echo $fraNavn; ?> til <?php echo $tilNavn; ?></h2>
 
-						echo '<h2>' . $fraNavn . ' til ' . $tilNavn . '</h2>';
-				?>
 
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
 					<div class="row" id="reiseEndring">
@@ -59,7 +57,7 @@
 								<div class="form-group">
 									<h4>Antall Voksene</h4>
 									<select class="form-control" name="antallVoksene" id="antallVoksene">
-										<option selected value='<?php echo $antallVoksene; ?>'><?php echo $antallVoksene . ' Voksene'; ?></option>
+										<option selected value='<?php echo $antallVoksene; ?>'><?php echo $antallVoksene; ?> Voksene</option>
 										<option value="0">0 Voksene</option>
 										<option value="1">1 Voksen</option>
 										<option value="2">2 Voksene</option>
@@ -80,7 +78,7 @@
 							<div class="form-group">
 								<h4>Antall Unge</h4>
 								<select class="form-control" name="antallUnge" id="antallUnge">
-									<option selected value='<?php echo $antallUnge; ?>'><?php echo $antallUnge . ' Unge'; ?></option>
+									<option selected value="<?php echo $antallUnge; ?>"><?php echo $antallUnge; ?> Unge</option>
 									<option value="0">0 Unge(0-25)</option>
 									<option value="1">1 Unge</option>
 									<option value="2">2 Unge</option>
@@ -97,32 +95,28 @@
 						<!-- antall unge -->
 
 						<!-- Radio knapper -->
-									
-								<?php
-									echo '
 									<div class="col-md-6" style="margin-top:30px;">
 										<div class="radio" name="reiseType" id="reiseType">
 											<div class="col-md-6">
-												<label><input type="radio" name="reisevalg" id="turRetur" value="1"';
+												<label><input type="radio" name="reisevalg" id="turRetur" value="1"
+<?php
 												if ($reisevalg == '1') {
 												   echo 'checked';
 												}
-												echo'
+?>
 												>Tur/Retur</label>
 											</div>
 											<div class="col-md-6">
-												<label><input type="radio" name="reisevalg" id="enVei" value="2"';
+												<label><input type="radio" name="reisevalg" id="enVei" value="2"
+<?php
 												if ($reisevalg == '2') {
 												   echo 'checked';
 												}
-												echo'
+?>
 												>En vei</label>
 											</div>
 										</div>
 									</div>
-									';
-
-								?>
 						</div>
 						<!-- Radio knapper -->
 
@@ -153,11 +147,11 @@
 				</div>
 				<!-- Reise info -->
 
-				<?php
+<?php
 					}
 				}
 
-			?>
+?>
 		</div>
 	</div>
 
