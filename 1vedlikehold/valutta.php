@@ -30,7 +30,7 @@
         $ValutaID = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterValuta ()">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterValuta ();">
             <div class="col-md-12">';
                 if (@$_POST['ny']) {
                     echo '<h2>Ny valuta</h2>';
@@ -127,7 +127,7 @@
                         <input type="submit" name="ny" class="btn btn-success" value="Legg til" onclick="this.form.submited=this.name;"/>
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" class="btn btn-danger" onclick="sikkerSlett()" value="Slett" onclick="this.form.submited=this.name;"/>
+                        <input type="submit" name="slett" class="btn btn-danger" value="Slett" onclick="this.form.submited=this.name;"/>
                     </div>
                 </form>
         </div>
