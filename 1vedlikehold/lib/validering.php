@@ -303,7 +303,6 @@ function validerPassasjertype($passasjertype, $beskrivelse) {
 		$kommentar = array();
 		$resultat = true;
 
-		$id= utf8_decode($id);
 		$passasjertype = utf8_decode($passasjertype);
 		$beskrivelse = utf8_decode($beskrivelse);
 
