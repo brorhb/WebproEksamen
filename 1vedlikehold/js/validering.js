@@ -674,13 +674,13 @@ function validerLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-    var modell_id = document.getElementById("modell_id"); /*lesteboks*/
+    var modellid = document.getElementById("modell_id"); /*lesteboks*/
     var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
 
     // Sjekker om feltet er tomt
-    if (modellid.value == "") {
-        maaFyllesUt.push("modell");
+    if (modellid.value == "" || modell.value == null) {
+        maaFyllesUt.push("modellid");
         resultat = false;
     }
 
