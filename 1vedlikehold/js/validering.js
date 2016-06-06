@@ -89,7 +89,7 @@ function validerOppdaterLand() {
     // Feltet er fylt ut, sjekker ytterligere valideringer 
     else {
         if (isNaN(landskode)) {
-            kommentar.push("<strong>Landskode</strong> kan kun bestå av siffer.");
+            kommentar.push("<strong>Landskode</strong> må være minst et siffer og maks 4.");
             resultat = false;
         }
         if (landskode.length > 4) {
@@ -109,7 +109,7 @@ function validerOppdaterLand() {
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (isNaN(iso)) {
-            kommentar.push("<strong>iso2</strong> kan kun bestå av sifer.");
+            kommentar.push("<strong>iso2</strong> må være 2 siffer.");
             resultat = false;
         }
         if (iso.length != 2) {
@@ -123,7 +123,7 @@ function validerOppdaterLand() {
     }
      else {
         if (isNaN(iso3)) {
-            kommentar.push("<strong>iso3</strong> kan kun bestå av sifer.");
+            kommentar.push("<strong>iso3</strong> må være 3 siffer.");
             resultat = false;
         }
         if (iso3.length != 3) {
