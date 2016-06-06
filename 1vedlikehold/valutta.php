@@ -18,14 +18,16 @@
         $valuta_navn = $_POST['valuta_navn'];
         $forkortelse = $_POST['forkortelse'];
 
-        if(oppdaterValuta($ValutaID, $valuta_navn, $forkortelse)) {
+        if(validerValuta($valuta_navn,$forkortelse)){
+            oppdaterValuta($ValutaID, $valuta_navn, $forkortelse);
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering=false;
         }
         else {
-            echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $ValutaID = @$_POST['id'];
 

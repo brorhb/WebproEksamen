@@ -438,7 +438,7 @@ function validerValuta($valuta_navn,$forkortelse) {
 		
 		// Sjekker om feltet er tomt
 		if ($valuta_navn == "" || $valuta_navn == null) {
-			$maaFyllesUt[] = "valuta_navn";
+			$maaFyllesUt[] = "valuta";
 			$resultat = false;
 		}
 
