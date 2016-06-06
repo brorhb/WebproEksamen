@@ -3,7 +3,6 @@
     krevInnlogging('0');
     include_once("head.php");
 
-
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
         if(slettRute($id)) {
@@ -22,14 +21,16 @@
         $tilLand = $_POST["tilLand"];
         $tilFlyplass = $_POST["Flyplass"];
 
-        if(oppdaterRute($rutenr, $pris, $fraLand,$fraFlyplass, $tid, $tilLand, $tilFlyplass)) {
+        if(validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass)){
+            oppdaterRute($rutenr, $pris, $fraLand,$fraFlyplass, $tid, $tilLand, $tilFlyplass);
             echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering = false;
         }
         else {
-            echo "Noe galt skjedde...";
+            $feiletPHPvalidering = true;
         }
     }
-    elseif (@$_POST['ny'] || @$_POST['endre']) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
@@ -92,7 +93,7 @@
                             <div class="form-group col-md-6">
                                 <lable for="fraFlyplas">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
-                               echo '<lable for="tilFlyplas">Flyplass 2</lable>';
+                               echo '<lable for="tilFlyplass">Flyplass 2</lable>';
                                echo flyplassListe(@$tilFlyplass);
                                echo '
                             </div>

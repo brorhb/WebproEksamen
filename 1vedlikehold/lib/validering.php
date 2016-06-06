@@ -486,7 +486,7 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 		/* Ulike valideringer */
 		
 		// Sjekker om feltet er tomt
-		if ($tid == "" || $tid== null) {
+		if ($tid == "" || $tid == null) {
 			$maaFyllesUt[] = "tid";
 			$resultat = false;
 		}
@@ -515,11 +515,11 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 				}
 			}
 			if ($fraFlyplass == "" || $fraFlyplass== null) {
-			$maaFyllesUt[] = "tid";
+			$maaFyllesUt[] = "fra flyplass";
 			$resultat = false;
 		}
 			if ($tilFlyplass== "" || $tilFlyplass== null) {
-			$maaFyllesUt[] = "tilFlyplass";
+			$maaFyllesUt[] = "til flyplass";
 			$resultat = false;
 		}
 
