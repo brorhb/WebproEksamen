@@ -113,7 +113,7 @@
                                     $id = utf8_encode($row["id"]);
                                     $tailnr = utf8_encode($row["tailnr"]);
                                     $navn = utf8_encode($row["navn"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $navn . '</td><td>' . $tailnr . ' required </td></tr>';
+                                    echo '<tr><td><input type="radio" name="id" value="' . $id . '"></td><td>' . $navn . '</td><td>' . $tailnr . ' </td></tr>';
                                 }
                             }
 
