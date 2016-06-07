@@ -57,9 +57,9 @@
 
 				<!-- søkefelt -->
 				<div class="col-md-3 pull-right sokfelt">
-					<form class="input-group" action="referansesok.php" method="GET">
-						<input type="text" class="form-control" placeholder="Referansenummer..." style="z-index: -1;"/>
-						<input class="btn btn-default" type="submit" value="søk" style="z-index: 99999; margin-top: -34px; float: right;"/>
+					<form class="input-group" action="referansesok.php" method="GET" name="sokefelt" id="sokefelt">
+						<input type="text" class="form-control" placeholder="Referansenummer..." name="sok" id="sok"/>
+						<input class="btn btn-default" type="submit" value="søk" style="float: right; margin-right: -49px;"/>
 					</form>
 				</div>
 				<!-- søkefelt -->

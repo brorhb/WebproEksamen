@@ -12,16 +12,6 @@
    position: fixed;
    z-index: 999999;
 }
-
-.btn.btn-default {
-    float: right;
-    margin-top: -34px;
-    z-index: 9999999;
-}
-.form-control {
-    float: left;
-    z-index: -1;
-}
 /* HEADER */
 /* HEADER */
 
