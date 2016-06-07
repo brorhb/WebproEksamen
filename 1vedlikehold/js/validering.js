@@ -306,7 +306,7 @@ function validerOppdaterRuter() {
 
     var tid = document.forms["oppdater"]["tid"].value;
     var pris = document.forms["oppdater"]["pris"].value;
-    var valuta = document.getElementById("valuta_id"); //listeboks
+    var valuta = document.getElementById("valuta_id").value; //listeboks
     var fraFlyplass = document.getElementById("fraFlyplass_id").value; //listeboks
     var tilFlyplass = document.getElementById("tilFlyplass_id").value; //listeboks
 
@@ -317,9 +317,21 @@ function validerOppdaterRuter() {
         maaFyllesUt.push("tid");
         resultat = false;
     }
+    else {
+        if (isNaN(tid)) {
+            kommentar.push("<strong>Tid</strong> kan kun inneholde siffer.");
+            resultat = false;
+        }
+    }
     if (pris == "" || pris == null) {
         maaFyllesUt.push("pris");
         resultat = false;
+    }
+    else {
+        if (isNaN(pris)) {
+            kommentar.push("<strong>Pris</strong> kan kun inneholde siffer.");
+            resultat = false;
+        }
     }
     if (valuta == "" || valuta == null) {
         maaFyllesUt.push("valuta");
@@ -337,21 +349,6 @@ function validerOppdaterRuter() {
         kommentar.push("<strong>Flyplassene</strong> kan ikke være like");
             resultat = false;
     }
-
-   /* if (valuta.value == "") {
-        maaFyllesUt.push("valuta_id");
-        resultat = false;
-    }
-    if (fraFlyplass.value == "") {
-        maaFyllesUt.push("fraFlyplass_id");
-        resultat = false;
-    }
-    if (tilFlyplass.value == "") {
-        maaFyllesUt.push("tilFlyplass_id");
-        resultat = false;
-    }*/
-
-    
 
     // Skriver ut feilmeldingsboks
     if (!resultat) {
