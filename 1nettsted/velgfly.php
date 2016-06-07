@@ -4,8 +4,8 @@
 <div class="col-md-12 reiseInfo">
 	<div class="row">
 		<div class="col-md-12">
-<?php
-				$fraLand = @$_GET["fraFlyplass_id"];
+                
+                <?php $fraLand = @$_GET["fraFlyplass_id"];
 				$tilLand = @$_GET["tilFlyplass_id"];
 				$fraDato = @$_GET["fraDato"];
 				$tilDato = @$_GET["tilDato"];
@@ -23,136 +23,121 @@
 						$fraID = utf8_encode($row["fraID"]);
 						$fraNavn = utf8_encode($row["fraNavn"]);
 						$tilID = utf8_encode($row["tilID"]);
-						$tilNavn = utf8_encode($row["tilNavn"]);
-?>
-				<h2><?php echo $fraNavn; ?> til <?php echo $tilNavn; ?></h2>
+						$tilNavn = utf8_encode($row["tilNavn"]); ?>
+            
+				        <h2><?php echo $fraNavn; ?> til <?php echo $tilNavn; ?></h2>
 
 
-				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
-					<div class="row" id="reiseEndring">
-						<div class="col-md-6">
+				        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
+                            <div class="row" id="reiseEndring">
+                                <div class="col-md-6">
 
-						<!-- Fra/til land -->
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="Fra"><h4>Fra</h4></label>
-											<?php fraFlyplassListe($fraID); ?>
-										</div>
-									</div>
+                                    <!-- Fra/til land -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="Fra"><h4>Fra</h4></label>
+                                                <?php fraFlyplassListe($fraID); ?>
+                                            </div>
 
-									<div class="col-md-6" id="retur">
-										<div class="form-group">
-											<label for="Til"><h4>Til</h4></label>
-											<?php tilFlyplassListe($tilID); ?>
-										</div>
-									</div>
-								</div><!-- /row -->
-						<!-- Fra/til land -->
+                                            <div class="col-md-6" id="retur">
+                                                <div class="form-group">
+                                                    <label for="Til"><h4>Til</h4></label>
+                                                    <?php tilFlyplassListe($tilID); ?>
+                                                </div>
+                                            </div>
+                                        </div> <!-- /row -->
+                                    </div>
+                                    <!-- Fra/til land -->
 
-						<!-- antall voksene -->
-						<div class="row">
-							<div class="col-md-3">
-								<div class="form-group">
-									<h4>Antall Voksene</h4>
-									<select class="form-control" name="antallVoksene" id="antallVoksene">
-										<option selected value='<?php echo $antallVoksene; ?>'><?php echo $antallVoksene; ?> Voksene</option>
-										<option value="0">0 Voksene</option>
-										<option value="1">1 Voksen</option>
-										<option value="2">2 Voksene</option>
-										<option value="3">3 Voksene</option>
-										<option value="4">4 Voksene</option>
-										<option value="5">5 Voksene</option>
-										<option value="6">6 Voksene</option>
-										<option value="7">7 Voksene</option>
-										<option value="8">8 Voksene</option>
-										<option value="9">9 Voksene</option>
-									</select>
-								</div>
-							</div>
-						<!-- antall voksene -->
+                                    <!-- antall voksene -->
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <h4>Antall Voksene</h4>
+                                                <select class="form-control" name="antallVoksene" id="antallVoksene">
+                                                    <option selected value='<?php echo $antallVoksene; ?>'><?php echo $antallVoksene; ?> Voksene</option>
+                                                    <option value="0">0 Voksene</option>
+                                                    <option value="1">1 Voksen</option>
+                                                    <option value="2">2 Voksene</option>
+                                                    <option value="3">3 Voksene</option>
+                                                    <option value="4">4 Voksene</option>
+                                                    <option value="5">5 Voksene</option>
+                                                    <option value="6">6 Voksene</option>
+                                                    <option value="7">7 Voksene</option>
+                                                    <option value="8">8 Voksene</option>
+                                                    <option value="9">9 Voksene</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- antall voksene -->
 
-						<!-- antall unge -->
-						<div class="col-md-3">
-							<div class="form-group">
-								<h4>Antall Unge</h4>
-								<select class="form-control" name="antallUnge" id="antallUnge">
-									<option selected value="<?php echo $antallUnge; ?>"><?php echo $antallUnge; ?> Unge</option>
-									<option value="0">0 Unge(0-25)</option>
-									<option value="1">1 Unge</option>
-									<option value="2">2 Unge</option>
-									<option value="3">3 Unge</option>
-									<option value="4">4 Unge</option>
-									<option value="5">5 Unge</option>
-									<option value="6">6 Unge</option>
-									<option value="7">7 Unge</option>
-									<option value="8">8 Unge</option>
-									<option value="9">9 Unge</option>
-								</select>
-							</div>
-						</div>
-						<!-- antall unge -->
+                                        <!-- antall unge -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <h4>Antall Unge</h4>
+                                                <select class="form-control" name="antallUnge" id="antallUnge">
+                                                    <option selected value="<?php echo $antallUnge; ?>"><?php echo $antallUnge; ?> Unge</option>
+                                                    <option value="0">0 Unge(0-25)</option>
+                                                    <option value="1">1 Unge</option>
+                                                    <option value="2">2 Unge</option>
+                                                    <option value="3">3 Unge</option>
+                                                    <option value="4">4 Unge</option>
+                                                    <option value="5">5 Unge</option>
+                                                    <option value="6">6 Unge</option>
+                                                    <option value="7">7 Unge</option>
+                                                    <option value="8">8 Unge</option>
+                                                    <option value="9">9 Unge</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- antall unge -->
 
-						<!-- Radio knapper -->
-									<div class="col-md-6" style="margin-top:30px;">
-										<div class="radio" name="reiseType" id="reiseType">
-											<div class="col-md-6">
-												<label><input type="radio" name="reisevalg" id="turRetur" value="1"
-<?php
-												if ($reisevalg == '1') {
-												   echo 'checked';
-												}
-?>
-												>Tur/Retur</label>
-											</div>
-											<div class="col-md-6">
-												<label><input type="radio" name="reisevalg" id="enVei" value="2"
-<?php
-												if ($reisevalg == '2') {
-												   echo 'checked';
-												}
-?>
-												>En vei</label>
-											</div>
-										</div>
-									</div>
-						</div>
-						<!-- Radio knapper -->
+                                    <!-- Radio knapper -->
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin-top:30px;">
+                                            <div class="radio" name="reiseType" id="reiseType">
+                                                <div class="col-md-6">
+                                                    <label><input type="radio" name="reisevalg" id="turRetur" value="1" <?php if ($reisevalg == '1') { echo 'checked'; } ?> >Tur/Retur</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label><input type="radio" name="reisevalg" id="enVei" value="2" <?php if ($reisevalg == '2') { echo 'checked'; } ?> >En vei</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Radio knapper -->
 
-						<div class="row">
-						<!-- Dato -->
-								<div class="col-md-6" id="fraDato">
-									<div class="form-group" id="fraDato">
-										<label for="Fra"><h4>Fra dato </h4></label>
-										<input class="form-control" type="text" class="span2" value="<?php echo $fraDato; ?>" id="dpd1" name="fraDato" required>
-									</div>
-								</div>
-								<div class="col-md-6" id="tilDato">
-									<div class="form-group" id="tilDato">
-										<label for="Til"><h4>Til dato </h4></label>
-										<input class="form-control" type="text" class="span2" value="<?php echo $tilDato; ?>" id="dpd2" name="tilDato" required>
-									</div>
-								</div>
+                                    <!-- Dato -->
+                                    <div class="row">
+                                        <div class="col-md-6" id="fraDato">
+                                            <div class="form-group" id="fraDato">
+                                                <label for="Fra"><h4>Fra dato </h4></label>
+                                                <input class="form-control" type="text" class="span2" value="<?php echo $fraDato; ?>" id="dpd1" name="fraDato" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="tilDato">
+                                            <div class="form-group" id="tilDato">
+                                                <label for="Til"><h4>Til dato </h4></label>
+                                                <input class="form-control" type="text" class="span2" value="<?php echo $tilDato; ?>" id="dpd2" name="tilDato" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Dato -->
 
-						<!-- Dato -->
-						</div>
-						</div>  
-					</div>
-					
-					<div class="knapp">
-						<input type="button" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>
-					</div>
-					</form>
-				</div>
-				<!-- Reise info -->
-
-<?php
-					}
-				}
-
-?>
+                                </div>  
+                            </div>
+                            <div class="knapp">
+                                <input type="button" id="endreReise" class="btn btn-default pull-right" value="Endre reisen"/>
+                            </div>
+				        </form>
 		</div>
+                    <?php }
+				} ?>
 	</div>
+</div>
+<!-- Reise info -->
 
 
 
@@ -170,7 +155,7 @@
 		<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
 
 		<div class="col-md-10 col-md-offset-1">
-			<h2><span class="glyphicon glyphicon-plane"></span> Avganger</h2>
+			<h2><span class="glyphicon glyphicon-plane"></span>Avganger</h2>
 			<table class="table">
 				<thead>
 					<tr>
@@ -183,8 +168,8 @@
 					</tr>
 				</thead>
 				<tbody>
-<?php
-					connectDB();
+                    
+                    <?php connectDB();
 					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
 					$result = connectDB()->query($sql);
 
@@ -194,8 +179,7 @@
 								$fraFlyplass = utf8_encode($row["fraFlyplass"]);
 								$avgang = utf8_encode($row["avgang"]);
 								$tilFlyplass = utf8_encode($row["tilFlyplass"]);
-								$reiseTid = utf8_encode($row["reiseTid"]);
-?>
+								$reiseTid = utf8_encode($row["reiseTid"]); ?>
 					<tr>
 						<td><?php echo $flyvningNr; ?></td>
 						<td><?php echo $fraFlyplass; ?></td>
