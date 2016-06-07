@@ -55,7 +55,7 @@ function validerBestilling() {
 
 
 /* Reisende validering */
-function validerReistrerReisende() {
+function validerRegistrerReisende() {
     
     var maaFyllesUt = [];
     var kommentar = [];
