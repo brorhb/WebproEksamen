@@ -638,6 +638,66 @@
 		connectDB()->close();
 	}
 
+	function oppdaterFlyvning($FlyvningID, $luftfartoy_id, $rute_kombinasjon_id, $avgang, $gate, $passasjertype_id, $pris, $valuta_id) {
+		// Spesialtilpasset
+
+		/*echo 'PassasjertypeID: ' . print_r($passasjertype_id) . '<br>';
+		echo 'Pris: ' . print_r($pris) . '<br>';
+		echo 'ValutaID: ' . print_r($valuta_id) . '<br>';*/
+
+		connectDB();
+
+		$flyvning_id = connectDB()->real_escape_string(utf8_encode($FlyvningID));
+		$luftfartoy_id = connectDB()->real_escape_string(utf8_encode($luftfartoy_id));
+		$rute_kombinasjon_id = connectDB()->real_escape_string(utf8_encode($rute_kombinasjon_id));
+		$avgang = connectDB()->real_escape_string(utf8_encode($avgang));
+		$gate = connectDB()->real_escape_string(utf8_encode($gate));
+		//$passasjertype_id = connectDB()->real_escape_string(utf8_encode($passasjertype_id));
+		//$pris = connectDB()->real_escape_string(utf8_encode($pris));
+		//$valuta_id = connectDB()->real_escape_string(utf8_encode($valuta_id));
+			//echo "Pris: ";
+			//print_r($pris);
+
+		if ($flyvning_id == '') {
+
+			$sql = "INSERT INTO flyvning (id, luftfartoy_id, rute_kombinasjon_id, avgang, gate)
+			VALUES ('', '$luftfartoy_id', '$rute_kombinasjon_id', '$avgang', '$gate');";
+
+			$opprettetFlyvningID = "SELECT id FROM flyvning WHERE luftfartoy_id = '$luftfartoy_id' AND rute_kombinasjon_id = '$rute_kombinasjon_id' AND avgang = '$avgang' AND gate = '$gate' ORDER BY id DESC LIMIT 1";
+
+			for ($i=0; $i < count($passasjertype_id); $i++) {
+				$passasjertype_iden = connectDB()->real_escape_string(utf8_encode($passasjertype_id[$i]));
+
+				$prisen = connectDB()->real_escape_string(utf8_encode($pris[$i]));
+				$valuta_iden = connectDB()->real_escape_string(utf8_encode($valuta_id[$i]));
+
+				$sql .= "INSERT INTO pris (id, passasjertype_id, flyvning_id, pris, valuta_id) VALUES ('', '$passasjertype_iden', ($opprettetFlyvningID), '$prisen', '$valuta_iden');";
+			}
+
+			//die($sql);
+
+			if (connectDB()->multi_query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE type_luftfartoy SET type='$type' WHERE id='$id';";
+
+			if (connectDB()->multi_query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+
+		connectDB()->close();
+	}
+
 	function HentValutaIDFraLandID($LandID) {
 		connectDB();
 
@@ -1224,13 +1284,20 @@
 		connectDB()->close();
 	}
 
-	function valutaListe($objektID) {
+	function valutaListe($objektID, $arrayID = '') {
+		// spesialtilpasset til array
+
 		$objektnavn = 'valuta';
 		$objektIDeksisterer = sjekkOmValutaIDeksisterer($objektID);
 		$sql = "SELECT id, valuta_navn, forkortelse FROM valuta ORDER BY valuta_navn;";
 		$result = connectDB()->query($sql);
 
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+		if ($arrayID === "") {
+			echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+		}
+		else {
+			echo '<select class="form-control" name="' . $objektnavn . '_id[' . $arrayID . ']" id="' . $objektnavn . '_id[' . $arrayID . ']">';
+		}
 
 		if ($result->num_rows > 0) {
 

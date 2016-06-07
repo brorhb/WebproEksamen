@@ -15,15 +15,28 @@
     }
     elseif (@$_POST['lagre']) {
         $flyvningNr = $_POST["flyvningNr"];
-        $ruteNr = $_POST["ruteNr"];
-        $tailNr = $_POST["tailNr"];
-        $type = $_POST["type"];
-        $avgang = $_POST["avgang"];
-        $fraFlyplass = $_POST["fraFlyplass"];
+        $luftfartoy_id = $_POST["luftfartoy_id"];
+        $rute_kombinasjon_id = $_POST["rute_kombinasjon_id"];
         $gate = $_POST["gate"];
-        $tilFlyplass = $_POST["tilFlyplass"];
+        $avgang = $_POST["avgang"];
+        
+        $passasjertype_id = $_POST["passasjertype_id"];
+        $pris = $_POST["pris"];
+        $valuta_id = $_POST["valuta_id"];
 
-        if (oppdaterFlyvning($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr)) {
+        $validering = true;
+
+        if ($validering) {
+            oppdaterFlyvning($flyvningNr, $luftfartoy_id, $rute_kombinasjon_id, $avgang, $gate, $passasjertype_id, $pris, $valuta_id);
+            echo "Informasjonen ble oppdatert.";
+            $feiletPHPvalidering = false;
+        }
+        else {
+            // PHP-validering ikke godkjent, feilmeldinger skrives ut og skjemaet for å fylle ut info vises:
+            $feiletPHPvalidering = true;
+        }
+
+        /*if (oppdaterFlyvning($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr)) {
         
           // Valideringen gogdkjent, oppdater databasen
             oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
@@ -33,9 +46,9 @@
         else {
             // PHP-validering ikke godkjent, feilmeldinger skrives ut og skjemaet for å fylle ut info vises:
             $feiletPHPvalidering = true;
-        }
+        }*/
     }
-    if (@$_POST['ny'] || @$_POST['endre'] || TRUE) {
+    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
@@ -52,7 +65,7 @@
             <div class="col-md-12">';
 
                     connectDB();
-                    $sql = "SELECT * FROM flyvning;";
+                    $sql = "SELECT * FROM flyvning WHERE flyvning.id = '$id';";
                     $result = connectDB()->query($sql);
 
                     if ($result->num_rows > 0 ) {
@@ -66,7 +79,7 @@
                             echo '
                             <div class="form-group col-md-6">
                                 <lable for="avgang">Avganger</lable>
-                                <input class="form-control" type="text" placeholder="Avgang" name="avgang" id="avgang" value="' . @$flyvning_avgang . '" required>
+                                <input class="form-control" type="text" placeholder="Avgang" name="avgang" id="dpd1" value="' . @$flyvning_avgang . '" required>
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
@@ -77,50 +90,98 @@
                                 <lable for="luftfartoy">Tail Nr</lable>';
                             echo luftfartoyListe($flyvning_luftfaryoy_id);
                             echo '</div>';
-                        }
+                            echo "<h2>Pris</h2>";
 
-                        echo '<h3>Pris</h3>';
-                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 5;";
+                            $sql2 = "SELECT id, type, beskrivelse FROM passasjertype;";
+                            $result2 = connectDB()->query($sql2);
 
-                        $result2 = connectDB()->query($sql2);
 
-                        if ($result2->num_rows > 0 ) {
-                            while ($row2 = $result2->fetch_assoc()) {
-                                $passasjertype2 = utf8_encode($row2["passasjertype"]);
-                                $fraDato2 = utf8_encode($row2["fraDato"]);
-                                $tilDato2 = utf8_encode($row2["tilDato"]);
 
                                 echo '
-                                <div class="form-group col-md-12">
-                                    <lable for="passasjertype">Passasjer Type</lable>';
-                                    echo passasjertypeListe($passasjertype2);
-                                    echo '
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <lable for="fraDato">Fra Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato2 . '" required>
-                               </div>
-                               <div class="form-group col-md-6">
-                                    <lable for="tilDato">Til Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato2 . '" required>
-                                </div>
                                 <div class="form-group col-md-12">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Valgt</th>
-                                                <th>Klasse</th>
+                                                <th>Passasjertype</th>
                                                 <th>Pris</th>
                                                 <th>Valuta</th>
                                             </tr>
                                         </thead>
                                         <tbody>';
 
-                                            $sql3 = "SELECT k.id, (SELECT k.type FROM klasse k WHERE k.id = p.klasse_id) AS type, p.pris, (SELECT v.id FROM valuta v WHERE v.id = p.valuta_id) AS valuta FROM pris p LEFT JOIN klasse k ON k.id = p.klasse_id LEFT JOIN valuta v ON v.id = p.valuta_id;";
-                                            $result3 = connectDB()->query($sql3);
+                                            
+                                if ($result2->num_rows > 0 ) {
+                                    $teller = 0;
+                                    while ($row2 = $result2->fetch_assoc()) {
+                                        $passasjertype_id = utf8_encode($row2["id"]);
+                                        $passasjertype_type = utf8_encode($row2["type"]);
+                                        $passasjertype_beskrivelse = utf8_encode($row2["beskrivelse"]);
 
-                                            if ($result3->num_rows > 0 ) {
-                                                while ($row3 = $result3->fetch_assoc()) {
+                                
+                                                    echo '
+                                                        <tr>
+                                                            <td>' . $passasjertype_type . ' (' . $passasjertype_beskrivelse . ')</td>
+                                                            <td>
+                                                                <input type="hidden" name="passasjertype_id[' . $teller . ']" value="' . $passasjertype_id . '" />
+                                                                <input class="form-control type="text" name="pris[' . $teller . ']" value="" placeholder="Pris">
+                                                            </td>
+                                                            <td>'; 
+                                                            echo valutaListe("", $teller);
+                                                            echo '
+                                                            </td>
+                                                        </tr>';
+                                        $teller++;
+                                    }
+                                                
+                                            
+                                                echo '</tbody>
+                                            </table>
+                                            Basisprisen til ruten velges hvis ingen annen pris fylles ut
+                                        </div>';
+                                }
+                            }
+
+                            $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 5;";
+
+                            $result2 = connectDB()->query($sql2);
+
+                            if ($result2->num_rows > 0 ) {
+                                while ($row2 = $result2->fetch_assoc()) {
+                                    $passasjertype2 = utf8_encode($row2["passasjertype"]);
+                                    $fraDato2 = utf8_encode($row2["fraDato"]);
+                                    $tilDato2 = utf8_encode($row2["tilDato"]);
+
+                                    echo '
+                                    <div class="form-group col-md-12">
+                                        <lable for="passasjertype">Passasjer Type</lable>';
+                                        echo passasjertypeListe($passasjertype2);
+                                        echo '
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <lable for="fraDato">Fra Dato</lable>
+                                        <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato2 . '" required>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                        <lable for="tilDato">Til Dato</lable>
+                                        <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato2 . '" required>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Valgt</th>
+                                                    <th>Klasse</th>
+                                                    <th>Pris</th>
+                                                    <th>Valuta</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>';
+
+                                    $sql3 = "SELECT k.id, (SELECT k.type FROM klasse k WHERE k.id = p.klasse_id) AS type, p.pris, (SELECT v.id FROM valuta v WHERE v.id = p.valuta_id) AS valuta FROM pris p LEFT JOIN klasse k ON k.id = p.klasse_id LEFT JOIN valuta v ON v.id = p.valuta_id;";
+                                    $result3 = connectDB()->query($sql3);
+
+                                    if ($result3->num_rows > 0 ) {
+                                        while ($row3 = $result3->fetch_assoc()) {
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
                                                     $pris3 = utf8_encode($row3["pris"]);
@@ -137,80 +198,132 @@
                                                                 <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
-                                                            echo valutaListe($valuta3);
+                                                            echo valutaListe("", $passasjertype_id);
                                                             echo '
                                                             </td>
                                                         </tr>';
-                                                }
-                                            }
-                                        echo '</tbody>
-                                    </table>
-                                </div>';
+                                        }
+                                    }
+                                            echo '</tbody>
+                                        </table>
+                                    </div>';
+                                }
                             }
-                        }
+
                     }
                     else {
                         echo '
                             <div class="form-group col-md-6">
                                 <lable for="avgang">Avganger</lable>
-                                <input class="form-control" type="text" placeholder="Avgang" name="avgang" id="avgang" value="' . @$avgang . '" required>
+                                <input class="form-control" type="text" placeholder="Avgang" name="avgang" id="dpd1" value="' . @$flyvning_avgang . '" required>
                                 <lable for="gate">Gate</lable>
-                                <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$gate . '" required>
+                                <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="ruteNr">Rute Nr</lable>';
-                            echo rute_kombinasjonListe($ruteNr);
+                            echo rute_kombinasjonListe($flyvning_rute_kombinasjon_id);
                             echo '
                                 <lable for="luftfartoy">Tail Nr</lable>';
-                            echo luftfartoyListe($tailNr);
+                            echo luftfartoyListe($flyvning_luftfaryoy_id);
                             echo '</div>';
+                            echo "<h2>Pris</h2>";
 
-                        
-                        echo '<h3>Pris</h3>';
-                        $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 5;";
+                            $sql2 = "SELECT id, type, beskrivelse FROM passasjertype;";
+                            $result2 = connectDB()->query($sql2);
 
-                        $result2 = connectDB()->query($sql2);
 
-                        if ($result2->num_rows > 0 ) {
-                            while ($row2 = $result2->fetch_assoc()) {
-                                $passasjertype2 = utf8_encode($row2["passasjertype"]);
-                                $fraDato2 = utf8_encode($row2["fraDato"]);
-                                $tilDato2 = utf8_encode($row2["tilDato"]);
 
                                 echo '
-                                <div class="form-group col-md-12">
-                                    <lable for="passasjertype">Passasjer Type</lable>';
-                                    echo passasjertypeListe(@$passasjertype2);
-                                    echo '
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <lable for="fraDato">Fra Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato2 . '" required>
-                               </div>
-                               <div class="form-group col-md-6">
-                                    <lable for="tilDato">Til Dato</lable>
-                                    <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato2 . '" required>
-                                </div>
                                 <div class="form-group col-md-12">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Valgt</th>
-                                                <th>Klasse</th>
+                                                <th>Passasjertype</th>
                                                 <th>Pris</th>
                                                 <th>Valuta</th>
                                             </tr>
                                         </thead>
                                         <tbody>';
 
-                                            $sql3 = "SELECT k.id, k.type FROM klasse k;";
-                                            $result3 = connectDB()->query($sql3);
+                                            
+                                if ($result2->num_rows > 0 ) {
+                                    $teller = 0;
+                                    while ($row2 = $result2->fetch_assoc()) {
+                                        $passasjertype_id = utf8_encode($row2["id"]);
+                                        $passasjertype_type = utf8_encode($row2["type"]);
+                                        $passasjertype_beskrivelse = utf8_encode($row2["beskrivelse"]);
 
-                                            if ($result3->num_rows > 0 ) {
-                                                while ($row3 = $result3->fetch_assoc()) {
+                                
+                                                    echo '
+                                                        <tr>
+                                                            <td>' . $passasjertype_type . ' (' . $passasjertype_beskrivelse . ')</td>
+                                                            <td>
+                                                                <input type="hidden" name="passasjertype_id[' . $teller . ']" value="' . $passasjertype_id . '" />
+                                                                <input class="form-control type="text" name="pris[' . $teller . ']" value="" placeholder="Pris">
+                                                            </td>
+                                                            <td>'; 
+                                                            echo valutaListe("", $teller);
+                                                            echo '
+                                                            </td>
+                                                        </tr>';
+                                        $teller++;
+                                    }
+                                                
+                                            
+                                                echo '</tbody>
+                                            </table>
+                                            Basisprisen til ruten velges hvis ingen annen pris fylles ut
+                                        </div>';
+                                }
+                            }
+
+                            $sql2 = "SELECT (SELECT p.passasjertype_id FROM pris p WHERE p.flyvning_id = f.id) AS passasjertype, p.fra_dato AS fraDato, p.til_dato AS tilDato FROM pris p LEFT JOIN flyvning f ON p.flyvning_id = f.id LIMIT 5;";
+
+                            $result2 = connectDB()->query($sql2);
+
+                            if ($result2->num_rows > 0 ) {
+                                while ($row2 = $result2->fetch_assoc()) {
+                                    $passasjertype2 = utf8_encode($row2["passasjertype"]);
+                                    $fraDato2 = utf8_encode($row2["fraDato"]);
+                                    $tilDato2 = utf8_encode($row2["tilDato"]);
+
+                                    echo '
+                                    <div class="form-group col-md-12">
+                                        <lable for="passasjertype">Passasjer Type</lable>';
+                                        echo passasjertypeListe($passasjertype2);
+                                        echo '
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <lable for="fraDato">Fra Dato</lable>
+                                        <input class="form-control" type="text" placeholder="Fra Dato Nr" name="fraDato" id="dpd1" value="' . @$fraDato2 . '" required>
+                                   </div>
+                                   <div class="form-group col-md-6">
+                                        <lable for="tilDato">Til Dato</lable>
+                                        <input class="form-control" type="text" placeholder="Til Dato Nr" name="tilDato" id="dpd2" value="' . @$tilDato2 . '" required>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Valgt</th>
+                                                    <th>Klasse</th>
+                                                    <th>Pris</th>
+                                                    <th>Valuta</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>';
+
+                                    $sql3 = "SELECT k.id, (SELECT k.type FROM klasse k WHERE k.id = p.klasse_id) AS type, p.pris, (SELECT v.id FROM valuta v WHERE v.id = p.valuta_id) AS valuta FROM pris p LEFT JOIN klasse k ON k.id = p.klasse_id LEFT JOIN valuta v ON v.id = p.valuta_id;";
+                                    $result3 = connectDB()->query($sql3);
+
+                                    if ($result3->num_rows > 0 ) {
+                                        while ($row3 = $result3->fetch_assoc()) {
                                                     $id3 = utf8_encode($row3["id"]);
                                                     $type3 = utf8_encode($row3["type"]);
+                                                    $pris3 = utf8_encode($row3["pris"]);
+                                                    $valuta3 = utf8_encode($row3["valuta"]);
 
+                                
                                                     echo '
                                                         <tr>
                                                             <td>
@@ -221,17 +334,16 @@
                                                                 <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
-                                                            echo valutaListe();
+                                                            echo valutaListe("", $passasjertype_id);
                                                             echo '
                                                             </td>
                                                         </tr>';
-                                                }
-                                            }
-                                        echo '</tbody>
-                                    </table>
-                                </div>';
-                            }
-                        }
+                                        }
+                                    }
+                                            echo '</tbody>
+                                        </table>
+                                    </div>';
+                                }
                     }
                     connectDB()->close();
             echo'
