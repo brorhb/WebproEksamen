@@ -80,7 +80,7 @@
                 </div>
             </div>
         <div class="col-md-12">
-            <input type="submit" class="btn btn-info" value="Endre" required>
+            <input type="submit" class="btn btn-info" value="Endre">
         </div>
     </form>
 </div>

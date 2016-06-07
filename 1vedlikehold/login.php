@@ -123,17 +123,17 @@
                     <form action="login.php" method="post">';
 
                     echo '<p style="color:#FFFFFF;">' . @$tilbakemelding . '</p>';
-                    echo '<input type="hidden" name="referer" value="' . $referer . '" required/>';
+                    echo '<input type="hidden" name="referer" value="' . $referer . '" />';
 
                     echo '
                     <h4>Logg inn</h4>
-                    <div class="input-group" required>
+                    <div class="input-group">
                         <span class="input-group-addon" id="sizing-addon2">@</span>
-                        <input type="text" class="form-control" placeholder="Epost" aria-describedby="sizing-addon2" name="brukernavn" required>
+                        <input type="text" class="form-control" placeholder="Epost" aria-describedby="sizing-addon2" name="brukernavn">
                     </div>
                     <div class="input-group margin8top">
                         <span class="input-group-addon" id="sizing-addon2">*</span>
-                        <input type="password" class="form-control" placeholder="Passord" aria-describedby="sizing-addon2" name="passord" required>
+                        <input type="password" class="form-control" placeholder="Passord" aria-describedby="sizing-addon2" name="passord">
                     </div>
                     <div class="margin16top">
                         <input type="submit" class="btn btn-success" value="Logg inn" name="loggInnKnapp">

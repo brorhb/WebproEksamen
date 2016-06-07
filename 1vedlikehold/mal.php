@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <lable for="Klassenavn">Klassenavn</lable>
                                 <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
                                 <lable for="Beskrivelse">Beskrivelse</lable>
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <lable for="Klassenavn">Klassenavn</lable>
                                 <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
                                 <lable for="Beskrivelse">Beskrivelse</lable>
@@ -109,7 +109,7 @@
                                     $klasseID = utf8_encode($row["id"]);
                                     $type = utf8_encode($row["type"]);
                                     $beskrivelse = utf8_encode($row["beskrivelse"]);
-                                    echo '<tr><td><input type="radio" name="id" value="' . $klasseID . '"></td><td>' . $type . '</td><td>' . $beskrivelse . 'required</td></tr>';
+                                    echo '<tr><td><input type="radio" name="id" value="' . $klasseID . '"></td><td>' . $type . '</td><td>' . $beskrivelse . '</td></tr>';
                                 }
                             }
                         

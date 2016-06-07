@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <lable for="Klassenavn">Klassenavn</lable>
                                 <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
                                 <lable for="Beskrivelse">Beskrivelse</lable>
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <lable for="Klassenavn">Klassenavn</lable>
                                 <input class="form-control" type="text" placeholder="Klassenavn" name="klassenavn" id="klassenavn" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
                                 <lable for="Beskrivelse">Beskrivelse</lable>
@@ -80,7 +80,7 @@
             echo'
             </div>
                <div class="col-md-12">
-                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre" required>
+                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre">
                 </div>
             </div>
             </form>

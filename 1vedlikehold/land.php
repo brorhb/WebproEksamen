@@ -61,7 +61,7 @@
                             <div class="form-group col-md-6">
                                 <lable for="navn">Navn</lable>
                                 <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="landskode">landskode</lable>
@@ -89,7 +89,7 @@
                             <div class="form-group col-md-6">
                                 <lable for="navn">Navn</lable>
                                 <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '"required >
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="landskode">landskode</lable>
@@ -153,7 +153,7 @@
                                     $iso = utf8_encode($row["iso"]);
                                     $iso3 = utf8_encode($row["iso3"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $id . '"required></td>
+                                                <td><input type="radio" name="id" value="' . $id . '"></td>
                                                 <td>' . $navn . '</td>
                                                 <td>' . $landskode . '</td>
                                                 <td>' . $valuta_navn . '</td>

@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <lable for="Passasjertype">Passasjertype</lable>
                                 <input class="form-control" type="text" placeholder="Passasjertype" name="Passasjertype" id="Passasjertype" value="' . @$Passasjertype . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
                                 <lable for="Beskrivelse">Beskrivelse</lable>
@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <lable for="Passasjertype">Passasjertype</lable>
                                 <input class="form-control" type="text" placeholder="Passasjertype" name="Passasjertype" id="Passasjertype" value="' . @$Passasjertype . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
                             </div>
                             <div class="form-group">
                                 <lable for="Beskrivelse">Beskrivelse</lable>
@@ -113,7 +113,7 @@
                                     $Passasjertype = utf8_encode($row["type"]);
                                     $beskrivelse = utf8_encode($row["beskrivelse"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $id . '"required></td>
+                                                <td><input type="radio" name="id" value="' . $id . '"></td>
                                                 <td>' . $Passasjertype . '</td>
                                                 <td>' . $beskrivelse . '</td>
                                           </tr>';
