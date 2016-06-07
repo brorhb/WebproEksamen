@@ -1234,7 +1234,7 @@
 		$sql = "SELECT id, navn, flyplasskode FROM flyplass ORDER BY navn;";
 		$result = connectDB()->query($sql);
 
-		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
+		echo '<select class="form-control" name="' . $objektnavn . '_id[]" id="' . $objektnavn . '_id[]">';
 
 		if ($result->num_rows > 0) {
 
@@ -1613,7 +1613,7 @@
 	function rute_kombinasjonListe($objektID) {
 		$objektnavn = 'rute_kombinasjon';
 		$objektIDeksisterer = sjekkOmRute_kombinasjonIDeksisterer($objektID);
-		$sql = "SELECT rk.id, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fra, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS til FROM rute_kombinasjon rk ORDER BY id;";
+		$sql = "SELECT rk.id, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_fra) AS fra, (SELECT f.navn FROM flyplass f WHERE f.id = rk.flyplass_id_til) AS til FROM rute_kombinasjon rk ORDER BY fra;";
 		$result = connectDB()->query($sql);
 
 		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
