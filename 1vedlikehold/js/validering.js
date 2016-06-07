@@ -307,8 +307,8 @@ function validerOppdaterRuter() {
     var tid = document.forms["oppdater"]["tid"].value;
     var pris = document.forms["oppdater"]["pris"].value;
     var valuta = document.getElementById("valuta_id"); //listeboks
-    var fraFlyplass = document.getElementById("fraFlyplass"); //listeboks
-    var tilFlyplass = document.getElementById("tilFlyplass"); //listeboks
+    var fraFlyplass = document.getElementById("fraFlyplass_id"); //listeboks
+    var tilFlyplass = document.getElementById("tilFlyplass_id"); //listeboks
 
 
 
