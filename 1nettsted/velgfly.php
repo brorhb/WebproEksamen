@@ -140,8 +140,7 @@
 				    $beskrivelse = utf8_encode($row["beskrivelse"]);
 					    ?>
 				    <?php
-					    echo '<label>' . $type . '</label>
-					    <input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
+					    echo '<input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
 					    ?>
 				    <?php
 			    }
