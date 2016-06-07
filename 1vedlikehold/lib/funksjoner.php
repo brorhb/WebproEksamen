@@ -2021,7 +2021,4 @@ function fraflyplassListe($objektID) {
 		echo '</select>';
 	}
 
-
-
-
 ?>
