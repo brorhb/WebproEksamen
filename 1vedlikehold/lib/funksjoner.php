@@ -138,6 +138,43 @@
 		connectDB()->close();
 	}
 
+	function oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde) {
+
+		connectDB();
+
+		$id = connectDB()->real_escape_string(utf8_encode($id));
+		$navn = connectDB()->real_escape_string(utf8_encode($navn));
+		$type = connectDB()->real_escape_string(utf8_encode($type));
+		$kapasitet = connectDB()->real_escape_string(utf8_encode($kapasitet));
+		$rader = connectDB()->real_escape_string(utf8_encode($rader));
+		$bredde = connectDB()->real_escape_string(utf8_encode($bredde));
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO `modell` (`type_luftfartoy_id`, `navn`, `kapasitet`, `rader`, `bredde`) VALUES ('$type', '$navn', '$kapasitet', '$rader', '$bredde');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE type_luftfartoy SET type='$type' WHERE id='$id';";
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+
+		connectDB()->close();
+	}
+
 	function slettType_luftfartoy($TypeID) {
 		connectDB();
 

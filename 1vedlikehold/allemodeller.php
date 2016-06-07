@@ -15,15 +15,15 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
+        $type = $_POST['type_luftfartoy_id'];
         $navn = $_POST['navn'];
-        $type = $_POST['type'];
         $kapasitet = $_POST['kapasitet'];
         $rader = $_POST['rader'];
         $bredde = $_POST['bredde'];
 
 
         if(validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde)) {
-            oppdaterventerpafuksjon($id, $navn, $type);
+            oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering=false;
         }
@@ -31,17 +31,17 @@
             $feiletPHPvalidering=true;
         }
     }
-    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
+    if (@$_POST['ny'] || @$_POST['endre'] || @$feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterModeller()">
             <div class="col-md-12">';
-                if ($_POST['ny']) {
+                if (@$_POST['ny']) {
                     echo '<h2>Ny modell</h2>';
                 }
-                elseif ($_POST['endre']) {
+                elseif (@$_POST['endre']) {
                     echo '<h2>Endre modell</h2>';
                 }
         echo '
