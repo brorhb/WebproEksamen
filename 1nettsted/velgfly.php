@@ -53,7 +53,7 @@
 
                                     <!-- antall reisende -->
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
 										<?php
 										$sql = "SELECT * FROM `passasjertype`";
 										$result = connectDB()->query($sql);
