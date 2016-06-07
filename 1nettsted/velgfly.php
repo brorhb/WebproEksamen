@@ -129,8 +129,6 @@
 	
 	<!-- Avgang -->
 	<form action="registrerReisende.php" method="get">
-		<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
-		<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
 		<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
 		<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>"/>
 		<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
