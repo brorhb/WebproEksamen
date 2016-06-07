@@ -620,15 +620,27 @@ function validerOppdaterModeller() {
         maaFyllesUt.push("kapasitet");
         resultat = false;
     }
+    if (isNaN(kapasitet)) {
+        maaFyllesUt.push("kapasitet må være siffer");
+        resultat = false;
+    }
 
     // Sjekker om feltet er tomt
     if (rader == "" || rader == null) {
         maaFyllesUt.push("rader");
         resultat = false;
     }
+    if (isNaN(rader)) {
+        maaFyllesUt.push("rader må være tall");
+        resultat = false;
+    }
     // Sjekker om feltet er tomt
     if (bredde == "" || bredde == null) {
         maaFyllesUt.push("bredde");
+        resultat = false;
+    }
+    if (isNaN(bredde)) {
+        maaFyllesUt.push("bredde må være siffer");
         resultat = false;
     }
     else {
