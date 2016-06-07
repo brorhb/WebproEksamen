@@ -33,10 +33,10 @@
 					<div class="col-md-6">
 						<div class="radio" name="reiseType" id="reiseType">
 							<div class="col-md-6">
-								<label><input type="radio" name="reisevalg" id="turRetur" value="1"  required checked>Tur/Retur</label>
+								<label><input type="radio" name="reisevalg" id="turRetur" value="1" checked>Tur/Retur</label>
 							</div>
 							<div class="col-md-6">
-								<label><input type="radio" name="reisevalg" id="enVei" value="2" required>En vei</label>
+								<label><input type="radio" name="reisevalg" id="enVei" value="2">En vei</label>
 							</div>
 						</div>
 					</div>

@@ -74,13 +74,13 @@
 
 				</div>
 
-				<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>" required/>
-				<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>" required/>
-				<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>" required/>
-				<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>" required/>
-				<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>" required/>
-				<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>" required/>
-				<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>" required/>
+				<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
+				<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
+				<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
+				<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>"/>
+				<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
+				<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>"/>
+				<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
 
 				<input type="submit" class="btn btn-default pull-right" value="Bekreft">
 			</form>
