@@ -238,12 +238,12 @@ function validerOppdaterAlleFlyplasser() {
 
     // Sjekker om feltet er tomt
     if (flyplasskode == "" || flyplasskode == null) {
-        maaFyllesUt.push("flyplasskode");
+        maaFyllesUt.push("Flyplassforkortelse");
         resultat = false;
     }
     else {
         if (flyplasskode.length != 3) {
-            kommentar.push("<strong>Flyplasskode</strong> kan kun inneholde tre tegn");
+            kommentar.push("<strong>Flyplassforkortelse</strong> kan kun inneholde tre tegn");
             resultat = false;
         }
     }
@@ -375,19 +375,32 @@ function validerOppdaterValuta() {
     /* Ulike valideringer */
 
     // Sjekker om feltet er tomt
-    if (valuta_navn == "" || valuta_navn == null) {
-        maaFyllesUt.push("valuta navn");
+   if (valuta_navn == "" || valuta_navn == null) {
+        maaFyllesUt.push("valuta");
         resultat = false;
+    }
+    // Feltet er fylt ut, sjekker ytterligere valideringer
+    else {
+        
+        if (!isNaN(valuta_navn)) {
+            kommentar.push("<strong>Valuta</strong> kan ikke bestå av siffer.");
+            resultat = false;
+        }
     }
 
     // Sjekker om feltet er tomt
-    if (forkortelse == "" || forkortelse == null) {
+   if (forkortelse == "" || forkortelse == null) {
         maaFyllesUt.push("forkortelse");
         resultat = false;
     }
+    // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
         if (forkortelse.length != 3) {
-            kommentar.push("<strong>Forkortelse</strong> må være 3 tegn.");
+            kommentar.push("<strong>forkortelse</strong> må bestå av 3 bokstaver.");
+            resultat = false;
+        }
+        if (!isNaN(forkortelse)) {
+            kommentar.push("<strong>forkortelse</strong> kan ikke bestå av siffer.");
             resultat = false;
         }
     }

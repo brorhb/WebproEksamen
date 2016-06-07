@@ -432,39 +432,43 @@ function validerValuta($valuta_navn,$forkortelse) {
 		$valuta_navn = utf8_decode($valuta_navn);
 		$forkortelse = utf8_decode($forkortelse);
 		
-		//$mobilnummer = utf8_decode($mobilnummer);
-		//$person_id = utf8_decode($person_id);
-
-		/* Ulike valideringer */
-		
-		// Sjekker om feltet er tomt
 		if ($valuta_navn == "" || $valuta_navn == null) {
-			$maaFyllesUt[] = "Valuta";
-			$resultat = false;
-		}
-
-	if ($forkortelse == "" || $forkortelse == null) {
-			$maaFyllesUt[] = "Forkortelse";
-			$resultat = false;
-		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
+		$maaFyllesUt[] = "valuta_navn";
+		$resultat = false;
+		} 
 		else {
-			if (strlen($forkortelse) < 3) {
-				$kommentar[] = "<strong>Forkortelsen</strong> må inneholde minumum 3 tegn.";
+			if (is_numeric($valuta_navn)) {
+				$kommentar[] = "<strong>valuta navn</strong> kan ikke være et siffer.";
 				$resultat = false;
 			}
 		}
-		
-		/* Valideringer slutt */
-		
-		// Skriver ut feilmeldingsboks
-		if (!$resultat) {
-			feilmeldingBoks($maaFyllesUt, $kommentar);
-		}
-		
-		// Returnerer om neste side skal lastes inn
-		return $resultat;
-	}
+
+	
+		if ($forkortelse == "" || $forkortelse == null) {
+				$maaFyllesUt[] = "forkortelse";
+				$resultat = false;
+			}
+			else {
+				if (is_numeric($forkortelse)) {
+					$kommentar[] = "<strong>forkortelse</strong> kan ikke være et siffer.";
+					$resultat = false;
+				}
+				if (strlen($forkortelse) != 3) {
+					$kommentar[] = "<strong>forkortelse</strong> må bestå av 3 bokstaver";
+					$resultat = false;
+				}
+			}
+				
+				/* Valideringer slutt */
+				
+				// Skriver ut feilmeldingsboks
+				if (!$resultat) {
+					feilmeldingBoks($maaFyllesUt, $kommentar);
+				}
+				
+				// Returnerer om neste side skal lastes inn
+				return $resultat;
+			}
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
 
 /*Validering ruter- VET IKKE OM DEN FUNGERER*/
@@ -682,16 +686,19 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 	}
 	
 	if ($flyplasskode == "" || $flyplasskode == null) {
-				$maaFyllesUt[] = "flyplasskode";
+			$maaFyllesUt[] = "flyplasskode";
+			$resultat = false;
+		}
+		else {
+			if (is_numeric($flyplasskode)) {
+				$kommentar[] = "<strong>flyplassforkortelse</strong> kan ikke være et nummer.";
 				$resultat = false;
 			}
-			// Feltet er fylt ut, sjekker ytterligere valideringer
-			else {
-				if (strlen($flyplasskode) < 3) {
-					$kommentar[] = "<strong>flyplasskoden</strong> må inneholde minumum 3 tegn.";
-					$resultat = false;
-				}
+			if (strlen($flyplasskode) != 3) {
+				$kommentar[] = "<strong>flyplassforkortelse</strong> må bestå av 3 bokstaver";
+				$resultat = false;
 			}
+		}
 
 		if ($latitude == "" || $latitude == null) {
 			$maaFyllesUt[] = "Latitude";
