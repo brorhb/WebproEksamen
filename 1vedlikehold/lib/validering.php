@@ -419,9 +419,9 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 		return $resultat;
 	}
 
-/*Validering land - VET IKKE OM DEN FUNGERER*/
+/* Validering land - VET IKKE OM DEN FUNGERER */
 
-/*Validering valuta - VET IKKE OM DEN FUNGERER*/
+/* Validering valuta - VET IKKE OM DEN FUNGERER */
 function validerValuta($valuta_navn,$forkortelse) {
 
 		/* Klarerer variabler */
