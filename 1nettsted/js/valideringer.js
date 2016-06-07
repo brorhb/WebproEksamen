@@ -56,80 +56,82 @@ function validerBestilling() {
 
 /* Reisende validering */
 function validerRegistrerReisende() {
-    
-    var maaFyllesUt = [];
-    var kommentar = [];
-    var resultat = true;
+    var antallet = document.querySelectorAll('.reisende').length;
+    for (x=1, x <= antallet, x++ ) {
+        var maaFyllesUt = [];
+        var kommentar = [];
+        var resultat = true;
 
-    var fornavn = document.forms["oppdater"]["fornavn"].value; 
-    var etternavn = document.forms["oppdater"]["etternavn"].value;
-    var epost = document.forms["oppdater"]["epost"].value;
-    var kjonn = document.getElementById("kjonn"); //listeboks
-    var mobilnummer = document.forms["oppdater"]["mobilnummer"].value;
-    var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
+        var fornavn = document.forms["oppdater"]["fornavn["x"]"].value; 
+        var etternavn = document.forms["oppdater"]["etternavn["x"]"].value;
+        var epost = document.forms["oppdater"]["epost["x"]"].value;
+        var kjonn = document.getElementById("kjonn["x"]"); //listeboks
+        var mobilnummer = document.forms["oppdater"]["mobilnummer["x"]"].value;
+        var fodselsdato = document.forms["oppdater"]["fodselsdato["x"]"].value;
 
 
-    //Sjekker om feltet er tomt,listeboks
-    if (fornavn.value == ""){
-        maaFyllesUt.push("fornavn");
-        resultat = false;
-    }
-    //Sjekker om feltet er tomt, listeboks
-    if (etternavn.value == ""){
-        maaFyllesUt.push("etternavn");
-        resultat = false;
-    }
-     //Sjekker om feltet er tomt,listeboks
-    if (epost == "" || epost == null) {
-        maaFyllesUt.push("epost");
-        resultat = false;
-    }
-    //Sjekker om feltet er tomt,listeboks 
-     if (kjonn.value == "" || kjonn.value == null) {
-        maaFyllesUt.push("kjønn");
-        resultat = false;
-    }
         //Sjekker om feltet er tomt,listeboks
-    if (mobilnummer == "" || mobilnummer == null) {
-        maaFyllesUt.push("mobilnummer");
-        resultat = false;
-    }
-    // Feltet er fylt ut, sjekker ytterligere valideringer 
-    else {
-        if (isNaN(mobilnummer)) {
-            kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
+        if (fornavn[x].value == ""){
+            maaFyllesUt.push("fornavn");
             resultat = false;
         }
-        if (mobilnummer.length > 8) {
-            kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
+        //Sjekker om feltet er tomt, listeboks
+        if (etternavn[x].value == ""){
+            maaFyllesUt.push("etternavn");
             resultat = false;
+        }
+         //Sjekker om feltet er tomt,listeboks
+        if (epost[x] == "" || epost[x] == null) {
+            maaFyllesUt.push("epost");
+            resultat = false;
+        }
+        //Sjekker om feltet er tomt,listeboks 
+         if (kjonn[x].value == "" || kjonn[x].value == null) {
+            maaFyllesUt.push("kjønn");
+            resultat = false;
+        }
+            //Sjekker om feltet er tomt,listeboks
+        if (mobilnummer[x] == "" || mobilnummer[x] == null) {
+            maaFyllesUt.push("mobilnummer");
+            resultat = false;
+        }
+        // Feltet er fylt ut, sjekker ytterligere valideringer 
+        else {
+            if (isNaN(mobilnummer[x])) {
+                kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
+                resultat = false;
+            }
+            if (mobilnummer[x].length > 8) {
+                kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
+                resultat = false;
+            }
+
+        //Sjekker om feltet er tomt,listeboks
+        if (fodselsdato[x] == "" || fodselsdato[x] == null) {
+            maaFyllesUt.push("fødselsdato");
+            resultat = false;
+        }
+        // Feltet er fylt ut, sjekker ytterligere valideringer 
+        else {
+            if (isNaN(fodselsdato[x])) {
+                kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
+                resultat = false;
+            }
+            if (fodselsdato[x].length > 10) {
+                kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
+                resultat = false;
+            }
+        }
+    /* Valideringer slutt */
+
+        // Skriver ut feilmeldingsboks
+        if (!resultat) {
+            feilmeldingBoks(maaFyllesUt, kommentar);
         }
 
-    //Sjekker om feltet er tomt,listeboks
-    if (fodselsdato == "" || fodselsdato == null) {
-        maaFyllesUt.push("fødselsdato");
-        resultat = false;
+        // Returnerer om neste side skal lastes inn
+        return resultat;
     }
-    // Feltet er fylt ut, sjekker ytterligere valideringer 
-    else {
-        if (isNaN(fodselsdato)) {
-            kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
-            resultat = false;
-        }
-        if (fodselsdato.length > 10) {
-            kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
-            resultat = false;
-        }
-    }
-/* Valideringer slutt */
-
-    // Skriver ut feilmeldingsboks
-    if (!resultat) {
-        feilmeldingBoks(maaFyllesUt, kommentar);
-    }
-
-    // Returnerer om neste side skal lastes inn
-    return resultat;
 }
 
 
