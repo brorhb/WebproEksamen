@@ -169,6 +169,8 @@
 		<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>"/>
 		<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
 
+
+		<!-- Avgang -->
 		<div class="col-md-10 col-md-offset-1">
 			<h2><span class="glyphicon glyphicon-plane"></span>Avganger</h2>
 			<table class="table">
@@ -226,7 +228,33 @@
 						<th><h4>Landing</h4></th>
 						<th><h4>Valgt</h4></th>
 					</tr>
-				</thead>
+				</thead>	
+				<tbody>
+
+					<?php connectDB();
+					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
+					$result = connectDB()->query($sql);
+
+					if($result->num_rows > 0 ) {
+						while ($row = $result->fetch_assoc()) {
+							$flyvningNr = utf8_encode($row["flyvningNr"]);
+							$fraFlyplass = utf8_encode($row["fraFlyplass"]);
+							$avgang = utf8_encode($row["avgang"]);
+							$tilFlyplass = utf8_encode($row["tilFlyplass"]);
+							$reiseTid = utf8_encode($row["reiseTid"]); ?>
+
+							<tr>
+								<td><?php echo $flyvningNr; ?></td>
+								<td><?php echo $fraFlyplass; ?></td>
+								<td><?php echo $avgang; ?></td>
+								<td><?php echo $tilFlyplass; ?></td>
+								<td><?php echo $avgang + $reiseTid ?></td>
+								<td><input type="radio" name="id" value="<?php echo $flyvningNr; ?>"></td>
+							</tr>
+
+						<?php }
+					} ?>
+				</tbody>
 			</table>
 			<h3 class="pull-right">Pris</h3>
 		</div>
