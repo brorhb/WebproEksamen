@@ -40,8 +40,8 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <?php include_once ('../1vedlikehold/lib/funksjoner.php'); ?>
-    <?php include_once 'funksjoner.php'; ?>
+    <?php  include_once ('../1vedlikehold/lib/funksjoner.php'); ?>
+    <?php //include_once 'funksjoner.php'; ?>
 
     <!-- stilark -->
 
