@@ -173,61 +173,56 @@
 					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
 					$result = connectDB()->query($sql);
 
-						if($result->num_rows > 0 ) {
-							while ($row = $result->fetch_assoc()) {
-								$flyvningNr = utf8_encode($row["flyvningNr"]);
-								$fraFlyplass = utf8_encode($row["fraFlyplass"]);
-								$avgang = utf8_encode($row["avgang"]);
-								$tilFlyplass = utf8_encode($row["tilFlyplass"]);
-								$reiseTid = utf8_encode($row["reiseTid"]); ?>
-					<tr>
-						<td><?php echo $flyvningNr; ?></td>
-						<td><?php echo $fraFlyplass; ?></td>
-						<td><?php echo $avgang; ?></td>
-						<td><?php echo $tilFlyplass; ?></td>
-						<td><?php echo $avgang + $reiseTid ?></td>
-						<td><input type="radio" name="id" value="<?php echo $flyvningNr; ?>"></td>
-					</tr>
-<?php
-							}
-						}
-?>
-					</tbody>
-				</table>
-				<h3 class="pull-right">Pris</h3>
-			</div>
-			<!-- Avgang -->
+				    if($result->num_rows > 0 ) {
+						while ($row = $result->fetch_assoc()) {
+                            $flyvningNr = utf8_encode($row["flyvningNr"]);
+                            $fraFlyplass = utf8_encode($row["fraFlyplass"]);
+				            $avgang = utf8_encode($row["avgang"]);
+                            $tilFlyplass = utf8_encode($row["tilFlyplass"]);
+                            $reiseTid = utf8_encode($row["reiseTid"]); ?>
+                                
+                            <tr>
+                                <td><?php echo $flyvningNr; ?></td>
+                                <td><?php echo $fraFlyplass; ?></td>
+                                <td><?php echo $avgang; ?></td>
+                                <td><?php echo $tilFlyplass; ?></td>
+                                <td><?php echo $avgang + $reiseTid ?></td>
+                                <td><input type="radio" name="id" value="<?php echo $flyvningNr; ?>"></td>
+                            </tr>
+                        
+                        <?php }
+				    } ?>
+                    
+				</tbody>
+            </table>
+            <h3 class="pull-right">Pris</h3>
+        </div>
+        <!-- Avgang -->
 
-			<!-- Retur -->
-			<div class="col-md-10 col-md-offset-1">
-				<h2><span class="glyphicon glyphicon-plane"></span> Retur</h2>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>
-								<h4>Flight</h4></th>
-							<th>
-								<h4>Fra</h4></th>
-							<th>
-								<h4>Avgang</h4></th>
-							<th>
-								<h4>Til</h4></th>
-							<th>
-								<h4>Landing</h4></th>
-							<th>
-								<h4>Valgt</h4></th>
-						</tr>
-					</thead>
-				</table>
-				<h3 class="pull-right">Pris</h3>
-			</div>
-			<!-- Retur -->
+        <!-- Retur -->
+        <div class="col-md-10 col-md-offset-1">
+            <h2><span class="glyphicon glyphicon-plane"></span> Retur</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h4>Flight</h4></th>
+                        <th><h4>Fra</h4></th>
+                        <th><h4>Avgang</h4></th>
+                        <th><h4>Til</h4></th>
+                        <th><h4>Landing</h4></th>
+                        <th><h4>Valgt</h4></th>
+                    </tr>
+                </thead>
+            </table>
+            <h3 class="pull-right">Pris</h3>
+        </div>
+        <!-- Retur -->
 
-			<div class="col-md-10 col-md-offset-1">
-				<input type="submit" class="btn btn-default pull-right" value="Bekreft" />
-			</div>
-		</form>
-	</div>
-	<!-- innhold -->
+        <div class="col-md-10 col-md-offset-1">
+            <input type="submit" class="btn btn-default pull-right" value="Bekreft" />
+        </div>
+    </form>
+</div>
+<!-- innhold -->
 
-	<?php include_once("end.php");  ?>
+<?php include_once("end.php");  ?>
