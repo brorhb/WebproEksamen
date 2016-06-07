@@ -129,6 +129,26 @@
 	
 	<!-- Avgang -->
 	<form action="registrerReisende.php" method="get">
+        <?php
+		    $sql = "SELECT * FROM `passasjertype`";
+		    $result = connectDB()->query($sql);
+
+		    if ($result->num_rows > 0 ) {
+			    while ($row = $result->fetch_assoc())  {
+				    $id = utf8_encode($row["id"]);
+				    $type = utf8_encode($row["type"]);
+				    $beskrivelse = utf8_encode($row["beskrivelse"]);
+					    ?>
+				    <?php
+					    echo '<label>' . $type . '</label>
+					    <input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
+					    ?>
+				    <?php
+			    }
+		    }
+		?>
+		<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
+		<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
 		<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
 		<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>"/>
 		<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
