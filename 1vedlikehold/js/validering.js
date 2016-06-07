@@ -307,8 +307,8 @@ function validerOppdaterRuter() {
     var tid = document.forms["oppdater"]["tid"].value;
     var pris = document.forms["oppdater"]["pris"].value;
     var valuta = document.getElementById("valuta_id"); //listeboks
-    var fraFlyplass = document.getElementById("fraFlyplass_id"); //listeboks
-    var tilFlyplass = document.getElementById("tilFlyplass_id"); //listeboks
+    var fraFlyplass = document.getElementById("fraFlyplass_id").value; //listeboks
+    var tilFlyplass = document.getElementById("tilFlyplass_id").value; //listeboks
 
 
 
@@ -317,23 +317,39 @@ function validerOppdaterRuter() {
         maaFyllesUt.push("tid");
         resultat = false;
     }
-
     if (pris == "" || pris == null) {
         maaFyllesUt.push("pris");
         resultat = false;
     }
-    if (valuta.value == "") {
+    if (valuta == "" || valuta == null) {
         maaFyllesUt.push("valuta");
         resultat = false;
     }
+    if (fraFlyplass == "" || fraFlyplass == null) {
+        maaFyllesUt.push("flyplass 1");
+        resultat = false;
+    }
+    if (tilFlyplass == "" || tilFlyplass == null) {
+        maaFyllesUt.push("flyplass 2");
+        resultat = false;
+    }
+    if (fraFlyplass == tilFlyplass && (fraFlyplass != "" && fraFlyplass != null) && (tilFlyplass != "" && tilFlyplass != null)) {
+        kommentar.push("<strong>Flyplassene</strong> kan ikke være like");
+            resultat = false;
+    }
+
+   /* if (valuta.value == "") {
+        maaFyllesUt.push("valuta_id");
+        resultat = false;
+    }
     if (fraFlyplass.value == "") {
-        maaFyllesUt.push("fraFlyplass");
+        maaFyllesUt.push("fraFlyplass_id");
         resultat = false;
     }
     if (tilFlyplass.value == "") {
-        maaFyllesUt.push("tilFlyplass");
+        maaFyllesUt.push("tilFlyplass_id");
         resultat = false;
-    }
+    }*/
 
     
 

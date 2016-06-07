@@ -92,14 +92,14 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fraFlyplas">Flyplass 1</lable>';
-                              // echo flyplassListe(@$fraFlyplass);
+                                echo fraflyplassListe(@$fraFlyplass);
                                echo '<lable for="tilFlyplass">Flyplass 2</lable>';
-                              // echo flyplassListe(@$tilFlyplass);
+                              echo tilflyplassListe(@$tilFlyplass);
                                echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="valuta">Valuta</lable>';
-                               // echo valutaListe(@$valuta);
+                               echo valutaListe(@$valuta);
                                echo '
                             </div>';
                     }
