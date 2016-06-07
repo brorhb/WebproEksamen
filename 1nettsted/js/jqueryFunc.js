@@ -34,9 +34,9 @@ $(document).ready(function () {
     
     function toggleFields() {
         if ($('#tilFlyplass_id option:selected').val() == 0) {
-            $('#fraDato, #tilDato').hide();
+            $('#fraDato, #tilDato, #reisende').hide();
         } else {
-            $('#fraDato, #tilDato').fadeIn('fast');
+            $('#fraDato, #tilDato, #reisende').fadeIn('fast');
             $("input[name='reisevalg']:radio")
                 .change(function () {
                     $('#tilDato').toggle($(this).val() == "1");
