@@ -1,12 +1,10 @@
-<?php
-	include_once ('head.php');
-?>
+<?php include_once ('head.php'); ?>
 <div class="container" style="margin-top:55px;">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-1">
 			<h2>Registrer reisende</h2>
 		</div>
-		
+
 		<div class="col-md-10 col-md-offset-1">
 			<form method="get" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
 				<div class="form-group">
@@ -15,11 +13,11 @@
 					$tilLand = @$_GET["tilFlyplass_id"];
 					$fraDato = @$_GET["fraDato"];
 					$tilDato = @$_GET["tilDato"];
-					$antallVoksene = @$_GET["antallVoksene"];
-					$antallUnge = @$_GET["antallUnge"];
 					$reisevalg = @$_GET["reisevalg"];
-					$antallReisende = $antallUnge + $antallVoksene;
-					
+					$values = utf8_decode(explode("&reisende[]=", $_GET["reisende"]));
+
+					echo "jeg håper (" . count($values) . ") dør";
+
 					if ($antallReisende != 0) {
 						$x = 1;
 						while ( $x <= $antallReisende) {
@@ -59,9 +57,9 @@
 							} //end while loop
 					} // end if
  ?>					
-					
+
 				</div>
-				
+
 				<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>"/>
 				<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>"/>
 				<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>"/>
@@ -69,12 +67,10 @@
 				<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>"/>
 				<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>"/>
 				<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>"/>
-				
+
 				<input type="submit" class="btn btn-default pull-right" value="Bekreft">
 			</form>
 		</div>
 	</div>
 </div>
-<?php
-	include_once ('end.php');
-?>
+<?php include_once ('end.php'); ?>
