@@ -40,15 +40,15 @@
                                                 <label for="Fra"><h4>Fra</h4></label>
                                                 <?php echo fraFlyplassListe($fraID); ?>
                                             </div>
+                                        </div>
 
-                                            <div class="col-md-6" id="retur">
-                                                <div class="form-group">
-                                                    <label for="Til"><h4>Til</h4></label>
-                                                    <?php echo tilFlyplassListe($tilID); ?>
-                                                </div>
+                                        <div class="col-md-6" id="retur">
+                                            <div class="form-group">
+                                                <label for="Til"><h4>Til</h4></label>
+                                                <?php echo tilFlyplassListe($tilID); ?>
                                             </div>
-                                        </div> <!-- /row -->
-                                    </div>
+                                        </div>
+                                    </div> <!-- /row -->
                                     <!-- Fra/til land -->
 
                                     <!-- antall reisende -->
