@@ -64,8 +64,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO klasse (id, type, beskrivelse)
-			VALUES ('$id', '$type', '$beskrivelse');";
+			$sql = "INSERT INTO klasse (type, beskrivelse)
+			VALUES ($type', '$beskrivelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -113,8 +113,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO type_luftfartoy (id, type)
-			VALUES ('$id', '$type');";
+			$sql = "INSERT INTO type_luftfartoy (type)
+			VALUES ($type');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -163,8 +163,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO passasjertype (id, type, beskrivelse)
-			VALUES ('$id', '$type', '$beskrivelse');";
+			$sql = "INSERT INTO passasjertype (type, beskrivelse)
+			VALUES ($type', '$beskrivelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -213,8 +213,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO valuta (id, valuta_navn, forkortelse)
-			VALUES ('$id', '$valuta_navn', '$forkortelse');";
+			$sql = "INSERT INTO valuta (valuta_navn, forkortelse)
+			VALUES ($valuta_navn', '$forkortelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -266,8 +266,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO land (id, navn, landskode, valuta_id, iso, iso3)
-			VALUES ('$id', '$navn', '$landskode', '$valuta_id', '$iso', '$iso3');";
+			$sql = "INSERT INTO land (navn, landskode, valuta_id, iso, iso3)
+			VALUES ('$navn', '$landskode', '$valuta_id', '$iso', '$iso3');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -319,8 +319,8 @@
 		$land_id = connectDB()->real_escape_string(utf8_decode($land_id));
 
 		if ($id == '') {
-			$sql = "INSERT INTO flyplass (id, navn, flyplasskode, latitude, longitude, tidssone_gmt, land_id)
-			VALUES ('$id', '$navn', '$flyplasskode', '$latitude', '$longitude', '$tidssone_gmt', '$land_id');";
+			$sql = "INSERT INTO flyplass (navn, flyplasskode, latitude, longitude, tidssone_gmt, land_id)
+			VALUES ('$navn', '$flyplasskode', '$latitude', '$longitude', '$tidssone_gmt', '$land_id');";
 			$tilbalemelding = 'Satt inn:;';
 		}
 		else {
