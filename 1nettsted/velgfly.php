@@ -51,49 +51,32 @@
                                     </div>
                                     <!-- Fra/til land -->
 
-                                    <!-- antall voksene -->
+                                    <!-- antall reisende -->
                                     <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <h4>Antall Voksene</h4>
-                                                <select class="form-control" name="antallVoksene" id="antallVoksene">
-                                                    <option selected value='<?php echo $antallVoksene; ?>'><?php echo $antallVoksene; ?> Voksene</option>
-                                                    <option value="0">0 Voksene</option>
-                                                    <option value="1">1 Voksen</option>
-                                                    <option value="2">2 Voksene</option>
-                                                    <option value="3">3 Voksene</option>
-                                                    <option value="4">4 Voksene</option>
-                                                    <option value="5">5 Voksene</option>
-                                                    <option value="6">6 Voksene</option>
-                                                    <option value="7">7 Voksene</option>
-                                                    <option value="8">8 Voksene</option>
-                                                    <option value="9">9 Voksene</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- antall voksene -->
+                                        <div class="col-md-6">
+										<?php
+										$sql = "SELECT * FROM `passasjertype`";
+										$result = connectDB()->query($sql);
 
-                                        <!-- antall unge -->
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <h4>Antall Unge</h4>
-                                                <select class="form-control" name="antallUnge" id="antallUnge">
-                                                    <option selected value="<?php echo $antallUnge; ?>"><?php echo $antallUnge; ?> Unge</option>
-                                                    <option value="0">0 Unge(0-25)</option>
-                                                    <option value="1">1 Unge</option>
-                                                    <option value="2">2 Unge</option>
-                                                    <option value="3">3 Unge</option>
-                                                    <option value="4">4 Unge</option>
-                                                    <option value="5">5 Unge</option>
-                                                    <option value="6">6 Unge</option>
-                                                    <option value="7">7 Unge</option>
-                                                    <option value="8">8 Unge</option>
-                                                    <option value="9">9 Unge</option>
-                                                </select>
-                                            </div>
-                                        </div>
+										if ($result->num_rows > 0 ) {
+											while ($row = $result->fetch_assoc())  {
+												$id = utf8_encode($row["id"]);
+												$type = utf8_encode($row["type"]);
+												$beskrivelse = utf8_encode($row["beskrivelse"]);
+													?>
+												<div class="col-md-6" id="reisende">
+												<?php
+													echo '<label>' . $type . '</label>
+													<input class="form-control" type="textfield" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
+													?>
+												</div>
+												<?php
+											}
+										}
+											?>
+									</div>
                                     </div>
-                                    <!-- antall unge -->
+                                    <!-- antall reisende -->
 
                                     <!-- Radio knapper -->
                                     <div class="row">

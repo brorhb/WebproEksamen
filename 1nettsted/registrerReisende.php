@@ -1,4 +1,4 @@
-fr<?php
+<?php
 	include_once ('head.php');
 ?>
 <div class="container" style="margin-top:55px;">

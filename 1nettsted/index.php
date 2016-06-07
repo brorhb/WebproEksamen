@@ -103,26 +103,26 @@
 				<tbody>
 					<?php
 					$sql = "SELECT f.id, f.avgang, ( SELECT f.navn FROM flyplass AS f WHERE f.id = (SELECT rk.flyplass_id_fra FROM rute_kombinasjon AS rk WHERE rk.id = f.rute_kombinasjon_id) ) AS fra,( SELECT f.navn FROM flyplass AS f WHERE f.id = (SELECT rk.flyplass_id_til FROM rute_kombinasjon AS rk WHERE rk.id = f.rute_kombinasjon_id) ) AS til FROM flyvning AS f;";
-$result = connectDB()->query($sql);
+					$result = connectDB()->query($sql);
 
-if($result->num_rows > 0 ) {
-	while ($row = $result->fetch_assoc()) {
-		$id = utf8_encode($row["id"]);
-		$avgang = utf8_encode($row["avgang"]);
-		$fra = utf8_encode($row["fra"]);
-		$til = utf8_encode($row["til"]);
-		
-		echo '
-								<tr>
-									<td><input type="radio" name="id" value="' . $id . '"></td>
-									<td>' . $avgang . '</td>
-									<td>' . $fra . '</td>
-									<td>' . $til . '</td>
-								</tr>
-								';
-	}
-}
-?>
+					if($result->num_rows > 0 ) {
+						while ($row = $result->fetch_assoc()) {
+							$id = utf8_encode($row["id"]);
+							$avgang = utf8_encode($row["avgang"]);
+							$fra = utf8_encode($row["fra"]);
+							$til = utf8_encode($row["til"]);
+							
+							echo '
+													<tr>
+														<td><input type="radio" name="id" value="' . $id . '"></td>
+														<td>' . $avgang . '</td>
+														<td>' . $fra . '</td>
+														<td>' . $til . '</td>
+													</tr>
+													';
+						}
+					}
+					?>
 				</tbody>
 			</table>
 		</div>
