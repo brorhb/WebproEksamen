@@ -33,103 +33,18 @@ function validerBestilling() {
 
 /* Reisende validering */
 function validerReisende() {
-    var fornavn = document.forms["registrerReisende"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value, email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, fodsel = document.forms["registrerReisende"]["dob"].value, resultat = true, feilmeldinger = "";
-
-    if (!fornavn) {
-        feilmeldinger += "Fyll ut (alle) fornavn";
-        resultat = false;
-    } else if (!etternavn) {
-        feilmeldinger += "Fyll ut (alle) etternavn";
-        resultat = false;
-    } else if (document.getElementsByName('kjonn')[0].value == '0') {
-        feilmeldinger += "Velg alle kjønn";
-        resultat = false;
-    } else if (!email) {
-        feilmeldinger += "fyll ut (alle) E-mail";
-        resultat = false;
-    } else if (!mobilnummer) {
-        feilmeldinger += "fyll ut (alle) mobilnummer";
-        resultat = false;
-    } else if (!fodsel) {
-        feilmeldinger += "fyll ut (alle) fødselsdager";
-        resultat = false;
-    }
-    
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
-
-    return resultat;
+    var fraLand = document.forms["oppdater"]["fraLand"].value;
+    var tilLand = document.forms["oppdater"]["tilLand"].value;
+    var fraDato = document.forms["oppdater"]["fraDato"].value;
+    var tilDato = document.forms["oppdater"]["tilDato"].value;
+    var antallVoksene = document.forms["oppdater"]["antallVoksene"].value;
+    var antallUnge = document.getElementById("antallUnge");
+    var reisevalg = document.forms["oppdater"]["reisevalg"].value;
+    var antallReisene = document.forms["oppdater"]["reisevalg"].value;
 }
 /* Reisende validering slutt */
 
-/*Velgfly validering start*/
-/*function validerVelgFly() {
-    var fornavn = document.forms["registrerReisende"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value, email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, fodsel = document.forms["registrerReisende"]["dob"].value, resultat = true, feilmeldinger = "";
 
-    if (!fornavn) {
-        feilmeldinger += "Fyll ut (alle) fornavn";
-        resultat = false;
-    } else if (!etternavn) {
-        feilmeldinger += "Fyll ut (alle) etternavn";
-        resultat = false;
-    } else if (document.getElementsByName('kjonn')[0].value == '0') {
-        feilmeldinger += "Velg alle kjønn";
-        resultat = false;
-    } else if (!email) {
-        feilmeldinger += "fyll ut (alle) E-mail";
-        resultat = false;
-    } else if (!mobilnummer) {
-        feilmeldinger += "fyll ut (alle) mobilnummer";
-        resultat = false;
-    } else if (!fodsel) {
-        feilmeldinger += "fyll ut (alle) fødselsdager";
-        resultat = false;
-    }
-    
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
-
-    return resultat;
-}
-/*Velgfly validering slutt*/
-
-function validerRegistrerReisende() {
-    var fornavn = document.forms["registrerReisende"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value, email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, fodsel = document.forms["registrerReisende"]["dob"].value, resultat = true, feilmeldinger = "";
-
-    if (!fornavn) {
-        feilmeldinger += "Fyll ut (alle) fornavn";
-        resultat = false;
-    } else if (!etternavn) {
-        feilmeldinger += "Fyll ut (alle) etternavn";
-        resultat = false;
-    } else if (document.getElementsByName('kjonn')[0].value == '0') {
-        feilmeldinger += "Velg alle kjønn";
-        resultat = false;
-    } else if (!email) {
-        feilmeldinger += "fyll ut (alle) E-mail";
-        resultat = false;
-    } else if (!mobilnummer) {
-        feilmeldinger += "fyll ut (alle) mobilnummer";
-        resultat = false;
-    } else if (!fodsel) {
-        feilmeldinger += "fyll ut (alle) fødselsdager";
-        resultat = false;
-    }
-    
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
-
-    return resultat;
-}
 
 
 /*Registerer Reisende*/
