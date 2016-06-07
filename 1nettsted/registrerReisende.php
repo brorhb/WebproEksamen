@@ -1,4 +1,4 @@
-<?php
+fr<?php
 	include_once ('head.php');
 ?>
 <div class="container" style="margin-top:55px;">
@@ -8,7 +8,7 @@
 		</div>
 		
 		<div class="col-md-10 col-md-offset-1">
-			<form method="get" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return validerReisende()">
+			<form method="get" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
 				<div class="form-group">
 <?php
 					$fraLand = @$_GET["fraFlyplass_id"];

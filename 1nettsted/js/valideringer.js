@@ -55,15 +55,93 @@ function validerBestilling() {
 
 
 /* Reisende validering */
-function validerReisende() {
-    var fraLand = document.forms["oppdater"]["fraLand"].value;
-    var tilLand = document.forms["oppdater"]["tilLand"].value;
-    var fraDato = document.forms["oppdater"]["fraDato"].value;
-    var tilDato = document.forms["oppdater"]["tilDato"].value;
-    var antallVoksene = document.forms["oppdater"]["antallVoksene"].value;
-    var antallUnge = document.getElementById("antallUnge");
-    var reisevalg = document.forms["oppdater"]["reisevalg"].value;
-    var antallReisene = document.forms["oppdater"]["reisevalg"].value;
+function validerReistrerReisende() {
+    
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+    var fornavn = document.forms["oppdater"]["fornavn"].value; 
+    var etternavn = document.forms["oppdater"]["etternavn"].value;
+    var epost = document.forms["oppdater"]["epost"].value;
+    var kjonn = document.getElementById("kjonn"); //listeboks
+    var mobilnummer = document.forms["oppdater"]["mobilnummer"].value;
+    var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
+
+
+    //Sjekker om feltet er tomt,listeboks
+    if (fornavn.value == ""){
+        maaFyllesUt.push("fornavn");
+        resultat = false;
+    }
+    //Sjekker om feltet er tomt, listeboks
+    if (etternavn.value == ""){
+        maaFyllesUt.push("etternavn");
+        resultat = false;
+    }
+     //Sjekker om feltet er tomt,listeboks
+    if (epost == "" || epost == null) {
+        maaFyllesUt.push("epost");
+        resultat = false;
+    }
+    //Sjekker om feltet er tomt,listeboks 
+     if (kjonn.value == "" || kjonn.value == null) {
+        maaFyllesUt.push("kjønn");
+        resultat = false;
+    }
+        //Sjekker om feltet er tomt,listeboks
+    if (mobilnummer == "" || mobilnummer == null) {
+        maaFyllesUt.push("mobilnummer");
+        resultat = false;
+    }
+    // Feltet er fylt ut, sjekker ytterligere valideringer 
+    else {
+        if (isNaN(mobilnummer)) {
+            kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
+            resultat = false;
+        }
+        if (mobilnummer.length > 8) {
+            kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
+            resultat = false;
+        }
+
+    //Sjekker om feltet er tomt,listeboks
+    if (fodselsdato == "" || fodselsdato == null) {
+        maaFyllesUt.push("fødselsdato");
+        resultat = false;
+    }
+    // Feltet er fylt ut, sjekker ytterligere valideringer 
+    else {
+        if (isNaN(fodselsdato)) {
+            kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
+            resultat = false;
+        }
+        if (fodselsdato.length > 10) {
+            kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
+            resultat = false;
+        }
+    }
+/* Valideringer slutt */
+
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+
+    // Returnerer om neste side skal lastes inn
+    return resultat;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*Registerer Reisende*/
