@@ -449,73 +449,73 @@ function validerValuta($valuta_navn,$forkortelse) {
 
 /*Validering ruter- VET IKKE OM DEN FUNGERER*/
 
-function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
+function validerAlleRuter($tid, $pris, $valuta, $fraFlyplass, $tilFlyplass) {
 
-		/* Klarerer variabler */
-		$maaFyllesUt = array();
-		$kommentar = array();
-		$resultat = true;
+	/* Klarerer variabler */
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
 
-		$tid = utf8_decode($tid);
-		$pris = utf8_decode($pris);
-		$valuta = utf8_decode($valuta);
-		$fraFlyplass = utf8_decode($fraFlyplass);
-		$tilFlyplass = utf8_decode($tilFlyplass);
+	$tid = utf8_decode($tid);
+	$pris = utf8_decode($pris);
+	$valuta = utf8_decode($valuta);
+	$fraFlyplass = utf8_decode($fraFlyplass);
+	$tilFlyplass = utf8_decode($tilFlyplass);
 
-		/* Ulike valideringer */
-		
-		// Sjekker om feltet er tomt
-		if ($tid == "" || $tid == null) {
-			$maaFyllesUt[] = "reisetid";
-			$resultat = false;
-		}
-		if ($pris == "" || $pris == null) {
-			$maaFyllesUt[] = "pris";
-			$resultat = false;
-		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
-		else {
-			if (!is_numeric($pris)) {
-				$kommentar[] = "<strong>Pris</strong> kan kun bestå av tall.";
-				$resultat = false;
-			}
-		}
-		if ($valuta == "" || $valuta == null) {
-			$maaFyllesUt[] = "valuta";
-			$resultat = false;
-		}
+	/* Ulike valideringer */
 
-		/*if ($valuta == "" || $valuta == null) {
-				$maaFyllesUt[] = "valuta";
-				$resultat = false;
-			}
-			// Feltet er fylt ut, sjekker ytterligere valideringer
-			else {
-				if (strlen($valuta) < 3) {
-					$kommentar[] = "<strong>Valutaen</strong> må inneholde minumum 3 tegn.";
-					$resultat = false;
-				}
-			}*/
-			if ($fraFlyplass == "" || $fraFlyplass== null) {
-			$maaFyllesUt[] = "flyplass 1";
-			$resultat = false;
-		}
-			if ($tilFlyplass== "" || $tilFlyplass== null) {
-			$maaFyllesUt[] = "flyplass 2";
-			$resultat = false;
-		}
-
-			
-		/* Valideringer slutt */
-		
-		// Skriver ut feilmeldingsboks
-		if (!$resultat) {
-			feilmeldingBoks($maaFyllesUt, $kommentar);
-		}
-		
-		// Returnerer om neste side skal lastes inn
-		return $resultat;
+	// Sjekker om feltet er tomt
+	if ($tid == "" || $tid == null) {
+		$maaFyllesUt[] = "reisetid";
+		$resultat = false;
 	}
+	if ($pris == "" || $pris == null) {
+		$maaFyllesUt[] = "pris";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (!is_numeric($pris)) {
+			$kommentar[] = "<strong>Pris</strong> kan kun bestå av tall.";
+			$resultat = false;
+		}
+	}
+	if ($valuta == "" || $valuta == null) {
+		$maaFyllesUt[] = "valuta";
+		$resultat = false;
+	}
+
+	/*if ($valuta == "" || $valuta == null) {
+		$maaFyllesUt[] = "valuta";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (strlen($valuta) < 3) {
+			$kommentar[] = "<strong>Valutaen</strong> må inneholde minumum 3 tegn.";
+			$resultat = false;
+		}
+	}*/
+	if ($fraFlyplass == "" || $fraFlyplass== null) {
+		$maaFyllesUt[] = "flyplass 1";
+		$resultat = false;
+	}
+	if ($tilFlyplass== "" || $tilFlyplass== null) {
+		$maaFyllesUt[] = "flyplass 2";
+		$resultat = false;
+	}
+
+
+	/* Valideringer slutt */
+
+	// Skriver ut feilmeldingsboks
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	}
+
+	// Returnerer om neste side skal lastes inn
+	return $resultat;
+}
 
 /*Validering type - VET IKKE OM DEN FUNGERER*/
 function validerType($type) {

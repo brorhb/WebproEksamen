@@ -138,6 +138,21 @@
 		connectDB()->close();
 	}
 
+	function slettType_luftfartoy($TypeID) {
+		connectDB();
+
+		$sql = "DELETE FROM type_luftfartoy WHERE id = '$TypeID';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde) {
 
 		connectDB();
@@ -190,10 +205,59 @@
 		connectDB()->close();
 	}
 
-	function slettType_luftfartoy($TypeID) {
+	function oppdaterAlleRuter($ruteKombinasjonNr, $ruteNr, $valuta, $pris, $fraLand, $fraFlyplass, $tid, $tilLand, $tilFlyplass) {
+
 		connectDB();
 
-		$sql = "DELETE FROM type_luftfartoy WHERE id = '$TypeID';";
+		$ruteKombinasjonNr = connectDB()->real_escape_string(utf8_encode($ruteKombinasjonNr));
+		$ruteNr = connectDB()->real_escape_string(utf8_encode($ruteNr));
+		$valuta = connectDB()->real_escape_string(utf8_encode($valuta));
+		$pris = connectDB()->real_escape_string(utf8_encode($pris));
+		$fraLand = connectDB()->real_escape_string(utf8_encode($fraLand));
+		$fraFlyplass = connectDB()->real_escape_string(utf8_encode($fraFlyplass));
+		$tid = connectDB()->real_escape_string(utf8_encode($tid));
+		$tilLand = connectDB()->real_escape_string(utf8_encode($tilLand));
+		$tilFlyplass = connectDB()->real_escape_string(utf8_encode($tilFlyplass));
+
+		if ($ruteKombinasjonNr == '') {
+
+			$sql = "START TRANSACTION;
+					INSERT INTO `web-is-gr02w`.`rute` (`id`, `reisetid`, `basis_pris`, `valuta_id`) VALUES (NULL, '$tid', '$pris', '$valuta');
+					INSERT INTO `web-is-gr02w`.`rute_kombinasjon` (`id`, `rute_id`, `flyplass_id_fra`, `flyplass_id_til`) VALUES (NULL, (SELECT id FROM rute WHERE reisetid = '$tid' AND basis_pris = '$pris' AND valuta_id = '$valuta'), '$tilFlyplass', '$fraFlyplass'), 
+					(NULL, (SELECT id FROM rute WHERE reisetid = '$tid' AND basis_pris = '$pris' AND valuta_id = '$valuta'), '$fraFlyplass', '$tilFlyplass');
+					COMMIT;
+					ROLLBACK;";
+
+			if (connectDB()->query($sql) === TRUE) {
+				//return TRUE;
+			}
+			else {
+				//return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "START TRANSACTION;
+					UPDATE `web-is-gr02w`.`rute_kombinasjon` SET `flyplass_id_fra` = '$tilFlyplass', `flyplass_id_til` = '$fraFlyplass' WHERE `rute_kombinasjon`.`rute_id` = '$ruteNr'; 
+					UPDATE `web-is-gr02w`.`rute_kombinasjon` SET `flyplass_id_fra` = '$fraFlyplass', `flyplass_id_til` = '$tilFlyplass' WHERE `rute_kombinasjon`.`rute_id` = '$ruteNr' AND `rute_kombinasjon`.`id` = '$ruteKombinasjonNr';
+					COMMIT;
+					ROLLBACK;";
+
+			if (connectDB()->query($sql) === TRUE) {
+				//return TRUE;
+			}
+			else {
+				//return FALSE;
+			}
+		}
+		die($sql);
+		connectDB()->close();
+	}
+
+	function slettAlleRuter($id) {
+		connectDB();
+
+		$sql = "DELETE FROM `web-is-gr02w`.`modell` WHERE `modell`.`id` = '$id';";
 		$result = connectDB()->query($sql);
 
 		if (connectDB()->query($sql) === TRUE) {
