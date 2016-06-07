@@ -58,9 +58,9 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($KlasseID));
-		$type = connectDB()->real_escape_string(utf8_decode($type));
-		$beskrivelse = connectDB()->real_escape_string(utf8_decode($beskrivelse));
+		$id = connectDB()->real_escape_string(utf8_encode($KlasseID));
+		$type = connectDB()->real_escape_string(utf8_encode($type));
+		$beskrivelse = connectDB()->real_escape_string(utf8_encode($beskrivelse));
 
 		if ($id == '') {
 
@@ -108,8 +108,8 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($TypeID));
-		$type = connectDB()->real_escape_string(utf8_decode($type));
+		$id = connectDB()->real_escape_string(utf8_encode($TypeID));
+		$type = connectDB()->real_escape_string(utf8_encode($type));
 
 		if ($id == '') {
 
@@ -157,9 +157,9 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($PassasjertypeID));
-		$type = connectDB()->real_escape_string(utf8_decode($type));
-		$beskrivelse = connectDB()->real_escape_string(utf8_decode($beskrivelse));
+		$id = connectDB()->real_escape_string(utf8_encode($PassasjertypeID));
+		$type = connectDB()->real_escape_string(utf8_encode($type));
+		$beskrivelse = connectDB()->real_escape_string(utf8_encode($beskrivelse));
 
 		if ($id == '') {
 
@@ -203,13 +203,13 @@
 		connectDB()->close();
 	}
 
-	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
+	functioVnaluta($ValutaID, $valuta_navn, $forkortelse) {
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($ValutaID));
-		$valuta_navn = connectDB()->real_escape_string(utf8_decode($valuta_navn));
-		$forkortelse = connectDB()->real_escape_string(utf8_decode($forkortelse));
+		$id = connectDB()->real_escape_string(utf8_encode($ValutaID));
+		$valuta_navn = connectDB()->real_escape_string(utf8_encode($valuta_navn));
+		$forkortelse = connectDB()->real_escape_string(utf8_encode($forkortelse));
 
 		if ($id == '') {
 
@@ -257,12 +257,12 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($LandID));
-		$navn = connectDB()->real_escape_string(utf8_decode($navn));
-		$landskode = connectDB()->real_escape_string(utf8_decode($landskode));
-		$valuta_id = connectDB()->real_escape_string(utf8_decode($valuta_id));
-		$iso = connectDB()->real_escape_string(utf8_decode($iso));
-		$iso3 = connectDB()->real_escape_string(utf8_decode($iso3));
+		$id = connectDB()->real_escape_string(utf8_encode($LandID));
+		$navn = connectDB()->real_escape_string(utf8_encode($navn));
+		$landskode = connectDB()->real_escape_string(utf8_encode($landskode));
+		$valuta_id = connectDB()->real_escape_string(utf8_encode($valuta_id));
+		$iso = connectDB()->real_escape_string(utf8_encode($iso));
+		$iso3 = connectDB()->real_escape_string(utf8_encode($iso3));
 
 		if ($id == '') {
 
