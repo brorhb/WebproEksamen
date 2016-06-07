@@ -64,7 +64,7 @@
 												$type = utf8_encode($row["type"]);
 												$beskrivelse = utf8_encode($row["beskrivelse"]);
 													?>
-												<div class="col-md-6" id="reisende">
+												<div class="col-md-3" id="reisende">
 												<?php
 													echo '<label>' . $type . '</label>
 													<input class="form-control" type="textfield" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
