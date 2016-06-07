@@ -80,13 +80,13 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fornavn">Fornavn</lable>
-                                <input class="form-control" type="text" placeholder="Fornavn" name="fornavn" id="foravn" value="' . @$fornavn . '">
+                                <input class="form-control" type="text" placeholder="Fornavn" name="fornavn" id="foravn" value="' . @$fornavn . '" required>
                                 <lable for="etternavn">Etternavn</lable>
                                 <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
+                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>
                                 '; 
                             echo landskodeListe($landID);
@@ -94,7 +94,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
-                                <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
+                                <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '" required>
                                 <lable for="mobilnr">Mobilnummer</lable>
                                 <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
                             </div>
@@ -114,20 +114,20 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fornavn">Fornavn</lable>
-                                <input class="form-control" type="text" placeholder="Fornavn" name="fornavn" id="foravn" value="' . @$fornavn . '">
+                                <input class="form-control" type="text" placeholder="Fornavn" name="fornavn" id="foravn" value="' . @$fornavn . '" required>
                                 <lable for="etternavn">Etternavn</lable>
                                 <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '">
+                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>';
                         echo landskodeListe(@$landID);
                         echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
-                                <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '">
+                                <input class="form-control" type="text" placeholder="E-post" name="epost" id="epost" value="' . @$epost . '" required>
                                 <lable for="mobilnr">Mobilnummer</lable>
                                 <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
                             </div>
@@ -140,7 +140,7 @@
             echo'
             </div>
                <div class="col-md-12">
-                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre">
+                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre" required>
                 </div>
             </div>
             </form>
@@ -184,7 +184,7 @@
                                     $epost = utf8_encode($row["epost"]);
                                     $mobilnr = utf8_encode($row["mobilnr"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $brukerID . '"></td>
+                                                <td><input type="radio" name="id" value="' . $brukerID . '" required ></td>
                                                 <td>' . $brukernavn . '</td>
                                                 <td>' . $fornavn . '</td>
                                                 <td>' . $etternavn . '</td>

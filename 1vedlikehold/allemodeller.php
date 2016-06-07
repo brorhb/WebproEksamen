@@ -64,7 +64,7 @@
                             <div class="form-group col-md-6">
                                 <lable for="navn">Navn</lable>
                                 <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="type_luftfartoy">Type luftfartøy</lable>';
@@ -92,7 +92,7 @@
                             <div class="form-group col-md-6">
                                 <lable for="navn">Navn</lable>
                                 <input class="form-control" type="text" placeholder="Navn" name="navn" id="navn" value="' . @$navn . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="type_luftfartoy">Type luftfartøy</lable>';
@@ -156,7 +156,7 @@
                                     $rader = utf8_encode($row["rader"]);
                                     $bredde = utf8_encode($row["bredde"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $id . '"></td>
+                                                <td><input type="radio" name="id" value="' . $id . '" required></td>
                                                 <td>' . $navn . '</td>
                                                 <td>' . $type . '</td>
                                                 <td>' . $kapasitet . '</td>

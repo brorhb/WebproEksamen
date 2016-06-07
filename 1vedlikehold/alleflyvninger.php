@@ -130,11 +130,11 @@
                                                     echo '
                                                         <tr>
                                                             <td>
-                                                                <input type="checkbox" name="id" value="' . $id3 . '">
+                                                                <input type="checkbox" name="id" value="' . $id3 . '" required>
                                                             </td>
                                                             <td>' . $type3 . '</td>
                                                             <td>
-                                                                <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris">
+                                                                <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
                                                             echo valutaListe($valuta3);
@@ -214,11 +214,11 @@
                                                     echo '
                                                         <tr>
                                                             <td>
-                                                                <input type="checkbox" name="id" value="' . $id3 . '">
+                                                                <input type="checkbox" name="id" value="' . $id3 . '" required>
                                                             </td>
                                                             <td>' . $type3 . '</td>
                                                             <td>
-                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
+                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
                                                             echo valutaListe();
@@ -277,7 +277,7 @@
                                     $gate = utf8_encode($row["gate"]);
                                     $tilFlyplass = utf8_encode($row["tilFlyplass"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $flyvningNr . '"></td>
+                                                <td><input type="radio" name="id" value="' . $flyvningNr . '" required></td>
                                                 <td>' . $ruteNr . '</td>
                                                 <td>' . $tailNr . ' (' . $type . ')</td>
                                                 <td>' . $avgang . '</td>

@@ -338,7 +338,7 @@
                                     $tidssone_gmt = utf8_encode($row["tidssone_gmt"]);
                                     $land_id = utf8_encode($row["land_id"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $id . '"></td>
+                                                <td><input type="radio" name="id" value="' . $id . '"required></td>
                                                 <td>' . $navn . '</td>
                                                 <td>' . $flyplasskode . '</td>
                                                 <td>' . $latitude . '</td>
