@@ -69,9 +69,9 @@
                                 <input class="form-control" type="text" placeholder="Basis pris" name="pris" id="pris" value="' . @$pris . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="fraFlyplas">Flyplass 1</lable>';
+                                <lable for="fraFlyplass">Flyplass 1</lable>';
                                echo flyplassListe(@$fraFlyplass);
-                               echo '<lable for="tilFlyplas">Flyplass 2</lable>';
+                               echo '<lable for="tilFlyplass">Flyplass 2</lable>';
                                echo flyplassListe(@$tilFlyplass);
                                echo '
                             </div>
