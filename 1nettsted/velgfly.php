@@ -1,4 +1,4 @@
-<?php include_once ("head.php"); ?>
+<?php include_once("head.php"); ?>
 
 
 <!-- Reise info -->
@@ -38,13 +38,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="Fra"><h4>Fra</h4></label>
-                                                <?php fraFlyplassListe($fraID); ?>
+                                                <?php echo fraFlyplassListe($fraID); ?>
                                             </div>
 
                                             <div class="col-md-6" id="retur">
                                                 <div class="form-group">
                                                     <label for="Til"><h4>Til</h4></label>
-                                                    <?php tilFlyplassListe($tilID); ?>
+                                                    <?php echo tilFlyplassListe($tilID); ?>
                                                 </div>
                                             </div>
                                         </div> <!-- /row -->
@@ -114,13 +114,13 @@
                                     <div class="row">
                                         <div class="col-md-6" id="fraDato">
                                             <div class="form-group" id="fraDato">
-                                                <label for="Fra"><h4>Fra dato </h4></label>
+                                                <label for="Fra"><h4>Fra dato</h4></label>
                                                 <input class="form-control" type="text" class="span2" value="<?php echo $fraDato; ?>" id="dpd1" name="fraDato" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6" id="tilDato">
                                             <div class="form-group" id="tilDato">
-                                                <label for="Til"><h4>Til dato </h4></label>
+                                                <label for="Til"><h4>Til dato</h4></label>
                                                 <input class="form-control" type="text" class="span2" value="<?php echo $tilDato; ?>" id="dpd2" name="tilDato" required>
                                             </div>
                                         </div>
@@ -225,4 +225,4 @@
 </div>
 <!-- innhold -->
 
-<?php include_once("end.php");  ?>
+<?php include_once("end.php"); ?>
