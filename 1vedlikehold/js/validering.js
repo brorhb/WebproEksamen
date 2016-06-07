@@ -41,7 +41,7 @@ function validerTypeLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-    var type = document.forms["oppdater"]["type"].value
+    var type = document.forms["oppdater"]["type"].value;
     /* Ulike valideringer */
 
 
@@ -705,13 +705,13 @@ function validerLuftfartoy() {
     var kommentar = [];
     var resultat = true;
 
-    var modellid = document.getElementById("modell_id"); /*lesteboks*/
+    var modell_id = document.getElementById("modell_id"); /*lesteboks*/
     var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
 
     // Sjekker om feltet er tomt
-    if (modellid.value == "" || modell.value == null) {
-        maaFyllesUt.push("modellid");
+    if (modell_id == "" || modell_id == null) {
+        maaFyllesUt.push("modell_id");
         resultat = false;
     }
 

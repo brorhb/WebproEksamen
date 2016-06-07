@@ -47,7 +47,7 @@
 	<title>Bjarum Airlines</title>	
 </head>
 	<body>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default col-md-12">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.php">
@@ -57,11 +57,10 @@
 
 				<!-- søkefelt -->
 				<div class="col-md-3 pull-right sokfelt">
-					<div class="input-group">
-					<input type="text" class="form-control" placeholder="Referansenummer...">
-					<span class="input-group-btn">
-					<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
+					<form class="input-group" action="referansesok.php" method="GET">
+						<input type="text" class="form-control" placeholder="Referansenummer..." style="z-index: -1;"/>
+						<input class="btn btn-default" type="submit" value="søk" style="z-index: 99999; margin-top: -34px; float: right;"/>
+					</form>
 				</div>
 				<!-- søkefelt -->
 
