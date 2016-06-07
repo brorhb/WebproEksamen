@@ -306,7 +306,7 @@ function validerOppdaterRuter() {
 
     var tid = document.forms["oppdater"]["tid"].value;
     var pris = document.forms["oppdater"]["pris"].value;
-    var valuta = document.getElementById("valuta_id").value; //listeboks
+    var valuta = document.getElementById("valuta_id"); //listeboks
     var fraFlyplass = document.getElementById("fraFlyplass_id").value; //listeboks
     var tilFlyplass = document.getElementById("tilFlyplass_id").value; //listeboks
 
@@ -675,19 +675,43 @@ if (landskode == "" || landskode == null) {
 
 
 /* legg til/endre luftfartoy/fly */
+
+/*function validerLuftfartoy() {
+    var modell_id = document.forms["oppdater"]["modell_id"].value;
+    var tailnr = document.forms["oppdater"]["tailnr"].value;
+    var resultat = true;
+    if (modell_id == null || modell_id == "") {
+        swal({
+            title: "Obs!",
+            text: "Modell_id må velges",
+            type: "warning"
+        });
+        resultat = false;
+    }
+    else if (tailnr == null || tailnr == "") {
+        swal({
+            title: "Obs!",
+            text: "Tailnr må fylles ut",
+            type: "warning"
+        });
+        resultat = false;
+    }
+
+    return resultat;
+}*/
 function validerLuftfartoy() {
 
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
 
-    var modell_id = document.getElementById("modell_id"); /*lesteboks*/
-    var tailnr = document.forms["oppdater"]["tailnr"].value; /*vanlig*/
+    var modellid = document.getElementById("modell_id"); /*lesteboks*/
+    var tailnr = document.forms["oppdater"]["tailnr"].value;/*vanlig*/
     /* Ulike valideringer */
 
     // Sjekker om feltet er tomt
-    if (modell_id == "" || modell_id == null) {
-        maaFyllesUt.push("modell_id");
+    if (modellid.value == "" || modell.value == null) {
+        maaFyllesUt.push("modellid");
         resultat = false;
     }
 

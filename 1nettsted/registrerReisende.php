@@ -29,18 +29,19 @@ fr<?php
 						<div class='col-md-12'>
 							<h3>Reisende nummer: <?php print($x); ?></h3>
 						</div>
+
 						<div class='col-md-6'>
 							<label for='fornavn'>Fornavn</label>
-							<input type='text' class='form-control' name='fornavn[]' id='fornavn' placeholder='Fornavn' required /> </div>
+							<input type='text' class='form-control' name='fornavn[<?php echo $x; ?>]' id='fornavn[<?php echo $x; ?>]' placeholder='Fornavn' required /> </div>
 						<div class='col-md-6'>
 							<label for='etternavn'>Etternavn</label>
-							<input type='text' class='form-control' name='etternavn[]' id='etternavn' placeholder='Etternavn' required /> </div>
+							<input type='text' class='form-control' name='etternavn[<?php echo $x; ?>]' id='etternavn[<?php echo $x; ?>]' placeholder='Etternavn' required /> </div>
 						<div class='col-md-6'>
 							<label for='epost'>Epost</label>
-							<input type='email' class='form-control' name='email[]' id='email' placeholder='eksempel@bjarnum.no' required /> </div>
+							<input type='email' class='form-control' name='email[<?php echo $x; ?>]' id='email[<?php echo $x; ?>]' placeholder='eksempel@bjarnum.no' required /> </div>
 						<div class='col-md-6'>
 							<label for='kjonn'>Kjønn</label>
-							<select class='form-control' name='kjonn' id='kjonn'>
+							<select class='form-control' name='kjonn[<?php echo $x; ?>]' id='kjonn[<?php echo $x; ?>]'>
 							<option disabled selected value=''>Kjønn</option>
 							<option value='1'>Mann</option>
 							<option value='2'>Kvinne</option>
@@ -48,7 +49,7 @@ fr<?php
 						</div>
 						<div class='col-md-6'>
 							<label for='mobilnummer'>Mobilnummer</label>
-							<input type='text' class='form-control' name='mobilnummer[]' id='mobilnummer' placeholder='99999999' required /> </div>
+							<input type='text' class='form-control' name='mobilnummer[<?php echo $x; ?>]' id='mobilnummer[<?php echo $x; ?>]' placeholder='99999999' required /> </div>
 						<div class='col-md-6'>
 							<label for='dob'>Fødselsdato</label>
 							<input type='text' class='form-control' name='dob' id='dob[]' placeholder='mm/dd/yyyy' required /> </div>
