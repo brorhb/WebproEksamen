@@ -68,8 +68,8 @@
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="flyplasskode">Flyplasskode</lable>
-                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>
+                                <lable for="flyplassforkortelse">flyplassforkortelse</lable>
+                                <input class="form-control" type="text" placeholder="flyplassforkortelse" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="land_id">Land ID</lable>';
@@ -185,8 +185,8 @@
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="flyplasskode">Flyplasskode</lable>
-                                <input class="form-control" type="text" placeholder="Flyplasskode" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>
+                                <lable for="flyplasskode">flyplassforkortelse</lable>
+                                <input class="form-control" type="text" placeholder="flyplassforkortelse" name="flyplasskode" id="flyplasskode" value="' . @$flyplasskode . '" required>
                                 <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>
                             <div class="form-group col-md-6">
