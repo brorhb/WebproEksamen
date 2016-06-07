@@ -1,40 +1,63 @@
 
-/* Bestilling validering */
+/* Bestilling validering  */
 function validerBestilling() {
-    var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value,  fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
-        
-    if (!turRetur && !enVei) {
-        feilmeldinger += "Reisetype er ikke valgt";
+    
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+    //var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value,  fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
+    var fraFlyplass = document.getElementById("fraFlyplass"); //listeboks
+    var tilFlyplass =  document.getElementById("tilFlyplass"); //listeboks
+    var antallVoksne = document.getElementById("antallVoksne");
+    var antallUnge = document.getElementById("antallUnge");
+    var fraDato = document.getElementById("fraDato"); //listeboks
+    var tilDato = document.getElementById("tilDato"); //listeboks
+
+
+
+    //Sjekker om feltet er tomt,listeboks
+    if (fraFlyplass.value == ""){
+        maaFyllesUt.push("fraFlyplass");
         resultat = false;
-    } else if (document.getElementsByName('antallVoksene')[0].value == '0' && document.getElementsByName('antallUnge')[0].value == '0') {
-        feilmeldinger += "Velg antall reisende";
+    }
+    //Sjekker om feltet er tomt, listeboks
+    if (tilFlyplass.value == ""){
+        maaFyllesUt.push("tilFlyplass");
         resultat = false;
-    } else if (!fraLand) {
-        feilmeldinger += "Velg utreise destinasjon";
+    }
+     //Sjekker om feltet er tomt,listeboks
+    if (antallVoksne == "") {
+        maaFyllesUt.push(antallVoksne);
         resultat = false;
-    } else if (!tilLand) {
-        feilmeldinger += "Velg reise destinasjon";
+    }
+    //Sjekker om feltet er tomt,listeboks 
+     if (antallUnge == "") {
+        maaFyllesUt.push(antallUnge);
         resultat = false;
-    } else if (!fraDato) {
-        feilmeldinger += "Velg reise dato";
+    }
+        //Sjekker om feltet er tomt,listeboks
+    if (fraDato.value == ""){
+        maaFyllesUt.push("fraDato");
         resultat = false;
     }
 
-    swal({
-        title: "Obs!",
-        text: feilmeldinger,
-        type: "warning"
-    });
-
+    //Sjekker om feltet er tomt,listeboks
+    if(tilDato.value == ""){
+        maaFyllesUt.push("tilDato");
+        resultat = false;
+    }
     return resultat;
-}
+    }
+
 /* Bestilling validering slutt */
 
 
 /* Reisende validering */
 function validerReisende() {
-    var fornavn = document.forms["registrerReisende"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value, email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, fodsel = document.forms["registrerReisende"]["dob"].value, resultat = true, feilmeldinger = "";
-
+    var fornavn = document.forms["bestillReiseSkjema"]["fornavn"].value, etternavn = document.forms["registrerReisende"]["etternavn"].value, email = document.forms["registrerReisendea"]["email"].value, mobilnummer = document.forms["registrerReisende"]["mobilnummer"].value, fodsel = document.forms["registrerReisende"]["dob"].value, resultat = true, feilmeldinger = "";
+  
     if (!fornavn) {
         feilmeldinger += "Fyll ut (alle) fornavn";
         resultat = false;
@@ -64,3 +87,53 @@ function validerReisende() {
     return resultat;
 }
 /* Reisende validering slutt */
+
+
+function feilmeldingBoks(maaFyllesUt, kommentar) {
+
+    var fyllesutOutput = "";
+    var kommentarOutput = "";
+    var output = "";
+
+    /* Gjør om det som må fylles ut til tekst */
+    for (var i = 0; i < maaFyllesUt.length; i++) {
+        fyllesutOutput += "<strong>" + maaFyllesUt[i] + "</strong>";
+        if (i < maaFyllesUt.length - 2) {
+            fyllesutOutput += ", ";
+        }
+        else if (i < maaFyllesUt.length - 1) {
+            fyllesutOutput += " og ";
+        }
+    }
+    if (maaFyllesUt.length > 0) {
+        fyllesutOutput += " må fylles ut.";
+    }
+
+    /* Gjør om kommentarer til tekst */
+    for (var i = 0; i < kommentar.length; i++) {
+        if (i == 0 && maaFyllesUt.length != 0) {
+            kommentarOutput += "<br><br>";
+        }
+        else if (i != 0) {
+            kommentarOutput += "<br>";
+        }
+
+        kommentarOutput += kommentar[i];
+        if (i < kommentar.length - 1) {
+            kommentarOutput += " ";
+        }
+    }
+
+    output = fyllesutOutput + kommentarOutput;
+
+    if (output == "") {
+        output += "Ingen output";
+    }
+
+    swal({
+        title: "Obs!",
+        text: output,
+        type: "error",
+        html: true
+    });
+}
