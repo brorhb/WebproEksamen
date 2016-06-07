@@ -16,10 +16,11 @@
         $rutenr = $_POST["rutenr"];
         $pris = $_POST["pris"];
         $fraLand = $_POST["fraLand"];
-        $fraFlyplass = $_POST["Flyplass"];
+        $fraFlyplass = $_POST["fraFlyplass_id"];
         $tid = $_POST["tid"];
         $tilLand = $_POST["tilLand"];
-        $tilFlyplass = $_POST["Flyplass"];
+        $tilFlyplass = $_POST["tilFlyplass_id"];
+        $valuta = $_POST["valuta_id"];
 
         if(validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass)){
             oppdaterRute($rutenr, $pris, $fraLand,$fraFlyplass, $tid, $tilLand, $tilFlyplass);

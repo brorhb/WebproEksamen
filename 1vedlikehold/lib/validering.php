@@ -473,15 +473,12 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 		$valuta = utf8_decode($valuta);
 		$fraFlyplass = utf8_decode($fraFlyplass);
 		$tilFlyplass = utf8_decode($tilFlyplass);
-		
-		//$mobilnummer = utf8_decode($mobilnummer);
-		//$person_id = utf8_decode($person_id);
 
 		/* Ulike valideringer */
 		
 		// Sjekker om feltet er tomt
 		if ($tid == "" || $tid == null) {
-			$maaFyllesUt[] = "tid";
+			$maaFyllesUt[] = "reisetid";
 			$resultat = false;
 		}
 		if ($pris == "" || $pris == null) {
@@ -495,9 +492,12 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 				$resultat = false;
 			}
 		}
-
-
 		if ($valuta == "" || $valuta == null) {
+			$maaFyllesUt[] = "valuta";
+			$resultat = false;
+		}
+
+		/*if ($valuta == "" || $valuta == null) {
 				$maaFyllesUt[] = "valuta";
 				$resultat = false;
 			}
@@ -507,13 +507,13 @@ function validerRuter($tid,$pris, $valuta, $fraFlyplass, $tilFlyplass) {
 					$kommentar[] = "<strong>Valutaen</strong> må inneholde minumum 3 tegn.";
 					$resultat = false;
 				}
-			}
+			}*/
 			if ($fraFlyplass == "" || $fraFlyplass== null) {
-			$maaFyllesUt[] = "fra flyplass";
+			$maaFyllesUt[] = "flyplass 1";
 			$resultat = false;
 		}
 			if ($tilFlyplass== "" || $tilFlyplass== null) {
-			$maaFyllesUt[] = "til flyplass";
+			$maaFyllesUt[] = "flyplass 2";
 			$resultat = false;
 		}
 
