@@ -75,8 +75,8 @@
                             echo '
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="iso">iso2</lable>
-                                <input class="form-control" type="text" placeholder="iso2" name="iso2" id="iso2" value="' . @$iso . '" required>
+                                <lable for="iso">iso</lable>
+                                <input class="form-control" type="text" placeholder="iso" name="iso" id="iso" value="' . @$iso . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="iso3">iso3</lable>

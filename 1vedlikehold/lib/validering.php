@@ -380,24 +380,12 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 			}
 		}
 			if ($iso == "" || $iso == null) {
-			$maaFyllesUt[] = "Latitude";
+			$maaFyllesUt[] = "iso";
 			$resultat = false;
-		}
-		else {
-			if (!is_numeric($iso)) {
-				$kommentar[] = "<strong>iso</strong> kan kun bestå av tall.";
-				$resultat = false;
-			}
 		}
 			if ($iso3 == "" || $iso3 == null) {
 			$maaFyllesUt[] = "iso3";
 			$resultat = false;
-		}
-		else {
-			if (!is_numeric($iso3)) {
-				$kommentar[] = "<strong>iso3</strong> kan kun bestå av tall.";
-				$resultat = false;
-			}
 		}
 
 		/* Valideringer slutt */
