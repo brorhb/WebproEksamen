@@ -708,7 +708,7 @@ function validerLuftfartoy() {
 
     // Sjekker om feltet er tomt
     if (modell_id == "" || modell_id == null) {
-        maaFyllesUt.push("modellid");
+        maaFyllesUt.push("modell_id");
         resultat = false;
     }
 
