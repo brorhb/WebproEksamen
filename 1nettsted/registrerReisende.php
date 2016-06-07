@@ -14,9 +14,20 @@
 					$fraDato = @$_GET["fraDato"];
 					$tilDato = @$_GET["tilDato"];
 					$reisevalg = @$_GET["reisevalg"];
-					$values = utf8_decode(explode("&reisende[]=", $_GET["reisende"]));
+					$reisende = @$_GET["reisende"];
 
-					echo "jeg håper (" . count($values) . ") dør";
+					echo print_r($reisende);
+					echo "<br><br>";
+
+					
+								for ($i=1; $i <= count($reisende); $i++) {
+									echo "Reisetype " . $i . "<br>";
+									$antall_reisende = $reisende[$i];
+									for ($j=0; $j < $reisende[$i]; $j++) {
+										echo "Antall reisende " . $antall_reisende . passasjertypeListe($i) . "<br><br>";
+									}
+								}
+							
 
 					if ($antallReisende != 0) {
 						$x = 1;
@@ -26,6 +37,9 @@
 					<div class='reisende'>
 						<div class='col-md-12'>
 							<h3>Reisende nummer: <?php print($x); ?></h3>
+
+							
+
 						</div>
 
 						<div class='col-md-6'>

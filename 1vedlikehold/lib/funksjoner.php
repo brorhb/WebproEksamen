@@ -1,6 +1,6 @@
 <?php
 
-	include_once("../1vedlikehold/validering.php");
+	//include_once("/validering.php");
 
 	function erLoggetInn() {
 		@session_start();

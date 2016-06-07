@@ -1,6 +1,6 @@
 <?php
 
-	// include_once("funksjoner.php");
+	include_once("funksjoner.php");
 
 	// Eksempel på valider-funksjon
 	function validerEksempel() {
