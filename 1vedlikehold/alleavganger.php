@@ -133,11 +133,11 @@
                                                     echo '
                                                         <tr>
                                                             <td>
-                                                                <input type="checkbox" name="id" value="' . $id3 . '">
+                                                                <input type="checkbox" name="id" value="' . $id3 . '" required>
                                                             </td>
                                                             <td>' . $type3 . '</td>
                                                             <td>
-                                                                <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris">
+                                                                <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
                                                             echo valutaListe($valuta3);
@@ -217,11 +217,11 @@
                                                     echo '
                                                         <tr>
                                                             <td>
-                                                                <input type="checkbox" name="id" value="' . $id3 . '">
+                                                                <input type="checkbox" name="id" value="' . $id3 . '" required>
                                                             </td>
                                                             <td>' . $type3 . '</td>
                                                             <td>
-                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris">
+                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
                                                             echo valutaListe();
@@ -240,7 +240,7 @@
             echo'
             </div>
                <div class="col-md-12">
-                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre">
+                    <input type="submit" id="lagre" name="lagre" class="btn btn-info" value="lagre" required>
                 </div>
             </div>
             </form>
@@ -280,7 +280,7 @@
                                     $gate = utf8_encode($row["gate"]);
                                     $tilFlyplass = utf8_encode($row["tilFlyplass"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $flyvningNr . '"></td>
+                                                <td><input type="radio" name="id" value="' . $flyvningNr . '" required></td>
                                                 <td>' . $ruteNr . '</td>
                                                 <td>' . $tailNr . ' (' . $type . ')</td>
                                                 <td>' . $avgang . '</td>
@@ -295,13 +295,13 @@
                      </tbody>
                     </table>
                     <div class="col-md-1">
-                        <input type="submit" name="endre" class="btn btn-info" value="Endre" onclick="this.form.submited=this.name;"/>
+                        <input type="submit" name="endre" class="btn btn-info" value="Endre" onclick="this.form.submited=this.name;"/ required>
                     </div>
                     <div class="col-md-1 col-md-offset-4 text-center">
-                        <input type="submit" name="ny" class="btn btn-success" value="Legg til" onclick="this.form.submited=this.name;"/>
+                        <input type="submit" name="ny" class="btn btn-success" value="Legg til" onclick="this.form.submited=this.name;"/ required>
                     </div>
                     <div class="col-md-1 col-md-offset-4 pull-right">
-                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett" onclick="this.form.submited=this.name;"/>
+                        <input type="submit" name="slett" href="#" class="btn btn-danger" value="Slett" onclick="this.form.submited=this.name;"/ required>
                     </div>
                 </form>
         </div>

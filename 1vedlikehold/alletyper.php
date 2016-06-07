@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <lable for="type">type</lable>
                                 <input class="form-control" type="text" placeholder="type" name="type" id="type" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>';
                         }
                     }
@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <lable for="type">type</lable>
                                 <input class="form-control" type="text" placeholder="type" name="type" id="type" value="' . @$type . '" required>
-                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '">
+                                <input class="form-control" type="hidden" placeholder="ID" name="id" id="id" value="' . @$id . '" required>
                             </div>';
                     }
                     connectDB()->close();
