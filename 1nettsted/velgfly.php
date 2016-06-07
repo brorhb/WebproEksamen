@@ -138,11 +138,9 @@
 				    $id = utf8_encode($row["id"]);
 				    $type = utf8_encode($row["type"]);
 				    $beskrivelse = utf8_encode($row["beskrivelse"]);
-					    ?>
-				    <?php
-					    echo '<input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
-					    ?>
-				    <?php
+					    
+					echo '<input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
+					    
 			    }
 		    }
 		?>
