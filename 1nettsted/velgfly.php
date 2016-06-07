@@ -99,7 +99,7 @@
 										<div class="col-md-3" id="fraDato">
 											<div class="form-group" id="fraDato">	
 												<label for="Fra"><h4>Fra dato </h4></label>
-												<input class="form-control" type="text" class="span2" <!-- value="<?php echo $fraDato; ?>" --> id="dpd1" name="fraDato" required>
+												<input class="form-control" type="text" class="span2" value="<?php echo $fraDato; ?>" id="dpd1" name="fraDato" required>
 											</div>
 										</div>
 										<div class="col-md-3" id="tilDato">
