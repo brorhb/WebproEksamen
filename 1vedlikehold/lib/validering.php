@@ -722,6 +722,82 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
+
+/*function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$flyvningNr = utf8_decode($flyvningNr);
+	$ruteNr = utf8_decode($ruteNr);
+	$tailNr = utf8_decode($tailNr);
+	$type = utf8_decode($type);
+	$avgang = utf8_decode($avgang);
+	$fraFlyplass = utf8_decode($fraFlyplass);
+	$gate = utf8_decode($gate);
+	$tilFlyplass = utf8_decode($tilFlyplass);
+
+	if ($flyvningNr == "" || $flyvningNr == null) {
+		$maaFyllesUt[] = "FlyvningNr";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (!is_numeric($flyvningNr)) {
+			$kommentar[] = "<strong>FlyvningNr</strong> kan kun bestå av tall.";
+			$resultat = false;
+		}
+	}
+	
+	if ($flyplasskode == "" || $flyplasskode == null) {
+				$maaFyllesUt[] = "flyplasskode";
+				$resultat = false;
+			}
+			// Feltet er fylt ut, sjekker ytterligere valideringer
+			else {
+				if (strlen($flyplasskode) < 3) {
+					$kommentar[] = "<strong>flyplasskoden</strong> må inneholde minumum 3 tegn.";
+					$resultat = false;
+				}
+			}
+
+		if ($latitude == "" || $latitude == null) {
+			$maaFyllesUt[] = "Latitude";
+			$resultat = false;
+		}
+		else {
+			if (!is_numeric($latitude)) {
+				$kommentar[] = "<strong>Latitude</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+	
+	if ($longitude == "" || $longitude == null) {
+		$maaFyllesUt[] = "Longitude";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (!is_numeric($longitude)) {
+			$kommentar[] = "<strong>Longitude</strong> kan kun bestå av tall.";
+			$resultat = false;
+		}
+	}
+	if ($tidssone_gmt == "" || $tidssone_gmt == null) {
+		$maaFyllesUt[] = "Tidssone_gmt";
+		$resultat = false;
+	}
+	if ($land_id == "" || $land_id == null) {
+		$maaFyllesUt[] = "Land_id";
+		$resultat = false;
+	}
+	
+	if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+		return $resultat;*/
 }		
 ?>
 

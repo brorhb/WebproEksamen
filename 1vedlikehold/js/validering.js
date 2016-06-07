@@ -295,7 +295,7 @@ function validerOppdaterAlleFlyplasser() {
 }
 /*legg til/ Alleflyplasser*/
 
-/*legg til/ Ruter*/
+/*legg til/ avg*/
 function validerOppdaterRuter() {
 
     var maaFyllesUt = [];
