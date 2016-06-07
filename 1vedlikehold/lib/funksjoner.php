@@ -65,7 +65,7 @@
 		if ($id == '') {
 
 			$sql = "INSERT INTO klasse (type, beskrivelse)
-			VALUES ($type', '$beskrivelse');";
+			VALUES ('$type', '$beskrivelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -114,7 +114,7 @@
 		if ($id == '') {
 
 			$sql = "INSERT INTO type_luftfartoy (type)
-			VALUES ($type');";
+			VALUES ('$type');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -164,7 +164,7 @@
 		if ($id == '') {
 
 			$sql = "INSERT INTO passasjertype (type, beskrivelse)
-			VALUES ($type', '$beskrivelse');";
+			VALUES ('$type', '$beskrivelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -214,7 +214,7 @@
 		if ($id == '') {
 
 			$sql = "INSERT INTO valuta (valuta_navn, forkortelse)
-			VALUES ($valuta_navn', '$forkortelse');";
+			VALUES ('$valuta_navn', '$forkortelse');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -310,13 +310,13 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($FlyplassID));
-		$navn = connectDB()->real_escape_string(utf8_decode($navn));
-		$flyplasskode = connectDB()->real_escape_string(utf8_decode($flyplasskode));
-		$latitude = connectDB()->real_escape_string(utf8_decode($latitude));
-		$longitude = connectDB()->real_escape_string(utf8_decode($longitude));
-		$tidssone_gmt = connectDB()->real_escape_string(utf8_decode($tidssone_gmt));
-		$land_id = connectDB()->real_escape_string(utf8_decode($land_id));
+		$id = connectDB()->real_escape_string(utf8_encode($FlyplassID));
+		$navn = connectDB()->real_escape_string(utf8_encode($navn));
+		$flyplasskode = connectDB()->real_escape_string(utf8_encode($flyplasskode));
+		$latitude = connectDB()->real_escape_string(utf8_encode($latitude));
+		$longitude = connectDB()->real_escape_string(utf8_encode($longitude));
+		$tidssone_gmt = connectDB()->real_escape_string(utf8_encode($tidssone_gmt));
+		$land_id = connectDB()->real_escape_string(utf8_encode($land_id));
 
 		if ($id == '') {
 			$sql = "INSERT INTO flyplass (navn, flyplasskode, latitude, longitude, tidssone_gmt, land_id)
@@ -361,17 +361,17 @@
 
 		connectDB();
 
-		$brukerID = connectDB()->real_escape_string(utf8_decode($brukerID));
-        $personID = connectDB()->real_escape_string(utf8_decode($personID));
-        $brukernavn = connectDB()->real_escape_string(utf8_decode($brukernavn));
-        $ukryptertPassord = connectDB()->real_escape_string(utf8_decode($ukryptertPassord));
+		$brukerID = connectDB()->real_escape_string(utf8_encode($brukerID));
+        $personID = connectDB()->real_escape_string(utf8_encode($personID));
+        $brukernavn = connectDB()->real_escape_string(utf8_encode($brukernavn));
+        $ukryptertPassord = connectDB()->real_escape_string(utf8_encode($ukryptertPassord));
         $kryptertPassord = md5($ukryptertPassord);
-		$fornavn = connectDB()->real_escape_string(utf8_decode($fornavn));
-		$etternavn = connectDB()->real_escape_string(utf8_decode($etternavn));
-		$fodselsdato = connectDB()->real_escape_string(utf8_decode($fodselsdato));
-        $landID = connectDB()->real_escape_string(utf8_decode($landID));
-        $epost = connectDB()->real_escape_string(utf8_decode($epost));
-        $mobilnr = connectDB()->real_escape_string(utf8_decode($mobilnr));
+		$fornavn = connectDB()->real_escape_string(utf8_encode($fornavn));
+		$etternavn = connectDB()->real_escape_string(utf8_encode($etternavn));
+		$fodselsdato = connectDB()->real_escape_string(utf8_encode($fodselsdato));
+        $landID = connectDB()->real_escape_string(utf8_encode($landID));
+        $epost = connectDB()->real_escape_string(utf8_encode($epost));
+        $mobilnr = connectDB()->real_escape_string(utf8_encode($mobilnr));
 
 		if ($id == '') {
 
@@ -424,10 +424,10 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($PersonID));
-		$fornavn = connectDB()->real_escape_string(utf8_decode($fornavn));
-		$etternavn = connectDB()->real_escape_string(utf8_decode($etternavn));
-		$fodselsdato = connectDB()->real_escape_string(utf8_decode($fodselsdato));
+		$id = connectDB()->real_escape_string(utf8_encode($PersonID));
+		$fornavn = connectDB()->real_escape_string(utf8_encode($fornavn));
+		$etternavn = connectDB()->real_escape_string(utf8_encode($etternavn));
+		$fodselsdato = connectDB()->real_escape_string(utf8_encode($fodselsdato));
 
 		if ($id == '') {
 
@@ -475,9 +475,9 @@
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_decode($LuftfartoyID));
-		$modell_id = connectDB()->real_escape_string(utf8_decode($modell_id));
-		$tailnr = connectDB()->real_escape_string(utf8_decode($tailnr));
+		$id = connectDB()->real_escape_string(utf8_encode($LuftfartoyID));
+		$modell_id = connectDB()->real_escape_string(utf8_encode($modell_id));
+		$tailnr = connectDB()->real_escape_string(utf8_encode($tailnr));
 
 		if ($id == '') {
 
