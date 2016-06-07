@@ -203,7 +203,7 @@
 		connectDB()->close();
 	}
 
-	functioVnaluta($ValutaID, $valuta_navn, $forkortelse) {
+	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
 
 		connectDB();
 
