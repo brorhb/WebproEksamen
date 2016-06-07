@@ -22,7 +22,7 @@
         $bredde = $_POST['bredde'];
 
 
-        if(validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde)) {
+        if(validerAlleModeller($type, $navn, $kapasitet, $rader, $bredde)) {
             oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering=false;

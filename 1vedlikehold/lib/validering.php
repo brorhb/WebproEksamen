@@ -598,7 +598,7 @@ function validerAlleFly($modell_id ,$tailnr) {
 	}
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
 
-function validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde){
+function validerAlleModeller($type, $navn, $kapasitet, $rader, $bredde){
 		$maaFyllesUt = array();
 		$kommentar = array();
 		$resultat = true;
