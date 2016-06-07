@@ -550,18 +550,18 @@ function validerPersonBruker() {
     }
 
     // Sjekker om feltet er tomt
-    if (fodselsdato == "" || fodselsdato == null) {
-        maaFyllesUt.push("fødselsdato");
+     if (fodselsdato == "" || fodselsdato == null) {
+        maaFyllesUt.push("fodselsdato");
         resultat = false;
     }
     // Feltet er fylt ut, sjekker ytterligere valideringer 
     else {
         if (isNaN(fodselsdato)) {
-            kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
+            kommentar.push("<strong>fodselsdato</strong> må være minst 8 siffer(DDMMYYYY).");
             resultat = false;
         }
-        if (fodselsdato.length > 10) {
-            kommentar.push("<strong>fødselsdato</strong> må være minst 10 tegn (DD.MM.YYYY).");
+        if (fodselsdato.length > 8) {
+            kommentar.push("<strong>fodselsdato</strong> må være minst 8 siffer(DDMMYYYY).");
             resultat = false;
         }
     }
