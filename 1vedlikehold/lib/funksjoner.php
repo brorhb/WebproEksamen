@@ -229,7 +229,7 @@
 					COMMIT;
 					ROLLBACK;";
 
-			if (connectDB()->query($sql) === TRUE) {
+			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
 			}
 			else {
@@ -245,7 +245,7 @@
 					COMMIT;
 					ROLLBACK;";
 
-			if (connectDB()->query($sql) === TRUE) {
+			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
 			}
 			else {
@@ -497,7 +497,7 @@
                     INSERT INTO bruker (brukernavn, epost, passord, land_id, mobilnr, person_id) VALUES ('$brukernavn', '$epost', '$kryptertPassord', '$landID', '$mobilnr', (SELECT MAX(id) FROM person));
                     COMMIT;";
 
-			if (connectDB()->query($sql) === TRUE) {
+			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
 			}
 			else {
@@ -511,7 +511,7 @@
                     UPDATE bruker SET brukernavn='$brukernavn', epost='$epost', passord='$kryptertPassord', land_id='$landID', mobilnr='$mobilnr' WHERE person_id='$personID';
                     COMMIT;";
 
-			if (connectDB()->query($sql) === TRUE) {
+			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
 			}
 			else {

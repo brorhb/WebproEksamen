@@ -186,7 +186,15 @@
 				</thead>	
 				<tbody>
 
-					<?php connectDB();
+					<?php 
+					
+					$fraLand = @$_GET["fraFlyplass_id"];
+					$fraDato = @$_GET["fraDato"];
+					$tilLand = @$_GET["tilFlyplass_id"];
+					$tilDato = @$_GET["tilDato"];
+					$reisevalg = @$_GET["reisevalg"];
+					
+					connectDB();
 					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
 					$result = connectDB()->query($sql);
 
@@ -231,7 +239,10 @@
 				</thead>	
 				<tbody>
 
-					<?php connectDB();
+					<?php 
+					
+					
+					connectDB();
 					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
 					$result = connectDB()->query($sql);
 
