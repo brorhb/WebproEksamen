@@ -103,17 +103,17 @@ function validerOppdaterLand() {
     }
 
    if (iso == "" || iso == null) {
-        maaFyllesUt.push("iso2");
+        maaFyllesUt.push("iso");
         resultat = false;
     }
     // Feltet er fylt ut, sjekker ytterligere valideringer
     else {
-        if (isNaN(iso)) {
-            kommentar.push("<strong>iso2</strong> må være 2 siffer.");
+        if (iso.length != 2) {
+            kommentar.push("<strong>iso</strong> må bestå av 2 bokstaver.");
             resultat = false;
         }
-        if (iso.length != 2) {
-            kommentar.push("<strong>iso2</strong> må være 2 siffer.");
+        if (!isNaN(iso)) {
+            kommentar.push("<strong>iso</strong> kan ikke bestå av siffer.");
             resultat = false;
         }
     }
@@ -122,12 +122,12 @@ function validerOppdaterLand() {
         resultat = false;
     }
      else {
-        if (isNaN(iso3)) {
-            kommentar.push("<strong>iso3</strong> må være 3 siffer.");
+        if (iso3.length != 3) {
+            kommentar.push("<strong>iso3</strong> må bestå av 3 bokstaver.");
             resultat = false;
         }
-        if (iso3.length != 3) {
-            kommentar.push("<strong>iso3</strong> må være 3 siffer.");
+        if (!isNaN(iso3)) {
+            kommentar.push("<strong>iso3</strong> kan ikke bestå av siffer.");
             resultat = false;
         }
     }
@@ -384,6 +384,12 @@ function validerOppdaterValuta() {
     if (forkortelse == "" || forkortelse == null) {
         maaFyllesUt.push("forkortelse");
         resultat = false;
+    }
+    else {
+        if (forkortelse.length != 3) {
+            kommentar.push("<strong>Forkortelse</strong> må være 3 tegn.");
+            resultat = false;
+        }
     }
 
     /* Valideringer slutt */

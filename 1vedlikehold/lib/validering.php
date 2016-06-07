@@ -383,9 +383,29 @@ function validerLand($navn,$landskode, $valuta_id, $iso, $iso3) {
 			$maaFyllesUt[] = "iso";
 			$resultat = false;
 		}
-			if ($iso3 == "" || $iso3 == null) {
+		else {
+			if (is_numeric($iso)) {
+				$kommentar[] = "<strong>iso</strong> kan ikke være et nummer.";
+				$resultat = false;
+			}
+			if (strlen($iso) != 2) {
+				$kommentar[] = "<strong>iso</strong> må bestå av 2 bokstaver";
+				$resultat = false;
+			}
+		}
+		if ($iso3 == "" || $iso3 == null) {
 			$maaFyllesUt[] = "iso3";
 			$resultat = false;
+		}
+		else {
+			if (is_numeric($iso3)) {
+				$kommentar[] = "<strong>iso3</strong> kan ikke være et nummer.";
+				$resultat = false;
+			}
+			if (strlen($iso3) != 3) {
+				$kommentar[] = "<strong>iso3</strong> må bestå av 3 bokstaver";
+				$resultat = false;
+			}
 		}
 
 		/* Valideringer slutt */

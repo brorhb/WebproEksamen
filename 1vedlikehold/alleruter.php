@@ -22,22 +22,22 @@
 		$tid = $_POST["tid"];
 		$tilLand = $_POST["tilLand"];
 		$tilFlyplass = $_POST["tilFlyplass_id"];
-
-		//if (validerAlleRuter($tid, $pris, $valuta, $fraFlyplass, $tilFlyplass)) {
+		
+		if (validerAlleRuter($tid, $pris, $valuta, $fraFlyplass, $tilFlyplass)) {
 			oppdaterAlleRuter($ruteKombinasjonNr, $ruteNr, $valuta, $pris, $fraLand, $fraFlyplass, $tid, $tilLand, $tilFlyplass);
 			echo "Informasjonen ble oppdatert.";
-			/*$feiletPHPvalidering = false;
+			$feiletPHPvalidering = false;
 		}
 		else {
 			$feiletPHPvalidering = true;
-		}*/
+		}
 	}
 	if (@$_POST['ny'] || @$_POST['endre'] || @$feiletPHPvalidering) {
 		// Hvis endre eller ny er trykket ned
 		$id = @$_POST['id'];
 
 		echo'	<!-- Innhold -->
-			<form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterRuter()">
+			<form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="POST" onsubmit="return validerOppdaterRuter()">
 			<div class="col-md-12">';
 				if (@$_POST['ny']) {
 					echo '<h2>Ny rute</h2>';
@@ -83,8 +83,8 @@
 							   echo '
 							</div>
 							<div class="form-group col-md-6">
-								<input class="form-control" type="hidden" name="ruteKombinasjonNr" id="ruteKombinasjonNr" value="' . @$ruteKombinasjonNr . '" disabled="disabled" required>
-								<input class="form-control" type="hidden" name="ruteNr" id="ruteNr" value="' . @$ruteNr . '" disabled="disabled" required>
+								<input class="form-control" type="hidden" name="ruteKombinasjonNr" id="ruteKombinasjonNr" value="' . @$ruteKombinasjonNr . '" required>
+								<input class="form-control" type="hidden" name="ruteNr" id="ruteNr" value="' . @$ruteNr . '" required>
 							</div>';
 						}
 					}

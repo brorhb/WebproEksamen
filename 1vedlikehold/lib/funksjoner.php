@@ -219,6 +219,7 @@
 		$tilLand = connectDB()->real_escape_string(utf8_encode($tilLand));
 		$tilFlyplass = connectDB()->real_escape_string(utf8_encode($tilFlyplass));
 
+
 		if ($ruteKombinasjonNr == '') {
 
 			$sql = "START TRANSACTION;
@@ -229,7 +230,7 @@
 					ROLLBACK;";
 
 			if (connectDB()->query($sql) === TRUE) {
-				//return TRUE;
+				return TRUE;
 			}
 			else {
 				//return FALSE;
@@ -238,19 +239,19 @@
 		else {
 			// ID er ikke satt
 			$sql = "START TRANSACTION;
+					UPDATE `rute` SET `reisetid` = '$tid', `basis_pris` = '$pris', `valuta_id` = '$valuta' WHERE `rute`.`id` = '$ruteNr';
 					UPDATE `web-is-gr02w`.`rute_kombinasjon` SET `flyplass_id_fra` = '$tilFlyplass', `flyplass_id_til` = '$fraFlyplass' WHERE `rute_kombinasjon`.`rute_id` = '$ruteNr'; 
 					UPDATE `web-is-gr02w`.`rute_kombinasjon` SET `flyplass_id_fra` = '$fraFlyplass', `flyplass_id_til` = '$tilFlyplass' WHERE `rute_kombinasjon`.`rute_id` = '$ruteNr' AND `rute_kombinasjon`.`id` = '$ruteKombinasjonNr';
 					COMMIT;
 					ROLLBACK;";
 
 			if (connectDB()->query($sql) === TRUE) {
-				//return TRUE;
+				return TRUE;
 			}
 			else {
 				//return FALSE;
 			}
 		}
-		die($sql);
 		connectDB()->close();
 	}
 
