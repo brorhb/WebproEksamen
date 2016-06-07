@@ -197,13 +197,10 @@
 		// Feltet er fylt ut, sjekker ytterligere valideringer
 		else {
 			if (!is_numeric($mobilnummer)) {
-				$kommentar[] = "<strong>Mobilnummeret</strong> kan kun inneholde siffer fra 0 - 9.";
+				$kommentar[] = "<strong>Mobilnummeret</strong> må inneholde minimum 8 siffer.";
 				$resultat = false;
 			}
-			if (strlen($mobilnummer) < 8) {
-				$kommentar[] = "<strong>Mobilnummeret</strong> må inneholde minimum 8 tegn.";
-				$resultat = false;
-			}
+			
 			if (sjekkOmMobilnummerEksisterer($mobilnummer, $landID, $brukerID)) {
 				$kommentar[] = "<strong>Mobilnummer</strong> eksisterer.";
 				$resultat = false;
@@ -237,7 +234,7 @@
 
 		// Sjekker om feltet er tomt
 		if ($fodselsdato == "" || $fodselsdato == null) {
-			$maaFyllesUt[] = "fodselsdato";
+			$maaFyllesUt[] = "fødselsdato";
 			$resultat = false;
 		}
 		// Feltet er fylt ut, sjekker ytterligere valideringer
