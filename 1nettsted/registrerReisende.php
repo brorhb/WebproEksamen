@@ -31,13 +31,13 @@
 						</div>
 						<div class='col-md-6'>
 							<label for='fornavn'>Fornavn</label>
-							<input type='text' class='form-control' name='fornavn' id='fornavn' placeholder='Fornavn' required /> </div>
+							<input type='text' class='form-control' name='fornavn[]' id='fornavn' placeholder='Fornavn' required /> </div>
 						<div class='col-md-6'>
 							<label for='etternavn'>Etternavn</label>
-							<input type='text' class='form-control' name='etternavn' id='etternavn' placeholder='Etternavn' required /> </div>
+							<input type='text' class='form-control' name='etternavn[]' id='etternavn' placeholder='Etternavn' required /> </div>
 						<div class='col-md-6'>
 							<label for='epost'>Epost</label>
-							<input type='email' class='form-control' name='email' id='email' placeholder='eksempel@bjarnum.no' required /> </div>
+							<input type='email' class='form-control' name='email[]' id='email' placeholder='eksempel@bjarnum.no' required /> </div>
 						<div class='col-md-6'>
 							<label for='kjonn'>Kjønn</label>
 							<select class='form-control' name='kjonn' id='kjonn'>
@@ -48,10 +48,10 @@
 						</div>
 						<div class='col-md-6'>
 							<label for='mobilnummer'>Mobilnummer</label>
-							<input type='text' class='form-control' name='mobilnummer' id='mobilnummer' placeholder='99999999' required /> </div>
+							<input type='text' class='form-control' name='mobilnummer[]' id='mobilnummer' placeholder='99999999' required /> </div>
 						<div class='col-md-6'>
 							<label for='dob'>Fødselsdato</label>
-							<input type='text' class='form-control' name='dob' id='dob' placeholder='mm/dd/yyyy' required /> </div>
+							<input type='text' class='form-control' name='dob' id='dob[]' placeholder='mm/dd/yyyy' required /> </div>
 						</div>
 <?php 
 							$x++;

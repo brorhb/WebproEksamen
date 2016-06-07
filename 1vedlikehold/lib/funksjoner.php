@@ -376,8 +376,8 @@
 		if ($id == '') {
 
 			$sql = "START TRANSACTION;
-                    INSERT INTO person (id, fornavn, etternavn, fodselsdato) VALUES ('', '$fornavn', '$etternavn', '$fodselsdato');
-                    INSERT INTO bruker (id, brukernavn, epost, passord, land_id, mobilnr, person_id) VALUES ('', '$brukernavn', '$epost', '$kryptertPassord', '$landID', '$mobilnr', (SELECT MAX(id) FROM person));
+                    INSERT INTO person (fornavn, etternavn, fodselsdato) VALUES ('$fornavn', '$etternavn', '$fodselsdato');
+                    INSERT INTO bruker (brukernavn, epost, passord, land_id, mobilnr, person_id) VALUES ('$brukernavn', '$epost', '$kryptertPassord', '$landID', '$mobilnr', (SELECT MAX(id) FROM person));
                     COMMIT;";
 
 			if (connectDB()->query($sql) === TRUE) {
@@ -431,8 +431,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO person (id, fornavn, etternavn, fodselsdato)
-			VALUES ('$id', '$fornavn', '$etternavn', '$fodselsdato');";
+			$sql = "INSERT INTO person (fornavn, etternavn, fodselsdato)
+			VALUES ('$fornavn', '$etternavn', '$fodselsdato');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -481,8 +481,8 @@
 
 		if ($id == '') {
 
-			$sql = "INSERT INTO luftfartoy (id, modell_id, tailnr)
-			VALUES ('$id', '$modell_id', '$tailnr');";
+			$sql = "INSERT INTO luftfartoy (modell_id, tailnr)
+			VALUES ('$modell_id', '$tailnr');";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
