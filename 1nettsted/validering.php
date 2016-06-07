@@ -65,6 +65,7 @@
 
 	// Eksempel på valider-funksjon slutt
 
+
 	/* Validering php Registrer reisende*/
 function validerRegistrerReisende($fornavn,$etternavn, $epost, $kjonn, $fodeselsdato, $mobilnummer) {
 
@@ -152,7 +153,53 @@ function validerRegistrerReisende($fornavn,$etternavn, $epost, $kjonn, $fodesels
 		
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
-	}
+	} 
+
+function validerBestilling($fraFlyplass, $tilFlyplass, $passasjertype, $fraDato, $tilDato) {
+    
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$fraFlyplass = utf_decode($fraFlyplass);
+		$tilFlyplass = utf8_decode($tilFlyplass);
+		$passasjertype = utf8_decode($passasjertype);
+		$fraDato = utf8_decode($fraDato);
+		$tilDato = utf8_decode($tilDato);
+
+
+    //Sjekker om feltet er tomt,listeboks
+    if ($fraFlyplass.value == ""){
+        $maaFyllesUt.push("fraFlyplass");
+        $resultat = false;
+    }
+    //Sjekker om feltet er tomt, listeboks
+    if ($tilFlyplass.value == ""){
+        $maaFyllesUt.push("tilFlyplass");
+        $resultat = false;
+    }
+     //Sjekker om feltet er tomt,listeboks
+    if ($passasjertype == "") {
+        $maaFyllesUt.push(passasjertype);
+        $resultat = false;
+    }
+        //Sjekker om feltet er tomt,listeboks
+    if ($fraDato.value == ""){
+        $maaFyllesUt.push("fraDato");
+        $resultat = false;
+    }
+
+    //Sjekker om feltet er tomt,listeboks
+    if($tilDato.value == ""){
+        $maaFyllesUt.push("tilDato");
+        $resultat = false;
+    }
+    return $resultat;
+    }
+}
+/* Bestilling validering slutt */
+
+
 
 
 	?>
