@@ -89,6 +89,7 @@ function validerReisende() {
 /* Reisende validering slutt */
 
 
+
 function feilmeldingBoks(maaFyllesUt, kommentar) {
 
     var fyllesutOutput = "";
