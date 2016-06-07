@@ -1234,7 +1234,7 @@
 		$sql = "SELECT id, navn, flyplasskode FROM flyplass ORDER BY navn;";
 		$result = connectDB()->query($sql);
 
-		echo '<select class="form-control" name="' . $objektnavn . '_id[]" id="' . $objektnavn . '_id[]">';
+		echo '<select class="form-control" name="' . $objektnavn . '_id" id="' . $objektnavn . '_id">';
 
 		if ($result->num_rows > 0) {
 
