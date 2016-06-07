@@ -519,17 +519,17 @@ function validerPersonBruker() {
 
     // Sjekker om feltet er tomt
     if (fodselsdato == "" || fodselsdato == null) {
-        maaFyllesUt.push("fødselsdato");
+        maaFyllesUt.push("fodselsdato");
         resultat = false;
     }
-    // Feltet er fylt ut, sjekker ytterligere valideringer
+    // Feltet er fylt ut, sjekker ytterligere valideringer 
     else {
-        if (fodselsdato.length != 8) {
-            kommentar.push("<strong>Fødselsdato</strong> må være 8 siffer (DDMMYYYY).");
+        if (isNaN(fodselsdato)) {
+            kommentar.push("<strong>fødselsdato</strong> må være minst 8 siffer (DDMMYYYY).");
             resultat = false;
         }
-        if (isNaN(fodselsdato)) {
-            kommentar.push("<strong>Fødselsdato</strong> må være 8 siffer (DDMMYYYY).");
+        if (fodselsdato.length > 8) {
+            kommentar.push("<strong>fødselsdato</strong> må være minst 8 siffer (DDMMYYYY).");
             resultat = false;
         }
     }
@@ -548,17 +548,17 @@ function validerPersonBruker() {
 
     // Sjekker om feltet er tomt
     if (mobilnr == "" || mobilnr == null) {
-        maaFyllesUt.push("mobilnummer");
+        maaFyllesUt.push("mobilnr");
         resultat = false;
     }
-    // Feltet er fylt ut, sjekker ytterligere valideringer
+    // Feltet er fylt ut, sjekker ytterligere valideringer 
     else {
-        if (mobilnr.length != 8) {
-            kommentar.push("<strong>Mobilnummer</strong> må være 8 siffer.");
+        if (isNaN(mobilnr)) {
+            kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
             resultat = false;
         }
-        if (isNaN(mobilnr)) {
-            kommentar.push("<strong>Fødselsdato</strong> må være 8 siffer.");
+        if (mobilnr.length > 8) {
+            kommentar.push("<strong>mobilnummer</strong> må være minst 8 siffer.");
             resultat = false;
         }
     }

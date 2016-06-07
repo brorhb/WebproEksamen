@@ -677,9 +677,16 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 	}
 	
 	if ($flyplasskode == "" || $flyplasskode == null) {
-		$maaFyllesUt[] = "flyplasskode";
-		$resultat = false;
-	}
+				$maaFyllesUt[] = "flyplasskode";
+				$resultat = false;
+			}
+			// Feltet er fylt ut, sjekker ytterligere valideringer
+			else {
+				if (strlen($flyplasskode) < 3) {
+					$kommentar[] = "<strong>flyplasskoden</strong> må inneholde minumum 3 tegn.";
+					$resultat = false;
+				}
+			}
 
 		if ($latitude == "" || $latitude == null) {
 			$maaFyllesUt[] = "Latitude";
