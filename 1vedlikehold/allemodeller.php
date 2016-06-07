@@ -6,7 +6,7 @@
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
-        if(slettVenterpaafunksjon($id)) {
+        if(slettAlleModeller($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
@@ -48,7 +48,7 @@
             <div class="col-md-12">';
 
                     connectDB();
-                    $sql = "SELECT m.id , m.navn, tl.type, m.kapasitet, m.rader, m.bredde FROM modell m LEFT JOIN type_luftfartoy tl ON m.type_luftfartoy_id = tl.id WHERE m.id='$id';";
+                    $sql = "SELECT m.id , m.navn, tl.id AS type, m.kapasitet, m.rader, m.bredde FROM modell m LEFT JOIN type_luftfartoy tl ON m.type_luftfartoy_id = tl.id WHERE m.id='$id';";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {

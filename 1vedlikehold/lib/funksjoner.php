@@ -162,7 +162,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE type_luftfartoy SET type='$type' WHERE id='$id';";
+			$sql = "UPDATE `modell` SET `type_luftfartoy_id` = '$type', `navn` = '$navn', `kapasitet` = '$kapasitet', `rader` = '$rader', `bredde` = '$bredde' WHERE `modell`.`id` = '$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -172,6 +172,21 @@
 			}
 		}
 
+		connectDB()->close();
+	}
+
+	function slettAlleModeller($id) {
+		connectDB();
+
+		$sql = "DELETE FROM `web-is-gr02w`.`modell` WHERE `modell`.`id` = '$id';";
+		$result = connectDB()->query($sql);
+
+		if (connectDB()->query($sql) === TRUE) {
+			return TRUE;
+			}
+		else {
+			return FALSE;
+		}
 		connectDB()->close();
 	}
 
