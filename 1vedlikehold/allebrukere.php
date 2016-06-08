@@ -16,14 +16,14 @@
     elseif (@$_POST['lagre']) {
         $brukerID = @$_POST['brukerID'];
         $personID = @$_POST['personID'];
-        $brukernavn = $_POST['brukernavn'];
-        $ukryptertPassord = $_POST['passord'];
-        $fornavn = $_POST['fornavn'];
-        $etternavn = $_POST['etternavn'];
-        $fodselsdato = $_POST['fodselsdato'];
-        $landID = $_POST['land_id'];
-        $epost = $_POST['epost'];
-        $mobilnr = $_POST['mobilnr'];
+        $brukernavn = @$_POST['brukernavn'];
+        $ukryptertPassord = @$_POST['passord'];
+        $fornavn = @$_POST['fornavn'];
+        $etternavn = @$_POST['etternavn'];
+        $fodselsdato = @$_POST['fodselsdato'];
+        $landID = @$_POST['land_id'];
+        $epost = @$_POST['epost'];
+        $mobilnr = @$_POST['mobilnr'];
 
        if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
 

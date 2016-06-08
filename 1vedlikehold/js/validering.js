@@ -512,7 +512,7 @@ function validerPersonBruker() {
     var passord = document.forms["oppdater"]["passord"].value;
     var fornavn = document.forms["oppdater"]["fornavn"].value;
     var etternavn = document.forms["oppdater"]["etternavn"].value;
-    var fodselsdato = document.forms["oppdater"]["fodselsdato"].value;
+    var fodselsdato = document.forms["oppdater"]["date"].value;
     var landID = document.getElementById("land_id");
     var epost = document.forms["oppdater"]["epost"].value;
     var mobilnr = document.forms["oppdater"]["mobilnr"].value;
@@ -905,13 +905,13 @@ function validerFlyvning() {
 /*sok alleavganger.php*/
 
 // Eksempel på valider-funksjon
-function validerEksempel() {
-    /* Klarerer variabler */
+/*function validerEksempel() {
+    // Klarerer variabler 
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
 
-    /* Ulike valideringer */
+    // Ulike valideringer
 
     // Sjekker om feltet er tomt
     if (true) {
@@ -955,7 +955,7 @@ function validerEksempel() {
         }
     }
 
-    /* Valideringer slutt */
+    // Valideringer slutt 
 
     // Skriver ut feilmeldingsboks
     if (!resultat) {
@@ -966,7 +966,7 @@ function validerEksempel() {
     return resultat;
 }
 
-// Eksempel på valider-funksjon slutt
+// Eksempel på valider-funksjon slutt*/
 
 function feilmeldingBoks(maaFyllesUt, kommentar) {
 
