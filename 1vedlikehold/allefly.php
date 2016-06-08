@@ -68,8 +68,7 @@
                     else {
                         echo '
                                 <div class="form-group col-md-6">
-                                <lable for="modell">Velg modell</label>
-                                <input class="form-control" type="hidden" placeholder="id" name="modell_id" id="modell_id" value="' . @$modell_id . '" required>'; 
+                                <lable for="modell">Velg modell</label>';
                                 echo modellListe(@$modell_id);
                             echo '
                             </div>

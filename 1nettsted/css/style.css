@@ -1,3 +1,4 @@
+
 /* HEADER */
 /* HEADER */
 .nav {
@@ -41,6 +42,9 @@
 .container {
     z-index: 1;
     margin-top: -80px;
+}
+.container-innhold {
+    margin-top:80px;
 }
 /* container */
 
