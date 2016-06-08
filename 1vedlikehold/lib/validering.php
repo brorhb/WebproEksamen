@@ -110,7 +110,7 @@
 		echo '<p style="color:#c9302c;">' . $output . '</p>';
 	}
 
-	function validerPersonBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id, $fornavn, $etternavn, $fodselsdato) {
+	function validerPersonBruker($BrukerID, $brukernavn, $epost, $ukryptert_passord, $land_id, $mobilnummer, $person_id, $fornavn, $etternavn, $date) {
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
 		$kommentar = array();
@@ -125,7 +125,7 @@
 		$person_id = utf8_decode($person_id);
 		$fornavn = utf8_decode($fornavn);
 		$etternavn = utf8_decode($etternavn);
-		$fodselsdato = utf8_decode($fodselsdato);
+		$fodselsdato = utf8_decode($date);
 
 		/* Ulike valideringer */
 
@@ -140,12 +140,13 @@
 			$maaFyllesUt[] = "brukernavn";
 			$resultat = false;
 		}
-	else {
+		else {
 			if (sjekkOmBrukernavnEksisterer(@$brukernavn, @$brukerID) ) {
 				$kommentar[] = "<strong>Brukernavn</strong> eksisterer.";
 				$resultat = false;
 			}
 		}
+		
 		// Sjekker om feltet er tomt
 		if ($epost == "" || $epost == null) {
 			$maaFyllesUt[] = "epost";
@@ -208,25 +209,12 @@
 		}
 
 		// Sjekker om feltet er tomt
-		/*if ($person_id == "" || $person_id == null) {
-			$maaFyllesUt[] = "person id";
-			$resultat = false;
-		}
-		// Feltet er fylt ut, sjekker ytterligere valideringer
-		else {
-			if (!sjekkOmPersonIDeksisterer($person_id)) {
-				$kommentar[] = "<strong>Personen</strong> eksisterer ikke.";
-				$resultat = false;
-			}
-		}*/
-
-				// Sjekker om feltet er tomt
 		if ($fornavn == "" || $fornavn == null) {
 			$maaFyllesUt[] = "fornavn";
 			$resultat = false;
 		}
 
-				// Sjekker om feltet er tomt
+		// Sjekker om feltet er tomt
 		if ($etternavn == "" || $etternavn == null) {
 			$maaFyllesUt[] = "etternavn";
 			$resultat = false;
