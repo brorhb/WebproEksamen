@@ -25,17 +25,17 @@
         $epost = $_POST['epost'];
         $mobilnr = $_POST['mobilnr'];
 
-       // if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
+       if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
 
             // Valideringen godkjent, oppdater databasen
             oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
             echo "Informasjonen ble oppdatert.";
-            /*$feiletPHPvalidering = false;
+            $feiletPHPvalidering = false;
         }
         else {
             // PHP-validering ikke godkjent, feilmeldinger skrives ut og skjemaet for å fylle ut info vises:
             $feiletPHPvalidering = true;
-        }*/
+        }
     }
     if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
@@ -86,7 +86,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
+                                <input class="form-control" type="text" placeholder="fodseldato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>
                                 '; 
                             echo landskodeListe($landID);
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
+                                <input class="form-control" type="text" placeholder="DDMMYYYY" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>';
                         echo landskodeListe(@$landID);
                         echo '

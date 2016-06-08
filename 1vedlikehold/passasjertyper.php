@@ -15,8 +15,8 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $Passasjertype = $_POST['Passasjertype'];
-        $beskrivelse = $_POST['beskrivelse'];
+        $Passasjertype = @$_POST['Passasjertype'];
+        $beskrivelse = @$_POST['beskrivelse'];
 
 
         if(validerPassasjertype($Passasjertype, $beskrivelse)) {
@@ -28,7 +28,7 @@
             $feiletPHPvalidering = true;
         }
     }
-    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
+    if (@$_POST['ny'] || @$_POST['endre'] || @$feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
