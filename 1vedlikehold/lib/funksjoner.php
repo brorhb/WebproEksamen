@@ -1411,6 +1411,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB()->close();
 	}
 
+	function sjekkOmPassasjertypeIDEksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT passasjertype_id FROM pris WHERE passasjertype_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function passasjertypeListe($objektID) {
 		$objektnavn = 'passasjertype';
 		$objektIDeksisterer = sjekkOmPassasjertypeIDeksisterer($objektID);
@@ -1445,6 +1460,36 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM valuta WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmValutaEksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT valuta_id FROM pris WHERE valuta_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmValutaEksistereriRute($objektID) {
+		connectDB();
+
+		$sql = "SELECT valuta_id FROM rute WHERE valuta_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1584,6 +1629,22 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB()->close();
 	}
 
+		function sjekkOmLandEksistereriFlyplass($objektID) {
+		connectDB();
+
+		$sql = "SELECT land_id FROM flyplass WHERE land_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+
 	function flyplassListe($objektID) {
 		$objektnavn = 'flyplass';
 		$objektIDeksisterer = sjekkOmFlyplassIDeksisterer($objektID);
@@ -1618,6 +1679,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM bruker WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmLandEksistereriBruker($objektID) {
+		connectDB();
+
+		$sql = "SELECT land_id FROM bruker WHERE land_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {

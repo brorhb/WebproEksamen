@@ -21,7 +21,7 @@
 	echo "<br><br>";
 
 	
-	$test = sjekkOmLuftfartoyIDeksistereriFlyvning("2");
+	$test = sjekkOmLuftfartoyIDeksistereriFlyvning("57");
 
 	if ($test) {
 		echo "Returnerer true (" . $test . ")";
