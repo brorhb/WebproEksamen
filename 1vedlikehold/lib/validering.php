@@ -141,7 +141,7 @@
 			$resultat = false;
 		}
 	else {
-			if (sjekkOmBrukernavnEksisterer($brukernavn, $brukerID) ) {
+			if (sjekkOmBrukernavnEksisterer(@$brukernavn, @$brukerID) ) {
 				$kommentar[] = "<strong>Brukernavn</strong> eksisterer.";
 				$resultat = false;
 			}
@@ -157,7 +157,7 @@
 				$kommentar[] = "<strong>Epostadressen</strong> er ugyldig.";
 				$resultat = false;
 			}
-			if (sjekkOmEpostEksisterer($epost, $brukerID) ) {
+			if (sjekkOmEpostEksisterer(@$epost, @$brukerID) ) {
 				$kommentar[] = "<strong>E-post</strong> eksisterer.";
 				$resultat = false;
 			}
