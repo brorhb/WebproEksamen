@@ -75,7 +75,7 @@
 								<ul class="dropdown-menu" role="menu">
 									 <li class="dropdown-header">Flyvninger</li>
 									 <li><a href="alleruter.php">Alle ruter</a></li>
-									 <li><a href="alleavganger.php">Alle avganger</a></li>
+									 <li><a href="alleflyvninger.php">Alle flyvninger</a></li>
 								</ul>
 						  </li>
 						  <li><a href="allebestillinger.php">Alle bestillinger</a></li>
