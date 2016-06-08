@@ -827,8 +827,6 @@ function validerFlyvning() {
 /* */
 function validerFlyvning() {
 
-    return false;
-    break;
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
@@ -844,12 +842,10 @@ function validerFlyvning() {
     var gate = document.forms["oppdater"]["gate"].value;
     var pris = document.forms["oppdater"]["pris"].value;
     var valuta_id = document.getElementById("valuta_id"); //listeboks
-
-    var del = klokkeslett.split(":");
-    var timer = del[0];
-    var minutter = del[1];
     
     /* Ulike valideringer */
+
+<<<<<<< HEAD
         // Sjekker om feltet er tomt listeboks
     if (luftfartoy_id.value == "") {
         maaFyllesUt.push("luftfartoy_id");
@@ -888,16 +884,8 @@ function validerFlyvning() {
             kommentar.push("<strong>klokkeslett</strong> må bestå av 5 tegn. f.eks 14:00");
             resultat = false;
         }
-        if (isNaN(timer) || isNaN(minutter)) {
-            kommentar.push("<strong>Klokkeslett</strong> kan kun inneholde siffer på hver side av kolon (:)");
-            resultat = false;
-        }
-        if (timer < 0 || timer > 23) {
-            kommentar.push("<strong>Klokkeslett</strong> kan kun ha timer fra og med 0 til og med 23");
-            resultat = false;
-        }
-        if (minutter < 0 || minutter > 59) {
-            kommentar.push("<strong>Klokkeslett</strong> kan kun ha minutter fra og med 0 til og med 59");
+        if (klokke(klokkeslett)) {
+            kommentar.push("<strong>klokkeslett</strong> må inneholde tall og :. f.eks 14:00");
             resultat = false;
         }
     }
