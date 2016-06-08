@@ -76,22 +76,15 @@
                             $flyvning_avgang = utf8_encode($row["avgang"]);
                             $flyvning_gate = utf8_encode($row["gate"]);
 
+                            $dato = gmdate("m/d/Y", $flyvning_avgang);
+                            $klokkeslett = gmdate("H:i", $flyvning_avgang);
+
                             echo '
-                            <div class="col-md-6">
-                                <div class="form-group ">
-                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar">
-                                            </i>
-                                        </div>
-                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-group col-md-6">
-                                <lable for="avgang">Avganger</lable>
-                                <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="date" id="date" value="' . @$flyvning_avgang . '" required>
+                                <lable for="avgang">Dato</lable>
+                                <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="dpd1" id="dpd1" value="' . @$dato . '" required>
+                                <lable for="avgang">Klokkeslett</lable>
+                                <input class="form-control" type="text" placeholder="HH:MM" name="klokkeslett" id="klokkeslett" value="' . @$klokkeslett . '" required>
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
@@ -102,7 +95,7 @@
                                 <lable for="luftfartoy">Tail Nr</lable>';
                             echo luftfartoyListe($flyvning_luftfaryoy_id);
                             echo '</div>';
-                            echo "<h2>Pris</h2>";
+                            echo '<div class="col-md-12"><h2>Pris</h2></div>';
 
                             $sql2 = "SELECT id, type, beskrivelse FROM passasjertype;";
                             $result2 = connectDB()->query($sql2);
