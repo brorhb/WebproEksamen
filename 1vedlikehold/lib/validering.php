@@ -812,6 +812,148 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		}
 		
 		// Returnerer om neste side skal lastes inn
-		return $resultat;*/
+		return $resultat;
+	
+
+		VALIDERING AV NETTSIDEN
+--------------------------------------
+INDEX:
+
+	function validerBestillinger($fraFlyplass, $tilFlyplass, $passasjer, $fraDato, $tilDato) {
+	
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$fraFlyplass = utf8_decode($fraFlyplass);
+	$tilFlyplass = utf8_decode($tilFlyplass);
+	$passasjer = utf8_decode($passasjer);
+	$fraDato = utf8_decode($fraDato);
+	$tilDato = utf8_decode($tilDato);
+
+	if ($fraFlyplass == "" || $fraFlyplass == null) {
+		$maaFyllesUt[] = "fraFlyplass";
+		$resultat = false;
+	}
+	if ($tilFlyplass == "" || $tilFlyplass == null) {
+		$maaFyllesUt[] = "tilFlyplass";
+		$resultat = false;
+	}
+
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if ($passasjer == "" || $passasjer == null) {
+		$maaFyllesUt[] = "passasjer";
+		$resultat = false;
+	}
+		else {
+			if (!is_numeric($passasjer)) {
+				$kommentar[] = "<strong>passasjer</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+	if ($fraDato == "" || $fraDato == null) {
+		$maaFyllesUt[] = "fraDato";
+		$resultat = false;
+	}
+	if ($fraDato == "" || $fraDato == null) {
+		$maaFyllesUt[] = "fraDato";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	} 
+	return $resultat;
+}
+
+REGISTRERREISENDE:
+		
+	function validerRegistrerReisende($fornavn, $etternavn, $epost, $kjonn, $mobilnummer, $fodselsdato) {
+	
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$fornavn = utf8_decode($fornavn);
+	$etternavn = utf8_decode($etternavn);
+	$epost = utf8_decode($epost);
+	$kjonn = utf8_decode($kjonn);
+	$mobilnummer = utf8_decode($mobilnummer);
+	$fodselsdato = utf8_decode($fodselsdato);
+
+	if ($fornavn == "" || $fornavn == null) {
+		$maaFyllesUt[] = "fornavn";
+		$resultat = false;
+	}
+	if ($etternavn == "" || $etternavn == null) {
+		$maaFyllesUt[] = "etternavn";
+		$resultat = false;
+	}
+	
+	if ($epost == "" || $epost == null) {
+			$maaFyllesUt[] = "epost";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (filter_var($epost, FILTER_VALIDATE_EMAIL) === false) {
+				$kommentar[] = "<strong>Epostadressen</strong> er ugyldig.";
+				$resultat = false;
+			}
+			if (sjekkOmEpostEksisterer(@$epost, @$brukerID) ) {
+				$kommentar[] = "<strong>E-post</strong> eksisterer.";
+				$resultat = false;
+			}
+		}
+	if ($kjonn == "" || $kjonn == null) {
+		$maaFyllesUt[] = "kjonn";
+		$resultat = false;
+	}
+
+	if ($mobilnummer == "" || $mobilnummer == null) {
+			$maaFyllesUt[] = "mobilnummer";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!is_numeric($mobilnummer)) {
+				$kommentar[] = "<strong>Mobilnummeret</strong> må inneholde minimum 8 siffer.";
+				$resultat = false;
+			}
+			
+			if (sjekkOmMobilnummerEksisterer($mobilnummer, $landID, $brukerID)) {
+				$kommentar[] = "<strong>Mobilnummer</strong> eksisterer.";
+				$resultat = false;
+			}
+		}
+
+
+	if ($fodselsdato == "" || $fodselsdato == null) {
+			$maaFyllesUt[] = "fødselsdato";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if ($fodselsdato > time()) {
+				$kommentar[] = "passasjer må være født";
+				$resultat = false;
+			}
+		}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	} 
+	return $resultat;
+}
+
+
+
+
+		*/
 }		
 ?>
