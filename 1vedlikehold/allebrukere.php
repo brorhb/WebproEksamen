@@ -84,12 +84,22 @@
                                 <lable for="etternavn">Etternavn</lable>
                                 <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="fodseldato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <lable for="land">Land</lable>
                                 '; 
-                            echo landskodeListe($landID);
+                            echo landskodeListe(@$landID);
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -110,7 +120,7 @@
                                 <lable for="brukernavn">Brukernavn</lable>
                                 <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
                                 <lable for="passord">Passord</lable>
-                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$ukryptertPassord . '" required>
+                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fornavn">Fornavn</lable>
@@ -118,12 +128,23 @@
                                 <lable for="etternavn">Etternavn</lable>
                                 <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="DDMMYYYY" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
-                                <lable for="land">Land</lable>';
-                        echo landskodeListe(@$landID);
-                        echo '
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <lable for="land">Land</lable>
+                                '; 
+                            echo landskodeListe(@$landID);
+                            echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
