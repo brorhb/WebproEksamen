@@ -522,18 +522,27 @@
 		connectDB()->close();
 	}
 
-    function slettPersonBruker() {
-        connectDB();
+    function slettPersonBruker($brukerID) {
+        
+		connectDB();
+		$brukerID = connectDB()->real_escape_string(utf8_encode($brukerID));
 
-		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
-		$result = connectDB()->query($sql);
+		$sql = "START TRANSACTION; 
+				DELETE FROM `web-is-gr02w`.`bruker` WHERE `bruker`.`id` = '$brukerID';
+				DELETE FROM `web-is-gr02w`.`person` WHERE `person`.`id` = (SELECT person_id FROM bruker WHERE id = '$brukerID'));
+				COMMIT;
+				ROLLBACK;";
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+
+		$result = connectDB()->multi_query($sql);
+
+		if (connectDB()->multi_query($sql) === TRUE) {
+			//return TRUE;
 			}
 		else {
-			return FALSE;
+			//return FALSE;
 		}
+		die($sql);
 		connectDB()->close();
     }
 

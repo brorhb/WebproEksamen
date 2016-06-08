@@ -5,8 +5,8 @@
     
 
     if (@$_POST['slett']) {
-        $id = @$_POST['id'];
-        if(slettBruker($id)) {
+        $brukerID = @$_POST['id'];
+        if(slettPersonBruker($brukerID)) {
             echo "Informasjonen ble slettet.";
         }
         else {
@@ -213,10 +213,4 @@
         <!-- Innhold -->
         ';
 
-    
-
-
-
-
-    include_once ("end.php");
-?>
+include_once ("end.php"); ?>
