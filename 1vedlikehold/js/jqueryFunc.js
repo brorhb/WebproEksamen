@@ -81,5 +81,8 @@ $('.navUtenJs').hide();
         toggleFields();
     });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of c8a16ee... date picker 2nd try
 });
