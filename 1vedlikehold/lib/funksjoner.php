@@ -526,7 +526,7 @@
         
 		connectDB();
 		$brukerID = connectDB()->real_escape_string(utf8_encode($brukerID));
-		$personID = "SELECT person_id FROM bruker WHERE id = $brukerID";
+		$personID = HentPerson_idFraBruker_id($brukerID);
 
 		$sql = "START TRANSACTION; 
 				DELETE FROM `web-is-gr02w`.`bruker` WHERE `bruker`.`id` = $brukerID; 
@@ -1170,6 +1170,21 @@
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				return utf8_encode($row["valuta_id"]);
+			}
+		}
+		connectDB()->close();
+	}
+
+	function HentPerson_idFraBruker_id($Bruker_id) {
+		connectDB();
+
+		$sql = "SELECT person_id FROM bruker WHERE id = '$Bruker_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["person_id"]);
 			}
 		}
 		connectDB()->close();
