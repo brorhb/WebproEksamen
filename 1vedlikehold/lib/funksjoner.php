@@ -684,7 +684,7 @@
 				$sql .= "INSERT INTO pris (id, passasjertype_id, flyvning_id, pris, valuta_id) VALUES ('', '$passasjertype_iden', ($opprettetFlyvningID), '$prisen', '$valuta_iden');";
 			}
 
-			//die($sql);
+			die("Legg til: " . $sql);
 
 			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
@@ -695,7 +695,21 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE type_luftfartoy SET type='$type' WHERE id='$id';";
+			$sql = "INSERT INTO flyvning (id, luftfartoy_id, rute_kombinasjon_id, avgang, gate)
+			VALUES ('', '$luftfartoy_id', '$rute_kombinasjon_id', '$avgang', '$gate');";
+
+			$opprettetFlyvningID = "SELECT id FROM flyvning WHERE luftfartoy_id = '$luftfartoy_id' AND rute_kombinasjon_id = '$rute_kombinasjon_id' AND avgang = '$avgang' AND gate = '$gate' ORDER BY id DESC LIMIT 1";
+
+			for ($i=0; $i < count($passasjertype_id); $i++) {
+				$passasjertype_iden = connectDB()->real_escape_string(utf8_encode($passasjertype_id[$i]));
+
+				$prisen = connectDB()->real_escape_string(utf8_encode($pris[$i]));
+				$valuta_iden = connectDB()->real_escape_string(utf8_encode($valuta_id[$i]));
+
+				$sql .= "INSERT INTO pris (id, passasjertype_id, flyvning_id, pris, valuta_id) VALUES ('', '$passasjertype_iden', ($opprettetFlyvningID), '$prisen', '$valuta_iden');";
+			}
+
+			die("Oppdatert: " . $sql);
 
 			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
