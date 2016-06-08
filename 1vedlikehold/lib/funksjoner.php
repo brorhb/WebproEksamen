@@ -93,7 +93,7 @@
 
 		if (validerSlettKlasse($KlasseID)) {
 			connectDB();
-
+/*legge til det som er over dette*/
 			$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
 			$result = connectDB()->query($sql);
 
@@ -105,6 +105,8 @@
 			}
 			connectDB()->close();
 		}
+		/* må endre fra return - resultat*/
+		/*og ubder dette*/
 		else {
 			$resultat = FALSE;
 		}
