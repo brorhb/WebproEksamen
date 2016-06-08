@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+$('.navUtenJs').hide();
   // sidebar
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
