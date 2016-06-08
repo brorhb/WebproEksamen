@@ -81,4 +81,6 @@ $('.navUtenJs').hide();
         toggleFields();
     });
 
+    $("#birthdayPicker").birthdayPicker();
+    
 });
