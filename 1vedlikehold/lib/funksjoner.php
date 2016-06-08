@@ -641,15 +641,31 @@
 	function slettLuftfartoy($LuftfartoyID) {
 		connectDB();
 
-		$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
-		$result = connectDB()->query($sql);
-
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
-			}
-		else {
-			return FALSE;
+		if (validerSlettLuftfartoy($objektID)) {
+			$resultat = TRUE;
 		}
+		else {
+			$resultat = FALSE;
+		}
+
+		if ($resultat) {
+			$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
+				}
+			else {
+				$resultat = FALSE;
+			}
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+
 		connectDB()->close();
 	}
 
@@ -758,41 +774,6 @@
 			}
 		}
 		connectDB()->close();
-	}
-
-	function HentAntallSvaralternativerFraSporsmaalID($sporsmaalID) {
-		/*connectDB();
-
-		$sql = "SELECT COUNT(*) AS antall FROM qz_svar WHERE sporsmaalID = '$sporsmaalID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				return utf8_encode($row["antall"]);
-			}
-		}
-		connectDB()->close();*/
-	}
-
-	function sjekkOmSvaralternativErKorrekt($svarID) {
-		/*connectDB();
-
-		$sql = "SELECT svar FROM qz_svar WHERE id = '$svarID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				if ($row["svar"] == 1) {
-					return TRUE;
-				}
-				else {
-					return FALSE;
-				}
-			}
-		}
-		connectDB()->close();*/
 	}
 
 	function validerTelefonnummer($telefonnummer)
@@ -1723,6 +1704,21 @@
 		connectDB();
 
 		$sql = "SELECT id FROM luftfartoy WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmLuftfartoyIDeksistereriFlyvning($objektID) {
+		connectDB();
+
+		$sql = "SELECT luftfartoy_id FROM flyvning WHERE luftfartoy_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
