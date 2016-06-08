@@ -1266,7 +1266,7 @@
 		function sjekkOmKlasseIDeksistereriPris($objektID) {
 		connectDB();
 
-		$sql = "SELECT klasse FROM pris WHERE klasse_id = '$objektID';";
+		$sql = "SELECT klasse_id FROM pris WHERE klasse_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
