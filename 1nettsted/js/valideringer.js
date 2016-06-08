@@ -48,8 +48,11 @@ function validerBestilling() {
         maaFyllesUt.push("tilDato");
         resultat = false;
     }
-    return resultat;
-    }
+   if (!resultat) {
+                feilmeldingBoks(maaFyllesUt, kommentar);
+            }
+            return resultat;
+
 
 /* Bestilling validering slutt */
 
@@ -125,14 +128,35 @@ function validerRegistrerReisende() {
     /* Valideringer slutt */
 
         // Skriver ut feilmeldingsboks
-        if (!resultat) {
-            feilmeldingBoks(maaFyllesUt, kommentar);
-        }
+        
+        
+            if (!resultat) {
+                feilmeldingBoks(maaFyllesUt, kommentar);
+            }
+            return resultat;
 
         // Returnerer om neste side skal lastes inn
-        return resultat;
+        
+        function validerReferansesok() {
+    
+            var maaFyllesUt = [];
+            var kommentar = [];
+            var resultat = true;
+
+            
+            var sokefelt = document.forms["oppdater"]["sokefelt"].value; 
+          
+            if (sokeflet.value == ""){
+            maaFyllesUt.push("sokefelt");
+            resultat = false;
+        }
+            if (!resultat) {
+                        feilmeldingBoks(maaFyllesUt, kommentar);
+                    }
+                    return resultat;
     }
 }
+
 
 
 

@@ -1035,7 +1035,36 @@ REGISTRERREISENDE:
 	return $resultat;
 }
 
+ REFERANSENUMMER:
 
+
+	function validerReferansesok($sokefelt) {
+	
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$sokefelt = utf8_decode($sokefelt);
+	
+
+	if ($sokefelt == "" || $sokefelt == null) {
+			$maaFyllesUt[] = "sokefelt";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!is_numeric($sokefelt)) {
+				$kommentar[] = "<strong>Referansenummeret</strong> kan kunn inneholde siffer.";
+				$resultat = false;
+			}
+		}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	} 
+	return $resultat;
+}
 
 
 		*/
