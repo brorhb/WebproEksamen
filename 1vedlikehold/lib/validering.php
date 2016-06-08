@@ -1155,13 +1155,17 @@ function validerVelgFly()($reisevalg) {
 		// Returnerer om neste side skal lastes inn
 		return $resultat;*/	
 
-	function validerSlettLuftfartoy($objektID) {
+	function validerSlettKlasse($objektID) {
 		$maaFyllesUt = array();
 		$kommentar = array();
 		$resultat = TRUE;
 
-		if (sjekkOmLuftfartoyIDeksistereriFlyvning($objektID)) {
-			$kommentar[] = 'Flyet brukes i en eller flere flyvninger. Du må slette de først.';
+		if (sjekkOmKlasseIDeksistereriPris($objektID)) {
+			$kommentar[] = 'Klassen brukes i en eller flere priser. Du må slette de først.';
+			$resultat = FALSE;
+		}
+		if (sjekkOmKlasseIDeksistereriSeteoppsett($objektID)) {
+			$kommentar[] = 'Klassen brukes i en eller flere seteoppsett. Du må slette de først.';
 			$resultat = FALSE;
 		}
 
@@ -1171,5 +1175,7 @@ function validerVelgFly()($reisevalg) {
 
 		return $resultat;
 	}
+
+	
 
 ?>

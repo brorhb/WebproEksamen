@@ -89,18 +89,27 @@
 	}
 
 	function slettKlasse($KlasseID) {
-		connectDB();
+		$resultat = TRUE;
 
-		$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
-		$result = connectDB()->query($sql);
+		if (validerSlettKlasse($KlasseID)) {
+			connectDB();
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
 			}
-		else {
-			return FALSE;
+			else {
+				$resultat = FALSE;
+			}
+			connectDB()->close();
 		}
-		connectDB()->close();
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterType_luftfartoy($TypeID, $type) {
