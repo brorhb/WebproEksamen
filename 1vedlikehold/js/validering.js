@@ -827,93 +827,97 @@ function validerFlyvning() {
 /* */
 function validerFlyvning() {
 
-	var maaFyllesUt = [];
-	var kommentar = [];
-	var resultat = true;
-
-	//var flyvningNr = document.forms["oppdater"]["flyvningNr"].value;
-	var luftfartoy_id = document.getElementById("luftfartoy_id"); //listeboks
-	var rute_kombinasjon_id = document.getElementById("rute_kombinasjon_id"); //listeboks
-	var avgang = document.getElementById("avgang"); //datepicker
-	var klokkeslett = document.forms["oppdater"]["klokkeslett"].value;
-	var gate = document.forms["oppdater"]["gate"].value;
-	var pris = document.forms["oppdater"]["pris"].value;
-	var valuta_id = document.getElementById("valuta_id"); //listeboks
-	
-	/* Ulike valideringer */
-
-/*
-	// Sjekker om feltet er tomt
-	if (flyvningNr == "" || flyvningNr == null) {
-		maaFyllesUt.push("flyvningNr");
-		resultat = false;
-	}
-*/
-
-		// Sjekker om feltet er tomt listeboks
-	if (luftfartoy_id.value == "") {
-		maaFyllesUt.push("luftfartoy_id");
-		resultat = false;
-	}
-
-		// Sjekker om feltet er tomt listeboks
-	if (rute_kombinasjon_id.value == "") {
-		maaFyllesUt.push("rute nr");
-		resultat = false;
-	}
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+    var reg = /[^0-9\/]+/;
+    var klokke = /[^0-9\:]+/;
 
 
-	// Sjekker om feltet er tomt datepicker
-	if (avgang.value == "") {
-		maaFyllesUt.push("avgang");
-		resultat = false;
-	}
-		else {
-		if (isNaN(avgang)) {
-			kommentar.push("<strong>avgang</strong> må velges");
-			resultat = false;
-		}
-	}
-	// Sjekker om feltet er tomt
-	if (klokkeslett == "" || klokkeslett == null) {
-		maaFyllesUt.push("klokkeslett");
-		resultat = false;
-	}
-	  else {
-		if (isNaN(klokkeslett)) {
-			kommentar.push("<strong>klokkeslett</strong> må inneholde tall.");
-			resultat = false;
-		}
-	}
+    //var flyvningNr = document.forms["oppdater"]["flyvningNr"].value;
+    var luftfartoy_id = document.getElementById("luftfartoy_id"); //listeboks
+    var rute_kombinasjon_id = document.getElementById("rute_kombinasjon_id"); //listeboks
+    var avgang = document.getElementById("avgang"); //datepicker
+    var klokkeslett = document.forms["oppdater"]["klokkeslett"].value;
+    var gate = document.forms["oppdater"]["gate"].value;
+    var pris = document.forms["oppdater"]["pris"].value;
+    var valuta_id = document.getElementById("valuta_id"); //listeboks
+    
+    /* Ulike valideringer */
 
-			// Sjekker om feltet er tomt
-	if (gate == "" || gate == null) {
-		maaFyllesUt.push("gate");
-		resultat = false;
-	}
+<<<<<<< HEAD
+        // Sjekker om feltet er tomt listeboks
+    if (luftfartoy_id.value == "") {
+        maaFyllesUt.push("luftfartoy_id");
+        resultat = false;
+    }
+
+        // Sjekker om feltet er tomt listeboks
+    if (rute_kombinasjon_id.value == "") {
+        maaFyllesUt.push("rute nr");
+        resultat = false;
+    }
 
 
+    // Sjekker om feltet er tomt datepicker
+    if (avgang.value == "") {
+        maaFyllesUt.push("avgang");
+        resultat = false;
+    }
+        else {
+        if (forkortelse.length != 10) {
+            kommentar.push("<strong>forkortelse</strong> må bestå av 10 tegn. f.eks 07/06/2016");
+            resultat = false;
+        }
+        if (reg(avgang)) {
+            kommentar.push("<strong>avgang</strong> må velges");
+            resultat = false;
+        }
+    }
+    // Sjekker om feltet er tomt
+    if (klokkeslett == "" || klokkeslett == null) {
+        maaFyllesUt.push("klokkeslett");
+        resultat = false;
+    }
+      else {
+        if (klokkeslett.length != 5) {
+            kommentar.push("<strong>klokkeslett</strong> må bestå av 5 tegn. f.eks 14:00");
+            resultat = false;
+        }
+        if (klokke(klokkeslett)) {
+            kommentar.push("<strong>klokkeslett</strong> må inneholde tall og :. f.eks 14:00");
+            resultat = false;
+        }
+    }
 
-	// Sjekker om feltet er tomt
-	if (pris == "" || pris == null) {
-		maaFyllesUt.push("pris");
-		resultat = false;
-	}
+            // Sjekker om feltet er tomt
+    if (gate == "" || gate == null) {
+        maaFyllesUt.push("gate");
+        resultat = false;
+    }
 
 
-		// Sjekker om feltet er tomt listeboks
-	if (valuta_id.value == "") {
-		maaFyllesUt.push("valuta_id");
-		resultat = false;
-	}
 
-	// Skriver ut feilmeldingsboks
-	if (!resultat) {
-		feilmeldingBoks(maaFyllesUt, kommentar);
-	}
+    // Sjekker om feltet er tomt
+    if (pris == "" || pris == null) {
+        maaFyllesUt.push("pris");
+        resultat = false;
+    }
 
-	// Returnerer om det er noen feil
-	return resultat;
+
+        // Sjekker om feltet er tomt listeboks
+    if (valuta_id.value == "") {
+        maaFyllesUt.push("valuta_id");
+        resultat = false;
+    }
+
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+
+    // Returnerer om det er noen feil
+    return resultat;
 }
 /* ny versjon alleflyvninger.php*/
 
