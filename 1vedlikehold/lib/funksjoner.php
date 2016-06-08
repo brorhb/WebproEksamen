@@ -668,9 +668,6 @@
 		$dato = connectDB()->real_escape_string(utf8_encode($dato));
 		$klokkeslett = connectDB()->real_escape_string(utf8_encode($klokkeslett));
 		$gate = connectDB()->real_escape_string(utf8_encode($gate));
-		//$passasjertype_id = connectDB()->real_escape_string(utf8_encode($passasjertype_id));
-		//$pris = connectDB()->real_escape_string(utf8_encode($pris));
-		//$valuta_id = connectDB()->real_escape_string(utf8_encode($valuta_id));
 		
         $avgang = regnUtUnixtimeFraDatoOgKlokkeslett($dato, $klokkeslett);
 
@@ -701,21 +698,20 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "INSERT INTO flyvning (id, luftfartoy_id, rute_kombinasjon_id, avgang, gate)
-			VALUES ('', '$luftfartoy_id', '$rute_kombinasjon_id', '$avgang', '$gate');";
+			$sql = "UPDATE `flyvning` SET `luftfartoy_id` = '$luftfartoy_id', `rute_kombinasjon_id` = '$rute_kombinasjon_id', `avgang` = '$avgang', `gate` = '$gate' WHERE id = '$flyvning_id';";
 
-			$opprettetFlyvningID = "SELECT id FROM flyvning WHERE luftfartoy_id = '$luftfartoy_id' AND rute_kombinasjon_id = '$rute_kombinasjon_id' AND avgang = '$avgang' AND gate = '$gate' ORDER BY id DESC LIMIT 1";
+			// Slett gamle priser
+			$sql .= "DELETE FROM pris WHERE flyvning_id = '$flyvning_id';";
 
+			// Sett inn nye priser
 			for ($i=0; $i < count($passasjertype_id); $i++) {
 				$passasjertype_iden = connectDB()->real_escape_string(utf8_encode($passasjertype_id[$i]));
 
 				$prisen = connectDB()->real_escape_string(utf8_encode($pris[$i]));
 				$valuta_iden = connectDB()->real_escape_string(utf8_encode($valuta_id[$i]));
 
-				$sql .= "INSERT INTO pris (id, passasjertype_id, flyvning_id, pris, valuta_id) VALUES ('', '$passasjertype_iden', ($opprettetFlyvningID), '$prisen', '$valuta_iden');";
+				$sql .= "INSERT INTO pris (id, passasjertype_id, flyvning_id, pris, valuta_id) VALUES ('', '$passasjertype_iden', ($flyvning_id), '$prisen', '$valuta_iden');";
 			}
-
-			die("Oppdatert: " . $sql);
 
 			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
@@ -725,6 +721,27 @@
 			}
 		}
 
+		connectDB()->close();
+	}
+
+	function slettFlyvning($id) {
+		connectDB();
+		$id = connectDB()->real_escape_string(utf8_encode($id));
+
+		$sql = "START TRANSACTION;
+				DELETE FROM pris WHERE flyvning_id = '$id';
+				DELETE FROM `flyvning` WHERE id = '$id';
+				COMMIT;
+				ROLLBACK;";
+
+		$result = connectDB()->multi_query($sql);
+
+		if (connectDB()->multi_query($sql) === TRUE) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
 		connectDB()->close();
 	}
 
