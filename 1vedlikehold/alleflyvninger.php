@@ -86,7 +86,10 @@
                                 <input type="hidden" name="flyvning_id" id="flyvning_id" value="' . @$flyvning_id . '" required>
                                 <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="dpd1" id="dpd1" value="' . @$dato . '" required>
                                 <lable for="avgang">Klokkeslett</lable>
-                                <input class="form-control" type="text" placeholder="HH:MM" name="klokkeslett" id="klokkeslett" value="' . @$klokkeslett . '" required>
+                                ';
+                                    echo tidTimer();
+                                    echo tidMinutter();
+                                echo '
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
@@ -234,8 +237,20 @@
                                 <lable for="avgang">Dato</lable>
                                 <input type="hidden" name="flyvning_id" id="flyvning_id" value="' . @$flyvning_id . '" required>
                                 <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="dpd1" id="dpd1" value="' . @$dato . '" required>
-                                <lable for="avgang">Klokkeslett</lable>
-                                <input class="form-control" type="text" placeholder="HH:MM" name="klokkeslett" id="klokkeslett" value="' . @$klokkeslett . '" required>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group col-md-6">
+                                <label for="avgang">Timer</label>';
+                                    echo tidTimer();
+                    echo '</div>
+                            <div class="col-md-6">
+                            <label>Minutter</label>
+                    ';
+                                    echo tidMinutter();
+                                echo '
+                            </div>
+                            </div>
+                            <div class="col-md-6">
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
