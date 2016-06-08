@@ -159,7 +159,7 @@
                     <tbody>
         ';
                             connectDB();
-                            $sql = "SELECT * FROM klasse;";
+                            $sql = "SELECT * FROM bestilling;";
                             $result = connectDB()->query($sql);
 
                             if($result->num_rows > 0 ) {
@@ -190,10 +190,4 @@
         <!-- Innhold -->
         ';
 
-    
-
-
-
-
-    include_once ("end.php");
-?>
+include_once ("end.php"); ?>

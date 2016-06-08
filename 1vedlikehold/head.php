@@ -65,9 +65,9 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Flytype <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									 <li class="dropdown-header">Flytype</li>
-									 <li><a href="allefly.php">Alle fly</a></li>
-									 <li><a href="allemodeller.php">Alle fly modeller</a></li>
 									 <li><a href="alletyper.php">Alle typer</a></li>
+									<li><a href="allemodeller.php">Alle modeller</a></li>
+									<li><a href="allefly.php">Alle fly</a></li>
 								</ul>
 						  </li>
 						  <li class="dropdown">
@@ -107,9 +107,9 @@
 						  <!-- Sidebar uten JS-->
 						  <div class="navUtenJs">
 							<ul>
-								<li><a href="allefly.php">Alle fly</a></li>
-								<li><a href="allemodeller.php">Alle modeller</a></li>
 								<li><a href="alletyper.php">Alle typer</a></li>
+								<li><a href="allemodeller.php">Alle modeller</a></li>
+								<li><a href="allefly.php">Alle fly</a></li>
 								<li><a href="alleruter.php">Alle ruter</a></li>
 								<li><a href="alleavganger.php">Alle avganger</a></li>
 								<li><a href="allebestillinger.php">Alle bestillinger</a></li>
