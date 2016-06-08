@@ -7,7 +7,7 @@
 <!-- Innhold -->
 <div class="container">
 	<!-- Bestille reise -->
-	<form method="GET" action="velgfly.php" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
+	<form method="GET" action="velgfly.php" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerStartBestilling()">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 bestillReiseBoks">
 				<!-- Fra/til land -->
@@ -84,7 +84,7 @@
                     }
 ?>
 				<!-- Antall reisende -->
-				<input type="submit" class="btn btn-default" value="Bekreft" onclick="validerBestilling();"/>
+				<input type="submit" class="btn btn-default" value="Bekreft"/>
 			</div>
 		</div>
 	</form>

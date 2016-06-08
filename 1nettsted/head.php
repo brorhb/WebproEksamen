@@ -13,10 +13,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jqueryFunc.js"></script>
 	<script type="text/javascript" src="js/valideringer.js"></script>
+	<script type="text/javascript" src"http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.js"></script>
 	<!-- Scripts -->
 
 	<!-- stilark -->
-
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -37,9 +37,9 @@
 	<link rel="stylesheet/less" href="datepicker/less/datepicker.less">
 	<!-- datepicker -->
 
-
 	<link rel="stylesheet" href="css/style.css">
 
+	
 	<?php  include_once ('../1vedlikehold/lib/funksjoner.php'); ?>
 	<!-- stilark -->
 	<!-- <noscript><meta http-equiv="refresh" content="0; url=nojs.html" /></noscript> -->
