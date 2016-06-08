@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
 $('.navUtenJs').hide();
+
   // sidebar
   var trigger = $('.hamburger'),
       overlay = $('.overlay'),
@@ -32,7 +33,7 @@ $('.navUtenJs').hide();
     // Kalender
     var checkout, nowTemp = new Date(), now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0), checkin = $('#dpd1').datepicker({
         onRender: function (date) {
-            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+            return date.valueOf() < now.valueOf() ? '' : '';
         }
     }).on('changeDate', function (ev) {
         if (ev.date.valueOf() > checkout.date.valueOf()) {
@@ -72,7 +73,18 @@ $('.navUtenJs').hide();
     }).on('changeDate', function (ev) {
         checkout.hide();
     }).data('datepicker');
+
+    var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+
     // kalender slutt
+
 
     
     // Hide fra/til Dato
@@ -81,8 +93,4 @@ $('.navUtenJs').hide();
         toggleFields();
     });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of c8a16ee... date picker 2nd try
 });
