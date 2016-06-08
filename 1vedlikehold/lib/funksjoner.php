@@ -85,7 +85,6 @@
 				return FALSE;
 			}
 		}
-
 		connectDB()->close();
 	}
 
@@ -257,13 +256,20 @@
 
 	function slettAlleRuter($id) {
 		connectDB();
+		$id = connectDB()->real_escape_string(utf8_encode($id));
+		$rute_id = HentRute_idFraKombinasjon_Rute_id($id);
 
-		$sql = "DELETE FROM `web-is-gr02w`.`modell` WHERE `modell`.`id` = '$id';";
-		$result = connectDB()->query($sql);
+		$sql = "START TRANSACTION;
+				DELETE FROM `rute_kombinasjon` WHERE rute_id = '$rute_id';
+				DELETE FROM `rute` WHERE id = '$rute_id';
+				COMMIT;
+				ROLLBACK;";
 
-		if (connectDB()->query($sql) === TRUE) {
+		$result = connectDB()->multi_query($sql);
+
+		if (connectDB()->multi_query($sql) === TRUE) {
 			return TRUE;
-			}
+		}
 		else {
 			return FALSE;
 		}
@@ -1184,6 +1190,21 @@
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				return utf8_encode($row["person_id"]);
+			}
+		}
+		connectDB()->close();
+	}
+
+	function HentRute_idFraKombinasjon_Rute_id($id) {
+		connectDB();
+
+		$sql = "SELECT rute_id FROM rute_kombinasjon WHERE id = '$id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["rute_id"]);
 			}
 		}
 		connectDB()->close();

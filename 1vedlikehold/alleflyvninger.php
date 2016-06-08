@@ -48,7 +48,7 @@
             $feiletPHPvalidering = true;
         }*/
     }
-    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
+    if (@$_POST['ny'] || @$_POST['endre'] || @$feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
