@@ -14,11 +14,12 @@
         }
     }
     elseif (@$_POST['lagre']) {
-        $flyvningNr = $_POST["flyvningNr"];
+        $flyvning_id = $_POST["flyvning_id"];
         $luftfartoy_id = $_POST["luftfartoy_id"];
         $rute_kombinasjon_id = $_POST["rute_kombinasjon_id"];
         $gate = $_POST["gate"];
-        $avgang = $_POST["avgang"];
+        $dato = $_POST["dpd1"];
+        $klokkeslett = $_POST["klokkeslett"];
         
         $passasjertype_id = $_POST["passasjertype_id"];
         $pris = $_POST["pris"];
@@ -27,7 +28,7 @@
         $validering = true;
 
         if ($validering) {
-            oppdaterFlyvning($flyvningNr, $luftfartoy_id, $rute_kombinasjon_id, $avgang, $gate, $passasjertype_id, $pris, $valuta_id);
+            oppdaterFlyvning($flyvning_id, $luftfartoy_id, $rute_kombinasjon_id, $dato, $klokkeslett, $gate, $passasjertype_id, $pris, $valuta_id);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering = false;
         }
@@ -76,12 +77,13 @@
                             $flyvning_avgang = utf8_encode($row["avgang"]);
                             $flyvning_gate = utf8_encode($row["gate"]);
 
-                            $dato = gmdate("m/d/Y", $flyvning_avgang);
-                            $klokkeslett = gmdate("H:i", $flyvning_avgang);
+                            $dato = regnUtDatoFraUnixtime($flyvning_avgang);
+                            $klokkeslett = regnUtKlokkeslettFraUnixtime($flyvning_avgang);
 
                             echo '
                             <div class="form-group col-md-6">
                                 <lable for="avgang">Dato</lable>
+                                <input type="hidden" name="flyvning_id" id="flyvning_id" value="' . @$flyvning_id . '" required>
                                 <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="dpd1" id="dpd1" value="' . @$dato . '" required>
                                 <lable for="avgang">Klokkeslett</lable>
                                 <input class="form-control" type="text" placeholder="HH:MM" name="klokkeslett" id="klokkeslett" value="' . @$klokkeslett . '" required>
@@ -217,20 +219,23 @@
 
                     }
                     else {
-                        echo '
-                            <div class="col-md-6">
-                                <div class="form-group ">
-                                    <label class="control-label requiredField" for="date">Avgang<span class="asteriskField">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar">
-                                            </i>
-                                        </div>
-                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
-                                    </div>
-                                </div>
-                            </div>
+                        
+                            $flyvning_id = utf8_encode($row["id"]);
+                            $flyvning_luftfaryoy_id = utf8_encode($row["luftfartoy_id"]);
+                            $flyvning_rute_kombinasjon_id = utf8_encode($row["rute_kombinasjon_id"]);
+                            $flyvning_avgang = utf8_encode($row["avgang"]);
+                            $flyvning_gate = utf8_encode($row["gate"]);
+
+                            $dato = regnUtDatoFraUnixtime($flyvning_avgang);
+                            $klokkeslett = regnUtKlokkeslettFraUnixtime($flyvning_avgang);
+
+                            echo '
                             <div class="form-group col-md-6">
+                                <lable for="avgang">Dato</lable>
+                                <input type="hidden" name="flyvning_id" id="flyvning_id" value="' . @$flyvning_id . '" required>
+                                <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="dpd1" id="dpd1" value="' . @$dato . '" required>
+                                <lable for="avgang">Klokkeslett</lable>
+                                <input class="form-control" type="text" placeholder="HH:MM" name="klokkeslett" id="klokkeslett" value="' . @$klokkeslett . '" required>
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
@@ -241,7 +246,7 @@
                                 <lable for="luftfartoy">Tail Nr</lable>';
                             echo luftfartoyListe($flyvning_luftfaryoy_id);
                             echo '</div>';
-                            echo "<h2>Pris</h2>";
+                            echo '<div class="col-md-12"><h2>Pris</h2></div>';
 
                             $sql2 = "SELECT id, type, beskrivelse FROM passasjertype;";
                             $result2 = connectDB()->query($sql2);
@@ -274,10 +279,10 @@
                                                             <td>' . $passasjertype_type . ' (' . $passasjertype_beskrivelse . ')</td>
                                                             <td>
                                                                 <input type="hidden" name="passasjertype_id[' . $teller . ']" value="' . $passasjertype_id . '" />
-                                                                <input class="form-control type="text" name="pris[' . $teller . ']" value="" placeholder="Pris">
+                                                                <input class="form-control type="text" name="pris[' . $teller . ']" value="' . HentPrisFraFlyvning_idOgPassasjertype_id($flyvning_id, $passasjertype_id) . '" placeholder="Pris">
                                                             </td>
                                                             <td>'; 
-                                                            echo valutaListe("", $teller);
+                                                            echo valutaListe(HentValuta_idFraFlyvning_idOgPassasjertype_id($flyvning_id, $passasjertype_id), $teller);
                                                             echo '
                                                             </td>
                                                         </tr>';
@@ -346,7 +351,7 @@
                                                             </td>
                                                             <td>' . $type3 . '</td>
                                                             <td>
-                                                                <input class="form-control type="text" name="pris" value="testPris" placeholder="Pris" required>
+                                                                <input class="form-control type="text" name="pris" value="' . $pris3 . '" placeholder="Pris" required>
                                                             </td>
                                                             <td>'; 
                                                             echo valutaListe("", $passasjertype_id);
@@ -359,6 +364,8 @@
                                         </table>
                                     </div>';
                                 }
+                            
+
                     }
                     connectDB()->close();
             echo'
