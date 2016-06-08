@@ -1144,6 +1144,36 @@
 		connectDB()->close();
 	}
 
+	function HentPrisFraFlyvning_idOgPassasjertype_id($flyvning_id, $passasjertype_id) {
+		connectDB();
+
+		$sql = "SELECT pris FROM pris WHERE flyvning_id = '$flyvning_id' AND passasjertype_id = '$passasjertype_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["pris"]);
+			}
+		}
+		connectDB()->close();
+	}
+
+	function HentValuta_idFraFlyvning_idOgPassasjertype_id($flyvning_id, $passasjertype_id) {
+		connectDB();
+
+		$sql = "SELECT valuta_id FROM pris WHERE flyvning_id = '$flyvning_id' AND passasjertype_id = '$passasjertype_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["valuta_id"]);
+			}
+		}
+		connectDB()->close();
+	}
+
 	function sjekkOmKlasseIDeksisterer($objektID) {
 		connectDB();
 
