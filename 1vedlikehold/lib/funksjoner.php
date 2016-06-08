@@ -89,18 +89,27 @@
 	}
 
 	function slettKlasse($KlasseID) {
-		connectDB();
+		$resultat = TRUE;
 
-		$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
-		$result = connectDB()->query($sql);
+		if (validerSlettKlasse($KlasseID)) {
+			connectDB();
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
 			}
-		else {
-			return FALSE;
+			else {
+				$resultat = FALSE;
+			}
+			connectDB()->close();
 		}
-		connectDB()->close();
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterType_luftfartoy($TypeID, $type) {
@@ -1253,6 +1262,38 @@
 		connectDB()->close();
 	}
 
+
+		function sjekkOmKlasseIDeksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT klasse FROM pris WHERE klasse_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+
+		function sjekkOmKlasseIDeksistereriSeteoppsett($objektID) {
+		connectDB();
+
+		$sql = "SELECT klasse FROM seteoppsett WHERE klasse_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function klasseListe($objektID) {
 		$objektnavn = 'klasse';
 		$objektIDeksisterer = sjekkOmKlasseIDeksisterer($objektID);
@@ -1296,6 +1337,22 @@
 		}
 		connectDB()->close();
 	}
+
+		function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
+		connectDB();
+
+		$sql = "SELECT klasse FROM modell WHERE type_luftfartoy_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 
 	function type_luftfartoyListe($objektID) {
 		// OBS! "Velg type luftfartøy" er hardkodet p.ga. _ og ø
@@ -1730,35 +1787,8 @@
 		connectDB()->close();
 	}
 
-		function sjekkOmKlasseIDeksistereriPris($objektID) {
-		connectDB();
 
-		$sql = "SELECT klasse FROM pris WHERE klasse_id = '$objektID';";
-		$result = connectDB()->query($sql);
 
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
-
-	function TEST($objektID) {
-		connectDB();
-
-		$sql = "SELECT id FROM luftfartoy WHERE id = '$objektID';";
-		$result = connectDB()->query($sql);
-
-		if ($result->num_rows > 0) {
-			return TRUE;
-		}
-		else {
-			return FALSE;
-		}
-		connectDB()->close();
-	}
 
 	function luftfartoyListe($objektID) {
 		$objektnavn = 'luftfartoy';
