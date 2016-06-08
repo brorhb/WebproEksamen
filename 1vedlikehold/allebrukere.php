@@ -84,30 +84,22 @@
                                 <lable for="etternavn">Etternavn</lable>
                                 <input class="form-control" type="text" placeholder="Etternavn" name="etternavn" id="etternavn" value="' . @$etternavn . '" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <lable for="fodselsdato">Fodselsdato</lable>
-
+                            <div class="col-md-6">
                                 <div class="form-group ">
-      <label class="control-label requiredField" for="date">
-       Date
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="input-group">
-       <div class="input-group-addon">
-        <i class="fa fa-calendar">
-        </i>
-       </div>
-       <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
-      </div>
-     </div>
-     <div class="form-group">
-      <div>
-
+                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <lable for="land">Land</lable>
                                 '; 
-                            echo landskodeListe($landID);
+                            echo landskodeListe(@$landID);
                             echo '
                             </div>
                             <div class="form-group col-md-6">
@@ -144,14 +136,14 @@
                                             <i class="fa fa-calendar">
                                             </i>
                                         </div>
-                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <lable for="land">Land</lable>
                                 '; 
-                            echo landskodeListe($landID);
+                            echo landskodeListe(@$landID);
                             echo '
                             </div>
                             <div class="form-group col-md-6">
