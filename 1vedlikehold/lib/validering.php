@@ -260,7 +260,6 @@
 		$rute_kombinasjon_id = utf8_decode($rute_kombinasjon_id);
 
 		/* Ulike valideringer */
-
 		// Sjekker om feltet er tomt
 		if ($gate == "" || $gate == null) {
 			$maaFyllesUt[] = "gate";
