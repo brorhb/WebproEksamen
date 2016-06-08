@@ -815,7 +815,3 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		return $resultat;*/
 }		
 ?>
-
-
-
-
