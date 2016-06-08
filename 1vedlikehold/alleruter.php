@@ -13,15 +13,15 @@
 		}
 	}
 	elseif (@$_POST['lagre']) {
-		$ruteKombinasjonNr = $_POST["ruteKombinasjonNr"];
-		$ruteNr = $_POST["ruteNr"];
-		$valuta = $_POST["valuta_id"];
-		$pris = $_POST["pris"];
-		$fraLand = $_POST["fraLand"];
-		$fraFlyplass = $_POST["fraFlyplass_id"];
-		$tid = $_POST["tid"];
-		$tilLand = $_POST["tilLand"];
-		$tilFlyplass = $_POST["tilFlyplass_id"];
+		$ruteKombinasjonNr = @$_POST["ruteKombinasjonNr"];
+		$ruteNr = @$_POST["ruteNr"];
+		$valuta = @$_POST["valuta_id"];
+		$pris = @$_POST["pris"];
+		$fraLand = @$_POST["fraLand"];
+		$fraFlyplass = @$_POST["fraFlyplass_id"];
+		$tid = @$_POST["tid"];
+		$tilLand = @$_POST["tilLand"];
+		$tilFlyplass = @$_POST["tilFlyplass_id"];
 		
 		if (validerAlleRuter($tid, $pris, $valuta, $fraFlyplass, $tilFlyplass)) {
 			oppdaterAlleRuter($ruteKombinasjonNr, $ruteNr, $valuta, $pris, $fraLand, $fraFlyplass, $tid, $tilLand, $tilFlyplass);

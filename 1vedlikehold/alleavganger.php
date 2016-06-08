@@ -14,14 +14,14 @@
         }
     }
     elseif (@$_POST['lagre']) {
-        $flyvningNr = $_POST["flyvningNr"];
-        $ruteNr = $_POST["ruteNr"];
-        $tailNr = $_POST["tailNr"];
-        $type = $_POST["type"];
-        $avgang = $_POST["avgang"];
-        $fraFlyplass = $_POST["fraFlyplass"];
-        $gate = $_POST["gate"];
-        $tilFlyplass = $_POST["tilFlyplass"];
+        $flyvningNr = @$_POST["flyvningNr"];
+        $ruteNr = @$_POST["ruteNr"];
+        $tailNr = @$_POST["tailNr"];
+        $type = @$_POST["type"];
+        $avgang = @$_POST["avgang"];
+        $fraFlyplass = @$_POST["fraFlyplass"];
+        $gate = @$_POST["gate"];
+        $tilFlyplass = @$_POST["tilFlyplass"];
 
         if (oppdaterFlyvning($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr)) {
         
@@ -162,10 +162,10 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="ruteNr">Rute Nr</lable>';
-                            echo rute_kombinasjonListe($ruteNr);
+                            echo rute_kombinasjonListe(@$ruteNr);
                             echo '
                                 <lable for="luftfartoy">Tail Nr</lable>';
-                            echo luftfartoyListe($tailNr);
+                            echo luftfartoyListe(@$tailNr);
                             echo '</div>';
 
                         

@@ -15,12 +15,12 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $navn = $_POST['navn'];
-        $flyplasskode = $_POST['flyplasskode'];
-        $latitude= $_POST['latitude'];
-        $longitude = $_POST['longitude'];
-        $tidssone_gmt = $_POST['tidssone_gmt'];
-        $land_id = $_POST['land_id'];
+        $navn = @$_POST['navn'];
+        $flyplasskode = @$_POST['flyplasskode'];
+        $latitude= @$_POST['latitude'];
+        $longitude = @$_POST['longitude'];
+        $tidssone_gmt = @$_POST['tidssone_gmt'];
+        $land_id = @$_POST['land_id'];
 
 
         if(validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id)) {
@@ -32,17 +32,17 @@
             $feiletPHPvalidering = true;
         }
     }
-    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
+    if (@$_POST['ny'] || @$_POST['endre'] || @$feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $id = @$_POST['id'];
 
         echo'    <!-- Innhold -->
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterAlleFlyplasser();">
             <div class="col-md-12">';
-                if ($_POST['ny']) {
+                if (@$_POST['ny']) {
                     echo '<h2>Ny flyplass</h2>';
                 }
-                elseif ($_POST['endre']) {
+                elseif (@$_POST['endre']) {
                     echo '<h2>Endre flyplass</h2>';
                 }
         echo '
