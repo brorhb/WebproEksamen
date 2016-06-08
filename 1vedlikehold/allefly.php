@@ -55,14 +55,14 @@
                             echo '
 
                         <div class="form-group col-md-6">
-                                <input class="form-control" type="hidden" placeholder="id" name="id" id="id" value="' . @$id . '" required>'; 
+                                <lable for="modell">Velg modell</label>';
                                 echo modellListe(@$modell_id);
                             echo '
-                        </div>
-                        <div class="form-group col-md-6">
-                            <lable for="tailnr">tailnr</lable>
-                            <input class="form-control" type="text" placeholder="tailnr" name="tailnr" id="tailnr" value="' . @$tailnr . '" required>
-                        </div>';
+                            </div>
+                            <div class="form-group col-md-6">
+                                <lable for="tailnr">tailnr</lable>
+                                <input class="form-control" type="text" placeholder="tailnr" name="tailnr" id="tailnr" value="' . @$tailnr . '" required>
+                            </div>';
                         }
                     }
                     else {

@@ -36,64 +36,74 @@
                 if (@$_POST['ny']) {
                     echo '<h2>Ny bestilling</h2>';
                     echo '
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
+                        <div class="col-md-12">
+                                <label for="Flyvning">Flyvning</label>
+                            ';
+                                echo ruteliste(@$rute) ;
+                            echo '
                             </div>
                             <div class="col-md-6">
                                 <label for="Rute">Rute</label>
                             ';
-                                echo ruteliste(@$rute) ;
+                                echo passasjertypeListe() ;
                             echo '
+                            </div>
+                            <div class="col-md-6">
+                                <label="">Fornavn</label>
+                                <input class="form-control" type="text" name="" id="" value=""> 
+                            </div>
+                            <div class="col-md-6">
+                                <label="">Etternavn</label>
+                                <input class="form-control" type="text" name="" id="" value=""> 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
+                                    </div>
+                                </div>
                             </div>
                             ';                 
                 }
                 elseif (@$_POST['endre']) {
                     echo '<h2>Endre bestilling</h2>';
                     echo '
-                            <div class="form-group">
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
-                            </div>
-                            <div class="col-md-6">
-                                <label="">test</label>
-                                <input class="form-control" type="text" name="" id="" value=""> 
+                            <div class="col-md-12">
+                                <label for="Flyvning">Rute</label>
+                            ';
+                                echo ruteliste(@$rute) ;
+                            echo '
                             </div>
                             <div class="col-md-6">
                                 <label for="Rute">Rute</label>
                             ';
-                                echo ruteliste(@$rute) ;
+                                echo passasjertypelist() ;
                             echo '
+                            </div>
+                            <div class="col-md-6">
+                                <label="">Fornavn</label>
+                                <input class="form-control" type="text" name="" id="" value=""> 
+                            </div>
+                            <div class="col-md-6">
+                                <label="">Etternavn</label>
+                                <input class="form-control" type="text" name="" id="" value=""> 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                             ';
