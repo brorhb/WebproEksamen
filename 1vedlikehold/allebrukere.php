@@ -20,7 +20,7 @@
         $ukryptertPassord = @$_POST['passord'];
         $fornavn = @$_POST['fornavn'];
         $etternavn = @$_POST['etternavn'];
-        $fodselsdato = @$_POST['fodselsdato'];
+        $fodselsdato = @$_POST['date'];
         $landID = @$_POST['land_id'];
         $epost = @$_POST['epost'];
         $mobilnr = @$_POST['mobilnr'];
