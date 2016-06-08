@@ -528,8 +528,8 @@
 		$brukerID = connectDB()->real_escape_string(utf8_encode($brukerID));
 
 		$sql = "START TRANSACTION; 
-				DELETE FROM `web-is-gr02w`.`bruker` WHERE `bruker`.`id` = '$brukerID';
-				DELETE FROM `web-is-gr02w`.`person` WHERE `person`.`id` = (SELECT person_id FROM bruker WHERE id = '$brukerID'));
+				DELETE FROM `web-is-gr02w`.`bruker` WHERE `bruker`.`id` = '36'; 
+				DELETE FROM `web-is-gr02w`.`person` WHERE `person`.`id` = (SELECT `person_id` FROM `bruker` WHERE id = 36);
 				COMMIT;
 				ROLLBACK;";
 
