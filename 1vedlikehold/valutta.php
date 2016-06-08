@@ -5,8 +5,8 @@
 
 
     if (@$_POST['slett']) {
-        $ValutaID = @$_POST['id'];
-        if (slettValuta($ValutaID)) {
+        $id = @$_POST['id'];
+        if (slettValuta($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
