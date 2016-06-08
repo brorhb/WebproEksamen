@@ -839,6 +839,7 @@ function validerFlyvning() {
     var luftfartoy_id = document.getElementById("luftfartoy_id"); //listeboks
     var rute_kombinasjon_id = document.getElementById("rute_kombinasjon_id"); //listeboks
     var avgang = document.getElementById("avgang"); //datepicker
+    var klokkeslett = document.forms["oppdater"]["klokkeslett"].value;
     var gate = document.forms["oppdater"]["gate"].value;
     var pris = document.forms["oppdater"]["pris"].value;
     var valuta_id = document.getElementById("valuta_id"); //listeboks
@@ -861,7 +862,7 @@ function validerFlyvning() {
 
         // Sjekker om feltet er tomt listeboks
     if (rute_kombinasjon_id.value == "") {
-        maaFyllesUt.push("rute_kombinasjon_id");
+        maaFyllesUt.push("rute nr");
         resultat = false;
     }
 
@@ -871,6 +872,24 @@ function validerFlyvning() {
         maaFyllesUt.push("avgang");
         resultat = false;
     }
+        else {
+        if (isNaN(avgang)) {
+            kommentar.push("<strong>avgang</strong> må velges");
+            resultat = false;
+        }
+    }
+    // Sjekker om feltet er tomt
+    if (klokkeslett == "" || klokkeslett == null) {
+        maaFyllesUt.push("klokkeslett");
+        resultat = false;
+    }
+      else {
+        if (isNaN(klokkeslett)) {
+            kommentar.push("<strong>klokkeslett</strong> må inneholde tall.");
+            resultat = false;
+        }
+    }
+
             // Sjekker om feltet er tomt
     if (gate == "" || gate == null) {
         maaFyllesUt.push("gate");
