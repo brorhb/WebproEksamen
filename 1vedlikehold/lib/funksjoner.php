@@ -148,13 +148,13 @@
 		connectDB()->close();
 	}
 
-	function slettLuftfartoy($LuftfartoyID) {
+	function slettType_Luftfartoy($Type_LuftfartoyID) {
 		$resultat = TRUE;
 
-		if (validerSlettLuftfartoy($LuftfartoyID)) {
+		if (validerSlettType_Luftfartoy($Type_LuftfartoyID)) {
 			connectDB();
 
-			$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
+			$sql = "DELETE FROM luftfartoy WHERE id = '$Type_LuftfartoyID';";
 			$result = connectDB()->query($sql);
 
 			if (connectDB()->query($sql) === TRUE) {
