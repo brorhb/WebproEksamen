@@ -845,7 +845,6 @@ function validerFlyvning() {
     
     /* Ulike valideringer */
 
-<<<<<<< HEAD
         // Sjekker om feltet er tomt listeboks
     if (luftfartoy_id.value == "") {
         maaFyllesUt.push("luftfartoy_id");
