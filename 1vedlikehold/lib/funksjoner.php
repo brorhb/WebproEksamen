@@ -538,12 +538,11 @@
 		$result = connectDB()->multi_query($sql);
 
 		if (connectDB()->multi_query($sql) === TRUE) {
-			//return TRUE;
+			return TRUE;
 			}
 		else {
-			//return FALSE;
+			return FALSE;
 		}
-		die($sql);
 		connectDB()->close();
     }
 
