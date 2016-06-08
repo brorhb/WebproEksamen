@@ -1787,7 +1787,7 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 	function sjekkOmLuftfartoyIDeksistereriFlyvning($objektID) {
 		connectDB();
 
-		$sql = "SELECT type_ luftfartoy_id FROM flyvning WHERE type_luftfartoy_id = '$objektID';";
+		$sql = "SELECT type_luftfartoy_id FROM flyvning WHERE type_luftfartoy_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
