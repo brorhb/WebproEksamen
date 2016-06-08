@@ -1730,6 +1730,36 @@
 		connectDB()->close();
 	}
 
+		function sjekkOmKlasseIDeksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT klasse FROM pris WHERE klasse_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function TEST($objektID) {
+		connectDB();
+
+		$sql = "SELECT id FROM luftfartoy WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function luftfartoyListe($objektID) {
 		$objektnavn = 'luftfartoy';
 		$objektIDeksisterer = sjekkOmLuftfartoyIDeksisterer($objektID);
