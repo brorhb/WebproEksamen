@@ -1338,10 +1338,11 @@
 		connectDB()->close();
 	}
 
-		function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
+
+function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
-		$sql = "SELECT klasse FROM modell WHERE type_luftfartoy_id = '$objektID';";
+		$sql = "SELECT type_luftfartoy_id FROM modell WHERE type_luftfartoy_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1352,7 +1353,6 @@
 		}
 		connectDB()->close();
 	}
-
 
 	function type_luftfartoyListe($objektID) {
 		// OBS! "Velg type luftfartøy" er hardkodet p.ga. _ og ø
