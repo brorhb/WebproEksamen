@@ -148,19 +148,29 @@
 		connectDB()->close();
 	}
 
-	function slettType_luftfartoy($TypeID) {
-		connectDB();
+	function slettLuftfartoy($LuftfartoyID) {
+		$resultat = TRUE;
 
-		$sql = "DELETE FROM type_luftfartoy WHERE id = '$TypeID';";
-		$result = connectDB()->query($sql);
+		if (validerSlettLuftfartoy($LuftfartoyID)) {
+			connectDB();
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
+				}
+			else {
+				$resultat = FALSE;
 			}
-		else {
-			return FALSE;
+			connectDB()->close();
 		}
-		connectDB()->close();
+
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde) {
