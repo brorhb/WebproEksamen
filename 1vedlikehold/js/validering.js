@@ -834,6 +834,9 @@ function validerFlyvning() {
     var maaFyllesUt = [];
     var kommentar = [];
     var resultat = true;
+    var reg = /[^0-9\/]+/;
+    var klokke = /[^0-9\:]+/;
+
 
     //var flyvningNr = document.forms["oppdater"]["flyvningNr"].value;
     var luftfartoy_id = document.getElementById("luftfartoy_id"); //listeboks
@@ -873,7 +876,11 @@ function validerFlyvning() {
         resultat = false;
     }
         else {
-        if (isNaN(avgang)) {
+        if (forkortelse.length != 10) {
+            kommentar.push("<strong>forkortelse</strong> må bestå av 10 tegn. f.eks 07/06/2016");
+            resultat = false;
+        }
+        if (reg(avgang)) {
             kommentar.push("<strong>avgang</strong> må velges");
             resultat = false;
         }
@@ -884,8 +891,12 @@ function validerFlyvning() {
         resultat = false;
     }
       else {
-        if (isNaN(klokkeslett)) {
-            kommentar.push("<strong>klokkeslett</strong> må inneholde tall.");
+        if (klokkeslett.length != 5) {
+            kommentar.push("<strong>klokkeslett</strong> må bestå av 5 tegn. f.eks 14:00");
+            resultat = false;
+        }
+        if (klokke(klokkeslett)) {
+            kommentar.push("<strong>klokkeslett</strong> må inneholde tall og :. f.eks 14:00");
             resultat = false;
         }
     }
