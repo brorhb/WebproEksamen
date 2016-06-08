@@ -18,7 +18,8 @@
         $luftfartoy_id = $_POST["luftfartoy_id"];
         $rute_kombinasjon_id = $_POST["rute_kombinasjon_id"];
         $gate = $_POST["gate"];
-        $avgang = $_POST["avgang"];
+        $dato = $_POST["dpd1"];
+        $klokkeslett = $_POST["klokkeslett"];
         
         $passasjertype_id = $_POST["passasjertype_id"];
         $pris = $_POST["pris"];
@@ -26,8 +27,10 @@
 
         $validering = true;
 
+        //die("Avgang: " . regnUtUnixtimeFraDatoOgKlokkeslett($dato, $klokkeslett));
+
         if ($validering) {
-            oppdaterFlyvning($flyvningNr, $luftfartoy_id, $rute_kombinasjon_id, $avgang, $gate, $passasjertype_id, $pris, $valuta_id);
+            oppdaterFlyvning($flyvningNr, $luftfartoy_id, $rute_kombinasjon_id, $dato, $klokkeslett, $gate, $passasjertype_id, $pris, $valuta_id);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering = false;
         }
@@ -76,8 +79,8 @@
                             $flyvning_avgang = utf8_encode($row["avgang"]);
                             $flyvning_gate = utf8_encode($row["gate"]);
 
-                            $dato = gmdate("m/d/Y", $flyvning_avgang);
-                            $klokkeslett = gmdate("H:i", $flyvning_avgang);
+                            $dato = regnUtDatoFraUnixtime($flyvning_avgang);
+                            $klokkeslett = regnUtKlokkeslettFraUnixtime($flyvning_avgang);
 
                             echo '
                             <div class="form-group col-md-6">

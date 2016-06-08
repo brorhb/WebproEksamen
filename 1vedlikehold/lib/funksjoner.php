@@ -647,7 +647,7 @@
 		connectDB()->close();
 	}
 
-	function oppdaterFlyvning($FlyvningID, $luftfartoy_id, $rute_kombinasjon_id, $avgang, $gate, $passasjertype_id, $pris, $valuta_id) {
+	function oppdaterFlyvning($FlyvningID, $luftfartoy_id, $rute_kombinasjon_id, $dato, $klokkeslett, $gate, $passasjertype_id, $pris, $valuta_id) {
 		// Spesialtilpasset
 
 		/*echo 'PassasjertypeID: ' . print_r($passasjertype_id) . '<br>';
@@ -659,13 +659,14 @@
 		$flyvning_id = connectDB()->real_escape_string(utf8_encode($FlyvningID));
 		$luftfartoy_id = connectDB()->real_escape_string(utf8_encode($luftfartoy_id));
 		$rute_kombinasjon_id = connectDB()->real_escape_string(utf8_encode($rute_kombinasjon_id));
-		$avgang = connectDB()->real_escape_string(utf8_encode($avgang));
+		$dato = connectDB()->real_escape_string(utf8_encode($dato));
+		$klokkeslett = connectDB()->real_escape_string(utf8_encode($klokkeslett));
 		$gate = connectDB()->real_escape_string(utf8_encode($gate));
 		//$passasjertype_id = connectDB()->real_escape_string(utf8_encode($passasjertype_id));
 		//$pris = connectDB()->real_escape_string(utf8_encode($pris));
 		//$valuta_id = connectDB()->real_escape_string(utf8_encode($valuta_id));
-			//echo "Pris: ";
-			//print_r($pris);
+		
+        $avgang = regnUtUnixtimeFraDatoOgKlokkeslett($dato, $klokkeslett);
 
 		if ($flyvning_id == '') {
 
@@ -2140,6 +2141,29 @@ function fraflyplassListe($objektID) {
 			echo '<option disabled value="">Tomt resultat for ' . $objektnavn . ' Legg til minst et valg først.</option>';
 		}
 		echo '</select>';
+	}
+
+	function regnUtDatoFraUnixtime($timestamp) {
+		return gmdate("m/d/Y", $timestamp);
+	}
+
+	function regnUtKlokkeslettFraUnixtime($timestamp) {
+		return gmdate("H:i", $timestamp);
+	}
+
+	function regnUtUnixtimeFraDatoOgKlokkeslett($dato, $klokkeslett) {
+		// Format på dato (MM/DD/YYYY) og klokkeslett (HH:MM)
+		$d = explode('/', $dato);
+		$k = explode(':', $klokkeslett);
+
+		$hour = $k[0];
+		$minute = $k[1];
+		$second = 0;
+		$month = $d[0];
+		$day = $d[1];
+		$year = $d[2];
+
+		return gmmktime($hour,$minute,$second,$month,$day,$year);
 	}
 
 ?>
