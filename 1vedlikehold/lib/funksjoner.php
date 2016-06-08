@@ -1282,7 +1282,7 @@
 		function sjekkOmKlasseIDeksistereriSeteoppsett($objektID) {
 		connectDB();
 
-		$sql = "SELECT klasse FROM seteoppsett WHERE klasse_id = '$objektID';";
+		$sql = "SELECT klasse_id FROM seteoppsett WHERE klasse_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
