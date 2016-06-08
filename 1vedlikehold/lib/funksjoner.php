@@ -1225,6 +1225,21 @@
 		connectDB()->close();
 	}
 
+	function HentPassasjertype_typeFraPassasjertype_id($id) {
+		connectDB();
+
+		$sql = "SELECT passasjertype_type FROM passasjertype WHERE id = '$id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["passasjertype_type"]);
+			}
+		}
+		connectDB()->close();
+	}
+
 	function sjekkOmKlasseIDeksisterer($objektID) {
 		connectDB();
 
