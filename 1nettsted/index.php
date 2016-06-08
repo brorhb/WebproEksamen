@@ -64,6 +64,7 @@
                     $result = connectDB()->query($sql);
 
                     if ($result->num_rows > 0 ) {
+						$teller = 0;
                         while ($row = $result->fetch_assoc()) {
                             $id = utf8_encode($row["id"]);
                             $type = utf8_encode($row["type"]);
@@ -72,11 +73,13 @@
 					<div class="col-md-3" id="reisende">
 					<?php
 						echo '<label>' . $type . '</label>
-						<input class="form-control" type="textfield" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" >';
+						<input class="form-control" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" placeholder="' . $type . '" >
+						<input type="hidden" name="passasjertype[' . $teller . ']" id="passasjertype[' . $teller . ']" value="' . $id . '" >';
 					?>
 					</div>
 					
 <?php
+						$teller++;
                         }
                     }
 ?>

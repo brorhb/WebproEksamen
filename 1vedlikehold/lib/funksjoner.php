@@ -2216,4 +2216,30 @@ function fraflyplassListe($objektID) {
 		return gmmktime($hour,$minute,$second,$month,$day,$year);
 	}
 
+	function tidTimer($timer) {
+	echo '<select class="form-control" name="timer" id="timer">';
+		for ($i = 0; $i < 24; $i++) {
+			echo '<option';
+			if ($timer == $i) {
+				echo ' selected';
+			}
+			echo ' value="' . $i . '">' . $i . '</option>';
+		}	
+	echo '</select>';
+
+	}
+
+	function tidMinutter($minutter) {
+		echo '<select class="form-control" name="timer" id="timer">';
+		for ($i = 0; $i < 24; $i++) {
+			echo '<option';
+			if ($minutter == $i) {
+				echo ' selected';
+			}
+			echo ' value="' . $i . '">' . $i . '</option>';
+		}	
+	echo '</select>';
+	}
+
+
 ?>
