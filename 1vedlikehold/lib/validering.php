@@ -737,7 +737,308 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		
 		// Returnerer om neste side skal lastes inn
 		return $resultat;
+}
 
+
+/*
+/* validering alleflyvninger.php grået ut fjernes nå alleflyvninger.php er klar
+
+function validerFlyvning(luftfartoy_id, rute_kombinasjon_id, avgang, gate, pris, valuta_id) {
+
+    $maaFyllesUt = array();
+    $kommentar = array();
+    $resultat = true;
+
+    $navn = utf8_decode($navn);
+
+    $luftfartoy_id = utf8_decode($luftfartoy_id); //listeboks
+    $rute_kombinasjon_id = utf8_decode($rute_kombinasjon_id); //listeboks
+    $avgang = utf8_decode($avgang); //datepicker
+    $gate = utf8_decode($gate);
+    $pris = utf8_decode($pris);
+    $valuta_id = utf8_decode($valuta_id); //listeboks
+    
+    // Ulike valideringer 
+
+
+    // Sjekker om feltet er tomt
+    //if (flyvningNr == "" || flyvningNr == null) {
+    //    maaFyllesUt.push("flyvningNr");
+    //    resultat = false;
+    //}
+
+
+        // Sjekker om feltet er tomt listeboks
+    if (luftfartoy_id.value == "") {
+        maaFyllesUt.push("luftfartoy_id");
+        resultat = false;
+    }
+
+        // Sjekker om feltet er tomt listeboks
+    if (rute_kombinasjon_id.value == "") {
+        maaFyllesUt.push("rute_kombinasjon_id");
+        resultat = false;
+    }
+
+
+    // Sjekker om feltet er tomt datepicker
+    if (avgang.value == "") {
+        maaFyllesUt.push("avgang");
+        resultat = false;
+    }
+            // Sjekker om feltet er tomt
+    if (gate == "" || gate == null) {
+        maaFyllesUt.push("gate");
+        resultat = false;
+    }
+
+
+
+    // Sjekker om feltet er tomt
+    if (pris == "" || pris == null) {
+        maaFyllesUt.push("pris");
+        resultat = false;
+    }
+
+
+        // Sjekker om feltet er tomt listeboks
+    if (valuta_id.value == "") {
+        maaFyllesUt.push("valuta_id");
+        resultat = false;
+    }
+
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+
+    // Returnerer om det er noen feil
+    return resultat;
+}
+/* ny versjon alleflyvninger.php*/
+
+
+/*fjernes etter alleflyvninger.php er ok-iselin
+function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$flyvningNr = utf8_decode($flyvningNr);
+	$ruteNr = utf8_decode($ruteNr);
+	$tailNr = utf8_decode($tailNr);
+	$type = utf8_decode($type);
+	$avgang = utf8_decode($avgang);
+	$fraFlyplass = utf8_decode($fraFlyplass);
+	$gate = utf8_decode($gate);
+	$tilFlyplass = utf8_decode($tilFlyplass);
+
+	if ($flyvningNr == "" || $flyvningNr == null) {
+		$maaFyllesUt[] = "FlyvningNr";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (!is_numeric($flyvningNr)) {
+			$kommentar[] = "<strong>FlyvningNr</strong> kan kun bestå av tall.";
+			$resultat = false;
+		}
+	}
+	
+	if ($flyplasskode == "" || $flyplasskode == null) {
+				$maaFyllesUt[] = "flyplasskode";
+				$resultat = false;
+			}
+			// Feltet er fylt ut, sjekker ytterligere valideringer
+			else {
+				if (strlen($flyplasskode) < 3) {
+					$kommentar[] = "<strong>flyplasskoden</strong> må inneholde minumum 3 tegn.";
+					$resultat = false;
+				}
+			}
+
+		if ($latitude == "" || $latitude == null) {
+			$maaFyllesUt[] = "Latitude";
+			$resultat = false;
+		}
+		else {
+			if (!is_numeric($latitude)) {
+				$kommentar[] = "<strong>Latitude</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+	
+	if ($longitude == "" || $longitude == null) {
+		$maaFyllesUt[] = "Longitude";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (!is_numeric($longitude)) {
+			$kommentar[] = "<strong>Longitude</strong> kan kun bestå av tall.";
+			$resultat = false;
+		}
+	}
+	if ($tidssone_gmt == "" || $tidssone_gmt == null) {
+		$maaFyllesUt[] = "Tidssone_gmt";
+		$resultat = false;
+	}
+	if ($land_id == "" || $land_id == null) {
+		$maaFyllesUt[] = "Land_id";
+		$resultat = false;
+	}
+	
+	if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+		
+		// Returnerer om neste side skal lastes inn
+
+		return $resultat;
+		
+		return $resultat;
+	
+
+		VALIDERING AV NETTSIDEN
+--------------------------------------
+INDEX:
+
+	function validerBestillinger($fraFlyplass, $tilFlyplass, $passasjer, $fraDato, $tilDato) {
+	
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$fraFlyplass = utf8_decode($fraFlyplass);
+	$tilFlyplass = utf8_decode($tilFlyplass);
+	$passasjer = utf8_decode($passasjer);
+	$fraDato = utf8_decode($fraDato);
+	$tilDato = utf8_decode($tilDato);
+
+	if ($fraFlyplass == "" || $fraFlyplass == null) {
+		$maaFyllesUt[] = "fraFlyplass";
+		$resultat = false;
+	}
+	if ($tilFlyplass == "" || $tilFlyplass == null) {
+		$maaFyllesUt[] = "tilFlyplass";
+		$resultat = false;
+	}
+
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if ($passasjer == "" || $passasjer == null) {
+		$maaFyllesUt[] = "passasjer";
+		$resultat = false;
+	}
+		else {
+			if (!is_numeric($passasjer)) {
+				$kommentar[] = "<strong>passasjer</strong> kan kun bestå av tall.";
+				$resultat = false;
+			}
+		}
+	if ($fraDato == "" || $fraDato == null) {
+		$maaFyllesUt[] = "fraDato";
+		$resultat = false;
+	}
+	if ($fraDato == "" || $fraDato == null) {
+		$maaFyllesUt[] = "fraDato";
+		$resultat = false;
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	} 
+	return $resultat;
+}
+
+REGISTRERREISENDE:
+		
+	function validerRegistrerReisende($fornavn, $etternavn, $epost, $kjonn, $mobilnummer, $fodselsdato) {
+	
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$fornavn = utf8_decode($fornavn);
+	$etternavn = utf8_decode($etternavn);
+	$epost = utf8_decode($epost);
+	$kjonn = utf8_decode($kjonn);
+	$mobilnummer = utf8_decode($mobilnummer);
+	$fodselsdato = utf8_decode($fodselsdato);
+
+	if ($fornavn == "" || $fornavn == null) {
+		$maaFyllesUt[] = "fornavn";
+		$resultat = false;
+	}
+	if ($etternavn == "" || $etternavn == null) {
+		$maaFyllesUt[] = "etternavn";
+		$resultat = false;
+	}
+	
+	if ($epost == "" || $epost == null) {
+			$maaFyllesUt[] = "epost";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (filter_var($epost, FILTER_VALIDATE_EMAIL) === false) {
+				$kommentar[] = "<strong>Epostadressen</strong> er ugyldig.";
+				$resultat = false;
+			}
+			if (sjekkOmEpostEksisterer(@$epost, @$brukerID) ) {
+				$kommentar[] = "<strong>E-post</strong> eksisterer.";
+				$resultat = false;
+			}
+		}
+	if ($kjonn == "" || $kjonn == null) {
+		$maaFyllesUt[] = "kjonn";
+		$resultat = false;
+	}
+
+	if ($mobilnummer == "" || $mobilnummer == null) {
+			$maaFyllesUt[] = "mobilnummer";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if (!is_numeric($mobilnummer)) {
+				$kommentar[] = "<strong>Mobilnummeret</strong> må inneholde minimum 8 siffer.";
+				$resultat = false;
+			}
+			
+			if (sjekkOmMobilnummerEksisterer($mobilnummer, $landID, $brukerID)) {
+				$kommentar[] = "<strong>Mobilnummer</strong> eksisterer.";
+				$resultat = false;
+			}
+		}
+
+
+	if ($fodselsdato == "" || $fodselsdato == null) {
+			$maaFyllesUt[] = "fødselsdato";
+			$resultat = false;
+		}
+		// Feltet er fylt ut, sjekker ytterligere valideringer
+		else {
+			if ($fodselsdato > time()) {
+				$kommentar[] = "passasjer må være født";
+				$resultat = false;
+			}
+		}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	} 
+	return $resultat;
+}
+
+
+
+
+		*/
 /*function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
 	$maaFyllesUt = array();
 	$kommentar = array();
@@ -812,6 +1113,5 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 		}
 		
 		// Returnerer om neste side skal lastes inn
-		return $resultat;*/
-}		
+		return $resultat;*/	
 ?>
