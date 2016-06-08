@@ -1231,11 +1231,18 @@ function validerVelgFly()($reisevalg) {
 		if (sjekkOmKlasseIDeksistereriPris($objektID)) {
 			$kommentar[] = 'Klassen brukes i en eller flere priser. Du må slette de først.';
 			$resultat = FALSE;
+			echo "test2";
 		}
 		if (sjekkOmKlasseIDeksistereriSeteoppsett($objektID)) {
 			$kommentar[] = 'Klassen brukes i en eller flere seteoppsett. Du må slette de først.';
 			$resultat = FALSE;
+			echo "test1";
 		}
+		else {
+			echo "test3";
+		}
+
+		print_r($kommentar);
 
 		if (!$resultat) {
         	feilmeldingBoks($maaFyllesUt, $kommentar);
