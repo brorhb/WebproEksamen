@@ -76,7 +76,7 @@
                                 <lable for="brukernavn">Brukernavn</lable>
                                 <input class="form-control" type="text" placeholder="Brukernavn" name="brukernavn" id="brukernavn" value="' . @$brukernavn . '" required>
                                 <lable for="passord">Passord</lable>
-                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$ukryptertPassord . '" required>
+                                <input class="form-control" type="text" placeholder="Passord" name="passord" id="passord" value="' . @$passord . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fornavn">Fornavn</lable>
@@ -86,10 +86,11 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <div id="birthdayPicker"></div>
-                                <lable for="land">Land</lable>';
-                        echo landskodeListe(@$landID);
-                        echo '
+                                <input class="form-control" type="text" placeholder="fodseldato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
+                                <lable for="land">Land</lable>
+                                '; 
+                            echo landskodeListe($landID);
+                            echo '
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="epost">E-post</lable>
@@ -119,7 +120,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <div id="birthdayPicker"></div>
+                                <input class="form-control" type="text" placeholder="DDMMYYYY" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>';
                         echo landskodeListe(@$landID);
                         echo '

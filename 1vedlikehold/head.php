@@ -34,7 +34,6 @@
 		  <script src="datepicker/js/bootstrap-datepicker.js"></script>
 		  <link rel="stylesheet" href="datepicker/css/datepicker.css">
 		  <link rel="stylesheet/less" href="datepicker/less/datepicker.less">
-		  <script src="js/jquery-birthday-picker.js"></script>
 		  <!-- datepicker -->
 
 		  <link rel="stylesheet" href="css/style.css">

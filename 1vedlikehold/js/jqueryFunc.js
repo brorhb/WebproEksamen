@@ -81,5 +81,5 @@ $('.navUtenJs').hide();
         toggleFields();
     });
 
-    
+
 });
