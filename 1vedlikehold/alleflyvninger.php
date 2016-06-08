@@ -85,11 +85,16 @@
                                 <lable for="avgang">Dato</lable>
                                 <input type="hidden" name="flyvning_id" id="flyvning_id" value="' . @$flyvning_id . '" required>
                                 <input class="form-control" type="text" placeholder="MM/DD/YYYY" name="dpd1" id="dpd1" value="' . @$dato . '" required>
-                                <lable for="avgang">Klokkeslett</lable>
-                                ';
+                                <div class="form-group col-md-6">
+                                <label for="avgang">Timer</label>';
                                     echo tidTimer();
+                    echo '</div>
+                            <div class="col-md-6">
+                            <label>Minutter</label>
+                    ';
                                     echo tidMinutter();
                                 echo '
+                            </div>
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
@@ -454,4 +459,5 @@
         <!-- Innhold -->
         ';
 
-include_once ("end.php"); ?>
+include_once ("end.php"); 
+?>
