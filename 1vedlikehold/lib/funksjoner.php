@@ -165,7 +165,6 @@
 			}
 			connectDB()->close();
 		}
-
 		else {
 			$resultat = FALSE;
 		}
