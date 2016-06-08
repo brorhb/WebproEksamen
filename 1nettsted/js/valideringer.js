@@ -8,33 +8,33 @@ function validerBestilling() {
     var resultat = true;
 
     //var turRetur = document.forms["bestillReiseSkjema"]["turRetur"].value, enVei = document.forms["bestillReiseSkjema"]["enVei"].value,  fraLand = document.forms["bestillReiseSkjema"]["fraLand"].value, tilLand = document.forms["bestillReiseSkjema"]["tilLand"].value, fraDato = document.forms["bestillReiseSkjema"]["dpd1"].value, tilDato = document.forms["bestillReiseSkjema"]["dpd2"].value, resultat = true, feilmeldinger = "";
-    var fraFlyplass = document.getElementById("fraFlyplass"); //listeboks
-    var tilFlyplass =  document.getElementById("tilFlyplass"); //listeboks
-    var antallVoksne = document.getElementById("antallVoksne");
-    var antallUnge = document.getElementById("antallUnge");
-    var fraDato = document.getElementById("fraDato"); //listeboks
-    var tilDato = document.getElementById("tilDato"); //listeboks
+    var fraFlyplass = document.getElementById("fraFlyplass_id").value; //listeboks
+    var tilFlyplass = document.getElementById("tilFlyplass_id").value; //listeboks
+    var passasjertype = document.getElementById("passasjertype");
+    var fraDato = document.getElementById("fraDato").value; //datepicker
+    var tilDato = document.getElementById("tilDato") //datepicker
 
 
 
-    //Sjekker om feltet er tomt,listeboks
-    if (fraFlyplass.value == ""){
-        maaFyllesUt.push("fraFlyplass");
+
+    if (fraFlyplass == "" || fraFlyplass == null) {
+        maaFyllesUt.push("flyplass 1");
         resultat = false;
     }
-    //Sjekker om feltet er tomt, listeboks
-    if (tilFlyplass.value == ""){
-        maaFyllesUt.push("tilFlyplass");
+    if (tilFlyplass == "" || tilFlyplass == null) {
+        maaFyllesUt.push("flyplass 2");
         resultat = false;
     }
-     //Sjekker om feltet er tomt,listeboks
-    if (antallVoksne == "") {
-        maaFyllesUt.push(antallVoksne);
-        resultat = false;
+
+    //flyplassene kan ikke være like
+    if (fraFlyplass == tilFlyplass && (fraFlyplass != "" && fraFlyplass != null) && (tilFlyplass != "" && tilFlyplass != null)) {
+        kommentar.push("<strong>Flyplassene</strong> kan ikke være like");
+            resultat = false;
     }
-    //Sjekker om feltet er tomt,listeboks 
-     if (antallUnge == "") {
-        maaFyllesUt.push(antallUnge);
+
+    //Sjekker om feltet er tomt 
+     if (passasjertype == "") {
+        maaFyllesUt.push(passasjertype);
         resultat = false;
     }
         //Sjekker om feltet er tomt,listeboks
