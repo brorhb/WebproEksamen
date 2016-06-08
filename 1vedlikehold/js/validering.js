@@ -748,7 +748,7 @@ function validerLuftfartoy() {
 /* legg til/endre luftfartoy/fly */
 
 /*sok alleavganger.php  return validerFlyvning() MÅ TESTES */
-
+/* Gammel versjon, slettes når alleflyvninger.php fungerer
 
 function validerFlyvning() {
 
@@ -764,7 +764,7 @@ function validerFlyvning() {
     var fraFlyplass = document.getElementById("fraFlyplass"); //listeboks
     var gate = document.forms["oppdater"]["gate"].value;
     var tilFlyplass = document.getElementById("tilFlyplass"); //listeboks
-    /* Ulike valideringer */
+    /* Ulike valideringer 
 
 
     // Sjekker om feltet er tomt
@@ -823,7 +823,84 @@ function validerFlyvning() {
     // Returnerer om det er noen feil
     return resultat;
 }
+*/
 
+
+/* ny versjon til alleflyvninger.php*/
+
+/* */
+function validerFlyvning() {
+
+    var maaFyllesUt = [];
+    var kommentar = [];
+    var resultat = true;
+
+    //var flyvningNr = document.forms["oppdater"]["flyvningNr"].value;
+    var luftfartoy_id = document.getElementById("luftfartoy_id"); //listeboks
+    var rute_kombinasjon_id = document.getElementById("rute_kombinasjon_id"); //listeboks
+    var avgang = document.getElementById("avgang"); //datepicker
+    var gate = document.forms["oppdater"]["gate"].value;
+    var pris = document.forms["oppdater"]["pris"].value;
+    var valuta_id = document.getElementById("valuta_id"); //listeboks
+    
+    /* Ulike valideringer */
+
+/*
+    // Sjekker om feltet er tomt
+    if (flyvningNr == "" || flyvningNr == null) {
+        maaFyllesUt.push("flyvningNr");
+        resultat = false;
+    }
+*/
+
+        // Sjekker om feltet er tomt listeboks
+    if (luftfartoy_id.value == "") {
+        maaFyllesUt.push("luftfartoy_id");
+        resultat = false;
+    }
+
+        // Sjekker om feltet er tomt listeboks
+    if (rute_kombinasjon_id.value == "") {
+        maaFyllesUt.push("rute_kombinasjon_id");
+        resultat = false;
+    }
+
+
+    // Sjekker om feltet er tomt datepicker
+    if (avgang.value == "") {
+        maaFyllesUt.push("avgang");
+        resultat = false;
+    }
+            // Sjekker om feltet er tomt
+    if (gate == "" || gate == null) {
+        maaFyllesUt.push("gate");
+        resultat = false;
+    }
+
+
+
+    // Sjekker om feltet er tomt
+    if (pris == "" || pris == null) {
+        maaFyllesUt.push("pris");
+        resultat = false;
+    }
+
+
+        // Sjekker om feltet er tomt listeboks
+    if (valuta_id.value == "") {
+        maaFyllesUt.push("valuta_id");
+        resultat = false;
+    }
+
+    // Skriver ut feilmeldingsboks
+    if (!resultat) {
+        feilmeldingBoks(maaFyllesUt, kommentar);
+    }
+
+    // Returnerer om det er noen feil
+    return resultat;
+}
+/* ny versjon alleflyvninger.php*/
 
 /*sok alleavganger.php*/
 
