@@ -13,6 +13,8 @@
 				$antallVoksene = @$_GET["antallVoksene"];
 				$antallUnge = @$_GET["antallUnge"];
 				$reisevalg = @$_GET["reisevalg"];
+				$reisende = @$_GET["reisende"];
+				$passasjertype = @$_GET["passasjertype"];
 
 				connectDB();
 
@@ -59,18 +61,24 @@
 										$result = connectDB()->query($sql);
 
 										if ($result->num_rows > 0 ) {
-											while ($row = $result->fetch_assoc())  {
+											$teller = 0;
+											while ($row = $result->fetch_assoc()) {
 												$id = utf8_encode($row["id"]);
 												$type = utf8_encode($row["type"]);
 												$beskrivelse = utf8_encode($row["beskrivelse"]);
-													?>
+					?>
 												<div class="col-md-3" id="reisende">
 												<?php
-													echo '<label>' . $type . '</label>
-													<input class="form-control" type="textfield" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
-													?>
+													echo '<label>' . $type . '</label>';
+													echo '
+														<input class="form-control" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" value="' . $reisende[$teller] . '" placeholder="' . $type . '" >
+														<input type="hidden" name="passasjertype[' . $teller . ']" id="passasjertype[' . $teller . ']" value="' . $passasjertype[$teller] . '">
+													';
+												?>
 												</div>
-												<?php
+										
+					<?php
+											$teller++;
 											}
 										}
 											?>
@@ -134,21 +142,7 @@
 			$result = connectDB()->query($sql);
 
 			if ($result->num_rows > 0 ) {
-				while ($row = $result->fetch_assoc())  {
-					$id = utf8_encode($row["id"]);
-					$type = utf8_encode($row["type"]);
-					$beskrivelse = utf8_encode($row["beskrivelse"]);
-
-					echo '<input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
-
-				}
-			}
-		?>
-		<?php
-			$sql = "SELECT * FROM `passasjertype`";
-			$result = connectDB()->query($sql);
-
-			if ($result->num_rows > 0 ) {
+				$teller = 0;
 				while ($row = $result->fetch_assoc())  {
 					$id = utf8_encode($row["id"]);
 					$type = utf8_encode($row["type"]);
@@ -156,10 +150,14 @@
 		?>
 					<div class="col-md-3" id="reisende">
 		<?php
-						echo '<input class="form-control" type="hidden" name="reisende[' . $id . ']" id="reisende[' . $id . ']" placeholder="' . $type . '" value="' . $_GET['reisende'][$id ] . '" >';
+						/*echo '
+							<input type="hidden" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" value="' . $reisende[$teller] . '" placeholder="' . $type . '" >
+							<input type="hidden" name="passasjertype[' . $teller . '][' . $id . ']" id="passasjertype[' . $teller . '][' . $id . ']" >
+						';*/
 						?>
 					</div>
 					<?php
+					$teller++;
 				}
 			}
 		?>

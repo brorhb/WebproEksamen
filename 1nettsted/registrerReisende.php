@@ -15,18 +15,46 @@
 					$tilDato = @$_GET["tilDato"];
 					$reisevalg = @$_GET["reisevalg"];
 					$reisende = @$_GET["reisende"];
-
+                    $sql = "SELECT * FROM passasjertype;";
+                    $result = connectDB() -> query($sql);
 					echo print_r($reisende);
 					echo "<br><br>";
 
 					
-								for ($i=1; $i <= count($reisende); $i++) {
-									echo "Reisetype " . $i . "<br>";
+					if ($result->num_rows > 0) {
+                        $teller = 1;
+                        while ($row = $result->fetch_assoc()) {
+                            $id = utf8_encode($row["id"]);
+                            $passasjertype_type = utf8_encode($row["type"]);
+                            $passasjertype_beskrivelse = utf8_encode($row["beskrivelse"]);
+
+                            echo '
+                                <div class="col-md-12">
+                                    <h4>' . $passasjertype_type . '</h4>
+                                    <div class="col-md-6">
+                                        <input type="text" name="passasjertype_id[' . $teller . ']" value="' . $reisende[$teller][$id] . '" /><br/>
+                                        <p>Noe stuff: 
+                                            ' . print_r($reisende[$teller]) . '
+                                        </p>
+                                    </div>
+                                </div>';
+                            $teller++;
+                        }
+                    }	
+
+
+
+                    /*for ($i=1; $i <= count($reisende); $i++) {
+									echo "<h3>Reisetype " . $i . "</h3><br>";
 									$antall_reisende = $reisende[$i];
 									for ($j=0; $j < $reisende[$i]; $j++) {
-										echo "Antall reisende " . $antall_reisende . passasjertypeListe($i) . "<br><br>";
+										echo  $antall_reisende . "</h4><br/>";
 									}
-								}
+								}*/
+
+
+
+
 							
 
 					if ($antall_reisende != 0) {

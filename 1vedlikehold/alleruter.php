@@ -5,7 +5,8 @@
 
 	if (@$_POST['slett']) {
 		$id = @$_POST['id'];
-		if(slettAlleRuter($id)) {
+
+		if(slettAlleRuter($id, $ruteNr, $fraFlyplass_id, $tilFlyplass_id)) {
 			echo "Informasjonen ble slettet.";
 		}
 		else {
@@ -187,10 +188,4 @@
 		<!-- Innhold -->
 		';
 
-
-
-
-
-
-	include_once ("end.php");
-?>
+include_once ("end.php"); ?>
