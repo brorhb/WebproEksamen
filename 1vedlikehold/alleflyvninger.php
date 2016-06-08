@@ -388,7 +388,7 @@
 						<th>Valgt</th>
 						<th>Rute Nr</th>
 						<th>Tail Nr (& type)</th>
-						<th>Avgang</th>
+						<th>Avgang<br><span style="font-size:0.7em;">(MM/DD/YYYY HH:MM)</span></th>
 						<th>Fra Flyplass</th>
 						<th>Fra Gate</th>
 						<th>Til Flyplass</th>
@@ -410,11 +410,13 @@
 									$fraFlyplass = utf8_encode($row["fraFlyplass"]);
 									$gate = utf8_encode($row["gate"]);
 									$tilFlyplass = utf8_encode($row["tilFlyplass"]);
+
+                                    $tid = regnUtDatoFraUnixtime($avgang) . " " . regnUtKlokkeslettFraUnixtime($avgang);
 									echo '<tr>
 												<td><input type="radio" name="id" value="' . $flyvningNr . '" required></td>
 												<td>' . $ruteNr . '</td>
 												<td>' . $tailNr . ' (' . $type . ')</td>
-												<td>' . $avgang . '</td>
+												<td>' . $tid . '</td>
 												<td>' . $fraFlyplass . '</td>
 												<td>' . $gate . '</td>
 												<td>' . $tilFlyplass . '</td>
