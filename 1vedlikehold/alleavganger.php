@@ -10,7 +10,7 @@
             echo "Informasjonen ble slettet.";
         }
         else {
-            echo "Noe galt skjedde...";
+            echo "Noe galt skjedde... ";
         }
     }
     elseif (@$_POST['lagre']) {
