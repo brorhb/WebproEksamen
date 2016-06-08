@@ -411,7 +411,7 @@
 									$gate = utf8_encode($row["gate"]);
 									$tilFlyplass = utf8_encode($row["tilFlyplass"]);
 
-                                    $tid = regnUtDatoFraUnixtime($avgang) . " " . regnUtKlokkeslettFraUnixtime($avgang);
+									$tid = regnUtDatoFraUnixtime($avgang) . " " . regnUtKlokkeslettFraUnixtime($avgang);
 									echo '<tr>
 												<td><input type="radio" name="id" value="' . $flyvningNr . '" required></td>
 												<td>' . $ruteNr . '</td>
