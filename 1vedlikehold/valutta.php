@@ -27,12 +27,12 @@
             $feiletPHPvalidering = true;
         }
     }
-    if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
+    if (@$_POST['ny'] || @$_POST['endre'] || @$feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
         $ValutaID = @$_POST['id'];
 
         echo'    <!-- Innhold -->
-            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterValuta ();">
+            <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterValuta();">
             <div class="col-md-12">';
                 if (@$_POST['ny']) {
                     echo '<h2>Ny valuta</h2>';
