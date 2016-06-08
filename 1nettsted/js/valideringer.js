@@ -125,10 +125,6 @@ function validerRegistrerReisende() {
                 resultat = false;
             }
         }
-    /* Valideringer slutt */
-
-        // Skriver ut feilmeldingsboks
-        
         
             if (!resultat) {
                 feilmeldingBoks(maaFyllesUt, kommentar);
@@ -157,6 +153,25 @@ function validerRegistrerReisende() {
     }
 }
 
+function validerVelgFly() {
+
+            var maaFyllesUt = [];
+            var kommentar = [];
+            var resultat = true;
+
+            
+            var reisevalg = document.forms["oppdater"]["reisevalg"].value; 
+          
+            if (reisevalg.value == ""){
+            maaFyllesUt.push("reisevalg");
+            resultat = false;
+        }
+            if (!resultat) {
+                        feilmeldingBoks(maaFyllesUt, kommentar);
+                    }
+                    return resultat;
+    }
+}
 
 
 

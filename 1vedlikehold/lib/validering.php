@@ -1066,9 +1066,32 @@ REGISTRERREISENDE:
 	return $resultat;
 }
 
+VELG FLY:
 
-		*/
-/*function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
+<?php
+
+function validerVelgFly()($reisevalg) {
+	
+	$maaFyllesUt = array();
+	$kommentar = array();
+	$resultat = true;
+
+	$reisevalg = utf8_decode($reisevalg);
+
+	if ($reisevalg == "" || $reisevalg == null) {
+		$maaFyllesUt[] = "valgt";
+		$resultat = false;
+	}
+	if (!$resultat) {
+		feilmeldingBoks($maaFyllesUt, $kommentar);
+	} 
+	return $resultat;
+}
+
+
+ FLYVNING:
+
+	/*function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
 	$maaFyllesUt = array();
 	$kommentar = array();
 	$resultat = true;
@@ -1143,4 +1166,6 @@ REGISTRERREISENDE:
 		
 		// Returnerer om neste side skal lastes inn
 		return $resultat;*/	
+
+
 ?>
