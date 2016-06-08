@@ -22,7 +22,7 @@
 					<div class="col-md-6" name="tilFlyplass" id="retur">
 						<div class="form-group">
 							<label for="Til"><h4>Til</h4></label>
-							<?php echo tilFlyplassListe();
+							<?php echo tilFlyplassListe(@$objektID);
 ?>
 						</div>
 					</div>

@@ -29,9 +29,9 @@
 								}
 							
 
-					if ($antallReisende != 0) {
+					if ($antall_reisende != 0) {
 						$x = 1;
-						while ( $x <= $antallReisende) {
+						while ( $x <= $antall_reisende) {
 ?>
 
 					<div class='reisende'>
