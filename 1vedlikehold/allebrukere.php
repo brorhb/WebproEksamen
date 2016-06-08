@@ -25,17 +25,17 @@
         $epost = $_POST['epost'];
         $mobilnr = $_POST['mobilnr'];
 
-       // if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
+       if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
 
             // Valideringen godkjent, oppdater databasen
             oppdaterPersonBruker($brukerID, $personID, $brukernavn, $ukryptertPassord, $fornavn, $etternavn, $fodselsdato, $landID, $epost, $mobilnr);
             echo "Informasjonen ble oppdatert.";
-            /*$feiletPHPvalidering = false;
+            $feiletPHPvalidering = false;
         }
         else {
             // PHP-validering ikke godkjent, feilmeldinger skrives ut og skjemaet for å fylle ut info vises:
             $feiletPHPvalidering = true;
-        }*/
+        }
     }
     if (@$_POST['ny'] || @$_POST['endre'] || $feiletPHPvalidering) {
         // Hvis endre eller ny er trykket ned
