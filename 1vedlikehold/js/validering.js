@@ -319,7 +319,7 @@ function validerOppdaterRuter() {
     }
     else {
         if (isNaN(tid)) {
-            kommentar.push("<strong>Tid</strong> kan kun inneholde siffer.");
+            kommentar.push("<strong>Tid</strong> kan kun inneholde siffer, sett tid som TIMER (1 = 1time).");
             resultat = false;
         }
     }
