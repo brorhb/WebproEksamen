@@ -86,7 +86,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
+                                <input class="form-control" type="text" placeholder="fodseldato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>
                                 '; 
                             echo landskodeListe($landID);
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="fodselsdato">Fodselsdato</lable>
-                                <input class="form-control" type="text" placeholder="Fodselsdato" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
+                                <input class="form-control" type="text" placeholder="DDMMYYYY" name="fodselsdato" id="fodselsdato" value="' . @$fodselsdato . '" required>
                                 <lable for="land">Land</lable>';
                         echo landskodeListe(@$landID);
                         echo '
