@@ -77,9 +77,19 @@
                             $flyvning_gate = utf8_encode($row["gate"]);
 
                             echo '
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group col-md-6">
-                                <lable for="avgang">Avganger</lable>
-                                <input class="form-control" type="text" placeholder="Avgang" name="avgang" id="dpd1" value="' . @$flyvning_avgang . '" required>
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
@@ -213,9 +223,19 @@
                     }
                     else {
                         echo '
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="date">Avgang<span class="asteriskField">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group col-md-6">
-                                <lable for="avgang">Avganger</lable>
-                                <input class="form-control" type="text" placeholder="Avgang" name="avgang" id="dpd1" value="' . @$flyvning_avgang . '" required>
                                 <lable for="gate">Gate</lable>
                                 <input class="form-control" type="text" placeholder="Gate Nr" name="gate" id="gate" value="' . @$flyvning_gate . '" required>
                             </div>
