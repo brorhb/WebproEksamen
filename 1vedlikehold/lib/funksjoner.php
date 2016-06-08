@@ -684,7 +684,7 @@
 				$sql .= "INSERT INTO pris (id, passasjertype_id, flyvning_id, pris, valuta_id) VALUES ('', '$passasjertype_iden', ($opprettetFlyvningID), '$prisen', '$valuta_iden');";
 			}
 
-			die("Legg til: " . $sql);
+			//die("Legg til: " . $sql);
 
 			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
