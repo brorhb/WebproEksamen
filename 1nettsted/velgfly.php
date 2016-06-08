@@ -71,7 +71,7 @@
 												<?php
 													echo '<label>' . $type . '</label>';
 													echo '
-														<input class="form-control" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" value="' . $reisende[$teller] . '" placeholder="' . $type . '" >
+														<input class="form-control" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" value="' . $reisende[$teller] . '" placeholder="' . HentPassasjertype_typeFraPassasjertype_id($passasjertype[$teller]) . '" >
 														<input type="hidden" name="passasjertype[' . $teller . ']" id="passasjertype[' . $teller . ']" value="' . $passasjertype[$teller] . '">
 													';
 												?>
@@ -136,7 +136,7 @@
 <div class="container">
 
 	<!-- Avgang -->
-	<form action="registrerReisende.php" method="get">
+	<form action="registrerReisende.php" method="post">
 		<?php
 			$sql = "SELECT * FROM `passasjertype`";
 			$result = connectDB()->query($sql);
@@ -150,10 +150,10 @@
 		?>
 					<div class="col-md-3" id="reisende">
 		<?php
-						/*echo '
-							<input type="hidden" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" value="' . $reisende[$teller] . '" placeholder="' . $type . '" >
-							<input type="hidden" name="passasjertype[' . $teller . '][' . $id . ']" id="passasjertype[' . $teller . '][' . $id . ']" >
-						';*/
+						echo '
+							<input type="hidden" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" value="' . $reisende[$teller] . '" placeholder="' . HentPassasjertype_typeFraPassasjertype_id($passasjertype[$teller]) . '" >
+							<input type="hidden" name="passasjertype[' . $teller . ']" id="passasjertype[' . $teller . ']" value="' . $passasjertype[$teller] . '">
+						';
 						?>
 					</div>
 					<?php

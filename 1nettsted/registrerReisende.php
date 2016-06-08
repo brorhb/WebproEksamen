@@ -9,18 +9,18 @@
 			<form method="get" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
 				<div class="form-group">
 <?php
-					$fraLand = @$_GET["fraFlyplass_id"];
-					$tilLand = @$_GET["tilFlyplass_id"];
-					$fraDato = @$_GET["fraDato"];
-					$tilDato = @$_GET["tilDato"];
-					$reisevalg = @$_GET["reisevalg"];
-					$reisende = @$_GET["reisende"];
+					$fraLand = @$_POST["fraFlyplass_id"];
+					$tilLand = @$_POST["tilFlyplass_id"];
+					$fraDato = @$_POST["fraDato"];
+					$tilDato = @$_POST["tilDato"];
+					$reisevalg = @$_POST["reisevalg"];
+					$reisende = @$_POST["reisende"];
+					$passasjertype = @$_POST["passasjertype"];
                     $sql = "SELECT * FROM passasjertype;";
                     $result = connectDB() -> query($sql);
-					echo print_r($reisende);
-					echo "<br><br>";
 
-					
+?>
+<?php					
 					if ($result->num_rows > 0) {
                         $teller = 1;
                         while ($row = $result->fetch_assoc()) {
@@ -28,82 +28,59 @@
                             $passasjertype_type = utf8_encode($row["type"]);
                             $passasjertype_beskrivelse = utf8_encode($row["beskrivelse"]);
 
-                            echo '
-                                <div class="col-md-12">
-                                    <h4>' . $passasjertype_type . '</h4>
-                                    <div class="col-md-6">
-                                        <input type="text" name="passasjertype_id[' . $teller . ']" value="' . $reisende[$teller][$id] . '" /><br/>
-                                        <p>Noe stuff: 
-                                            ' . print_r($reisende[$teller]) . '
-                                        </p>
-                                    </div>
-                                </div>';
-                            $teller++;
+							$PassasjertypeKey = array_search($id, $passasjertype);
+
+							$antall_reisende = $reisende[$PassasjertypeKey];
+
+							echo '<h2>' . $passasjertype_type . '</h2>';
+
+							for ($i=0; $i < $antall_reisende; $i++) { 
+								$antallet = $i + 1;
+								echo '
+								<div class="row">
+								<h4>' . $passasjertype_type .' '. $antallet .'</h4>
+									<div class="col-md-6">
+										<label for="fornavn">Fornavn</label>
+										<input type="text" class="form-control" name="fornavn" id="fornavn[' . $id . '][' . $i . ']" placeholder="Fornavn" required /> 
+									</div>
+									<div class="col-md-6">
+										<label for="etternavn">Etternavn</label>
+										<input type="text" class="form-control" name="etternavn" id="etternavn[' . $id . '][' . $i . ']" placeholder="Etternavn" required />
+									</div>
+									<div class="col-md-6">
+										<label for="epost">Epost</label>
+										<input type="email" class="form-control" name="email" id="email[' . $id . '][' . $i . ']" placeholder="eksempel@bjarnum.no" required />
+									</div>
+									<div class="col-md-6">
+										<label for="kjonn">Kjønn</label>
+										<select class="form-control" name="kjonn" id="kjonn[' . $id . '][' . $i . ']">
+										<option disabled selected value="">Kjønn</option>
+										<option value="1">Mann</option>
+										<option value="2">Kvinne</option>
+										</select>
+									</div>
+									<div class="col-md-6">
+										<label for="mobilnummer">Mobilnummer</label>
+										<input type="text" class="form-control" name="mobilnummer" id="mobilnummer[' . $id . '][' . $i . ']" placeholder="99999999" required />
+									</div>
+									<div class="col-md-6">
+										<div class="form-group ">
+											<label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar">
+													</i>
+												</div>
+												<input class="form-control" id="date[' . $id . '][' . $i . ']" name="date" placeholder="DD/MM/YYYY" type="text" value=""/>
+											</div>
+										</div>
+									</div>
+								</div>
+								';
+							}
                         }
                     }	
-
-
-
-                    /*for ($i=1; $i <= count($reisende); $i++) {
-									echo "<h3>Reisetype " . $i . "</h3><br>";
-									$antall_reisende = $reisende[$i];
-									for ($j=0; $j < $reisende[$i]; $j++) {
-										echo  $antall_reisende . "</h4><br/>";
-									}
-								}*/
-
-
-
-
-							
-
-					if ($antall_reisende != 0) {
-						$x = 1;
-						while ( $x <= $antall_reisende) {
 ?>
-
-					<div class='reisende'>
-						<div class='col-md-12'>
-							<h3>Reisende nummer: <?php print($x); ?></h3>
-
-							
-
-						</div>
-
-						<div class='col-md-6'>
-							<label for='fornavn'>Fornavn</label>
-							<input type='text' class='form-control' name='fornavn[<?php echo $x; ?>]' id='fornavn[<?php echo $x; ?>]' placeholder='Fornavn' required /> </div>
-						<div class='col-md-6'>
-							<label for='etternavn'>Etternavn</label>
-							<input type='text' class='form-control' name='etternavn[<?php echo $x; ?>]' id='etternavn[<?php echo $x; ?>]' placeholder='Etternavn' required /> </div>
-						<div class='col-md-6'>
-							<label for='epost'>Epost</label>
-							<input type='email' class='form-control' name='email[<?php echo $x; ?>]' id='email[<?php echo $x; ?>]' placeholder='eksempel@bjarnum.no' required /> </div>
-						<div class='col-md-6'>
-							<label for='kjonn'>Kjønn</label>
-							<select class='form-control' name='kjonn[<?php echo $x; ?>]' id='kjonn[<?php echo $x; ?>]'>
-							<option disabled selected value=''>Kjønn</option>
-							<option value='1'>Mann</option>
-							<option value='2'>Kvinne</option>
-							</select>
-						</div>
-						<div class='col-md-6'>
-							<label for='mobilnummer'>Mobilnummer</label>
-							<input type='text' class='form-control' name='mobilnummer[<?php echo $x; ?>]' id='mobilnummer[<?php echo $x; ?>]' placeholder='99999999' required /> </div>
-						<div class='col-md-6'>
-							<label for='dob'>Fødselsdato</label>
-							<input type='text' class='form-control' name='dob' id='dob[]' placeholder='mm/dd/yyyy' required /> </div>
-						</div>
-<?php 
-							$x++;
-							} //end while loop
-					} // end if
- ?>					
-
-				</div>
-
-				<input type="hidden" name="antallVoksene" value="<?php echo $antallVoksene; ?>" required/>
-				<input type="hidden" name="antallUnge" value="<?php echo $antallUnge; ?>" required/>
 				<input type="hidden" name="reisevalg" value="<?php echo $reisevalg; ?>" required/>
 				<input type="hidden" name="fraLand" value="<?php echo $fraLand; ?>" required/>
 				<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>" required/>
