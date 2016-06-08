@@ -244,6 +244,76 @@
 		return $resultat;
 	}
 
+/* valider flyvninger */
+	function validerFlyvninger($gate, $pris, $klokkeslett, $avgang, $valuta_id, $luftfartoy_id, $rute_kombinasjon_id) {
+		/* Klarerer variabler */
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = true;
+
+		$gate = utf8_decode($gate);
+		$pris = utf8_decode($pris);
+		$klokkeslett = utf8_decode($klokkeslett);
+		$avgang = utf8_decode($avgang);
+		$valuta_id = utf8_decode($valuta_id);
+		$luftfartoy_id = utf8_decode($luftfartoy_id);
+		$rute_kombinasjon_id = utf8_decode($rute_kombinasjon_id);
+
+		/* Ulike valideringer */
+
+		// Sjekker om feltet er tomt
+		if ($gate == "" || $gate == null) {
+			$maaFyllesUt[] = "gate";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($pris == "" || $pris == null) {
+			$maaFyllesUt[] = "pris";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($klokkeslett == "" || $klokkeslett == null) {
+			$maaFyllesUt[] = "klokkeslett";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($avgang == "" || $avgang == null) {
+			$maaFyllesUt[] = "avgang";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($valuta_id == "" || $valuta_id == null) {
+			$maaFyllesUt[] = "valuta_id";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($luftfartoy_id == "" || $luftfartoy_id == null) {
+			$maaFyllesUt[] = "tail nr";
+			$resultat = false;
+		}
+
+		// Sjekker om feltet er tomt
+		if ($rute_kombinasjon_id == "" || $rute_kombinasjon_id == null) {
+			$maaFyllesUt[] = "rute nr";
+			$resultat = false;
+		}
+		/* Valideringer slutt */
+
+		// Skriver ut feilmeldingsboks
+		if (!$resultat) {
+			feilmeldingBoks($maaFyllesUt, $kommentar);
+		}
+
+		// Returnerer om neste side skal lastes inn
+		return $resultat;
+	}
+/* Valider flyvninger slutt */
+
 /*Validering Klasse - VET IKKE OM DEN FUNGERER*/
 function validerKlasse($klassenavn, $beskrivelse) {
 		/* Klarerer variabler */
@@ -258,7 +328,6 @@ function validerKlasse($klassenavn, $beskrivelse) {
 		/* Ulike valideringer */
 
 		// Sjekker om feltet er tomt
-
 		if ($klassenavn == "" || $klassenavn == null) {
 			$maaFyllesUt[] = "klassenavn";
 			$resultat = false;

@@ -743,103 +743,24 @@ function validerLuftfartoy() {
 
 /* legg til/endre luftfartoy/fly */
 
-/*sok alleavganger.php  return validerFlyvning() MÅ TESTES */
-/* Gammel versjon, slettes når alleflyvninger.php fungerer
-
+/* valider flyvninger */
 function validerFlyvning() {
 
 	var maaFyllesUt = [];
 	var kommentar = [];
 	var resultat = true;
 
-	var flyvningNr = document.forms["oppdater"]["flyvningNr"].value;
-	var ruteNr = document.getElementById("ruteNr"); //listeboks
-	var tailNr = document.getElementById("tailNr"); //listeboks
-	var type = document.getElementById("type"); //listeboks
-	var avgang = document.forms["oppdater"]["avgang"].value;
-	var fraFlyplass = document.getElementById("fraFlyplass"); //listeboks
-	var gate = document.forms["oppdater"]["gate"].value;
-	var tilFlyplass = document.getElementById("tilFlyplass"); //listeboks
-	/* Ulike valideringer 
-
-
-	// Sjekker om feltet er tomt
-	if (flyvningNr == "" || flyvningNr == null) {
-		maaFyllesUt.push("flyvningNr");
-		resultat = false;
-	}
-
-		// Sjekker om feltet er tomt listeboks
-	if (ruteNr.value == "") {
-		maaFyllesUt.push("ruteNr");
-		resultat = false;
-	}
-
-	// Sjekker om feltet er tomt listeboks
-	if (tailNr.value == "") {
-		maaFyllesUt.push("tailNr");
-		resultat = false;
-	}
-
-	// Sjekker om feltet er tomt listeboks
-	if (type.value == "") {
-		maaFyllesUt.push("type");
-		resultat = false;
-	}
-
-
-	// Sjekker om feltet er tomt
-	if (avgang == "" || avgang == null) {
-		maaFyllesUt.push("avgang");
-		resultat = false;
-	}
-		// Sjekker om feltet er tomt listeboks
-	if (fraFlyplass.value == "") {
-		maaFyllesUt.push("fraFlyplass");
-		resultat = false;
-	}
-
-		// Sjekker om feltet er tomt
-	if (gate == "" || gate == null) {
-		maaFyllesUt.push("gate");
-		resultat = false;
-	}
-
-		// Sjekker om feltet er tomt listeboks
-	if (tilFlyplass.value == "") {
-		maaFyllesUt.push("tilFlyplass");
-		resultat = false;
-	}
-
-	// Skriver ut feilmeldingsboks
-	if (!resultat) {
-		feilmeldingBoks(maaFyllesUt, kommentar);
-	}
-
-	// Returnerer om det er noen feil
-	return resultat;
-}
-*/
-
-
-/* ny versjon til alleflyvninger.php*/
-
-/* */
-function validerFlyvning() {
-
-	var maaFyllesUt = [];
-	var kommentar = [];
-	var resultat = true;
 	var reg = /[^0-9\/]+/;
 	var klokke = /[^0-9\:]+/;
-
-	/*var luftfartoy_id = document.getElementById("luftfartoy_id").value; //listeboks
-	var rute_kombinasjon_id = document.getElementById("rute_kombinasjon_id").value; //listeboks
-	var avgang = document.getElementById("dpd1").value; //datepicker
-	var klokkeslett = document.forms["oppdater"]["klokkeslett"].value;
+	
 	var gate = document.forms["oppdater"]["gate"].value;
 	var pris = document.forms["oppdater"]["pris"].value;
-	var valuta_id = document.getElementById("valuta_id").value;*/ //listeboks
+	var klokkeslett = document.forms["oppdater"]["klokkeslett"].value;
+	var avgang = document.getElementById("dpd1").value; //datepicker listeboks
+	var valuta_id = document.getElementById("valuta_id").value; //valuta listeboks
+	var luftfartoy_id = document.getElementById("luftfartoy_id").value; //fly listeboks
+	var rute_kombinasjon_id = document.getElementById("rute_kombinasjon_id").value; //rute listeboks
+	
 	
 	/* Ulike valideringer */
 
@@ -913,73 +834,8 @@ function validerFlyvning() {
 	// Returnerer om det er noen feil
 	return resultat;
 }
-/* ny versjon alleflyvninger.php*/
+/* valider flyvninger slutt */
 
-/*sok alleavganger.php*/
-
-// Eksempel på valider-funksjon
-/*function validerEksempel() {
-	// Klarerer variabler 
-	var maaFyllesUt = [];
-	var kommentar = [];
-	var resultat = true;
-
-	// Ulike valideringer
-
-	// Sjekker om feltet er tomt
-	if (true) {
-		maaFyllesUt.push("fornavn");
-		resultat = false;
-	}
-
-	// Sjekker om feltet er tomt
-	if (true) {
-		maaFyllesUt.push("etternavn");
-		resultat = false;
-	}
-
-	// Sjekker om feltet er tomt
-	if (true) {
-		maaFyllesUt.push("alder");
-		resultat = false;
-	}
-	// Feltet er fylt ut, sjekker ytterligere valideringer
-	else {
-		if (true) {
-			kommentar.push("<strong>Alder</strong> må være et possitivt tall.");
-			resultat = false;
-		}
-	}
-
-	// Sjekker om feltet er tomt
-	if (false) {
-		maaFyllesUt.push("mobilnummer");
-		resultat = false;
-	}
-	// Feltet er fylt ut, sjekker ytterligere valideringer
-	else {
-		if (true) {
-			kommentar.push("<strong>Mobilnummer</strong> kan kun inneholde siffer fra 0 - 9.");
-			resultat = false;
-		}
-		if (true) {
-			kommentar.push("<strong>Mobilnummer</strong> må være minumum 8 tegn.");
-			resultat = false;
-		}
-	}
-
-	// Valideringer slutt 
-
-	// Skriver ut feilmeldingsboks
-	if (!resultat) {
-		feilmeldingBoks(maaFyllesUt, kommentar);
-	}
-
-	// Returnerer om neste side skal lastes inn
-	return resultat;
-}
-
-// Eksempel på valider-funksjon slutt*/
 
 function feilmeldingBoks(maaFyllesUt, kommentar) {
 
