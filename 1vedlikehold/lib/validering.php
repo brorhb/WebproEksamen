@@ -1244,6 +1244,23 @@ function validerVelgFly()($reisevalg) {
 		return $resultat;
 	}
 
+	function validerSlettType_Luftfartoy($objektID) {
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+		if (sjekkOmLuftfartoyIDeksistereriType_Flyvning($objektID)) {
+			$kommentar[] = 'Flyet brukes i en eller flere flyvninger. Du må slette de først.';
+			$resultat = FALSE;
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+	}
+
 	
 
 ?>

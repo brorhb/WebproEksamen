@@ -93,7 +93,7 @@
 
 		if (validerSlettKlasse($KlasseID)) {
 			connectDB();
-
+/*legge til det som er over dette*/
 			$sql = "DELETE FROM klasse WHERE id = '$KlasseID';";
 			$result = connectDB()->query($sql);
 
@@ -105,6 +105,8 @@
 			}
 			connectDB()->close();
 		}
+		/* må endre fra return - resultat*/
+		/*og ubder dette*/
 		else {
 			$resultat = FALSE;
 		}
@@ -146,19 +148,29 @@
 		connectDB()->close();
 	}
 
-	function slettType_luftfartoy($TypeID) {
-		connectDB();
+	function slettType_Luftfartoy($Type_LuftfartoyID) {
+		$resultat = TRUE;
 
-		$sql = "DELETE FROM type_luftfartoy WHERE id = '$TypeID';";
-		$result = connectDB()->query($sql);
+		if (validerSlettType_Luftfartoy($Type_LuftfartoyID)) {
+			connectDB();
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$sql = "DELETE FROM luftfartoy WHERE id = '$Type_LuftfartoyID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
+				}
+			else {
+				$resultat = FALSE;
 			}
-		else {
-			return FALSE;
+			connectDB()->close();
 		}
-		connectDB()->close();
+
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde) {
@@ -1266,7 +1278,7 @@
 		function sjekkOmKlasseIDeksistereriPris($objektID) {
 		connectDB();
 
-		$sql = "SELECT klasse FROM pris WHERE klasse_id = '$objektID';";
+		$sql = "SELECT klasse_id FROM pris WHERE klasse_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1282,7 +1294,7 @@
 		function sjekkOmKlasseIDeksistereriSeteoppsett($objektID) {
 		connectDB();
 
-		$sql = "SELECT klasse FROM seteoppsett WHERE klasse_id = '$objektID';";
+		$sql = "SELECT klasse_id FROM seteoppsett WHERE klasse_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1338,10 +1350,11 @@
 		connectDB()->close();
 	}
 
-		function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
+
+function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
-		$sql = "SELECT klasse FROM modell WHERE type_luftfartoy_id = '$objektID';";
+		$sql = "SELECT type_luftfartoy_id FROM modell WHERE type_luftfartoy_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1352,7 +1365,6 @@
 		}
 		connectDB()->close();
 	}
-
 
 	function type_luftfartoyListe($objektID) {
 		// OBS! "Velg type luftfartøy" er hardkodet p.ga. _ og ø
@@ -1775,7 +1787,7 @@
 	function sjekkOmLuftfartoyIDeksistereriFlyvning($objektID) {
 		connectDB();
 
-		$sql = "SELECT luftfartoy_id FROM flyvning WHERE luftfartoy_id = '$objektID';";
+		$sql = "SELECT type_luftfartoy_id FROM flyvning WHERE type_luftfartoy_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
