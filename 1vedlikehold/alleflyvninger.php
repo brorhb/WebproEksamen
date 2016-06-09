@@ -25,9 +25,8 @@
 		$pris = @$_POST["pris"];
 		$valuta_id = @$_POST["valuta_id"];
 
-		$validering = true;
 
-		if ($validering) {
+		if (validerFlyvning($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass)) {
 			oppdaterFlyvning($flyvning_id, $luftfartoy_id, $rute_kombinasjon_id, $dato, $klokkeslett, $gate, $passasjertype_id, $pris, $valuta_id);
 			echo "Informasjonen ble oppdatert.";
 			$feiletPHPvalidering = false;
@@ -97,7 +96,7 @@
 								<lable for="luftfartoy">Tail Nr</lable>';
 							echo luftfartoyListe($flyvning_luftfaryoy_id);
 							echo '</div>';
-							echo '<div class="col-md-12"><h2>Pris</h2></div>';
+							echo '<div class="col-md-12"><h2>Pris</h2><h6>(valgfritt)</h6></div>';
 
 							$sql2 = "SELECT id, type, beskrivelse FROM passasjertype;";
 							$result2 = connectDB()->query($sql2);
@@ -246,7 +245,7 @@
 								<lable for="luftfartoy">Tail Nr</lable>';
 							echo luftfartoyListe($flyvning_luftfaryoy_id);
 							echo '</div>';
-							echo '<div class="col-md-12"><h2>Pris</h2></div>';
+							echo '<div class="col-md-12"><h2>Pris</h2><h6>(valgfritt)</h6></div>';
 
 							$sql2 = "SELECT id, type, beskrivelse FROM passasjertype;";
 							$result2 = connectDB()->query($sql2);
