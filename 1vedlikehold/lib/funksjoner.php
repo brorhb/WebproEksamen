@@ -154,7 +154,7 @@
 		if (validerSlettType_Luftfartoy($Type_LuftfartoyID)) {
 			connectDB();
 
-			$sql = "DELETE FROM luftfartoy WHERE id = '$Type_LuftfartoyID';";
+			$sql = "DELETE FROM type_luftfartoy WHERE id = '$Type_LuftfartoyID';";
 			$result = connectDB()->query($sql);
 
 			if (connectDB()->query($sql) === TRUE) {
@@ -1989,7 +1989,7 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB()->close();
 	}
 
-	function sjekkOmLuftfartoyIDeksistereri_Flyvning($objektID) {
+	function sjekkOmLuftfartoyIDeksistereriType_Flyvning($objektID) {
 		connectDB();
 
 		$sql = "SELECT luftfartoy_id FROM flyvning WHERE luftfartoy_id = '$objektID';";
