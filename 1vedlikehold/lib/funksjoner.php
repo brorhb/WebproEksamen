@@ -172,6 +172,7 @@
 		return $resultat;
 	}
 
+		
 	function oppdaterAlleModeller($id, $type, $navn, $rader, $bredde) {
 
 		connectDB();
@@ -1988,7 +1989,7 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB()->close();
 	}
 
-	function sjekkOmLuftfartoyIDeksistereriFlyvning($objektID) {
+	function sjekkOmLuftfartoyIDeksistereri_Flyvning($objektID) {
 		connectDB();
 
 		$sql = "SELECT luftfartoy_id FROM flyvning WHERE luftfartoy_id = '$objektID';";
@@ -2394,6 +2395,10 @@ function sjekkOmBestilling_flyvning_idEksistereriPassasjer_flyvning($objektID) {
 		}
 		connectDB()->close();
 	}
+
+
+
+
 
 	function sjekkOmEpostEksisterer($epost, $brukerID) {
 		// Hvis brukerID er satt sjekkes det ikke for den brukeren p.ga. når man oppdaterer finnes eposten fra før hos brukeren man oppdaterer
