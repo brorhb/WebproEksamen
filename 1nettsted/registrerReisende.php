@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="col-md-10 col-md-offset-1">
-			<form method="get" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
+			<form method="post" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
 				<div class="form-group">
 <?php
 					$fraLand = @$_POST["fraFlyplass_id"];
@@ -86,6 +86,7 @@
 				<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>" required/>
 				<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>" required/>
 				<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>" required/>
+				<input type="hidden" name="antallReisende" value="5" required/>
 
 				<input type="submit" class="btn btn-default pull-right" value="Bekreft">
 			</form>

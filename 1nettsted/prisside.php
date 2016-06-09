@@ -3,14 +3,12 @@
 ?>
 
 <?php
-	$fraLand = @$_GET["fraFlyplass_id"];
-	$tilLand = @$_GET["tilFlyplass_id"];
-	$fraDato = @$_GET["fraDato"];
-	$tilDato = @$_GET["tilDato"];
-	$antallVoksene = @$_GET["antallVoksene"];
-	$antallUnge = @$_GET["antallUnge"];
-	$reisevalg = @$_GET["reisevalg"];
-	$antallReisende = $antallUnge + $antallVoksene;
+	$fraLand = @$_POST["fraFlyplass_id"];
+	$tilLand = @$_POST["tilFlyplass_id"];
+	$fraDato = @$_POST["fraDato"];
+	$tilDato = @$_POST["tilDato"];
+	$reisevalg = @$_POST["reisevalg"];
+	$antallReisende = @$_POST["antallReisende"];
 ?>
 
 <!-- innhold -->
