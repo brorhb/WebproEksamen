@@ -21,7 +21,7 @@
 	echo "<br><br>";
 
 	
-	$test = sjekkOmBestilling_flyvning_idEksistereriPassasjer_flyvning("99");
+	$test = sjekkOmFraFlyplassIDeksistereriRute_kombinasjon("3");
 
 	if ($test) {
 		echo "Returnerer true (" . $test . ")";

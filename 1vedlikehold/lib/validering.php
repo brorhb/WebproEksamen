@@ -1299,7 +1299,9 @@ function validerVelgFly()($reisevalg) {
 		return $resultat;
 	}
 
+
 	function validerSlettFlyplass($objektID) {
+
 		$maaFyllesUt = array();
 		$kommentar = array();
 		$resultat = TRUE;
@@ -1312,6 +1314,24 @@ function validerVelgFly()($reisevalg) {
 			$kommentar[] = 'Flyplassen brukes i en eller flere fra- flyplasser. Du må slette de først.';
 			$resultat = FALSE;
 		}
+			if (!$resultat) {
+			        	feilmeldingBoks($maaFyllesUt, $kommentar);
+			    	}
+
+					return $resultat;
+				}
+
+function validerSlettLand($objektID) {
+
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+
+		if (sjekkOmLandIDeksistereriFlyplass($objektID)) {
+			$kommentar[] = 'Land brukes i en eller flere flyplasser. Du må slette de først.';
+			$resultat = FALSE;
+		}
 
 		if (!$resultat) {
         	feilmeldingBoks($maaFyllesUt, $kommentar);
@@ -1320,6 +1340,5 @@ function validerVelgFly()($reisevalg) {
 		return $resultat;
 	}
 
-	
 
 ?>

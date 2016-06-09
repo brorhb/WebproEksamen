@@ -458,8 +458,11 @@
 		connectDB()->close();
 	}
 
-	function slettLand($LandID) {
-		connectDB();
+	/*function slettLand($LandID) {
+
+		$resultat = TRUE;
+
+		if(validerSlettLand($LandID))
 
 		$sql = "DELETE FROM land WHERE id = '$LandID';";
 		$result = connectDB()->query($sql);
@@ -468,11 +471,16 @@
 			return TRUE;
 			}
 		else {
-			return FALSE;
-		}
+			resultat FALSE;
+		} {
 		connectDB()->close();
 	}
-
+	else {
+		$resultat = False;
+	}
+	return $resultat;
+}
+*/
 	function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
 
 		connectDB();
@@ -2436,6 +2444,34 @@ function fraflyplassListe($objektID) {
 		}	
 	echo '</select>';
 	}
+	function sjekkOmFraFlyplassIDeksistereriRute_kombinasjon($objektID) {
+		connectDB();
 
+		$sql = "SELECT flyplass_id_fra FROM rute_kombinasjon WHERE flyplass_id_fra = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmTilFlyplassIDeksistereriRute_kombinasjon($objektID) {
+		connectDB();
+
+		$sql = "SELECT flyplass_id_til FROM rute_kombinasjon WHERE flyplass_id_til = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
 
 ?>
