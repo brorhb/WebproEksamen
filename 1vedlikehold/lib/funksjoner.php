@@ -267,7 +267,7 @@
 
 				// finne setebokstav?
 				for ($x = 0; $x < $bredde; $x++) {
-					$sete = $setenr[$x];
+					$sete = @$setenr[$x];
 					$alfabet = range('A', 'Z');
 					$bokstav = $alfabet[$x];
 
