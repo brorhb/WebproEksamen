@@ -40,7 +40,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	
-	<?php  include_once ('../1vedlikehold/lib/funksjoner.php'); ?>
+	<?php  include_once ('../vedlikehold/lib/funksjoner.php'); ?>
 	<!-- stilark -->
 	<!-- <noscript><meta http-equiv="refresh" content="0; url=nojs.html" /></noscript> -->
 
