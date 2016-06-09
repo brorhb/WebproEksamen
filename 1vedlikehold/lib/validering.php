@@ -1292,12 +1292,12 @@ function validerVelgFly()($reisevalg) {
 		$kommentar = array();
 		$resultat = TRUE;
 
-		if (sjekkOmFlyplassIDeksistereriFlyplass_id_til($objektID)) {
-			$kommentar[] = 'Flyplassen brukes i en eller flere til - flyplasser. Du må slette de først.';
+		if (sjekkOmFraFlyplassIDeksistereriRute_kombinasjon($objektID)) {
+			$kommentar[] = 'Flyplassen brukes i en eller flere fra - flyplasser. Du må slette de først.';
 			$resultat = FALSE;
 		}
-		if (sjekkOmFlyplassIDeksistereriFlyplass_id_fra($objektID)) {
-			$kommentar[] = 'Flyplassen brukes i en eller flere fra- flyplasser. Du må slette de først.';
+		if (sjekkOmTilFlyplassIDeksistereriRute_kombinasjon($objektID)) {
+			$kommentar[] = 'Flyplassen brukes i en eller flere til- flyplasser. Du må slette de først.';
 			$resultat = FALSE;
 		}
 			if (!$resultat) {
