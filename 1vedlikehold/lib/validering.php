@@ -245,17 +245,17 @@
 	}
 
 /* valider flyvninger */
-	function validerFlyvninger($gate, $pris, $klokkeslett, $avgang, $valuta_id, $luftfartoy_id, $rute_kombinasjon_id) {
+	function validerFlyvninger($gate, $klokkeslett, $dato, $luftfartoy_id, $rute_kombinasjon_id) {
 		/* Klarerer variabler */
 		$maaFyllesUt = array();
 		$kommentar = array();
 		$resultat = true;
 
 		$gate = utf8_decode($gate);
-		$pris = utf8_decode($pris);
+		//$pris = utf8_decode($pris);
 		$klokkeslett = utf8_decode($klokkeslett);
-		$avgang = utf8_decode($avgang);
-		$valuta_id = utf8_decode($valuta_id);
+		$dato = utf8_decode($avgang);
+		//$valuta_id = utf8_decode($valuta_id);
 		$luftfartoy_id = utf8_decode($luftfartoy_id);
 		$rute_kombinasjon_id = utf8_decode($rute_kombinasjon_id);
 
@@ -266,11 +266,11 @@
 			$resultat = false;
 		}
 
-		// Sjekker om feltet er tomt
+		/*// Sjekker om feltet er tomt
 		if ($pris == "" || $pris == null) {
 			$maaFyllesUt[] = "pris";
 			$resultat = false;
-		}
+		}*/
 
 		// Sjekker om feltet er tomt
 		if ($klokkeslett == "" || $klokkeslett == null) {
@@ -284,11 +284,11 @@
 			$resultat = false;
 		}
 
-		// Sjekker om feltet er tomt
+		/*// Sjekker om feltet er tomt
 		if ($valuta_id == "" || $valuta_id == null) {
 			$maaFyllesUt[] = "valuta_id";
 			$resultat = false;
-		}
+		}*/
 
 		// Sjekker om feltet er tomt
 		if ($luftfartoy_id == "" || $luftfartoy_id == null) {

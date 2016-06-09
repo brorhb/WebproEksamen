@@ -26,7 +26,7 @@
 		$valuta_id = @$_POST["valuta_id"];
 
 
-		if (validerFlyvning($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass)) {
+		if (validerFlyvninger($gate, $klokkeslett, $dato, $luftfartoy_id, $rute_kombinasjon_id)) {
 			oppdaterFlyvning($flyvning_id, $luftfartoy_id, $rute_kombinasjon_id, $dato, $klokkeslett, $gate, $passasjertype_id, $pris, $valuta_id);
 			echo "Informasjonen ble oppdatert.";
 			$feiletPHPvalidering = false;
