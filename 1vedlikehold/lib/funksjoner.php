@@ -2038,6 +2038,21 @@ function sjekkOmBestilling_idEksistereriBestilling_flyvning($objektID) {
 		connectDB()->close();
 	}
 
+function sjekkOmBestilling_flyvning_idEksistereriPassasjer_flyvning($objektID) {
+		connectDB();
+
+		$sql = "SELECT bestilling_flyvning_id FROM passasjer_flyvning WHERE bestilling_flyvning_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function luftfartoyListe($objektID) {
 		$objektnavn = 'luftfartoy';
 		$objektIDeksisterer = sjekkOmLuftfartoyIDeksisterer($objektID);
