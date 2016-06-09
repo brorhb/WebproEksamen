@@ -663,14 +663,13 @@ function validerAlleFly($modell_id, $tailnr) {
 }
 /*Validering valuta - VET IKKE OM DEN FUNGERER*/
 
-function validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde) {
+function validerAlleModeller($navn, $type, $rader, $bredde) {
 	$maaFyllesUt = array();
 	$kommentar = array();
 	$resultat = true;
 
 	$navn = utf8_decode($navn);
 	$type = utf8_decode($type);
-	$kapasitet = utf8_decode($kapasitet);
 	$rader = utf8_decode($rader);
 	$bredde = utf8_decode($bredde);
 
@@ -683,19 +682,6 @@ function validerAlleModeller($navn, $type, $kapasitet, $rader, $bredde) {
 		$resultat = false;
 	}
 
-	if ($kapasitet == "" || $kapasitet == null) {
-		$maaFyllesUt[] = "kapasitet";
-		$resultat = false;
-	}
-	// Feltet er fylt ut, sjekker ytterligere valideringer
-
-	// Feltet er fylt ut, sjekker ytterligere valideringer
-	else {
-		if (!is_numeric($kapasitet)) {
-			$kommentar[] = "<strong>Kapasiteten</strong> kan kun bestå av tall.";
-			$resultat = false;
-		}
-	}
 	if ($rader == "" || $rader == null) {
 		$maaFyllesUt[] = "rader";
 		$resultat = false;

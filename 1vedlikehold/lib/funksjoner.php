@@ -172,22 +172,65 @@
 		return $resultat;
 	}
 
-	function oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde) {
+	function oppdaterAlleModeller($id, $type, $navn, $rader, $bredde) {
 
 		connectDB();
 
 		$id = connectDB()->real_escape_string(utf8_encode($id));
 		$navn = connectDB()->real_escape_string(utf8_encode($navn));
 		$type = connectDB()->real_escape_string(utf8_encode($type));
-		$kapasitet = connectDB()->real_escape_string(utf8_encode($kapasitet));
 		$rader = connectDB()->real_escape_string(utf8_encode($rader));
 		$bredde = connectDB()->real_escape_string(utf8_encode($bredde));
+		$kapasitet = $bredde * $rader;
 
 		if ($id == '') {
 
 			$sql = "INSERT INTO `modell` (`type_luftfartoy_id`, `navn`, `kapasitet`, `rader`, `bredde`) VALUES ('$type', '$navn', '$kapasitet', '$rader', '$bredde');";
 
-			if (connectDB()->query($sql) === TRUE) {
+			/* Oppdatere seteoppsett */
+
+			if (connectDB()->multi_query($sql) === TRUE) {
+				//return TRUE;
+			}
+			else {
+				//return FALSE;
+			}
+			
+			$modell_id = HentModell_idFraModell($type, $navn, $kapasitet, $rader, $bredde);
+
+			$sql = "";
+
+			// finne setenr?
+			echo '<table border="1">';
+			for ($i = 1; $i <= $rader; $i++) {
+				echo "<tr>";
+				$radnummer = $i;
+
+				if ($i == 1) {
+					$sql .= "";
+				}
+
+				// finne setebokstav?
+				for ($x = 0; $x < $bredde; $x++) {
+					$sete = $setenr[$x];
+					$alfabet = range('A', 'Z');
+					$bokstav = $alfabet[$x];
+
+
+					$sete_bokstav = $i . $bokstav;
+
+					echo "<td>" . $sete_bokstav . "</td>";
+
+
+					$sql .= "INSERT INTO `seteoppsett`(`modell_id`, `radnummer`, `sete_bokstav`) VALUES ('$modell_id', '$radnummer', '$sete_bokstav');";
+				}
+				echo "</tr>";
+			}
+			echo "</table>";
+			echo "Kapasitet: " . $kapasitet . '</br>';
+			/* Oppdatere seteoppsett slutt */
+
+			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
 			}
 			else {
@@ -198,7 +241,50 @@
 			// ID er ikke satt
 			$sql = "UPDATE `modell` SET `type_luftfartoy_id` = '$type', `navn` = '$navn', `kapasitet` = '$kapasitet', `rader` = '$rader', `bredde` = '$bredde' WHERE `modell`.`id` = '$id';";
 
-			if (connectDB()->query($sql) === TRUE) {
+			/* Oppdatere seteoppsett */
+
+			if (connectDB()->multi_query($sql) === TRUE) {
+				//return TRUE;
+			}
+			else {
+				//return FALSE;
+			}
+			
+			$modell_id = HentModell_idFraModell($type, $navn, $kapasitet, $rader, $bredde);
+
+			$sql = "DELETE FROM seteoppsett WHERE modell_id = '$modell_id';";
+
+			// finne setenr?
+			echo '<table border="1">';
+			for ($i = 1; $i <= $rader; $i++) {
+				echo "<tr>";
+				$radnummer = $i;
+
+				if ($i == 1) {
+					$sql .= "";
+				}
+
+				// finne setebokstav?
+				for ($x = 0; $x < $bredde; $x++) {
+					$sete = $setenr[$x];
+					$alfabet = range('A', 'Z');
+					$bokstav = $alfabet[$x];
+
+
+					$sete_bokstav = $i . $bokstav;
+
+					echo "<td>" . $sete_bokstav . "</td>";
+
+
+					$sql .= "INSERT INTO `seteoppsett`(`modell_id`, `radnummer`, `sete_bokstav`) VALUES ('$modell_id', '$radnummer', '$sete_bokstav');";
+				}
+				echo "</tr>";
+			}
+			echo "</table>";
+			echo "Kapasitet: " . $kapasitet . '</br>';
+			/* Oppdatere seteoppsett slutt */
+
+			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
 			}
 			else {
@@ -209,13 +295,30 @@
 		connectDB()->close();
 	}
 
+	function HentModell_idFraModell($type1, $navn1, $kapasitet1, $rader1, $bredde1) {
+		connectDB();
+
+		$sql = "SELECT id FROM modell WHERE `type_luftfartoy_id` = '$type1' AND `navn` = '$navn1' AND `kapasitet` = '$kapasitet1' AND `rader` = '$rader1' AND `bredde` = '$bredde1' ORDER BY id DESC LIMIT 1;";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["id"]);
+			}
+		}
+		connectDB()->close();
+	}
+
 	function slettAlleModeller($id) {
 		connectDB();
 
-		$sql = "DELETE FROM `web-is-gr02w`.`modell` WHERE `modell`.`id` = '$id';";
-		$result = connectDB()->query($sql);
+		$sql = "DELETE FROM seteoppsett WHERE modell_id = '$id';
+				DELETE FROM `web-is-gr02w`.`modell` WHERE `modell`.`id` = '$id';";
 
-		if (connectDB()->query($sql) === TRUE) {
+		$result = connectDB()->multi_query($sql);
+
+		if (connectDB()->multi_query($sql) === TRUE) {
 			return TRUE;
 			}
 		else {
@@ -720,10 +823,6 @@
 
 	function oppdaterFlyvning($FlyvningID, $luftfartoy_id, $rute_kombinasjon_id, $dato, $klokkeslett, $gate, $passasjertype_id, $pris, $valuta_id) {
 		// Spesialtilpasset
-
-		/*echo 'PassasjertypeID: ' . print_r($passasjertype_id) . '<br>';
-		echo 'Pris: ' . print_r($pris) . '<br>';
-		echo 'ValutaID: ' . print_r($valuta_id) . '<br>';*/
 
 		connectDB();
 
@@ -2450,6 +2549,7 @@ function fraflyplassListe($objektID) {
 		$sql = "SELECT flyplass_id_fra FROM rute_kombinasjon WHERE flyplass_id_fra = '$objektID';";
 		$result = connectDB()->query($sql);
 
+
 		if ($result->num_rows > 0) {
 			return TRUE;
 		}
@@ -2473,5 +2573,60 @@ function fraflyplassListe($objektID) {
 		}
 		connectDB()->close();
 	}
+
+/* BESTILLINGER */
+
+function oppdaterBestillinger($id) {
+		// Spesialtilpasset
+
+		connectDB();
+
+		$flyvning_id = connectDB()->real_escape_string(utf8_encode($FlyvningID));
+        $avgang = regnUtUnixtimeFraDatoOgKlokkeslett($dato, $klokkeslett);
+
+		if ($id == '') {
+
+			$sql = "INSERT INTO";
+
+			$modell_id = HentModell_idFraModell();
+
+			for ($i=0; $i < count($passasjertype_id); $i++) {
+				$passasjertype_iden = connectDB()->real_escape_string(utf8_encode($passasjertype_id[$i]));
+
+				$sql .= "INSERT INTO;";
+			}
+
+			if (connectDB()->multi_query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		else {
+			// ID er ikke satt
+			$sql = "UPDATE ";
+
+			// Slett gamle priser
+			$sql .= "DELETE FROM";
+
+			// Sett inn nye priser
+			for ($i=0; $i < count($passasjertype_id); $i++) {
+				$passasjertype_iden = connectDB()->real_escape_string(utf8_encode($passasjertype_id[$i]));
+
+				$sql .= "INSERT INTO";
+			}
+
+			if (connectDB()->multi_query($sql) === TRUE) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		connectDB()->close();
+	}
+
+/* BESTILLINGER  SLUTT*/
 
 ?>

@@ -22,8 +22,8 @@
         $bredde = $_POST['bredde'];
 
 
-        if(validerAlleModeller($type, $navn, $kapasitet, $rader, $bredde)) {
-            oppdaterAlleModeller($id, $type, $navn, $kapasitet, $rader, $bredde);
+        if(validerAlleModeller($type, $navn, $rader, $bredde)) {
+            oppdaterAlleModeller($id, $type, $navn, $rader, $bredde);
             echo "Informasjonen ble oppdatert.";
             $feiletPHPvalidering=false;
         }
@@ -74,10 +74,6 @@
                             echo '
                             </div>
                             <div class="form-group col-md-6">
-                                <lable for="kapasitet">kapasitet</lable>
-                                <input class="form-control" type="text" placeholder="kapasitet" name="kapasitet" id="kapasitet" value="' . @$kapasitet . '" required>
-                            </div>
-                            <div class="form-group col-md-6">
                                 <lable for="rader">Rader</lable>
                                 <input class="form-control" type="text" placeholder="rader" name="rader" id="rader" value="' . @$rader . '" required>
                             </div>
@@ -100,10 +96,6 @@
                             type_luftfartoyListe(@$type);
 
                             echo '
-                            </div>
-                            <div class="form-group col-md-6">
-                                <lable for="kapasitet">kapasitet</lable>
-                                <input class="form-control" type="text" placeholder="kapasitet" name="kapasitet" id="kapasitet" value="' . @$kapasitet . '" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <lable for="rader">Rader</lable>
@@ -183,10 +175,4 @@
         <!-- Innhold -->
         ';
 
-
-
-
-
-
-    include_once ("end.php");
-?>
+include_once ("end.php"); ?>
