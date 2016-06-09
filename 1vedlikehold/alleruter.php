@@ -6,7 +6,7 @@
 	if (@$_POST['slett']) {
 		$id = @$_POST['id'];
 
-		if(slettAlleRuter($id, $ruteNr, $fraFlyplass_id, $tilFlyplass_id)) {
+		if(slettAlleRuter(@$id, @$ruteNr, @$fraFlyplass_id, @$tilFlyplass_id)) {
 			echo "Informasjonen ble slettet.";
 		}
 		else {

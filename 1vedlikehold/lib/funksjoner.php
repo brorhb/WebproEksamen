@@ -808,7 +808,6 @@
 	function slettLuftfartoy($LuftfartoyID) {
 		connectDB();
 
-		if ($resultat) {
 			$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
 			$result = connectDB()->query($sql);
 
@@ -818,7 +817,7 @@
 			else {
 				$resultat = FALSE;
 			}
-		}
+		
 
 		connectDB()->close();
 	}
