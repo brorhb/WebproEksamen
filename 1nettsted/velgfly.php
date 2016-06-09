@@ -31,7 +31,7 @@
 						<h2><?php echo $fraNavn; ?> til <?php echo $tilNavn; ?></h2>
 
 
-						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
+						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerStartBestilling()">
 							<div class="row" id="reiseEndring">
 								<div class="col-md-6">
 
@@ -131,7 +131,6 @@
 </div>
 <!-- Reise info -->
 
-
 <!-- innhold -->
 <div class="container">
 
@@ -210,7 +209,7 @@
 								<td><?php echo $avgang; ?></td>
 								<td><?php echo $tilFlyplass; ?></td>
 								<td><?php echo $avgang + $reiseTid ?></td>
-								<td><input type="radio" name="id" value="<?php echo $flyvningNr; ?>"></td>
+								<td><input type="radio" name="utreise" value="<?php echo $flyvningNr; ?>"></td>
 							</tr>
 
 						<?php }
@@ -222,6 +221,7 @@
 		<!-- Avgang -->
 
 		<!-- Retur -->
+<?php if ($reisevalg != 2) { ?>
 		<div class="col-md-10 col-md-offset-1">
 			<h2><span class="glyphicon glyphicon-plane"></span> Retur</h2>
 			<table class="table">
@@ -258,7 +258,7 @@
 								<td><?php echo $avgang; ?></td>
 								<td><?php echo $tilFlyplass; ?></td>
 								<td><?php echo $avgang + $reiseTid ?></td>
-								<td><input type="radio" name="id" value="<?php echo $flyvningNr; ?>"></td>
+								<td><input type="radio" name="retur" value="<?php echo $flyvningNr; ?>"></td>
 							</tr>
 
 						<?php }
@@ -267,6 +267,7 @@
 			</table>
 			<h3 class="pull-right">Pris</h3>
 		</div>
+<?php } ?>
 		<!-- Retur -->
 
 		<div class="col-md-10 col-md-offset-1">

@@ -73,7 +73,7 @@
 					<div class="col-md-3" id="reisende">
 					<?php
 						echo '<label>' . $type . '</label>
-						<input class="form-control" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" placeholder="' . $type . '" >
+						<input class="form-control" onkeypress="return isNumberKey(event)" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" placeholder="' . $type . '" >
 						<input type="hidden" name="passasjertype[' . $teller . ']" id="passasjertype[' . $teller . ']" value="' . $id . '" >';
 					?>
 					</div>
