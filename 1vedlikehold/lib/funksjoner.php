@@ -2577,13 +2577,17 @@ function fraflyplassListe($objektID) {
 
 /* BESTILLINGER */
 
-function oppdaterBestillinger($id) {
+function oppdaterBestillinger($id, $rute_id, $passasjertype_id, $fornavn, $etternavn, $date) {
 		// Spesialtilpasset
 
 		connectDB();
 
-		$flyvning_id = connectDB()->real_escape_string(utf8_encode($FlyvningID));
-        $avgang = regnUtUnixtimeFraDatoOgKlokkeslett($dato, $klokkeslett);
+		$id = connectDB()->real_escape_string(utf8_encode($id));
+		$rute_id = connectDB()->real_escape_string(utf8_encode($rute_id));
+		$passasjertype_id = connectDB()->real_escape_string(utf8_encode($passasjertype_id));
+		$fornavn = connectDB()->real_escape_string(utf8_encode($fornavn));
+		$etternavn = connectDB()->real_escape_string(utf8_encode($etternavn));
+		$date = connectDB()->real_escape_string(utf8_encode($date));
 
 		if ($id == '') {
 
@@ -2606,7 +2610,7 @@ function oppdaterBestillinger($id) {
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE ";
+			$sql = "UPDATE `passasjer_flyvning` SET `bestilling_flyvning_id` = '', `person_id` = '', `pris_id` = '', `seteoppsett_id` = '' WHERE id = ''";
 
 			// Slett gamle priser
 			$sql .= "DELETE FROM";

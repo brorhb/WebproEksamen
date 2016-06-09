@@ -15,8 +15,13 @@
 	}
 	elseif ($_POST['lagre']) {
 		$id = @$_POST['id'];
+		$rute_id = @$_POST['rute_id'];
+		$passasjertype_id = @$_POST['passasjertype_id'];
+		$fornavn = @$_POST['fornavn'];
+		$etternavn = @$_POST['etternavn'];
+		$date = @$_POST['date'];
 
-		if(oppdaterBestillinger($id)) {
+		if(oppdaterBestillinger($id, $rute_id, $passasjertype_id, $fornavn, $etternavn, $date)) {
 			echo "Informasjonen ble oppdatert.";
 		}
 		else {
@@ -163,12 +168,20 @@
 							if($result->num_rows > 0 ) {
 								while ($row = $result->fetch_assoc()) {
 
+									$bestilling_flyvning_id = utf8_encode($row["bestilling_flyvning_id"]);
 									$bestilling_id = utf8_encode($row["bestilling_id"]);
+									$flyvning_id = utf8_encode($row["flyvning_id"]);
+									$bruker_id = utf8_encode($row["bruker_id"]);
+									$fornavn = utf8_encode($row["fornavn"]);
+									$etternavn = utf8_encode($row["etternavn"]);
+									$rute_kombinasjon_id = utf8_encode($row["rute_kombinasjon_id"]);
+									$avgang = utf8_encode($row["avgang"]);
+									$gate = utf8_encode($row["gate"]);
+									$rute_id = utf8_encode($row["rute_id"]);
+									$flyplass_fra = utf8_encode($row["flyplass_id_fra"]);
+									$flyplass_fra = utf8_encode($row["flyplass_id_til"]);
                                     $flyplass_fra = utf8_encode($row["flyplass_fra"]);
                                     $flyplass_til = utf8_encode($row["flyplass_til"]);
-                                    $avgang = utf8_encode($row["avgang"]);
-                                    $fornavn = utf8_encode($row["fornavn"]);
-                                    $etternavn = utf8_encode($row["etternavn"]);
 
                                     $dato = regnUtDatoFraUnixtime($avgang);
                                     $klokkeslett = regnUtKlokkeslettFraUnixtime($avgang);
