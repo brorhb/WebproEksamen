@@ -149,28 +149,36 @@
 					<tr>
 						<th>Valgt</th>
 						<th>Referanse/ID</th>
-						<th>Rute</th>
-						<th>Navn</th>
-						<th>Avgang</th>
+						<th>Strekning</th>
+						<th>Avgang<br><span style="font-size:0.7em;">(MM/DD/YYYY HH:MM)</span></th>
+						<th>Navn på bestiller</th>
 					</tr>
 				</thead>
 					<tbody>
 		';
 							connectDB();
-							$sql = "SELECT * FROM bestilling;";
+							$sql = "SELECT bf.id AS bestilling_flyvning_id, bf.bestilling_id, bf.flyvning_id, b.bruker_id, p.fornavn, p.etternavn, f.rute_kombinasjon_id, f.avgang, f.gate, rk.rute_id, rk.flyplass_id_fra, rk.flyplass_id_til, (SELECT navn FROM flyplass WHERE flyplass.id = rk.flyplass_id_fra) AS flyplass_fra, (SELECT navn FROM flyplass WHERE flyplass.id = rk.flyplass_id_til) AS flyplass_til FROM bestilling_flyvning bf LEFT JOIN bestilling b ON bf.bestilling_id = b.id LEFT JOIN person p ON p.id = (SELECT bruker.person_id FROM bruker WHERE bruker.id = b.bruker_id) LEFT JOIN flyvning f ON f.id = bf.flyvning_id LEFT JOIN rute_kombinasjon rk ON rk.id = f.rute_kombinasjon_id;";
 							$result = connectDB()->query($sql);
 
 							if($result->num_rows > 0 ) {
 								while ($row = $result->fetch_assoc()) {
 
-									$id = utf8_encode($row["id"]);
-									$rute = utf8_encode($row["type"]);
-									$navn = utf8_encode($row["beskrivelse"]);
-									$avgang = utf8_encode($row[""]);
+									$bestilling_id = utf8_encode($row["bestilling_id"]);
+                                    $flyplass_fra = utf8_encode($row["flyplass_fra"]);
+                                    $flyplass_til = utf8_encode($row["flyplass_til"]);
+                                    $avgang = utf8_encode($row["avgang"]);
+                                    $fornavn = utf8_encode($row["fornavn"]);
+                                    $etternavn = utf8_encode($row["etternavn"]);
+
+                                    $dato = regnUtDatoFraUnixtime($avgang);
+                                    $klokkeslett = regnUtKlokkeslettFraUnixtime($avgang);
+
 									echo '
-									<tr><td><input type="radio" name="id" value="' . $id . '"></td>
-									<td>' . $type . '</td>
-									<td>' . $beskrivelse . 'required</td></tr>';
+									<tr><td><input type="radio" name="id" value="' . $bestilling_id . '"></td>
+                                    <td>' . $bestilling_id . '</td>
+									<td>' . $flyplass_fra . ' - ' . $flyplass_til . '</td>
+									<td>' . $dato . ' ' . $klokkeslett . '</td>
+                                    <td>' . $fornavn .  ' ' . $etternavn . '</td></tr>';
 								}
 							}
 						
