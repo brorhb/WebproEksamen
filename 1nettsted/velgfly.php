@@ -192,22 +192,24 @@
 					$reisevalg = @$_GET["reisevalg"];
 					
 					connectDB();
-					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
+					$sql = "SELECT f.id AS flyvning_id, f.luftfartoy_id, f.avgang, f.gate, rk.id AS rute_kombinasjon_id, rk.rute_id, rk.flyplass_id_fra, (SELECT f.navn FROM flyplass f WHERE f.id = (SELECT rk.flyplass_id_fra FROM rute_kombinasjon rk WHERE rk.flyplass_id_fra = '$fraLand')) AS fraFlyplass_navn, rk.flyplass_id_til, (SELECT f.navn FROM flyplass f WHERE f.id = (SELECT rk.flyplass_id_til FROM rute_kombinasjon rk WHERE rk.flyplass_id_til = '$tilLand')) AS tilFlyplass_navn, r.reisetid, r.basis_pris, r.valuta_id FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON rk.rute_id = r.id WHERE rk.flyplass_id_fra = '$fraLand' AND rk.flyplass_id_til = '$tilLand' AND f.avgang > '0' AND f.avgang < '2000000000';";
 					$result = connectDB()->query($sql);
 
 					if($result->num_rows > 0 ) {
 						while ($row = $result->fetch_assoc()) {
-							$flyvningNr = utf8_encode($row["flyvningNr"]);
-							$fraFlyplass = utf8_encode($row["fraFlyplass"]);
+							$flyvningNr = utf8_encode($row["flyvning_id"]);
+							$fraFlyplass = utf8_encode($row["flyplass_id_fra"]);
+							$fraFlyplass_navn = utf8_encode($row["fraFlyplass_navn"]);
 							$avgang = utf8_encode($row["avgang"]);
-							$tilFlyplass = utf8_encode($row["tilFlyplass"]);
-							$reiseTid = utf8_encode($row["reiseTid"]); ?>
+							$tilFlyplass = utf8_encode($row["flyplass_id_til"]);
+							$tilFlyplass_navn = utf8_encode($row["tilFlyplass_navn"]);
+							$reiseTid = utf8_encode($row["reisetid"]); ?>
 
 							<tr>
 								<td><?php echo $flyvningNr; ?></td>
-								<td><?php echo $fraFlyplass; ?></td>
+								<td><?php echo $fraFlyplass_navn; ?></td>
 								<td><?php echo $avgang; ?></td>
-								<td><?php echo $tilFlyplass; ?></td>
+								<td><?php echo $tilFlyplass_navn; ?></td>
 								<td><?php echo $avgang + $reiseTid ?></td>
 								<td><input type="radio" name="utreise" value="<?php echo $flyvningNr; ?>"></td>
 							</tr>
@@ -241,22 +243,24 @@
 					
 					
 					connectDB();
-					$sql = "SELECT f.id AS flyvningNr, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_fra) AS fraFlyplass, f.avgang AS avgang, (SELECT fp.navn FROM flyplass fp WHERE fp.id = rk.flyplass_id_til) AS tilFlyplass, (SELECT r.reisetid FROM rute AS r WHERE r.id = (SELECT rk.rute_id FROM rute_kombinasjon AS rk WHERE rk.id = (SELECT f.rute_kombinasjon_id FROM flyvning AS f WHERE f.id = '$fraLand') ) ) AS reiseTid FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON r.id = rk.rute_id;";
+					$sql = "SELECT f.id AS flyvning_id, f.luftfartoy_id, f.avgang, f.gate, rk.id AS rute_kombinasjon_id, rk.rute_id, rk.flyplass_id_fra, (SELECT f.navn FROM flyplass f WHERE f.id = (SELECT rk.flyplass_id_fra FROM rute_kombinasjon rk WHERE rk.flyplass_id_fra = '$tilLand')) AS fraFlyplass_navn, rk.flyplass_id_til, (SELECT f.navn FROM flyplass f WHERE f.id = (SELECT rk.flyplass_id_til FROM rute_kombinasjon rk WHERE rk.flyplass_id_til = '$fraLand')) AS tilFlyplass_navn, r.reisetid, r.basis_pris, r.valuta_id FROM flyvning f LEFT JOIN rute_kombinasjon rk ON f.rute_kombinasjon_id = rk.id LEFT JOIN rute r ON rk.rute_id = r.id WHERE rk.flyplass_id_fra = '$tilLand' AND rk.flyplass_id_til = '$fraLand' AND f.avgang > '0' AND f.avgang < '2000000000';";
 					$result = connectDB()->query($sql);
 
 					if($result->num_rows > 0 ) {
 						while ($row = $result->fetch_assoc()) {
-							$flyvningNr = utf8_encode($row["flyvningNr"]);
-							$fraFlyplass = utf8_encode($row["fraFlyplass"]);
+							$flyvningNr = utf8_encode($row["flyvning_id"]);
+							$fraFlyplass = utf8_encode($row["flyplass_id_fra"]);
+							$fraFlyplass_navn = utf8_encode($row["fraFlyplass_navn"]);
 							$avgang = utf8_encode($row["avgang"]);
-							$tilFlyplass = utf8_encode($row["tilFlyplass"]);
-							$reiseTid = utf8_encode($row["reiseTid"]); ?>
+							$tilFlyplass = utf8_encode($row["flyplass_id_til"]);
+							$tilFlyplass_navn = utf8_encode($row["tilFlyplass_navn"]);
+							$reiseTid = utf8_encode($row["reisetid"]); ?>
 
 							<tr>
 								<td><?php echo $flyvningNr; ?></td>
-								<td><?php echo $fraFlyplass; ?></td>
+								<td><?php echo $fraFlyplass_navn; ?></td>
 								<td><?php echo $avgang; ?></td>
-								<td><?php echo $tilFlyplass; ?></td>
+								<td><?php echo $tilFlyplass_navn; ?></td>
 								<td><?php echo $avgang + $reiseTid ?></td>
 								<td><input type="radio" name="retur" value="<?php echo $flyvningNr; ?>"></td>
 							</tr>
