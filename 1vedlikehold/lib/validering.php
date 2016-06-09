@@ -782,86 +782,7 @@ function validerAlleFlyplasser($navn, $flyplasskode, $latitude, $longitude, $tid
 }
 
 
-/*
-/* validering alleflyvninger.php grået ut fjernes nå alleflyvninger.php er klar
-
-function validerFlyvning(luftfartoy_id, rute_kombinasjon_id, avgang, gate, pris, valuta_id) {
-
-    $maaFyllesUt = array();
-    $kommentar = array();
-    $resultat = true;
-
-    $navn = utf8_decode($navn);
-
-    $luftfartoy_id = utf8_decode($luftfartoy_id); //listeboks
-    $rute_kombinasjon_id = utf8_decode($rute_kombinasjon_id); //listeboks
-    $avgang = utf8_decode($avgang); //datepicker
-    $gate = utf8_decode($gate);
-    $pris = utf8_decode($pris);
-    $valuta_id = utf8_decode($valuta_id); //listeboks
-    
-    // Ulike valideringer 
-
-
-    // Sjekker om feltet er tomt
-    //if (flyvningNr == "" || flyvningNr == null) {
-    //    maaFyllesUt.push("flyvningNr");
-    //    resultat = false;
-    //}
-
-
-        // Sjekker om feltet er tomt listeboks
-    if (luftfartoy_id.value == "") {
-        maaFyllesUt.push("luftfartoy_id");
-        resultat = false;
-    }
-
-        // Sjekker om feltet er tomt listeboks
-    if (rute_kombinasjon_id.value == "") {
-        maaFyllesUt.push("rute_kombinasjon_id");
-        resultat = false;
-    }
-
-
-    // Sjekker om feltet er tomt datepicker
-    if (avgang.value == "") {
-        maaFyllesUt.push("avgang");
-        resultat = false;
-    }
-            // Sjekker om feltet er tomt
-    if (gate == "" || gate == null) {
-        maaFyllesUt.push("gate");
-        resultat = false;
-    }
-
-
-
-    // Sjekker om feltet er tomt
-    if (pris == "" || pris == null) {
-        maaFyllesUt.push("pris");
-        resultat = false;
-    }
-
-
-        // Sjekker om feltet er tomt listeboks
-    if (valuta_id.value == "") {
-        maaFyllesUt.push("valuta_id");
-        resultat = false;
-    }
-
-    // Skriver ut feilmeldingsboks
-    if (!resultat) {
-        feilmeldingBoks(maaFyllesUt, kommentar);
-    }
-
-    // Returnerer om det er noen feil
-    return resultat;
-}
-/* ny versjon alleflyvninger.php*/
-
-
-/*fjernes etter alleflyvninger.php er ok-iselin
-function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
+function validerFlyvning($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFlyplass, $gate, $tilFlyplass) {
 	$maaFyllesUt = array();
 	$kommentar = array();
 	$resultat = true;
@@ -890,25 +811,25 @@ function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFl
 	if ($flyplasskode == "" || $flyplasskode == null) {
 				$maaFyllesUt[] = "flyplasskode";
 				$resultat = false;
-			}
-			// Feltet er fylt ut, sjekker ytterligere valideringer
-			else {
-				if (strlen($flyplasskode) < 3) {
-					$kommentar[] = "<strong>flyplasskoden</strong> må inneholde minumum 3 tegn.";
-					$resultat = false;
-				}
-			}
-
-		if ($latitude == "" || $latitude == null) {
-			$maaFyllesUt[] = "Latitude";
+	}
+	// Feltet er fylt ut, sjekker ytterligere valideringer
+	else {
+		if (strlen($flyplasskode) < 3) {
+			$kommentar[] = "<strong>flyplasskoden</strong> må inneholde minumum 3 tegn.";
 			$resultat = false;
 		}
-		else {
-			if (!is_numeric($latitude)) {
-				$kommentar[] = "<strong>Latitude</strong> kan kun bestå av tall.";
-				$resultat = false;
-			}
+	}
+
+	if ($latitude == "" || $latitude == null) {
+		$maaFyllesUt[] = "Latitude";
+		$resultat = false;
+	}
+	else {
+		if (!is_numeric($latitude)) {
+			$kommentar[] = "<strong>Latitude</strong> kan kun bestå av tall.";
+			$resultat = false;
 		}
+	}
 	
 	if ($longitude == "" || $longitude == null) {
 		$maaFyllesUt[] = "Longitude";
@@ -932,15 +853,14 @@ function validerFlyvning()($flyvningNr, $ruteNr, $tailNr, $type, $avgang, $fraFl
 	
 	if (!$resultat) {
 			feilmeldingBoks($maaFyllesUt, $kommentar);
-		}
+	}
 		
-		// Returnerer om neste side skal lastes inn
+	// Returnerer om neste side skal lastes inn
 
-		return $resultat;
+	return $resultat;
 		
-		return $resultat;
-	
-
+}
+/*
 		VALIDERING AV NETTSIDEN
 --------------------------------------
 INDEX:
