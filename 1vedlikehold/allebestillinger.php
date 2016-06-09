@@ -14,14 +14,15 @@
 		}
 	}
 	elseif ($_POST['lagre']) {
-		$id = @$_POST['id'];
-		$rute_id = @$_POST['rute_id'];
-		$passasjertype_id = @$_POST['passasjertype_id'];
-		$fornavn = @$_POST['fornavn'];
-		$etternavn = @$_POST['etternavn'];
-		$date = @$_POST['date'];
+		$bestilling_id = @$_POST['bestilling_id'];
+        $flyvning_id = @$_POST['flyvning_id'];
+        $bestilling_id = @$_POST['bestilling_id'];
+        $person_nr = @$_POST['person_nr'];
+        $fornavn = @$_POST['fornavn'];
+        $etternavn = @$_POST['etternavn'];
+        $date = @$_POST['date'];
 
-		if(oppdaterBestillinger($id, $rute_id, $passasjertype_id, $fornavn, $etternavn, $date)) {
+		if(oppdaterBestillinger($bestilling_id, $flyvning_id, $bestilling_id, $person_nr, $fornavn, $etternavn, $date)) {
 			echo "Informasjonen ble oppdatert.";
 		}
 		else {
