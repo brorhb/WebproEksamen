@@ -508,7 +508,12 @@
 	}
 
 	function slettFlyplass($FlyplassID) {
-		connectDB();
+		
+		$resultat = TRUE;
+		
+		if (validerSlettFlyplass($FlyplassID)) {
+			connectDB();
+
 
 		$sql = "DELETE FROM flyplass WHERE id = '$FlyplassID';";
 		$result = connectDB()->query($sql);
@@ -521,6 +526,11 @@
 		}
 		connectDB()->close();
 	}
+	else {
+		$resultat = FALSE;
+	}
+	return $resultat;
+}
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
