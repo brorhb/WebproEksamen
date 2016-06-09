@@ -610,7 +610,7 @@ function validerOppdaterModeller() {
 	var resultat = true;
 
 	var navn = document.forms["oppdater"]["navn"].value;
-	var type_luftfartoy_id = document.getElementById("type_luftfartoy_id");
+	var type_luftfartoy_id = document.getElementById("type_luftfartoy_id").value;
 	var rader = document.forms["oppdater"]["rader"].value;
 	var bredde = document.forms["oppdater"]["bredde"].value;
 	/* Ulike valideringer */
@@ -621,15 +621,11 @@ function validerOppdaterModeller() {
 		resultat = false;
 	}
 
-	if (type_luftfartoy_id.value == "") {
+	if (type_luftfartoy_id == "") {
 		maaFyllesUt.push("luftfartøy");
 		resultat = false;
 	}
 
-	if (isNaN(kapasitet)) {
-		maaFyllesUt.push("kapasitet må være siffer");
-		resultat = false;
-	}
 
 	// Sjekker om feltet er tomt
 	if (rader == "" || rader == null) {
@@ -640,13 +636,10 @@ function validerOppdaterModeller() {
 		maaFyllesUt.push("rader må være tall");
 		resultat = false;
 	}
+
 	// Sjekker om feltet er tomt
 	if (bredde == "" || bredde == null) {
 		maaFyllesUt.push("bredde");
-		resultat = false;
-	}
-	if (isNaN(bredde)) {
-		maaFyllesUt.push("bredde må være siffer");
 		resultat = false;
 	}
 	else {
