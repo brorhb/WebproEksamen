@@ -2026,7 +2026,7 @@ function sjekkOmPerson_idEksistereriPassasjer_flyvning($objektID) {
 function sjekkOmBestilling_idEksistereriBestilling_flyvning($objektID) {
 		connectDB();
 
-		$sql = "SELECT bestilling_id FROM bestilling_flygning WHERE bestilling_id = '$objektID';";
+		$sql = "SELECT bestilling_id FROM bestilling_flyvning WHERE bestilling_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
