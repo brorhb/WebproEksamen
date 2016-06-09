@@ -6,12 +6,13 @@
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
-        if(slettLuftfartoy($id)) {
+        die("Funksjon for sletting er ikke lagd enda.");
+        /*if(slettLuftfartoy($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
             echo "Noe galt skjedde...";
-        }
+        }*/
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];

@@ -63,6 +63,19 @@ $(document).ready(function () {
             todayHighlight: true,
             autoclose: true,
         })
-    
+
+
+    $('#bestillReiseSkjema').validate({ // initialize the plugin
+        rules: {
+            fraFlyplass_id: {
+                required: true,
+            },
+            tilFlyplass_id: {
+                required: true,
+            }
+        }
+    });
+
+
 }); //Slutt på Jquery
 

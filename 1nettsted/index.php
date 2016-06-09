@@ -7,7 +7,7 @@
 <!-- Innhold -->
 <div class="container">
 	<!-- Bestille reise -->
-	<form method="GET" action="velgfly.php" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerBestilling()">
+	<form method="GET" action="velgfly.php" role="form" id="bestillReiseSkjema" name="bestillReiseSkjema" onsubmit="return validerStartBestilling()">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3 bestillReiseBoks">
 				<!-- Fra/til land -->
@@ -73,7 +73,7 @@
 					<div class="col-md-3" id="reisende">
 					<?php
 						echo '<label>' . $type . '</label>
-						<input class="form-control" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" placeholder="' . $type . '" >
+						<input class="form-control" onkeypress="return isNumberKey(event)" type="textfield" name="reisende[' . $teller . ']" id="reisende[' . $teller . ']" placeholder="' . $type . '" >
 						<input type="hidden" name="passasjertype[' . $teller . ']" id="passasjertype[' . $teller . ']" value="' . $id . '" >';
 					?>
 					</div>
@@ -84,7 +84,7 @@
                     }
 ?>
 				<!-- Antall reisende -->
-				<input type="submit" class="btn btn-default" value="Bekreft" onclick="validerBestilling();"/>
+				<input type="submit" class="btn btn-default" value="Bekreft"/>
 			</div>
 		</div>
 	</form>

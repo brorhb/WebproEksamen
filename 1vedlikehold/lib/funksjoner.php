@@ -165,7 +165,6 @@
 			}
 			connectDB()->close();
 		}
-
 		else {
 			$resultat = FALSE;
 		}
@@ -436,18 +435,29 @@
 	}
 
 	function slettPassasjertype($PassasjertypeID) {
-		connectDB();
+		$resultat = TRUE;
 
-		$sql = "DELETE FROM passasjertype WHERE id = '$PassasjertypeID';";
-		$result = connectDB()->query($sql);
+		if (validerSlettPassasjertype($PassasjertypeID)) {
+			connectDB();
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$sql = "DELETE FROM passasjertype WHERE id = '$PassasjertypeID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
+				}
+			else {
+				$resultat = FALSE;
 			}
-		else {
-			return FALSE;
+			connectDB()->close();
 		}
-		connectDB()->close();
+		/* må endre fra return - resultat*/
+		/*og ubder dette*/
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
@@ -486,18 +496,31 @@
 	}
 
 	function slettValuta($ValutaID) {
-		connectDB();
+		
 
-		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
-		$result = connectDB()->query($sql);
+		$resultat = TRUE;
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+		if (validerSlettValuta($ValutaID)) {
+			connectDB();
+
+			$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+				}
+			else {
+				return FALSE;
 			}
-		else {
-			return FALSE;
+			connectDB()->close();
 		}
-		connectDB()->close();
+		/* må endre fra return - resultat*/
+		/*og ubder dette*/
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterLand($LandID, $navn, $landskode, $valuta_id, $iso, $iso3) {
@@ -588,7 +611,12 @@
 	}
 
 	function slettFlyplass($FlyplassID) {
-		connectDB();
+		
+		$resultat = TRUE;
+		
+		if (validerSlettFlyplass($FlyplassID)) {
+			connectDB();
+
 
 		$sql = "DELETE FROM flyplass WHERE id = '$FlyplassID';";
 		$result = connectDB()->query($sql);
@@ -601,6 +629,11 @@
 		}
 		connectDB()->close();
 	}
+	else {
+		$resultat = FALSE;
+	}
+	return $resultat;
+}
 
 	/* bruker, person, modell og seteoppsett kommer her */
 
@@ -765,13 +798,6 @@
 	function slettLuftfartoy($LuftfartoyID) {
 		connectDB();
 
-		if (validerSlettLuftfartoy($objektID)) {
-			$resultat = TRUE;
-		}
-		else {
-			$resultat = FALSE;
-		}
-
 		if ($resultat) {
 			$sql = "DELETE FROM luftfartoy WHERE id = '$LuftfartoyID';";
 			$result = connectDB()->query($sql);
@@ -783,12 +809,6 @@
 				$resultat = FALSE;
 			}
 		}
-
-		if (!$resultat) {
-        	feilmeldingBoks($maaFyllesUt, $kommentar);
-    	}
-
-		return $resultat;
 
 		connectDB()->close();
 	}
@@ -1510,6 +1530,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB()->close();
 	}
 
+	function sjekkOmPassasjertypeIDEksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT passasjertype_id FROM pris WHERE passasjertype_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function passasjertypeListe($objektID) {
 		$objektnavn = 'passasjertype';
 		$objektIDeksisterer = sjekkOmPassasjertypeIDeksisterer($objektID);
@@ -1544,6 +1579,36 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM valuta WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmValutaEksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT valuta_id FROM pris WHERE valuta_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmValutaEksistereriRute($objektID) {
+		connectDB();
+
+		$sql = "SELECT valuta_id FROM rute WHERE valuta_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1683,6 +1748,22 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB()->close();
 	}
 
+		function sjekkOmLandEksistereriFlyplass($objektID) {
+		connectDB();
+
+		$sql = "SELECT land_id FROM flyplass WHERE land_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+
 	function flyplassListe($objektID) {
 		$objektnavn = 'flyplass';
 		$objektIDeksisterer = sjekkOmFlyplassIDeksisterer($objektID);
@@ -1717,6 +1798,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM bruker WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmLandEksistereriBruker($objektID) {
+		connectDB();
+
+		$sql = "SELECT land_id FROM bruker WHERE land_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1886,7 +1982,7 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 	function sjekkOmLuftfartoyIDeksistereriFlyvning($objektID) {
 		connectDB();
 
-		$sql = "SELECT type_luftfartoy_id FROM flyvning WHERE type_luftfartoy_id = '$objektID';";
+		$sql = "SELECT luftfartoy_id FROM flyvning WHERE luftfartoy_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1900,6 +1996,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 
 
 
+
+function sjekkOmBestilling_flyvning_idEksistereriPassasjer_flyvning($objektID) {
+		connectDB();
+
+		$sql = "SELECT bestilling_flyvning_id FROM passasjer_flyvning WHERE bestilling_flyvning_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
 
 	function luftfartoyListe($objektID) {
 		$objektnavn = 'luftfartoy';

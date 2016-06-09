@@ -1230,6 +1230,27 @@ function validerVelgFly()($reisevalg) {
 		return $resultat;
 	}
 
+	function validerSlettValuta($objektID) {
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+		if (sjekkOmValutaEksistereriPris($objektID)) {
+			$kommentar[] = 'Valutaen brukes av en pris. Du må slette den først.';
+			$resultat = FALSE;
+		}
+		if (sjekkOmValutaEksistereriRute($objektID)) {
+			$kommentar[] = 'Valutaen brukes av en rute. Du må slette den først.';
+			$resultat = FALSE;
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+	}
+
 	function validerSlettType_Luftfartoy($objektID) {
 		$maaFyllesUt = array();
 		$kommentar = array();
@@ -1237,6 +1258,44 @@ function validerVelgFly()($reisevalg) {
 
 		if (sjekkOmLuftfartoyIDeksistereriType_Flyvning($objektID)) {
 			$kommentar[] = 'Flyet brukes i en eller flere flyvninger. Du må slette de først.';
+			$resultat = FALSE;
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+	}
+
+	function validerSlettPassasjertype($objektID) {
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+		if (sjekkOmPassasjertypeIDeksistereriPris($objektID)) {
+			$kommentar[] = 'Passasjertypen brukes i en eller flere priser. Du må slette de først.';
+			$resultat = FALSE;
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+	}
+
+	function validerSlettFlyplass($objektID) {
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+		if (sjekkOmFlyplassIDeksistereriFlyplass_id_til($objektID)) {
+			$kommentar[] = 'Flyplassen brukes i en eller flere til - flyplasser. Du må slette de først.';
+			$resultat = FALSE;
+		}
+		if (sjekkOmFlyplassIDeksistereriFlyplass_id_fra($objektID)) {
+			$kommentar[] = 'Flyplassen brukes i en eller flere fra- flyplasser. Du må slette de først.';
 			$resultat = FALSE;
 		}
 
