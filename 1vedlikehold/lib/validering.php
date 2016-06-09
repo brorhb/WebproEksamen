@@ -1244,6 +1244,27 @@ function validerVelgFly()($reisevalg) {
 		return $resultat;
 	}
 
+	function validerSlettValuta($objektID) {
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+		if (sjekkOmValutaEksistereriPris($objektID)) {
+			$kommentar[] = 'Valutaen brukes av en pris. Du må slette den først.';
+			$resultat = FALSE;
+		}
+		if (sjekkOmValutaEksistereriRute($objektID)) {
+			$kommentar[] = 'Valutaen brukes av en rute. Du må slette den først.';
+			$resultat = FALSE;
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+	}
+
 	function validerSlettType_Luftfartoy($objektID) {
 		$maaFyllesUt = array();
 		$kommentar = array();

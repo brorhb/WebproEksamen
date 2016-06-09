@@ -393,18 +393,31 @@
 	}
 
 	function slettValuta($ValutaID) {
-		connectDB();
+		
 
-		$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
-		$result = connectDB()->query($sql);
+		$resultat = TRUE;
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+		if (validerSlettValuta($ValutaID)) {
+			connectDB();
+
+			$sql = "DELETE FROM valuta WHERE id = '$ValutaID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				return TRUE;
+				}
+			else {
+				return FALSE;
 			}
-		else {
-			return FALSE;
+			connectDB()->close();
 		}
-		connectDB()->close();
+		/* må endre fra return - resultat*/
+		/*og ubder dette*/
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterLand($LandID, $navn, $landskode, $valuta_id, $iso, $iso3) {
