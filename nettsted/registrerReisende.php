@@ -1,12 +1,13 @@
 <?php include_once ('head.php'); ?>
+
+	
 <div class="container" style="margin-top:55px;">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-1">
 			<h2>Registrer reisende</h2>
 		</div>
-
 		<div class="col-md-10 col-md-offset-1">
-			<form method="post" action="prisside.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
+			<form method="post" action="bekreftelsereise.php" name="registrerReisende" id="registrerReisende" onsubmit="return valideReigstrerReisende()">
 				<div class="form-group">
 <?php
 					$fraLand = @$_POST["fraFlyplass_id"];
@@ -16,11 +17,11 @@
 					$reisevalg = @$_POST["reisevalg"];
 					$reisende = @$_POST["reisende"];
 					$passasjertype = @$_POST["passasjertype"];
+					$utreise = @$_POST["utreise"];
+					$retur = @$_POST["retur"];
                     $sql = "SELECT * FROM passasjertype;";
                     $result = connectDB() -> query($sql);
-
-?>
-<?php					
+				
 					if ($result->num_rows > 0) {
                         $teller = 1;
                         while ($row = $result->fetch_assoc()) {
@@ -52,14 +53,6 @@
 										<input type="email" class="form-control" name="email" id="email[' . $id . '][' . $i . ']" placeholder="eksempel@bjarnum.no" required />
 									</div>
 									<div class="col-md-6">
-										<label for="kjonn">Kjønn</label>
-										<select class="form-control" name="kjonn" id="kjonn[' . $id . '][' . $i . ']">
-										<option disabled selected value="">Kjønn</option>
-										<option value="1">Mann</option>
-										<option value="2">Kvinne</option>
-										</select>
-									</div>
-									<div class="col-md-6">
 										<label for="mobilnummer">Mobilnummer</label>
 										<input type="text" class="form-control" name="mobilnummer" id="mobilnummer[' . $id . '][' . $i . ']" placeholder="99999999" required />
 									</div>
@@ -86,9 +79,10 @@
 				<input type="hidden" name="tilLand" value="<?php echo $tilLand; ?>" required/>
 				<input type="hidden" name="fraDato" value="<?php echo $fraDato; ?>" required/>
 				<input type="hidden" name="tilDato" value="<?php echo $tilDato; ?>" required/>
-				<input type="hidden" name="antallReisende" value="5" required/>
-
+				<input type="hidden" name="utreise" value="<?php echo $utreise; ?>" required/>
+				<input type="hidden" name="retur" value="<?php echo $retur; ?>" required/>
 				<input type="submit" class="btn btn-default pull-right" value="Bekreft">
+
 			</form>
 		</div>
 	</div>
