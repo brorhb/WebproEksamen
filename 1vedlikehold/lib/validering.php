@@ -1260,6 +1260,23 @@ function validerVelgFly()($reisevalg) {
 
 		return $resultat;
 	}
+
+	function validerSlettPassasjertype($objektID) {
+		$maaFyllesUt = array();
+		$kommentar = array();
+		$resultat = TRUE;
+
+		if (sjekkOmPassasjertypeIDeksistereriPris($objektID)) {
+			$kommentar[] = 'Passasjertypen brukes i en eller flere priser. Du må slette de først.';
+			$resultat = FALSE;
+		}
+
+		if (!$resultat) {
+        	feilmeldingBoks($maaFyllesUt, $kommentar);
+    	}
+
+		return $resultat;
+	}
 	
 
 ?>

@@ -332,18 +332,29 @@
 	}
 
 	function slettPassasjertype($PassasjertypeID) {
-		connectDB();
+		$resultat = TRUE;
 
-		$sql = "DELETE FROM passasjertype WHERE id = '$PassasjertypeID';";
-		$result = connectDB()->query($sql);
+		if (validerSlettPassasjertype($PassasjertypeID)) {
+			connectDB();
 
-		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$sql = "DELETE FROM passasjertype WHERE id = '$PassasjertypeID';";
+			$result = connectDB()->query($sql);
+
+			if (connectDB()->query($sql) === TRUE) {
+				$resultat = TRUE;
+				}
+			else {
+				$resultat = FALSE;
 			}
-		else {
-			return FALSE;
+			connectDB()->close();
 		}
-		connectDB()->close();
+		/* må endre fra return - resultat*/
+		/*og ubder dette*/
+		else {
+			$resultat = FALSE;
+		}
+
+		return $resultat;
 	}
 
 	function oppdaterValuta($ValutaID, $valuta_navn, $forkortelse) {
