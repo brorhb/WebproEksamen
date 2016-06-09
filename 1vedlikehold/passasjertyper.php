@@ -35,10 +35,10 @@
         echo'    <!-- Innhold -->
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterPassasjertype()">
             <div class="col-md-12">';
-                if ($_POST['ny']) {
+                if (@$_POST['ny']) {
                     echo '<h2>Ny passasjertype</h2>';
                 }
-                elseif ($_POST['endre']) {
+                elseif (@$_POST['endre']) {
                     echo '<h2>Endre passasjernavn</h2>';
                 }
         echo '

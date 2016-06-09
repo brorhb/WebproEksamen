@@ -6,18 +6,17 @@
 
     if (@$_POST['slett']) {
         $id = @$_POST['id'];
-        die("Funksjon for sletting er ikke lagd enda.");
-        /*if(slettLuftfartoy($id)) {
+        if(slettLuftfartoy($id)) {
             echo "Informasjonen ble slettet.";
         }
         else {
             echo "Noe galt skjedde...";
-        }*/
+        }
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $modell_id = $_POST['modell_id'];
-        $tailnr = $_POST['tailnr'];
+        $modell_id = @$_POST['modell_id'];
+        $tailnr = @$_POST['tailnr'];
 
         if(validerAlleFly($modell_id ,$tailnr)) {
             oppdaterLuftfartoy($id, $modell_id, $tailnr);

@@ -35,10 +35,10 @@
         echo'    <!-- Innhold -->
             <form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post" onsubmit="return validerOppdaterLand()">
             <div class="col-md-12">';
-                if ($_POST['ny']) {
+                if (@$_POST['ny']) {
                     echo '<h2>Nytt land</h2>';
                 }
-                elseif ($_POST['endre']) {
+                elseif (@$_POST['endre']) {
                     echo '<h2>Endre land</h2>';
                 }
         echo '
@@ -98,7 +98,7 @@
                             <div class="form-group col-md-6">
                                 <lable for="valutanavn">Valuta navn</lable>';
                             
-                            valutaListe($valuta_id);
+                            valutaListe(@$valuta_id);
                                 
                             echo '
                             </div>

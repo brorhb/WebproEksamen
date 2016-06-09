@@ -14,16 +14,16 @@
 		}
 	}
 	elseif (@$_POST['lagre']) {
-		$flyvning_id = $_POST["flyvning_id"];
-		$luftfartoy_id = $_POST["luftfartoy_id"];
-		$rute_kombinasjon_id = $_POST["rute_kombinasjon_id"];
-		$gate = $_POST["gate"];
-		$dato = $_POST["dpd1"];
-		$klokkeslett = $_POST["klokkeslett"];
+		$flyvning_id = @$_POST["flyvning_id"];
+		$luftfartoy_id = @$_POST["luftfartoy_id"];
+		$rute_kombinasjon_id = @$_POST["rute_kombinasjon_id"];
+		$gate = @$_POST["gate"];
+		$dato = @$_POST["dpd1"];
+		$klokkeslett = @$_POST["klokkeslett"];
 		
-		$passasjertype_id = $_POST["passasjertype_id"];
-		$pris = $_POST["pris"];
-		$valuta_id = $_POST["valuta_id"];
+		$passasjertype_id = @$_POST["passasjertype_id"];
+		$pris = @$_POST["pris"];
+		$valuta_id = @$_POST["valuta_id"];
 
 		$validering = true;
 

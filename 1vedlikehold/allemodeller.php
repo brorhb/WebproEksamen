@@ -15,11 +15,11 @@
     }
     elseif (@$_POST['lagre']) {
         $id = @$_POST['id'];
-        $type = $_POST['type_luftfartoy_id'];
-        $navn = $_POST['navn'];
-        $kapasitet = $_POST['kapasitet'];
-        $rader = $_POST['rader'];
-        $bredde = $_POST['bredde'];
+        $type = @$_POST['type_luftfartoy_id'];
+        $navn = @$_POST['navn'];
+        $kapasitet = @$_POST['kapasitet'];
+        $rader = @$_POST['rader'];
+        $bredde = @$_POST['bredde'];
 
 
         if(validerAlleModeller($type, $navn, $rader, $bredde)) {
