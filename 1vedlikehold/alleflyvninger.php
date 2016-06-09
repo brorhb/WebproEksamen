@@ -220,11 +220,11 @@
 					}
 					else {
 						
-							$flyvning_id = utf8_encode($row["id"]);
-							$flyvning_luftfaryoy_id = utf8_encode($row["luftfartoy_id"]);
-							$flyvning_rute_kombinasjon_id = utf8_encode($row["rute_kombinasjon_id"]);
-							$flyvning_avgang = utf8_encode($row["avgang"]);
-							$flyvning_gate = utf8_encode($row["gate"]);
+							$flyvning_id = utf8_encode(@$row["id"]);
+							$flyvning_luftfaryoy_id = utf8_encode(@$row["luftfartoy_id"]);
+							$flyvning_rute_kombinasjon_id = utf8_encode(@$row["rute_kombinasjon_id"]);
+							$flyvning_avgang = utf8_encode(@$row["avgang"]);
+							$flyvning_gate = utf8_encode(@$row["gate"]);
 
 							$dato = regnUtDatoFraUnixtime($flyvning_avgang);
 							$klokkeslett = regnUtKlokkeslettFraUnixtime($flyvning_avgang);
