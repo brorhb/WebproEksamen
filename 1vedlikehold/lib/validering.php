@@ -1260,7 +1260,6 @@ function validerVelgFly()($reisevalg) {
 
 		return $resultat;
 	}
-
 	
 
 ?>
