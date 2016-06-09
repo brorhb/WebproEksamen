@@ -34,7 +34,7 @@
 
 		echo'
 			<!-- Innhold -->
-			<form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
+			<form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="get">
 			<div class="col-md-12">';
 				if (@$_POST['ny']) {
 					echo '<h2>Ny bestilling</h2>';
@@ -42,36 +42,44 @@
 						<div class="col-md-12">
 								<label for="Flyvning">Flyvning</label>
 							';
-								echo ruteliste(@$rute);
+								echo flyvningListe($objektID, '0', '2145916800');
 							echo '
-							</div>
-							<div class="col-md-6">
-								<label for="Rute">Rute</label>
-							';
-								echo passasjertypeListe();
-							echo '
-							</div>
-							<div class="col-md-6">
-								<label="">Fornavn</label>
-								<input class="form-control" type="text" name="" id="" value="">
-							</div>
-							<div class="col-md-6">
-								<label="">Etternavn</label>
-								<input class="form-control" type="text" name="" id="" value="">
-							</div>
-							<div class="col-md-6">
-								<div class="form-group ">
-									<label class="control-label requiredField" for="date">Fødselsdato<span class="asteriskField">*</span></label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar">
-											</i>
-										</div>
-										<input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/>
-									</div>
-								</div>
-							</div>
-							';
+							</div>';
+
+                            echo '
+                            <div class="col-md-12"><h2>Personer</h2></div>
+                            <div class="form-group col-md-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Legg til</th>
+                                            <th>Fornavn</th>
+                                            <th>Etternavn</th>
+                                            <th>Fødselsdato</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>';
+
+                                    for ($i=0; $i < 10; $i++) { 
+                                        $PersonNR = $i + 1;
+                                        echo '
+                                            <tr>
+                                                <td><input type="checkbox" name="valgt[' . $i . ']"> Person #' . $PersonNR . '</td>
+                                                <td><input class="form-control" type="text" name="fornavn[' . $i . ']" id="fornavn[' . $i . ']" value="" placeholder="fornavn"></td>
+                                                <td><input class="form-control" type="text" name="etternavn[' . $i . ']" id="etternavn[' . $i . ']" value="" placeholder="etternavn"></td>
+                                                <td><input class="form-control" id="date[' . $i . ']" name="date[' . $i . ']" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/></td>
+                                            </tr>';
+
+                                    }
+
+                            echo '
+                                    </tbody>
+                                </table>
+                                Alle felt som ikke er fylt ut blir ikke lagt til
+                            </div>
+
+                            ';
+
 				}
 				elseif (@$_POST['endre']) {
 					echo '<h2>Endre bestilling</h2>';
