@@ -1674,6 +1674,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		echo '</select>';
 	}
 
+	function sjekkOmBrukerIDeksistereriBruker_tilgang($objektID) {
+		connectDB();
+
+		$sql = "SELECT bruker_id FROM bruker_tilgang WHERE bruker_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
 	function sjekkOmBrukerIDeksisterer($objektID) {
 		connectDB();
 
@@ -1740,6 +1755,36 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM person WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmModellIDeksistereriSeteoppsett($objektID) {
+		connectDB();
+
+		$sql = "SELECT modell_id FROM seteoppsett WHERE modell_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmmModellIDeksistereriLuftfartoy($objektID) {
+		connectDB();
+
+		$sql = "SELECT modell_id FROM luftfartoy WHERE modell_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -1873,9 +1918,125 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		}
 		connectDB()->close();
 	}
+	function sjekkOmGruppeIDeksistereriFlyplass_gruppe($objektID) {
+		connectDB();
+
+		$sql = "SELECT gruppe_id FROM flyplass_gruppe WHERE gruppe_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmTilgang_IDeksistereriBruker_tilgang($objektID) {
+		connectDB();
+
+		$sql = "SELECT bruker_id FROM bruker_tilgang WHERE bruker_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmRute_idEksistereriRute_kombinasjon($objektID) {
+		connectDB();
+
+		$sql = "SELECT rute_id FROM rute_kombinasjon WHERE rute_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmFlyvning_idEksistereriPris($objektID) {
+		connectDB();
+
+		$sql = "SELECT flyvning_id FROM pris WHERE flyvning_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+		function sjekkOmPris_idEksistereriPassasjer_flyvning($objektID) {
+		connectDB();
+
+		$sql = "SELECT pris_id FROM passasjer_flyvning WHERE pris_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
 
 
+function sjekkOmRute_kombinasjon_idEksistereriFlyvning($objektID) {
+		connectDB();
 
+		$sql = "SELECT rute_kombinasjon_id FROM flyvning WHERE rute_kombinasjon_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+function sjekkOmPerson_idEksistereriPassasjer_flyvning($objektID) {
+		connectDB();
+
+		$sql = "SELECT person_id FROM passasjer_flyvning WHERE person_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+function sjekkOmBestilling_idEksistereriBestilling_flyvning($objektID) {
+		connectDB();
+
+		$sql = "SELECT bestilling_id FROM bestilling_flygning WHERE bestilling_id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
 
 	function luftfartoyListe($objektID) {
 		$objektnavn = 'luftfartoy';
@@ -2003,6 +2164,36 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM rute WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmFraFlyplassIDeksistereriRute_kombinasjon($objektID) {
+		connectDB();
+
+		$sql = "SELECT flyplass_id_fra FROM rute_kombinasjon WHERE flyplass_id_fra = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmTilFlyplassIDeksistereriRute_kombinasjon($objektID) {
+		connectDB();
+
+		$sql = "SELECT flyplass_id_til FROM rute_kombinasjon WHERE flyplass_id_til = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -2175,6 +2366,21 @@ function sjekkOmType_luftfartoyIDeksistereriModell($objektID) {
 		connectDB();
 
 		$sql = "SELECT id FROM bestilling WHERE id = '$objektID';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+		connectDB()->close();
+	}
+
+	function sjekkOmBrukerIDeksistereriBestilling($objektID) {
+		connectDB();
+
+		$sql = "SELECT bruker_id FROM bestilling WHERE bruker_id = '$objektID';";
 		$result = connectDB()->query($sql);
 
 		if ($result->num_rows > 0) {
