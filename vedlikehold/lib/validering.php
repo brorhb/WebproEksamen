@@ -277,12 +277,12 @@
 			$maaFyllesUt[] = "klokkeslett";
 			$resultat = false;
 		}
-
+/*
 		// Sjekker om feltet er tomt
 		if ($avgang == "" || $avgang == null) {
 			$maaFyllesUt[] = "avgang";
 			$resultat = false;
-		}
+		}*/
 
 		/*// Sjekker om feltet er tomt
 		if ($valuta_id == "" || $valuta_id == null) {
