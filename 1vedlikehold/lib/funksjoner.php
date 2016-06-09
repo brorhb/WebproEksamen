@@ -561,21 +561,22 @@
 		connectDB()->close();
 	}
 
-	/*function slettLand($LandID) {
+	function slettLand($LandID) {
 
 		$resultat = TRUE;
 
-		if(validerSlettLand($LandID))
+		if(validerSlettLand($LandID)) {
+			connectDB();
 
 		$sql = "DELETE FROM land WHERE id = '$LandID';";
 		$result = connectDB()->query($sql);
 
 		if (connectDB()->query($sql) === TRUE) {
-			return TRUE;
+			$resultat = TRUE;
 			}
 		else {
-			resultat FALSE;
-		} {
+			$resultat = FALSE;
+		} 
 		connectDB()->close();
 	}
 	else {
@@ -583,7 +584,7 @@
 	}
 	return $resultat;
 }
-*/
+
 	function oppdaterFlyplass($FlyplassID, $navn, $flyplasskode, $latitude, $longitude, $tidssone_gmt, $land_id) {
 
 		connectDB();

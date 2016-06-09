@@ -1314,8 +1314,13 @@ function validerSlettLand($objektID) {
 		$resultat = TRUE;
 
 
-		if (sjekkOmLandIDeksistereriFlyplass($objektID)) {
+		if (sjekkOmLandEksistereriFlyplass($objektID)) {
 			$kommentar[] = 'Land brukes i en eller flere flyplasser. Du må slette de først.';
+			$resultat = FALSE;
+		}
+
+		if (sjekkOmLandEksistereriBruker($objektID)) {
+			$kommentar[] = 'Land brukes i en eller flere brukere. Du må slette de først.';
 			$resultat = FALSE;
 		}
 
