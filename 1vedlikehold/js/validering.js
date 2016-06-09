@@ -611,7 +611,6 @@ function validerOppdaterModeller() {
 
 	var navn = document.forms["oppdater"]["navn"].value;
 	var type_luftfartoy_id = document.getElementById("type_luftfartoy_id");
-	var kapasitet = document.forms["oppdater"]["kapasitet"].value;
 	var rader = document.forms["oppdater"]["rader"].value;
 	var bredde = document.forms["oppdater"]["bredde"].value;
 	/* Ulike valideringer */
@@ -627,11 +626,6 @@ function validerOppdaterModeller() {
 		resultat = false;
 	}
 
-	// Sjekker om feltet er tomt
-	if (kapasitet == "" || kapasitet == null) {
-		maaFyllesUt.push("kapasitet");
-		resultat = false;
-	}
 	if (isNaN(kapasitet)) {
 		maaFyllesUt.push("kapasitet må være siffer");
 		resultat = false;
