@@ -2543,6 +2543,43 @@ function fraflyplassListe($objektID) {
 		}	
 	echo '</select>';
 	}
+
+	function HentBasisprisFraRute_id($rute_id) {
+		connectDB();
+
+		$sql = "SELECT basis_pris FROM rute WHERE id = '$rute_id';";
+		$result = connectDB()->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				return utf8_encode($row["basis_pris"]);
+			}
+		}
+		connectDB()->close();
+	}
+
+	function HentPassasjertype_idFraFodselsdato($timestamp) {
+		$alderSekunder = time() - $timestamp;
+		$alder = $alderSekunder / (60 * 60 * 24 * 365);
+
+		if ($alder >= 26) {
+			$passasjertype_id = 1;
+		}
+		elseif ($alder < 26 AND $alder >= 20) {
+			$passasjertype_id = 2;
+		}
+		elseif ($alder < 20 AND $alder >= 13) {
+			$passasjertype_id = 3;
+		}
+		elseif ($alder < 13 AND $alder >= 2) {
+			$passasjertype_id = 4;
+		}
+		elseif ($alder < 2) {
+			$passasjertype_id = 5;
+		}
+	}
+
 	function sjekkOmFraFlyplassIDeksistereriRute_kombinasjon($objektID) {
 		connectDB();
 
@@ -2576,36 +2613,174 @@ function fraflyplassListe($objektID) {
 
 /* BESTILLINGER */
 
-function oppdaterBestillinger($id, $rute_id, $passasjertype_id, $fornavn, $etternavn, $date) {
+function oppdaterBestilling($bestilling_id, $flyvning_id, $bestilling_id, $person_nr, $fornavn, $etternavn, $date) {
 		// Spesialtilpasset
 
 		connectDB();
 
-		$id = connectDB()->real_escape_string(utf8_encode($id));
-		$rute_id = connectDB()->real_escape_string(utf8_encode($rute_id));
-		$passasjertype_id = connectDB()->real_escape_string(utf8_encode($passasjertype_id));
-		$fornavn = connectDB()->real_escape_string(utf8_encode($fornavn));
-		$etternavn = connectDB()->real_escape_string(utf8_encode($etternavn));
-		$date = connectDB()->real_escape_string(utf8_encode($date));
+		$bestilling_id = connectDB()->real_escape_string(utf8_encode($bestilling_id));
+		$flyvning_id = connectDB()->real_escape_string(utf8_encode($flyvning_id));
+		$bestilling_id = connectDB()->real_escape_string(utf8_encode($bestilling_id));
 
-		if ($id == '') {
+		if ($bestilling_id == '') {
 
-			$sql = "INSERT INTO";
+			$teller = 0;
 
-			$modell_id = HentModell_idFraModell();
+			for ($i=0; $i < count($fornavn); $i++) {
 
-			for ($i=0; $i < count($passasjertype_id); $i++) {
-				$passasjertype_iden = connectDB()->real_escape_string(utf8_encode($passasjertype_id[$i]));
 
-				$sql .= "INSERT INTO;";
+				$PersonKey = array_search($i, $person_nr);
+
+				if (is_numeric($PersonKey)) {
+					echo "funker (" . $i . ")<br>";
+
+					$fornavnet = connectDB()->real_escape_string(utf8_encode($fornavn[$i]));
+					$etternavnet = connectDB()->real_escape_string(utf8_encode($etternavn[$i]));
+					$datoen = connectDB()->real_escape_string(utf8_encode($date[$i]));
+
+					//die($datoen);
+					$timestamp = regnUtUnixtimeFraDatoOgKlokkeslett($datoen, '12:00');
+
+					// Oppdaterer personen
+					oppdaterPerson('', $fornavnet, $etternavnet, $timestamp);
+
+					// Dette blir eieren av bestillinge --> opprett brukerID til personen
+					if ($teller == 0) {
+						$subsql = "SELECT id FROM person WHERE fornavn = '$fornavnet' AND etternavn = '$etternavnet' AND fodselsdato = '$timestamp' ORDER BY id DESC;";
+
+						$result = connectDB() -> query($subsql);
+						
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								$insatt_person_id = utf8_encode($row["id"]);
+							}
+						}
+
+						$tilfeldig_passord = mt_rand('10000','99999');
+						$kryptertPassord = md5($tilfeldig_passord);
+						$sql = "INSERT INTO bruker (person_id, passord) VALUES ('$insatt_person_id', '$kryptertPassord')";
+
+						if (connectDB()->multi_query($sql) === TRUE) {
+							//return TRUE;
+						}
+						else {
+							//return FALSE;
+						}
+
+					}
+
+					$teller++;
+				}
+
 			}
 
-			if (connectDB()->multi_query($sql) === TRUE) {
-				return TRUE;
+			$subsql = "SELECT id FROM bruker WHERE person_id = '$insatt_person_id' AND passord = '$kryptertPassord' ORDER BY id DESC;";
+
+			$result = connectDB() -> query($subsql);
+						
+			if ($result->num_rows > 0) {
+				// output data of each row
+				while($row = $result->fetch_assoc()) {
+					$insatt_bruker_id = utf8_encode($row["id"]);
+				}
+			}
+
+			//die("Bruker ID: " . $insatt_bruker_id);
+
+			$sql = "INSERT INTO bestilling (bruker_id) VALUES ('$insatt_bruker_id');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				//return TRUE;
 			}
 			else {
-				return FALSE;
+				//return FALSE;
 			}
+
+			$subsql = "SELECT id FROM bestilling WHERE bruker_id = '$insatt_bruker_id' ORDER BY id DESC;";
+
+			$result = connectDB() -> query($subsql);
+						
+			if ($result->num_rows > 0) {
+				// output data of each row
+				while($row = $result->fetch_assoc()) {
+					$insatt_bestilling_id = utf8_encode($row["id"]);
+				}
+			}
+
+			//die($insatt_bestilling_id);
+
+			$sql = "INSERT INTO bestilling_flyvning (bestilling_id, flyvning_id) VALUES ('$insatt_bestilling_id', '$flyvning_id');";
+
+			if (connectDB()->query($sql) === TRUE) {
+				//return TRUE;
+			}
+			else {
+				//return FALSE;
+			}
+
+			$subsql = "SELECT id FROM bestilling_flyvning WHERE bestilling_id = '$insatt_bestilling_id' AND flyvning_id = '$flyvning_id' ORDER BY id DESC;";
+
+			$result = connectDB() -> query($subsql);
+						
+			if ($result->num_rows > 0) {
+				// output data of each row
+				while($row = $result->fetch_assoc()) {
+					$insatt_bestilling_flyvning_id = utf8_encode($row["id"]);
+				}
+			}
+
+
+			for ($i=0; $i < count($fornavn); $i++) {
+
+
+				$PersonKey = array_search($i, $person_nr);
+
+				if (is_numeric($PersonKey)) {
+
+					$fornavnet = connectDB()->real_escape_string(utf8_encode($fornavn[$i]));
+					$etternavnet = connectDB()->real_escape_string(utf8_encode($etternavn[$i]));
+					$datoen = connectDB()->real_escape_string(utf8_encode($date[$i]));
+
+					$timestamp = regnUtUnixtimeFraDatoOgKlokkeslett($datoen, '12:00');
+					$pris_id = HentPassasjertype_idFraFodselsdato($timestamp);
+
+					//die($insatt_bestilling_flyvning_id);
+
+					$subsql = "SELECT id FROM person WHERE fornavn = '$fornavnet' AND etternavn = '$etternavnet' AND fodselsdato = '$timestamp' ORDER BY id DESC;";
+
+					$result = connectDB() -> query($subsql);
+						
+					if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							$insatt_person_id = utf8_encode($row["id"]);
+						}
+					}
+
+					$sql = "INSERT INTO passasjer_flyvning (bestilling_flyvning_id, person_id, seteoppsett_id) VALUES ('$insatt_bestilling_flyvning_id', '$insatt_person_id', '1');";
+
+					//die($sql);
+
+					if (connectDB()->query($sql) === TRUE) {
+						//return TRUE;
+					}
+					else {
+						//return FALSE;
+					}
+				}
+			}
+
+			//die($insatt_bestilling_flyvning_id);
+
+			die("Stopp");
+			
+			$sql .= "INSERT INTO;";
+
+			//die($f . "<br><br><br>" . $e . "<br><br><br>" . $d . "<br><br><br>");
+
+			//$result = connectDB()->query($sql);
+
 		}
 		else {
 			// ID er ikke satt

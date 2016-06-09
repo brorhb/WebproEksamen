@@ -22,7 +22,7 @@
         $etternavn = @$_POST['etternavn'];
         $date = @$_POST['date'];
 
-		if(oppdaterBestillinger($bestilling_id, $flyvning_id, $bestilling_id, $person_nr, $fornavn, $etternavn, $date)) {
+		if(oppdaterBestilling($bestilling_id, $flyvning_id, $bestilling_id, $person_nr, $fornavn, $etternavn, $date)) {
 			echo "Informasjonen ble oppdatert.";
 		}
 		else {
@@ -35,7 +35,7 @@
 
 		echo'
 			<!-- Innhold -->
-			<form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="get">
+			<form action="' . $_SERVER['PHP_SELF'] . '" id="oppdater" method="post">
 			<div class="col-md-12">';
 				if (@$_POST['ny']) {
 					echo '<h2>Ny bestilling</h2>';
@@ -65,7 +65,7 @@
                                         $PersonNR = $i + 1;
                                         echo '
                                             <tr>
-                                                <td><input type="checkbox" name="valgt[' . $i . ']"> Person #' . $PersonNR . '</td>
+                                                <td><input type="checkbox" name="person_nr[' . $i . ']" value="' . $i . '"> Person #' . $PersonNR . '</td>
                                                 <td><input class="form-control" type="text" name="fornavn[' . $i . ']" id="fornavn[' . $i . ']" value="" placeholder="fornavn"></td>
                                                 <td><input class="form-control" type="text" name="etternavn[' . $i . ']" id="etternavn[' . $i . ']" value="" placeholder="etternavn"></td>
                                                 <td><input class="form-control" id="date[' . $i . ']" name="date[' . $i . ']" placeholder="DD/MM/YYYY" type="text" value="' . @$fodselsdato . '"/></td>
