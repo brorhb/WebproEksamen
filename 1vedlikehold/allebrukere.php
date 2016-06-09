@@ -24,6 +24,7 @@
         $landID = @$_POST['land_id'];
         $epost = @$_POST['epost'];
         $mobilnr = @$_POST['mobilnr'];
+        die("brukerID: (" . $brukerID . "). personID: (" . $personID . ")");
 
        if (validerPersonBruker($brukerID, $brukernavn, $epost, $ukryptertPassord, $landID, $mobilnr, $personID, $fornavn, $etternavn, $fodselsdato)) {
 
@@ -109,8 +110,8 @@
                                 <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input class="form-control" type="hidden" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
-                                <input class="form-control" type="hidden" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
+                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
+                                <input class="form-control" type="text" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
                             </div>';
                         }
                     }
@@ -153,8 +154,8 @@
                                 <input class="form-control" type="text" placeholder="Mobilnummer" name="mobilnr" id="mobilnr" value="' . @$mobilnr . '" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input class="form-control" type="hidden" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
-                                <input class="form-control" type="hidden" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
+                                <input class="form-control" type="text" placeholder="Bruker ID" name="brukerID" id="brukerID" value="' . @$brukerID . '" disabled required>
+                                <input class="form-control" type="text" placeholder="Person ID" name="personID" id="personID" value="' . @$personID . '" disabled required>
                             </div>';
                     }
                     connectDB()->close();
@@ -205,7 +206,7 @@
                                     $epost = utf8_encode($row["epost"]);
                                     $mobilnr = utf8_encode($row["mobilnr"]);
                                     echo '<tr>
-                                                <td><input type="radio" name="id" value="' . $brukerID . '" required ></td>
+                                                <td><input type="radio" name="id" id="id" value="' . $brukerID . '" required ></td>
                                                 <td>' . $brukernavn . '</td>
                                                 <td>' . $fornavn . '</td>
                                                 <td>' . $etternavn . '</td>

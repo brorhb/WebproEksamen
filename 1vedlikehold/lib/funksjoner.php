@@ -663,7 +663,7 @@
         $epost = connectDB()->real_escape_string(utf8_encode($epost));
         $mobilnr = connectDB()->real_escape_string(utf8_encode($mobilnr));
 
-		if ($id == '') {
+		if ($brukerID == '') {
 
 			$sql = "START TRANSACTION;
                     INSERT INTO person (fornavn, etternavn, fodselsdato) VALUES ('$fornavn', '$etternavn', '$fodselsdato');
@@ -679,10 +679,8 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "START TRANSACTION;
-                    UPDATE person SET fornavn='$fornavn', etternavn='$etternavn', fodselsdato='$fodselsdato' WHERE id='$personID';
-                    UPDATE bruker SET brukernavn='$brukernavn', epost='$epost', passord='$kryptertPassord', land_id='$landID', mobilnr='$mobilnr' WHERE person_id='$personID';
-                    COMMIT;";
+			$sql = "UPDATE person SET fornavn='$fornavn', etternavn='$etternavn', fodselsdato='$fodselsdato' WHERE id='$personID';
+                    UPDATE bruker SET brukernavn='$brukernavn', epost='$epost', passord='$kryptertPassord', land_id='$landID', mobilnr='$mobilnr' WHERE person_id='$personID';";
 
 			if (connectDB()->multi_query($sql) === TRUE) {
 				return TRUE;
@@ -792,7 +790,7 @@
 		}
 		else {
 			// ID er ikke satt
-			$sql = "UPDATE luftfartoy SET modell_id='$modell_id', tailnr='$tailnr' WHERE id='$id';";
+			$sql = "UPDATE luftfartoy SET modell_id = '$modell_id', tailnr = '$tailnr' WHERE id = '$id';";
 
 			if (connectDB()->query($sql) === TRUE) {
 				return TRUE;
@@ -801,7 +799,6 @@
 				return FALSE;
 			}
 		}
-
 		connectDB()->close();
 	}
 
@@ -813,12 +810,10 @@
 
 			if (connectDB()->query($sql) === TRUE) {
 				$resultat = TRUE;
-				}
+			}
 			else {
 				$resultat = FALSE;
 			}
-		
-
 		connectDB()->close();
 	}
 
